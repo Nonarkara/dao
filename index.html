@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reading Dao De Jing with Dr. Non · 道德經</title>
+<meta name="description" content="The complete Dao De Jing of Laozi 老子 in three languages — Wang Bi Chinese, Dr. Non Arkaraprasertkul's Hemingway-clear English translation, and Thai — with one short illustrative note per chapter and curated public-domain shanshui paintings.">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1">
+</head>
+<body>
+
+<!-- ── PROGRESS BAR ── -->
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ── TOP CHROME (always visible) ── -->
+<header class="topbar" id="topbar">
+  <div class="topbar-brand">
+    <span class="seal">道</span>
+    <span class="brand-text">Dao De Jing · with Dr. Non</span>
+  </div>
+  <div class="topbar-tools">
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+      <span class="lang-on">EN</span><span class="lang-sep">·</span><span class="lang-off">TH</span>
+    </button>
+    <button class="tool-btn" id="indexBtn" title="Chapter index" aria-label="Chapter index">≡</button>
+  </div>
+</header>
+
+<!-- ── CHAPTER INDEX OVERLAY ── -->
+<aside class="index-overlay" id="indexOverlay" aria-hidden="true">
+  <button class="index-close" id="indexClose" aria-label="Close">×</button>
+  <div class="index-head">
+    <span class="index-kicker">Index of Chapters</span>
+    <h2 class="index-title">道德經 — 81 Chapters</h2>
+    <p class="index-sub">Tap a chapter to jump. Read in any order.</p>
+  </div>
+  <div class="index-half" data-half="dao">
+    <p class="index-part">道經 · Dao Jing · 1—37</p>
+    <ol class="index-list" id="indexListDao"></ol>
+  </div>
+  <div class="index-half" data-half="de">
+    <p class="index-part">德經 · De Jing · 38—81</p>
+    <ol class="index-list" id="indexListDe"></ol>
+  </div>
+  <div class="index-foot">
+    <p class="index-bookmark" id="indexBookmark"></p>
+    <div class="other-books">
+      <p class="ob-head">Other books by Non</p>
+      <a href="https://100days.nonarkara.org" target="_blank" rel="noopener"><span>100 Days of Solitude</span><em>An illustrated travelogue</em></a>
+      <a href="https://ninja.nonarkara.org" target="_blank" rel="noopener"><span>Ninja Innovation</span><em>A people-centric practice for the AI era</em></a>
+      <a href="https://slowdown.nonarkara.org" target="_blank" rel="noopener"><span>The Things You Can See Only When You Slow Down</span><em>A meditation in ten movements</em></a>
+      <a href="https://mean.nonarkara.org" target="_blank" rel="noopener"><span>What I Mean When I Say</span><em>A small dictionary</em></a>
+    </div>
+  </div>
+</aside>
+<div class="index-scrim" id="indexScrim"></div>
+
+<!-- ── COVER ── -->
+<section class="cover" id="cover">
+  <div class="cover-wash" aria-hidden="true"></div>
+  <div class="cover-meta">
+    <span>Edition One · MMXXVI</span>
+    <span>Free to read · print · gift</span>
+  </div>
+  <div class="cover-stack">
+    <div class="cover-cn-vertical">道<br>德<br>經</div>
+    <div class="cover-text">
+      <p class="cover-kicker">Reading the Dao De Jing with</p>
+      <h1 class="cover-title">Dr. Non</h1>
+      <p class="cover-sub">The complete <em>Dao De Jing</em> of Laozi (老子) — in Wang Bi Chinese, Hemingway-clear English, and Thai. Eighty-one short chapters. Read one a day. Or all at once. The book is not impatient.</p>
+    </div>
+  </div>
+  <div class="cover-foot">
+    <p class="cover-instructions">
+      <span><strong>↓</strong> begin</span>
+      <span><strong>← →</strong> turn pages</span>
+      <span><strong>≡</strong> chapter index</span>
+      <span><strong>L</strong> EN ⇄ TH</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── PREFACE ── -->
+<section class="preface" id="preface">
+  <div class="preface-inner">
+    <p class="preface-kicker">A Note Before We Begin</p>
+    <h2 class="preface-title">Why this book.</h2>
+    <p>For more than a hundred days I wrote about my life, and the longer I wrote, the more clearly I noticed the same book was answering me. The book is the <em>Dao De Jing</em>. It was completed somewhere around the fourth century BCE, in eighty-one short chapters and roughly five thousand Chinese characters. It is the second-most-translated book in the world after the Bible. It is also the most-mistranslated.</p>
+    <p>Most translations turn it into a poem about mist. The original is not about mist. It is about a person trying to live well. The translator's job is to read it for that person — not for the mist.</p>
+    <p>This translation aims at understanding, not poetry. The sentences are short. The metaphors are kept where they earn their keep. Where I have a story from my own life that fits the chapter, I tell it. Where I don't, I shut up.</p>
+    <p>You will find each chapter in three voices. The Chinese, in Wang Bi's text — the version most commonly read for a thousand years. My English. My Thai. Toggle between English and Thai with the button at the top, or press <strong>L</strong>. Move between chapters by scrolling, or by pressing <strong>←</strong> and <strong>→</strong>.</p>
+    <p>This is the most important book I have read more than ten times. Some chapters I have read more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
+    <p class="preface-sig">— Non · Bangkok · Shanghai · Boston · 2026</p>
+  </div>
+</section>
+
+<!-- ── CHAPTERS (rendered by JS) ── -->
+<main class="chapters" id="chapters"></main>
+
+<!-- ── COLOPHON ── -->
+<footer class="colophon">
+  <div class="colo-inner">
+    <h3>Colophon</h3>
+    <p>The Chinese text is Wang Bi's recension (王弼本), in the public domain since the third century. The English and Thai translations are by Dr. Non Arkaraprasertkul. The notes are his.</p>
+    <p>Set in <em>Cinzel</em> (Roman display), <em>Cormorant Garamond</em> (English body), <em>IBM Plex Sans Thai</em> (Thai), <em>Noto Serif SC</em> and <em>ZCOOL XiaoWei</em> (Chinese), and <em>IBM Plex Mono</em> (UI). The seal mark uses the character 道.</p>
+    <p>Illustrations are public-domain works from the Met Museum, Tokyo National Museum, the Wikimedia Commons, and other open archives. Where a referenced painting was unavailable, we substitute a thematic neighbour and say so.</p>
+    <p>Text and translations © Non Arkaraprasertkul, all rights reserved. The book itself is anyone's. Print it. Argue with it. Cross out my readings and write your own.</p>
+    <p class="colo-sig">⌁ Bangkok · Shanghai · Boston · MMXXVI · NON·ISM PRESS</p>
+  </div>
+</footer>
+
+<script src="chapters.js?v=1"></script>
+<script src="app.js?v=1"></script>
+
+</body>
+</html>
