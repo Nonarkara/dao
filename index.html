@@ -8,8 +8,8 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
 
@@ -75,6 +75,14 @@
     </div>
   </div>
   <div class="cover-foot">
+    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-fade); margin: 0 0 12px;">Each chapter unfolds in five panels:</p>
+    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.7;">
+      <span style="color: var(--seal); font-weight: 600;">01</span> Origin · 原文 &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">02</span> Direct · 直譯 &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">03</span> Reading · 解讀 &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">04</span> Code · 程式 &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">05</span> Note · 注
+    </p>
     <p class="cover-instructions">
       <span><strong>↓</strong> begin</span>
       <span><strong>← →</strong> turn pages</span>
@@ -92,7 +100,7 @@
     <p>For more than a hundred days I wrote about my life, and the longer I wrote, the more clearly I noticed the same book was answering me. The book is the <em>Dao De Jing</em>. It was completed somewhere around the fourth century BCE, in eighty-one short chapters and roughly five thousand Chinese characters. It is the second-most-translated book in the world after the Bible. It is also the most-mistranslated.</p>
     <p>Most translations turn it into a poem about mist. The original is not about mist. It is about a person trying to live well. The translator's job is to read it for that person — not for the mist.</p>
     <p>This translation aims at understanding, not poetry. The sentences are short. The metaphors are kept where they earn their keep. Where I have a story from my own life that fits the chapter, I tell it. Where I don't, I shut up.</p>
-    <p>You will find each chapter in three voices. The Chinese, in Wang Bi's text — the version most commonly read for a thousand years. My English. My Thai. Toggle between English and Thai with the button at the top, or press <strong>L</strong>. Move between chapters by scrolling, or by pressing <strong>←</strong> and <strong>→</strong>.</p>
+    <p>Each chapter unfolds in five panels. <em>Origin</em> 原文 — the Chinese, in Wang Bi's text. <em>Direct</em> 直譯 — a literal translation, faithfully strange. <em>Reading</em> 解讀 — what I think the chapter is actually doing, with the science that supports it. <em>Code</em> 程式 — a TypeScript distillation, because some claims compress better as a function signature than as a sentence. <em>Note</em> 注 — a story or remark from the rest of my life. Toggle English and Thai at the top of the page, or press <strong>L</strong>. Move between chapters by scrolling or by pressing <strong>←</strong> and <strong>→</strong>.</p>
     <p>This is the most important book I have read more than ten times. Some chapters I have read more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
     <p class="preface-sig">— Non · Bangkok · Shanghai · Boston · 2026</p>
   </div>
@@ -114,7 +122,8 @@
 </footer>
 
 <script src="chapters.js?v=1"></script>
-<script src="app.js?v=1"></script>
+<script src="extended.js?v=1"></script>
+<script src="app.js?v=2"></script>
 
 </body>
 </html>

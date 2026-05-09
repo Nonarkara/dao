@@ -4,76 +4,194 @@
 (function() {
   'use strict';
   const CH = window.CHAPTERS || [];
+  const EX = window.EXTENDED || {};
   if (!CH.length) { console.error('No chapters'); return; }
 
   const $  = (s, c=document) => c.querySelector(s);
   const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
   const escapeHtml = (s) => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  // Roman numerals 1–81
   function toRoman(n) {
     const map = [['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]];
     let out = ''; for (const [g,v] of map) { while (n >= v) { out += g; n -= v; } }
     return out;
   }
 
-  // Build art map — chapters reference art keys; map to local files
-  const ART_MAP = {
-    'fan-kuan':       'img/sesshu.jpg',         // substitute (mountain landscape)
-    'guo-xi':         'img/sotatsu.jpg',
-    'ma-yuan':        'img/hiroshige-rain.jpg',
-    'xia-gui':        'img/sesshu.jpg',
-    'ni-zan':         'img/muqi.jpg',
-    'mi-fu':          'img/sotatsu.jpg',
-    'wang-hui':       'img/sesshu.jpg',
-    'shen-zhou':      'img/wanderer.jpg',
-    'sesshu':         'img/sesshu.jpg',
-    'liang-kai':      'img/liang-kai.jpg',
-    'hokusai-fuji':   'img/hokusai-fuji.jpg',
-  };
-  function artSrc(key) {
-    return ART_MAP[key] || 'img/sesshu.jpg';
+  // Naive but effective TS syntax highlighter for the code panel
+  function highlightTS(code) {
+    // First escape HTML, then layer regexes
+    let s = escapeHtml(code);
+    // Comments first (// to end of line)
+    s = s.replace(/(\/\/[^\n]*)/g, '<span class="c-com">$1</span>');
+    // Strings
+    s = s.replace(/('[^'\n]*'|"[^"\n]*"|`[^`\n]*`)/g, '<span class="c-str">$1</span>');
+    // Keywords
+    const KW = ['type','interface','class','function','const','let','var','if','else','return','declare','readonly','extends','infer','as','new','void','null','undefined','true','false','this','typeof','keyof','in','enum','export','import','from','async','await','throw','of'];
+    KW.forEach(k => {
+      s = s.replace(new RegExp('\\b' + k + '\\b(?![^<]*</span>)', 'g'), '<span class="c-key">' + k + '</span>');
+    });
+    // Numbers (rough)
+    s = s.replace(/\b(\d+(?:\.\d+)?)\b(?![^<]*<\/span>)/g, '<span class="c-num">$1</span>');
+    // Type names — Capitalized identifiers (rough, may overshoot)
+    s = s.replace(/\b([A-Z][A-Za-z0-9_]*)\b(?![^<]*<\/span>)/g, '<span class="c-type">$1</span>');
+    return s;
   }
+
+  // Image map for contemporary photos (light — reuse existing local art)
+  const IMG_MAP = {
+    'blank-page':  { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: 'Before words.' },
+    'river-stones': { src: 'img/hokusai-fuji.jpg', credit: 'Hokusai · Fine Wind, Clear Morning · c. 1830', cap: 'Water, doing its long careful sentence.' },
+    'muji-room':   { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: 'The void is the deliverable.' },
+    'empty-desk':  { src: 'img/muqi.jpg',        credit: 'Muqi · Six Persimmons · 13th c.',                cap: 'Subtract until what remains is clearly working.' },
+  };
 
   // ----- RENDER CHAPTERS ----------------------------------------
   function chapterHTML(ch, idx) {
-    const prev = idx > 0 ? idx-1 : null;
-    const next = idx < CH.length-1 ? idx+1 : null;
+    const ext = EX[ch.n] || {};
+    const prev = idx > 0 ? CH[idx-1] : null;
+    const next = idx < CH.length-1 ? CH[idx+1] : null;
+
+    const direct_en = ext.direct || '';
+    const direct_th = ext.direct_th || '';
+    const reading_en = ext.reading || '';
+    const reading_th = ext.reading_th || '';
+    const code = ext.code || '';
+    const sources = ext.sources || [];
+    const imgKey = ext.image;
+    const img = imgKey ? IMG_MAP[imgKey] : null;
+
     return `
-      <article class="chapter-page" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}">
-        <div class="chapter-art" style="background-image:url('${artSrc(ch.art)}')"></div>
-        <div class="chapter-inner">
-          <header class="chapter-head">
-            <div class="chapter-num-line">
-              <span class="num-roman">${toRoman(ch.n)}</span>
-              <span>第 ${ch.n} 章 · Chapter ${ch.n}</span>
-            </div>
-            <h2 class="chapter-cn-title">${escapeHtml(ch.cn_title || '')}</h2>
-            <p class="chapter-en-title">${escapeHtml(ch.en_title || '')}</p>
-            <p class="chapter-th-title-display">${escapeHtml(ch.th_title || '')}</p>
-            <div class="chapter-cn">${escapeHtml(ch.cn || '')}</div>
-          </header>
-          <div class="chapter-body">
-            <p class="chapter-translation" data-lang="en">${escapeHtml(ch.en || '')}</p>
-            <p class="chapter-translation" data-lang="th">${escapeHtml(ch.th || '')}</p>
-            <p class="chapter-note">${escapeHtml(ch.note || '')}</p>
-          </div>
-          <footer class="chapter-foot">
-            <button data-jump="${prev !== null ? CH[prev].n : ''}" ${prev === null ? 'disabled' : ''}>
-              ${prev !== null ? '← ' + toRoman(CH[prev].n) + ' · ' + (CH[prev].cn_title||'') : '— Beginning —'}
-            </button>
-            <span class="ch-num">第 ${ch.n} 章 / 81</span>
-            <button data-jump="${next !== null ? CH[next].n : ''}" ${next === null ? 'disabled' : ''}>
-              ${next !== null ? toRoman(CH[next].n) + ' · ' + (CH[next].cn_title||'') + ' →' : '— End —'}
-            </button>
-          </footer>
+      <article class="chapter" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}">
+        <div class="chapter-strip">
+          <span class="cs-num">${toRoman(ch.n)} · 第 ${ch.n} 章</span>
+          <span class="cs-cn">${escapeHtml(ch.cn_title || '')}</span>
+          <span class="cs-en">${escapeHtml(ch.en_title || '')}</span>
+          <span class="cs-th">${escapeHtml(ch.th_title || '')}</span>
+          <span class="cs-progress">${ch.n} / 81</span>
         </div>
+
+        <!-- 01 ORIGIN -->
+        <section class="panel panel-origin">
+          <div class="panel-label">
+            <span class="pl-num">01</span><span>Origin</span><span class="pl-cn">原文</span>
+          </div>
+          <div class="origin-grid">
+            <div class="origin-title-block">
+              <div class="origin-num-roman">${toRoman(ch.n)}</div>
+              <h2 class="origin-cn-title">${escapeHtml(ch.cn_title || '')}</h2>
+              <p class="origin-en-title">${escapeHtml(ch.en_title || '')}</p>
+              <p class="origin-th-title">${escapeHtml(ch.th_title || '')}</p>
+              <div class="origin-divider"></div>
+              <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-fade); margin: 0;">
+                Wang Bi recension · ${ch.n <= 37 ? '道經 · Dao Jing' : '德經 · De Jing'}
+              </p>
+            </div>
+            <div class="origin-cn">${escapeHtml(ch.cn || '')}</div>
+          </div>
+        </section>
+
+        ${direct_en ? `
+        <!-- 02 DIRECT -->
+        <section class="panel panel-direct">
+          <div class="panel-label">
+            <span class="pl-num">02</span><span>Direct</span><span class="pl-cn">直譯</span>
+          </div>
+          <p class="direct-text" data-lang="en">${escapeHtml(direct_en)}</p>
+          <p class="direct-text" data-lang="th">${escapeHtml(direct_th || direct_en)}</p>
+        </section>
+        ` : ''}
+
+        ${reading_en ? `
+        <!-- 03 READING -->
+        <section class="panel panel-reading">
+          <div class="panel-label">
+            <span class="pl-num">03</span><span>Reading</span><span class="pl-cn">解讀</span>
+          </div>
+          <div class="reading-frame">
+            <aside class="reading-aside">
+              <p class="ra-q">${escapeHtml(ch.en || '').split('\n')[0]}</p>
+              <p>The chapter, restated.</p>
+              <p>What if X because Y, and research Z supports it?</p>
+            </aside>
+            <div>
+              <div class="reading-body" data-lang="en">${escapeHtml(reading_en)}</div>
+              <div class="reading-body" data-lang="th">${escapeHtml(reading_th || reading_en)}</div>
+              ${sources.length ? `
+                <div class="reading-sources">
+                  <span class="rs-label">Where this comes from</span>
+                  <ul>${sources.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </section>
+        ` : `
+        <!-- 03 READING (existing translation as reading) -->
+        <section class="panel panel-reading">
+          <div class="panel-label">
+            <span class="pl-num">03</span><span>Reading</span><span class="pl-cn">解讀</span>
+          </div>
+          <div class="reading-frame">
+            <aside class="reading-aside">
+              <p class="ra-q">${escapeHtml((ch.en||'').split('\n')[0] || '—')}</p>
+              <p>Dr. Non's reading.</p>
+              <p>The chapter, in modern English.</p>
+            </aside>
+            <div>
+              <div class="reading-body" data-lang="en" style="white-space: pre-line;">${escapeHtml(ch.en || '')}</div>
+              <div class="reading-body" data-lang="th" style="white-space: pre-line;">${escapeHtml(ch.th || '')}</div>
+            </div>
+          </div>
+        </section>
+        `}
+
+        ${img ? `
+        <section class="panel-image">
+          <div class="image-bg" style="background-image: url('${img.src}')"></div>
+          <div class="image-caption"><em>${escapeHtml(img.cap)}</em>${escapeHtml(img.credit)}</div>
+        </section>
+        ` : ''}
+
+        ${code ? `
+        <!-- 04 CODE -->
+        <section class="panel panel-code">
+          <div class="panel-label">
+            <span class="pl-num">04</span><span>Code</span><span class="pl-cn">程式</span>
+          </div>
+          <div class="code-frame">
+            <pre class="code-block">${highlightTS(code)}</pre>
+            <p class="code-caption">A philosophical compression. Read it like a poem.</p>
+          </div>
+        </section>
+        ` : ''}
+
+        ${ch.note ? `
+        <!-- 05 NOTE -->
+        <section class="panel panel-note">
+          <div class="panel-label">
+            <span class="pl-num">05</span><span>Note</span><span class="pl-cn">注</span>
+          </div>
+          <div class="note-frame">
+            <p class="note-body">${escapeHtml(ch.note)}</p>
+          </div>
+        </section>
+        ` : ''}
+
+        <footer class="chapter-foot">
+          <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}>
+            ${prev ? '← ' + toRoman(prev.n) + ' · ' + (prev.cn_title||'') : '— Beginning —'}
+          </button>
+          <span class="ch-marker">第 ${ch.n} 章 / 81</span>
+          <button data-jump="${next ? next.n : ''}" ${next ? '' : 'disabled'}>
+            ${next ? toRoman(next.n) + ' · ' + (next.cn_title||'') + ' →' : '— End —'}
+          </button>
+        </footer>
       </article>
     `;
   }
   $('#chapters').innerHTML = CH.map(chapterHTML).join('');
 
-  // ----- RENDER INDEX -------------------------------------------
+  // ----- INDEX OVERLAY ------------------------------------------
   function indexItemHTML(ch) {
     return `<li><a data-jump="${ch.n}">
       <span class="ix-n">${toRoman(ch.n)}</span>
@@ -97,7 +215,7 @@
   setLang(lang);
   $('#langToggle').addEventListener('click', () => setLang(lang === 'en' ? 'th' : 'en'));
 
-  // ----- CHAPTER JUMPS ------------------------------------------
+  // ----- JUMPS --------------------------------------------------
   function jumpTo(n) {
     const el = document.getElementById('ch' + n);
     if (el) {
@@ -105,7 +223,6 @@
       saveBookmark(n);
     }
   }
-  // Click handlers on prev/next + index links
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-jump]');
     if (!btn) return;
@@ -113,13 +230,12 @@
     if (!isNaN(n)) {
       e.preventDefault();
       jumpTo(n);
-      // close index if open
       indexOverlay.classList.remove('open');
       indexScrim.classList.remove('show');
     }
   });
 
-  // ----- INDEX OVERLAY ------------------------------------------
+  // ----- INDEX OVERLAY OPEN/CLOSE -------------------------------
   const indexOverlay = $('#indexOverlay');
   const indexScrim   = $('#indexScrim');
   $('#indexBtn').addEventListener('click', () => {
@@ -141,10 +257,7 @@
   const KEY_BOOK = 'dao:bookmark';
   const KEY_TS   = 'dao:bookmark-ts';
   const KEY_VIS  = 'dao:visited';
-
-  function getVisited() {
-    try { return JSON.parse(localStorage.getItem(KEY_VIS) || '[]'); } catch(e) { return []; }
-  }
+  function getVisited() { try { return JSON.parse(localStorage.getItem(KEY_VIS) || '[]'); } catch(e) { return []; } }
   function saveBookmark(n) {
     try {
       localStorage.setItem(KEY_BOOK, String(n));
@@ -166,7 +279,7 @@
   }
   function currentChapter() {
     let cur = null;
-    for (const el of $$('.chapter-page')) {
+    for (const el of $$('.chapter')) {
       if (el.getBoundingClientRect().top <= window.innerHeight * 0.4) cur = el;
     }
     return cur ? parseInt(cur.dataset.n) : null;
@@ -183,24 +296,19 @@
       const ch = CH.find(c => c.n === saved);
       bm.innerHTML = `<a data-jump="${saved}">第 ${saved} 章 · ${escapeHtml(ch.cn_title||'')}</a>`;
       bm.classList.add('show');
-    } else {
-      bm.classList.remove('show');
-    }
+    } else { bm.classList.remove('show'); }
   }
 
-  // Auto-save bookmark as user scrolls past chapters
   let scrollTick = false;
   let lastSaved = null;
   function onScroll() {
     if (scrollTick) return;
     scrollTick = true;
     requestAnimationFrame(() => {
-      // progress bar
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
       const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
       $('#progress').style.width = pct + '%';
-      // active chapter
       const n = currentChapter();
       if (n && n !== lastSaved) {
         lastSaved = n;
@@ -214,7 +322,7 @@
   onScroll();
   markVisited();
 
-  // ----- KEYBOARD NAV -------------------------------------------
+  // ----- KEYBOARD -----------------------------------------------
   document.addEventListener('keydown', (e) => {
     if (e.target.matches('input, textarea')) return;
     if (e.key === 'ArrowRight' || e.key === 'j') {
@@ -222,22 +330,18 @@
       const cur = currentChapter() || 0;
       const next = CH.find(c => c.n > cur);
       if (next) jumpTo(next.n);
-    }
-    else if (e.key === 'ArrowLeft' || e.key === 'k') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'k') {
       e.preventDefault();
       const cur = currentChapter() || 1;
       const arr = CH.filter(c => c.n < cur);
       if (arr.length) jumpTo(arr[arr.length-1].n);
-    }
-    else if (e.key === 'l' || e.key === 'L') {
+    } else if (e.key === 'l' || e.key === 'L') {
       e.preventDefault();
       setLang(lang === 'en' ? 'th' : 'en');
-    }
-    else if (e.key === 'Escape') {
+    } else if (e.key === 'Escape') {
       indexOverlay.classList.remove('open');
       indexScrim.classList.remove('show');
-    }
-    else if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+    } else if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
       e.preventDefault();
       $('#indexBtn').click();
     }
@@ -273,15 +377,12 @@
       `;
       document.body.appendChild(toast);
       requestAnimationFrame(() => toast.classList.add('show'));
-      const dismiss = () => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 500);
-      };
+      const dismiss = () => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 500); };
       toast.querySelector('.ct-jump').addEventListener('click', () => { jumpTo(savedN); dismiss(); });
       toast.querySelector('.ct-x').addEventListener('click', dismiss);
       setTimeout(dismiss, 14000);
     }, 1800);
   }
 
-  console.log(`📖 Dao De Jing · ${CH.length} chapters loaded · lang=${lang}`);
+  console.log(`📖 Dao De Jing v2 · ${CH.length} chapters · ${Object.keys(EX).length} extended · lang=${lang}`);
 })();
