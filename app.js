@@ -929,7 +929,7 @@
   // Honour prefers-reduced-motion; otherwise let panels breathe in.
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reducedMotion && 'IntersectionObserver' in window) {
-    const revealTargets = $$('.about-stanza, .era-card, .wild-mvt, .play-card, .panel-tsai');
+    const revealTargets = $$('.about-stanza, .era-card, .wild-mvt, .play-card, .panel-tsai, .chapter');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -937,11 +937,11 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: 0.02, rootMargin: '0px 0px -4% 0px' });
     revealTargets.forEach(el => observer.observe(el));
   } else {
     // Reduced motion or no IO: show everything immediately, no transforms.
-    $$('.about-stanza, .era-card, .wild-mvt, .play-card, .panel-tsai').forEach(el => el.classList.add('is-visible'));
+    $$('.about-stanza, .era-card, .wild-mvt, .play-card, .panel-tsai, .chapter').forEach(el => el.classList.add('is-visible'));
   }
 
   // ----- INITIAL HASH -------------------------------------------
