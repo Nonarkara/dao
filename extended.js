@@ -192,7 +192,8 @@ window.EXTENDED = {
       "Jonathan Haidt on self-effacement as a marker of moral expertise."
     ],
     note_en: "I once gave a lecture that went very well. I know it went well because three people came up to me afterwards and said so. During the lecture itself, I had no idea. I had forgotten I was giving a lecture. There was just a room and some ideas I was interested in. The lectures I have given where I remained fully aware that I was giving a lecture — where I tracked the faces, adjusted for the energy, managed the impression — were all fine. Not one of them has anyone mentioned since.\n\nI have spent a lot of time trying to recreate the conditions of the first lecture. I don't think that's how it works.",
-    note_th: "ผมเคยบรรยายครั้งหนึ่งที่ออกมาดีมาก ผมรู้ว่ามันดีเพราะมีสามคนเดินมาบอกหลังจากนั้น ระหว่างที่บรรยายนั้นเอง ผมไม่รู้เลยว่ามันดีหรือเปล่า ผมลืมไปว่าตัวเองกำลังบรรยาย มีแค่ห้องและความคิดที่ผมสนใจ บรรยายอื่น ๆ ที่ผมตระหนักตลอดเวลาว่ากำลังบรรยายอยู่ — ที่คอยจับสีหน้าคน ปรับ จัดการภาพลักษณ์ — ล้วนออกมาได้ ไม่มีใครพูดถึงเลยสักครั้งจนถึงทุกวันนี้"
+    note_th: "ผมเคยบรรยายครั้งหนึ่งที่ออกมาดีมาก ผมรู้ว่ามันดีเพราะมีสามคนเดินมาบอกหลังจากนั้น ระหว่างที่บรรยายนั้นเอง ผมไม่รู้เลยว่ามันดีหรือเปล่า ผมลืมไปว่าตัวเองกำลังบรรยาย มีแค่ห้องและความคิดที่ผมสนใจ บรรยายอื่น ๆ ที่ผมตระหนักตลอดเวลาว่ากำลังบรรยายอยู่ — ที่คอยจับสีหน้าคน ปรับ จัดการภาพลักษณ์ — ล้วนออกมาได้ ไม่มีใครพูดถึงเลยสักครั้งจนถึงทุกวันนี้",
+    note_cn: "我有一次讲座讲得非常好。我知道它好，因为结束后有三个人上来告诉我。但在讲座进行中，我完全不知道。我忘了自己正在讲座。只有一个房间和一些我感兴趣的想法。而那些我全程意识到自己正在讲的讲座——我追踪表情、调整能量、管理印象——都只是还行。没有一个被人事后提起过。\n\n我花了很多时间试图重现第一次讲座的条件。我不认为那是可行的。"
   },
 
   8: {
@@ -363,6 +364,7 @@ window.EXTENDED = {
     ],
     note_en: "I can tell you a surprising amount about almost any neighbourhood you've lived in. Give me an afternoon and I can map how it moves, what it means, who it's forgetting. I once did this professionally. I was very good at it. What I could not tell you, for most of that time, was anything about what I actually wanted. Not what I was supposed to want. Not what would photograph well. What I, specifically, at the age I was at that specific moment, needed. That was a completely different kind of map. I've been working on it longer.",
     note_th: "ผมใช้เวลาหลายปีศึกษาเมือง สามารถแผนที่กระแส อ้างอิงดัชนี สร้างแบบจำลอง และอธิบายย่านของคุณให้คุณฟังในแบบที่คุณยังไม่เคยพิจารณา สิ่งที่ผมประเมินต่ำอยู่เสมอนั้นง่ายกว่า — ผมไม่รู้ว่าตัวเองต้องการอะไร รู้เรื่องคนอื่นเป็นพัน แต่แทบไม่รู้อะไรเกี่ยวกับตัวเองเลย ปริญญาเอกสอนให้สังเกต การสังเกตนั้นในที่สุดก็หันกลับมาหาตัวเอง การหันกลับครั้งที่สองใช้เวลานานกว่า แต่ให้งานที่มีประโยชน์กว่า",
+    note_cn: "我能告诉你几乎任何你住过的社区的大量事情。给我一个下午，我能画出它怎么流动、意味着什么、忘记了谁。我曾经专业地做这件事，而且做得很好。但那段时间里，有件事我一直无法告诉你：我真正想要什么。不是我应该想要什么，不是什么东西拍出来好看。是我，在那个特定的年龄，在那个特定的时刻，需要什么。那是完全不同的地图。我还在画。",
     tsai: {
       src: "tsai/ch33-knowing-self.jpg",
       caption: "Knowing others is wisdom. Knowing oneself is clarity. Tsai's sage holds up a mirror to a passing crowd — and very deliberately turns it inward at the last frame.",
@@ -449,7 +451,8 @@ window.EXTENDED = {
     ],
     reading_th: "ถ้าบทนี้กำลังอธิบายค่าเสียโอกาสใน 81 ตัวอักษร?\nทฤษฎีราคาของสำนักชิคาโกทำให้เป็นทางการในศตวรรษที่ 20 ว่า ทุกทางเลือกมีทางเลือกอื่นที่ถูกละทิ้ง ซึ่งมูลค่าของมันคือต้นทุนที่แท้จริง บทนี้ถามตรง ๆ — ค่าเสียโอกาสของชื่อเสียง สมบัติ และความได้เปรียบของคุณคืออะไร\nงานของ Kahneman แสดงว่าความพึงพอใจในชีวิตหยุดเพิ่มขึ้นอย่างมีนัยสำคัญที่ประมาณ 75,000 USD/ปีในระบบเศรษฐกิจร่ำรวย บทนี้รายงานว่าเส้นโค้งแบนราบ และโรคคือการเข้าใจผิดว่าส่วนแบนคือส่วนชัน รู้ว่าพอแค่ไหน ไม่มีวันอับอาย",
     note_en: "I once drove two hours to retrieve a notebook I had left at a conference. The notebook had three sentences in it. I knew this when I got in the car. I went anyway, because the three sentences were mine and I wanted them back. A working relationship I was neglecting at the same time — that I did not pursue with the same urgency. I got the sentences. I'm not sure what I thought I would do with them that I couldn't have done from memory. I think about this more than is probably useful.",
-    note_th: "มีช่วงที่ผมคิดคำนวณในหัวตลอดเวลา — ทุนรวมกันเท่าไร บทความไหนนับในดัชนีอะไร ประวัติการทำงานจะดูอย่างไรต่อกรรมการสรรหาที่ผมไม่ตั้งใจจะประทับใจเลย การบัญชีนั้นรู้สึกเหมือนกำลังทำงาน แต่มันไม่ใช่ สิ่งที่มันทำจริง ๆ คือทำให้งานจริงดูเล็กลงเมื่อเทียบกับเวอร์ชันที่ผมกำลังให้คะแนนอยู่ ผมทำลายความสัมพันธ์การทำงานที่ดีระหว่างการได้มาซึ่งทุนวิจัยที่จ่ายค่าใช้จ่ายสำหรับงานที่ผมไม่เคยทำเสร็จ บทนี้คุ้มค่ากว่านั้นมาก"
+    note_th: "มีช่วงที่ผมคิดคำนวณในหัวตลอดเวลา — ทุนรวมกันเท่าไร บทความไหนนับในดัชนีอะไร ประวัติการทำงานจะดูอย่างไรต่อกรรมการสรรหาที่ผมไม่ตั้งใจจะประทับใจเลย การบัญชีนั้นรู้สึกเหมือนกำลังทำงาน แต่มันไม่ใช่ สิ่งที่มันทำจริง ๆ คือทำให้งานจริงดูเล็กลงเมื่อเทียบกับเวอร์ชันที่ผมกำลังให้คะแนนอยู่ ผมทำลายความสัมพันธ์การทำงานที่ดีระหว่างการได้มาซึ่งทุนวิจัยที่จ่ายค่าใช้จ่ายสำหรับงานที่ผมไม่เคยทำเสร็จ บทนี้คุ้มค่ากว่านั้นมาก",
+    note_cn: "名字是成本。你每获得一个头衔，就失去了一部分不被称呼的自由。囤积是成本——每一样东西都需要空间、维护、注意力。收获是成本——你得到的同时，就失去了没有得到时可能拥有的其他东西。老子问的不是「你有多少」，是「你为此放弃了什么」。"
   },
 
   48: {
