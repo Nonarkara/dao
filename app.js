@@ -83,6 +83,93 @@
     if (m === 'origin')    return 'mood-cosmic';
     return 'mood-wabi';   // silence → wabi
   }
+
+  const SCALE_OVERRIDES = {
+    1: 'XL',   // 體道 — the source, monumental
+    8: 'XL',   // On Water — deep, expansive
+    11: 'XL',  // Use of Nothing — architectural emptiness
+    16: 'XL',  // Returning to Root — stillness as space
+    20: 'XL',  // Being Strange — solitude as architecture
+    25: 'XL',  // Four Greats — cosmic scale
+    38: 'XL',  // Decline of Virtue — the long fall
+    40: 'XL',  // Reversal — the turning point
+    42: 'XL',  // Three — generative explosion
+    48: 'XL',  // Learning and Doing — subtracting as monument
+    55: 'XL',  // Infant — origin of life
+    78: 'XL',  // Water Again — return to source
+    81: 'XL',  // Last Word — closing monument
+    2: 'L',    // Pairs — expansive pairs
+    4: 'L',    // Empty Vessel — spacious void
+    5: 'L',    // Bellows — breathing room
+    6: 'L',    // Valley — natural expanse
+    7: 'L',    // Lasting — long view
+    14: 'L',   // Subtle — delicate expanse
+    21: 'L',   // Form of Virtue — substantial
+    22: 'L',   // Bending — flexible space
+    28: 'L',   // Holding Female — receptive space
+    33: 'L',   // Knowing — knowledge as room
+    36: 'L',   // Faint Light — dimming expanse
+    43: 'L',   // Softest Thing — penetrating depth
+    44: 'L',   // Name and Body — embodied space
+    50: 'L',   // Coming and Going — cycle room
+    56: 'L',   // Ones Who Don't Talk — quiet expanse
+    64: 'L',   // Beginnings — thousand-mile journey
+    67: 'L',   // Three Treasures — generous space
+    76: 'L',   // Soft and Hard — material depth
+    3: 'S',    // Not Goading — tight, practical
+    9: 'S',    // Knowing When to Stop — compact wisdom
+    10: 'S',   // Holding One — brief
+    12: 'S',   // Five Colours — vivid but tight
+    13: 'S',   // Praise — sharp, short
+    15: 'S',   // Old Masters — brief lesson
+    17: 'S',   // Quiet Leadership — tight
+    18: 'S',   // Loss of Way — compact lament
+    19: 'S',   // Dropping Categories — brief
+    23: 'S',   // Few Words — concise
+    24: 'S',   // Tiptoe — transient, small
+    26: 'S',   // Heaviness — weight, compact
+    27: 'S',   // Good Work — tight craft
+    29: 'S',   // Running World — brief warning
+    30: 'S',   // Not Using Army — funeral compact
+    31: 'S',   // Weapons — sharp, brief
+    32: 'S',   // Names — tight
+    34: 'S',   // Going Both Ways — brief
+    35: 'S',   // Great Image — compact
+    37: 'S',   // Doing Nothing — minimal
+    39: 'S',   // One — singular, tight
+    41: 'S',   // Three Hearers — brief
+    45: 'S',   // Looking Wrong — sharp
+    46: 'S',   // Enough — complete, tight
+    47: 'S',   // Not Going Out — interior, compact
+    49: 'S',   // Borrowed Heart — brief
+    51: 'S',   // Nourishing — intimate, small
+    52: 'S',   // Mother — tight warmth
+    53: 'S',   // Crooked Path — brief
+    54: 'S',   // Cultivation — compact
+    57: 'S',   // Less Government — tight
+    58: 'S',   // Dim Government — brief
+    59: 'S',   // Saving — compact
+    60: 'S',   // Cooking Small Fish — intimate
+    61: 'S',   // Lowest Place — tight depth
+    62: 'S',   // Storehouse — compact
+    63: 'S',   // Hard from Easy — brief
+    65: 'S',   // Not Making Clever — tight
+    66: 'S',   // Sea Wins — compact
+    68: 'S',   // Not Fighting — brief
+    69: 'S',   // Reluctant Soldier — tight
+    70: 'S',   // Misunderstood — compact solitude
+    71: 'S',   // Knowing Not Knowing — brief
+    72: 'S',   // Fear — tight
+    73: 'S',   // Net of Heaven — compact
+    74: 'S',   // Killing — sharp, brief
+    75: 'S',   // Hungry — tight
+    77: 'S',   // Way of Heaven — compact
+    79: 'S',   // Settled Grievances — brief
+    80: 'S',   // Small Country — intimate, tight
+  };
+  function scaleClassFor(ch) {
+    return 'scale-' + (SCALE_OVERRIDES[ch.n] || 'M');
+  }
   if (!CH.length) { console.error('No chapters'); return; }
 
   const $  = (s, c=document) => c.querySelector(s);
@@ -141,6 +228,7 @@
     // Translation lines — prefer the literal (direct) translation; fall back to the chapter body.
     const enLines = (ext.direct || ch.en || '').split('\n');
     const thLines = (ext.direct_th || ch.th || '').split('\n');
+    const cnDirectLines = (ext.direct_cn || '').split('\n');
 
     return cnLines.map((line, i) => {
       const charsHTML = line.map(t => {
@@ -156,10 +244,12 @@
 
       const en = escapeHtml((enLines[i] || '').trim());
       const th = escapeHtml((thLines[i] || enLines[i] || '').trim());
+      const cn = escapeHtml((cnDirectLines[i] || '').trim());
 
       return `
         <div class="origin-line">
           <div class="origin-chars">${charsHTML}</div>
+          ${cn ? `<p class="origin-gloss" data-lang="cn"><span class="og-mark">→</span> ${cn}</p>` : ''}
           ${en ? `<p class="origin-gloss" data-lang="en"><span class="og-mark">→</span> ${en}</p>` : ''}
           ${th ? `<p class="origin-gloss" data-lang="th"><span class="og-mark">→</span> ${th}</p>` : ''}
         </div>
@@ -188,14 +278,17 @@
 
     const direct_en = ext.direct || '';
     const direct_th = ext.direct_th || '';
+    const direct_cn = ext.direct_cn || '';
     const direct_th_is_fallback = !ext.direct_th && !!direct_en;
     const reading_en = ext.reading || '';
     const reading_th = ext.reading_th || '';
+    const reading_cn = ext.reading_cn || '';
     const reading_th_is_fallback = !ext.reading_th && !!reading_en;
     const code = ext.code || '';
     // note_th is only shown when explicitly written — no fallback to English ch.note
     const note_en = ext.note_en || ch.note || '';
     const note_th = ext.note_th || '';
+    const note_cn = ext.note_cn || '';
     const sources = ext.sources || [];
     const imgKey = ext.image;
     const img = imgKey ? IMG_MAP[imgKey] : null;
@@ -205,6 +298,7 @@
 
     const su = SU[ch.n];
     const moodClass = moodClassFor(ch);
+    const scaleClass = scaleClassFor(ch);
 
     const tpy = titlePy(ch.n);
     const spy = summaryPy(ch.n);
@@ -215,7 +309,7 @@
     const chStyle  = `--ch-hue: ${hueShift}deg; --ch-sat: ${satBoost}%;`;
 
     return `
-      <article class="chapter ${moodClass}" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}" style="${chStyle}">
+      <article class="chapter ${moodClass} ${scaleClass}" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}" data-scale="${scaleClass.replace('scale-','')}" style="${chStyle}">
         <div class="chapter-strip">
           <span class="cs-num">${toRoman(ch.n)} · 第 ${ch.n} 章 · <em class="cs-num-py">dì ${ch.n} zhāng</em></span>
           <button class="cs-cn cs-cn-link" data-char-jump="${ch.n}" title="Tap to learn this character" aria-label="Learn the key character for chapter ${ch.n}">
@@ -360,6 +454,7 @@
             </aside>
             <div>
               <div class="reading-body" data-lang="en">${escapeHtml(reading_en)}</div>
+              <div class="reading-body" data-lang="cn" style="font-family: var(--cn-serif);">${escapeHtml(reading_cn)}</div>
               <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">บทอ่านเชิงลึกภาษาไทยกำลังตามมา</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
               ${sources.length ? `
                 <div class="reading-sources">
@@ -384,6 +479,7 @@
             </aside>
             <div>
               <div class="reading-body" data-lang="en" style="white-space: pre-line;">${escapeHtml(ch.en || '')}</div>
+              <div class="reading-body" data-lang="cn" style="white-space: pre-line; font-family: var(--cn-serif);">${escapeHtml(ch.cn || '')}</div>
               <div class="reading-body" data-lang="th" style="white-space: pre-line;">${escapeHtml(ch.th || '')}</div>
             </div>
           </div>
@@ -425,7 +521,7 @@
           `;
         })() : ''}
 
-        ${(note_en || note_th) ? `
+        ${(note_en || note_th || note_cn) ? `
         <!-- 03 NOTE -->
         <section class="panel panel-note">
           <div class="panel-label">
@@ -433,6 +529,7 @@
           </div>
           <div class="note-frame">
             <p class="note-body" data-lang="en">${escapeHtml(note_en)}</p>
+            <p class="note-body" data-lang="cn" style="font-family: var(--cn-serif); font-style: normal;">${escapeHtml(note_cn)}</p>
             <p class="note-body" data-lang="th" style="font-family: var(--th); font-style: normal;">${escapeHtml(note_th)}</p>
           </div>
         </section>
@@ -444,6 +541,7 @@
           <div class="closer-frame">
             <p class="closer-kicker">問 <em>wèn</em> · A question for you, reader</p>
             <p class="closer-q" data-lang="en">${escapeHtml(CLOSERS[ch.n].en || '')}</p>
+            <p class="closer-q" data-lang="cn" style="font-family: var(--cn-serif);">${escapeHtml(CLOSERS[ch.n].cn || CLOSERS[ch.n].en || '')}</p>
             <p class="closer-q" data-lang="th">${escapeHtml(CLOSERS[ch.n].th || CLOSERS[ch.n].en || '')}</p>
           </div>
         </section>
@@ -479,18 +577,28 @@
   $('#indexListDe' ).innerHTML = CH.filter(c => c.n >= 38).map(indexItemHTML).join('');
 
   // ----- LANGUAGE TOGGLE ----------------------------------------
-  const KEY_LANG = 'dao:lang';
+  const KEY_LANG = 'dao:lang:v2';
   let lang = 'en';
   try { lang = localStorage.getItem(KEY_LANG) || 'en'; } catch(e) {}
+  const LANGS = ['en', 'th', 'cn'];
   function setLang(L) {
     lang = L;
     document.body.classList.toggle('lang-en', L === 'en');
     document.body.classList.toggle('lang-th', L === 'th');
-    $('#langToggle').classList.toggle('is-th', L === 'th');
+    document.body.classList.toggle('lang-cn', L === 'cn');
+    const toggle = $('#langToggle');
+    if (toggle) {
+      toggle.querySelectorAll('.lang-pill').forEach(pill => {
+        pill.classList.toggle('is-active', pill.dataset.langCode === L);
+      });
+    }
     try { localStorage.setItem(KEY_LANG, L); } catch(e) {}
   }
   setLang(lang);
-  $('#langToggle').addEventListener('click', () => setLang(lang === 'en' ? 'th' : 'en'));
+  $('#langToggle').addEventListener('click', () => {
+    const idx = LANGS.indexOf(lang);
+    setLang(LANGS[(idx + 1) % LANGS.length]);
+  });
 
   // ----- PINYIN TOGGLE ------------------------------------------
   // Pinyin defaults to ON — the book is teaching, not displaying.
@@ -690,7 +798,11 @@
       if (arr.length) jumpTo(arr[arr.length-1].n);
     } else if (e.key === 'l' || e.key === 'L') {
       e.preventDefault();
-      setLang(lang === 'en' ? 'th' : 'en');
+      const idx = LANGS.indexOf(lang);
+      setLang(LANGS[(idx + 1) % LANGS.length]);
+    } else if (e.key === 'c' || e.key === 'C') {
+      e.preventDefault();
+      setLang('cn');
     } else if (e.key === 'p' || e.key === 'P') {
       e.preventDefault();
       setPinyin(!pinyinOn);
