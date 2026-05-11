@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="styles.css?v=17">
 </head>
 <body>
 
@@ -19,14 +19,20 @@
 <!-- ── TOP CHROME (always visible) ── -->
 <header class="topbar" id="topbar">
   <div class="topbar-brand">
-    <span class="seal">道</span>
-    <span class="brand-text">Dao De Jing · with Dr. Non</span>
+    <span class="topbar-dao" aria-label="Dao — the Way">道</span>
+    <span class="topbar-name">農博士</span>
   </div>
   <div class="topbar-tools">
+    <button class="tool-btn pinyin-toggle is-on" id="pinyinToggle" title="Hide pinyin (P)" aria-label="Toggle pinyin" aria-pressed="true">
+      <span class="pt-han">拼</span><span class="pt-roman">āē</span>
+    </button>
+    <button class="tool-btn notes-btn" id="notesBtn" title="Dr Non's notes (N)" aria-label="Open notes">
+      <span class="nb-han">注</span>
+    </button>
     <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
       <span class="lang-on">EN</span><span class="lang-sep">·</span><span class="lang-off">TH</span>
     </button>
-    <button class="tool-btn" id="indexBtn" title="Chapter index" aria-label="Chapter index">≡</button>
+    <button class="tool-btn" id="indexBtn" title="Chapter index (I)" aria-label="Chapter index">≡</button>
   </div>
 </header>
 
@@ -35,15 +41,15 @@
   <button class="index-close" id="indexClose" aria-label="Close">×</button>
   <div class="index-head">
     <span class="index-kicker">Index of Chapters</span>
-    <h2 class="index-title">道德經 — 81 Chapters</h2>
+    <h2 class="index-title">道德經 <em>dào dé jīng</em> — 81 Chapters</h2>
     <p class="index-sub">Tap a chapter to jump. Read in any order.</p>
   </div>
   <div class="index-half" data-half="dao">
-    <p class="index-part">道經 · Dao Jing · 1—37</p>
+    <p class="index-part">道經 <em>dào jīng</em> · the Way half · 1—37</p>
     <ol class="index-list" id="indexListDao"></ol>
   </div>
   <div class="index-half" data-half="de">
-    <p class="index-part">德經 · De Jing · 38—81</p>
+    <p class="index-part">德經 <em>dé jīng</em> · the Virtue half · 38—81</p>
     <ol class="index-list" id="indexListDe"></ol>
   </div>
   <div class="index-foot">
@@ -63,31 +69,41 @@
 <section class="cover" id="cover">
   <div class="cover-wash" aria-hidden="true"></div>
   <div class="cover-meta">
-    <span>Edition One · MMXXVI</span>
-    <span>Free to read · print · gift</span>
+    <span data-lang="en">Edition One · MMXXVI</span>
+    <span data-lang="th">ฉบับที่หนึ่ง · MMXXVI</span>
+    <span data-lang="en">Free to read · print · gift</span>
+    <span data-lang="th">อ่านฟรี · พิมพ์ฟรี · แจกฟรี</span>
   </div>
   <div class="cover-stack">
     <div class="cover-cn-vertical">道<br>德<br>經</div>
     <div class="cover-text">
-      <p class="cover-kicker">Reading the Dao De Jing with</p>
+      <p class="cover-kicker" data-lang="en">Reading the Dao De Jing with</p>
+      <p class="cover-kicker" data-lang="th">อ่านเต้าเต๋อจิงกับ</p>
       <h1 class="cover-title">Dr. Non</h1>
-      <p class="cover-sub">The complete <em>Dao De Jing</em> of Laozi (老子) — in Wang Bi Chinese, Hemingway-clear English, and Thai. Eighty-one short chapters. Read one a day. Or all at once. The book is not impatient.</p>
+      <p class="cover-sub" data-lang="en">The complete <em>Dao De Jing</em> 道德經 (<em class="cs-py-sub">dào dé jīng</em>) by Laozi 老子 (<em class="cs-py-sub">lǎo zǐ</em>) — in Wang Bi Chinese, Hemingway-clear English, and Thai. Every Chinese character with its pinyin and meaning. Read one chapter a day, or all at once — and pick up Chinese while you're at it. The book is not impatient.</p>
+      <p class="cover-sub" data-lang="th">เต้าเต๋อจิง 道德經 (<em class="cs-py-sub">dào dé jīng</em>) ฉบับสมบูรณ์ของเหล่าจื๊อ 老子 (<em class="cs-py-sub">lǎo zǐ</em>) — ในภาษาจีนฉบับหวังปี้ ภาษาอังกฤษที่ชัดเจน และภาษาไทย ทุกตัวอักษรจีนมีพินอินกำกับและความหมายอธิบาย อ่านวันละบทหรือทั้งหมดในคราวเดียว — และเรียนภาษาจีนไปพร้อมกัน หนังสือเล่มนี้ไม่รีบ</p>
     </div>
   </div>
   <div class="cover-foot">
-    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-fade); margin: 0 0 12px;">Each chapter unfolds in five panels:</p>
+    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-fade); margin: 0 0 12px;">
+      <span data-lang="en">Each chapter unfolds in up to six panels:</span>
+      <span data-lang="th" style="font-family:var(--th);text-transform:none;letter-spacing:.05em;">แต่ละบทแบ่งเป็นสูงสุดหกช่วง:</span>
+    </p>
     <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.7;">
-      <span style="color: var(--seal); font-weight: 600;">01</span> Origin · 原文 &nbsp;·&nbsp;
-      <span style="color: var(--seal); font-weight: 600;">02</span> Direct · 直譯 &nbsp;·&nbsp;
-      <span style="color: var(--seal); font-weight: 600;">03</span> Reading · 解讀 &nbsp;·&nbsp;
-      <span style="color: var(--seal); font-weight: 600;">04</span> Code · 程式 &nbsp;·&nbsp;
-      <span style="color: var(--seal); font-weight: 600;">05</span> Note · 注
+      <span style="color: var(--seal); font-weight: 600;">01</span> <span data-lang="en">Origin</span><span data-lang="th" style="font-family:var(--th);text-transform:none">ต้นฉบับ</span> · 原文 <em>yuán wén</em> &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">02</span> <span data-lang="en">Direct</span><span data-lang="th" style="font-family:var(--th);text-transform:none">แปลตรง</span> · 直譯 <em>zhí yì</em> &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">03</span> <span data-lang="en">Reading</span><span data-lang="th" style="font-family:var(--th);text-transform:none">ตีความ</span> · 解讀 <em>jiě dú</em> &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">04</span> Code · 程式 <em>chéng shì</em> &nbsp;·&nbsp;
+      <span style="color: var(--seal); font-weight: 600;">05</span> <span data-lang="en">Note</span><span data-lang="th" style="font-family:var(--th);text-transform:none">บันทึก</span> · 注 <em>zhù</em> &nbsp;·&nbsp;
+      <span style="color: var(--gold); font-weight: 600;">06</span> <span data-lang="en">Play</span><span data-lang="th" style="font-family:var(--th);text-transform:none">เล่น</span> · 玩 <em>wán</em>
     </p>
     <p class="cover-instructions">
-      <span><strong>↓</strong> begin</span>
-      <span><strong>← →</strong> turn pages</span>
-      <span><strong>≡</strong> chapter index</span>
+      <span><strong>↓</strong> <span data-lang="en">begin</span><span data-lang="th">เริ่ม</span></span>
+      <span><strong>← →</strong> <span data-lang="en">turn pages</span><span data-lang="th">พลิกหน้า</span></span>
+      <span><strong>≡</strong> <span data-lang="en">chapters</span><span data-lang="th">สารบัญ</span></span>
       <span><strong>L</strong> EN ⇄ TH</span>
+      <span><strong>P</strong> 拼音 pinyin</span>
+      <span><strong>N</strong> 注 <span data-lang="en">notes</span><span data-lang="th">บันทึก</span></span>
     </p>
   </div>
 </section>
@@ -95,16 +111,400 @@
 <!-- ── PREFACE ── -->
 <section class="preface" id="preface">
   <div class="preface-inner">
-    <p class="preface-kicker">A Note Before We Begin</p>
-    <h2 class="preface-title">Why this book.</h2>
-    <p>For more than a hundred days I wrote about my life, and the longer I wrote, the more clearly I noticed the same book was answering me. The book is the <em>Dao De Jing</em>. It was completed somewhere around the fourth century BCE, in eighty-one short chapters and roughly five thousand Chinese characters. It is the second-most-translated book in the world after the Bible. It is also the most-mistranslated.</p>
-    <p>Most translations turn it into a poem about mist. The original is not about mist. It is about a person trying to live well. The translator's job is to read it for that person — not for the mist.</p>
-    <p>This translation aims at understanding, not poetry. The sentences are short. The metaphors are kept where they earn their keep. Where I have a story from my own life that fits the chapter, I tell it. Where I don't, I shut up.</p>
-    <p>Each chapter unfolds in five panels. <em>Origin</em> 原文 — the Chinese, in Wang Bi's text. <em>Direct</em> 直譯 — a literal translation, faithfully strange. <em>Reading</em> 解讀 — what I think the chapter is actually doing, with the science that supports it. <em>Code</em> 程式 — a TypeScript distillation, because some claims compress better as a function signature than as a sentence. <em>Note</em> 注 — a story or remark from the rest of my life. Toggle English and Thai at the top of the page, or press <strong>L</strong>. Move between chapters by scrolling or by pressing <strong>←</strong> and <strong>→</strong>.</p>
-    <p>This is the most important book I have read more than ten times. Some chapters I have read more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
+    <p class="preface-kicker" data-lang="en">A Note Before We Begin</p>
+    <p class="preface-kicker" data-lang="th">หมายเหตุก่อนเริ่มอ่าน</p>
+
+    <h2 class="preface-title" data-lang="en">Why this book.</h2>
+    <h2 class="preface-title" data-lang="th">ทำไมถึงมีหนังสือเล่มนี้</h2>
+
+    <p data-lang="en">For more than a hundred days I wrote about my life, and the longer I wrote, the more clearly I noticed the same book was answering me. The book is the <em>Dao De Jing</em>. It was completed somewhere around the fourth century BCE, in eighty-one short chapters and roughly five thousand Chinese characters. It is the second-most-translated book in the world after the Bible. It is also the most-mistranslated.</p>
+    <p data-lang="th">ผมเขียนเกี่ยวกับชีวิตของตัวเองมากกว่าร้อยวัน และยิ่งเขียนนาน ผมก็ยิ่งเห็นชัดว่ามีหนังสือเล่มหนึ่งที่คอยตอบสิ่งที่กำลังเขียนถึงอยู่เสมอ หนังสือนั้นคือ <em>เต้าเต๋อจิง</em> มันถูกเขียนขึ้นราวศตวรรษที่สี่ก่อนคริสตกาล ในแปดสิบเอ็ดบทสั้น ๆ และตัวอักษรจีนราวห้าพันตัว เป็นหนังสือที่ถูกแปลมากที่สุดในโลกรองจากพระคัมภีร์ไบเบิล และยังเป็นหนังสือที่ถูกแปลผิดมากที่สุดด้วย</p>
+
+    <p data-lang="en">Most translations turn it into a poem about mist. The original is not about mist. It is about a person trying to live well. The translator's job is to read it for that person — not for the mist.</p>
+    <p data-lang="th">ฉบับแปลส่วนใหญ่ทำให้มันกลายเป็นบทกวีเกี่ยวกับหมอก แต่ต้นฉบับไม่ใช่เรื่องของหมอก มันพูดถึงคนที่พยายามจะมีชีวิตที่ดี หน้าที่ของผู้แปลคืออ่านมันเพื่อคนคนนั้น ไม่ใช่เพื่อหมอก</p>
+
+    <p data-lang="en">This translation aims at understanding, not poetry. The sentences are short. The metaphors are kept where they earn their keep. Where I have a story from my own life that fits the chapter, I tell it. Where I don't, I shut up.</p>
+    <p data-lang="th">ฉบับแปลนี้มุ่งสู่ความเข้าใจ ไม่ใช่บทกวี ประโยคสั้น อุปมาอุปไมยอยู่เฉพาะที่มันสมควรอยู่ ถ้าผมมีเรื่องจากชีวิตตัวเองที่เหมาะกับบทนั้น ผมก็เล่า ถ้าไม่มี ผมก็หยุด</p>
+
+    <p data-lang="en">Each chapter starts with the Chinese — Wang Bi's text, every character with its <em>pinyin</em> on top and a literal translation on the bottom. Read the Chinese aloud, syllable by syllable, the way a Chinese child first reads it. The translation is there to nudge, not to replace. After the Chinese comes <em>Direct</em> 直譯 (a faithfully strange literal), <em>Reading</em> 解讀 (what I think the chapter is doing, with the science that supports it), <em>Code</em> 程式 (a TypeScript distillation, because some claims compress better as a function signature), <em>Note</em> 注 (a remark from my life), and sometimes <em>Play</em> 玩 (a what-if, a game, a Slingerland aside).</p>
+    <p data-lang="th">แต่ละบทเริ่มต้นด้วยภาษาจีน — ข้อความของหวังปี้ ทุกตัวอักษรมีพินอินกำกับไว้ข้างบนและคำแปลตรง ๆ อยู่ด้านล่าง อ่านภาษาจีนออกเสียง ทีละพยางค์ แบบเดียวกับที่เด็กจีนหัดอ่านครั้งแรก คำแปลมีไว้เพื่อช่วย ไม่ใช่แทนที่ ตามมาด้วย ฉบับตรง 直譯 ฉบับตีความ 解讀 ที่ผมคิดว่าบทนั้นกำลังทำอะไร พร้อมหลักฐานทางวิทยาศาสตร์ที่รองรับ โค้ด 程式 บันทึก 注 จากชีวิตของผม และบางครั้ง กิจกรรม 玩</p>
+
+    <p data-lang="en">The book is trilingual on purpose: <strong>English, Thai, Chinese</strong> are all first-class. Toggle <strong>L</strong> for EN ⇄ TH; toggle <strong>P</strong> to hide pinyin once you have outgrown it. Press <strong>N</strong> for my optional notes — about me, about how Daoism met Buddhism, about what living Daoists actually argue about. The notes are a sidebar; the chapters are the book.</p>
+    <p data-lang="th">หนังสือเล่มนี้ตั้งใจให้เป็นสามภาษา — <strong>อังกฤษ ไทย จีน</strong> ล้วนเป็นภาษาหลักเท่า ๆ กัน กด <strong>L</strong> เพื่อสลับระหว่างอังกฤษกับไทย กด <strong>P</strong> เพื่อซ่อนพินอินเมื่อไม่ต้องการแล้ว กด <strong>N</strong> เพื่อเปิดบันทึกสำรองของผม — เกี่ยวกับตัวผม เกี่ยวกับที่มาที่ไปของเต๋าและพุทธ เกี่ยวกับสิ่งที่ชาวเต๋าจริง ๆ ถกเถียงกันอยู่ บันทึกเหล่านั้นเป็นเพียงข้อมูลเสริม บทในหนังสือต่างหากที่คือหัวใจ</p>
+
+    <p data-lang="en">This is the most important book I have read more than ten times. Some chapters I have read more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
+    <p data-lang="th">นี่คือหนังสือที่สำคัญที่สุดที่ผมอ่านมาแล้วมากกว่าสิบรอบ บางบทมากกว่าร้อยรอบ มันชัดขึ้นทุกครั้งที่อ่าน และชัดขึ้นไม่ได้แปลว่าง่ายขึ้น</p>
+
     <p class="preface-sig">— Non · Bangkok · Shanghai · Boston · 2026</p>
+
+    <div class="preface-notes-cta">
+      <button type="button" class="pncta-btn" data-open-notes="about">
+        <span class="pncta-han">注</span>
+        <span class="pncta-text">
+          <strong data-lang="en">Open Dr Non's Notes</strong>
+          <strong data-lang="th">เปิดบันทึกของอาจารย์นน</strong>
+          <em data-lang="en">About me · 源流 the lineage · 在野 what living Daoism wrestles with</em>
+          <em data-lang="th">เกี่ยวกับผม · 源流 ที่มา · 在野 สิ่งที่นักเต๋าจริง ๆ ถกเถียง</em>
+        </span>
+        <span class="pncta-arrow">→</span>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- ── PROLOGUE · 楔子 — the story behind the book in four acts ── -->
+<section class="prologue" id="prologue">
+  <div class="prologue-inner">
+
+    <!-- ── ACT I: THE DEPARTURE ── -->
+    <div class="prologue-act prologue-act--scene">
+      <p class="prologue-kicker">楔子·壹 <em>xiē zǐ · yī</em> · <span data-lang="en">Act One — the Departure</span><span data-lang="th">บทที่หนึ่ง — การจากไป</span></p>
+      <h2 class="prologue-title" data-lang="en">An old man on a water buffalo, riding west.</h2>
+      <h2 class="prologue-title" data-lang="th">ชายแก่บนหลังควาย ขี่มุ่งหน้าไปทางตะวันตก</h2>
+      <p class="prologue-claim" data-lang="en">This is — pretty much — the most important scene in philosophy of all time.</p>
+      <p class="prologue-claim" data-lang="th">นี่คือ — ค่อนข้างแน่ ๆ — ฉากที่สำคัญที่สุดในประวัติศาสตร์ปรัชญาของมนุษยชาติ</p>
+
+      <figure class="prologue-art prologue-art--full">
+        <img src="tsai/laozi-departure.jpg" alt="Tsai Chih-chung's cartoon of Lao Tzu's departure: he rides a water buffalo through the Hangu Pass, the gatekeeper Yin Xi stops him, asks for a book; the old man writes 5,000 characters and rides on, never to be seen again." loading="lazy" onerror="this.parentElement.style.display='none'">
+        <figcaption>蔡志忠 <em>cài zhì zhōng</em> · The departure of Lao Tzu, in six panels.</figcaption>
+      </figure>
+
+      <div class="prologue-story" data-lang="en">
+        <p class="prologue-lead">Around the 6th century BCE, in the twenty-third year of the Zhou King Zhao 周昭王 <em class="cs-py-sub">zhōu zhāo wáng</em>, an old librarian watched the kingdom decline. He had been the keeper of the royal archives in Luoyang 洛陽 <em class="cs-py-sub">luò yáng</em> — the capital of the Zhou. He read everything. He spoke very little.</p>
+        <p>His name we do not know. <em>"Lao Tzu" 老子</em> means <strong>"Old Master"</strong> — the title <em>zi</em> 子 was reserved for teachers; <em>lao</em> 老 for elders. Many scholars now believe the book was compiled over generations rather than dictated by a single person. The man on the buffalo is a story we agreed to keep.</p>
+        <p>The story goes: he packed his few things, climbed onto a water buffalo, and rode west — to leave civilization behind. At the Hangu Pass 函谷關 <em class="cs-py-sub">hán gǔ guān</em>, in the Great Wall, the gatekeeper Yin Xi 尹喜 <em class="cs-py-sub">yǐn xǐ</em> stopped him: <em>"Do you think before you leave, you could jot down a few notes on Daoism for me?"</em></p>
+        <p>The old man did not refuse. He sat down. He wrote <strong>81 short chapters</strong>, about <strong>5,000 Chinese characters</strong> in total — a book in two parts: the first 37 chapters about the <strong>Way 道 <em class="cs-py-sub">dào</em></strong>, the next 44 chapters about <strong>Virtue 德 <em class="cs-py-sub">dé</em></strong>. He handed the scroll to the gatekeeper, climbed back on his buffalo, passed through the Great Wall, and was never seen again.</p>
+        <p class="prologue-pivot">That scroll is the <em>Dao De Jing</em> 道德經 <em class="cs-py-sub">dào dé jīng</em>. Two books, bound as one, in the order one writes them. It is the book in your hand right now. <strong>Two thousand five hundred years separate you from Yin Xi the gatekeeper</strong> — and you are about to read exactly what he read.</p>
+      </div>
+
+      <div class="prologue-story" data-lang="th">
+        <p class="prologue-lead">ราว ๆ ศตวรรษที่ 6 ก่อนคริสตกาล ในปีที่ยี่สิบสามของรัชสมัยพระเจ้าโจวเจาหวัง 周昭王 <em class="cs-py-sub">zhōu zhāo wáng</em> มีชายแก่คนหนึ่งเฝ้าดูอาณาจักรที่ตนรับใช้ค่อย ๆ เสื่อมลง เขาเป็นบรรณารักษ์หลวงของหอจดหมายเหตุในเมืองลั่วหยาง 洛陽 <em class="cs-py-sub">luò yáng</em> นครหลวงของราชวงศ์โจว เขาอ่านทุกอย่าง พูดน้อยมาก</p>
+        <p>ชื่อจริงของเขาไม่มีใครรู้ คำว่า <em>"เหล่าจื๊อ" 老子</em> แปลว่า <strong>"ปรมาจารย์ผู้สูงวัย"</strong> — คำว่า <em>จื่อ</em> 子 ใช้สำหรับครู ส่วน <em>เหล่า</em> 老 ใช้สำหรับผู้อาวุโส นักวิชาการสมัยใหม่จำนวนไม่น้อยเชื่อว่าหนังสือเล่มนี้ถูกเขียนและรวบรวมขึ้นข้ามหลายชั่วอายุคน ไม่ได้มาจากคนเพียงคนเดียว ภาพชายแก่ขี่ควายจึงเป็นเรื่องเล่าที่เราตกลงกันว่าจะรักษาไว้</p>
+        <p>ตามตำนาน วันหนึ่งเขาเก็บของสองสามอย่าง ขึ้นหลังควาย แล้วขี่มุ่งหน้าไปทางทิศตะวันตก — เพื่อทิ้งอารยธรรมไว้ข้างหลัง เมื่อมาถึงด่านหานกู่กวน 函谷關 <em class="cs-py-sub">hán gǔ guān</em> ตรงกำแพงเมืองจีน ผู้รักษาด่านชื่ออิ๋นสี 尹喜 <em class="cs-py-sub">yǐn xǐ</em> หยุดเขาไว้และพูดว่า <em>"ก่อนที่ท่านจะจากไป ท่านพอจะบันทึกสิ่งที่ท่านรู้เกี่ยวกับเต๋าให้ข้าได้สักหน่อยไหม?"</em></p>
+        <p>ชายแก่ไม่ปฏิเสธ เขานั่งลงเขียน <strong>81 บทสั้น ๆ</strong> รวมประมาณ <strong>5,000 ตัวอักษรจีน</strong> — เป็นหนังสือสองเล่มในเล่มเดียว 37 บทแรกว่าด้วย <strong>ทาง 道 <em class="cs-py-sub">dào</em></strong> และอีก 44 บทถัดมาว่าด้วย <strong>คุณธรรม 德 <em class="cs-py-sub">dé</em></strong> เสร็จแล้วเขามอบม้วนให้ผู้รักษาด่าน ขึ้นหลังควาย เดินผ่านกำแพงเมืองจีนออกไป และไม่มีใครได้เห็นเขาอีกเลย</p>
+        <p class="prologue-pivot">ม้วนนั้นคือ <em>เต้าเต๋อจิง</em> 道德經 <em class="cs-py-sub">dào dé jīng</em> สองเล่มในเล่มเดียว ตามลำดับที่ผู้เขียนเขียนมัน — คือหนังสือที่อยู่ในมือคุณตอนนี้ <strong>สองพันห้าร้อยปีคั่นกลางระหว่างคุณกับอิ๋นสีผู้รักษาด่าน</strong> และคุณกำลังจะได้อ่านสิ่งเดียวกันกับที่เขาได้อ่าน</p>
+      </div>
+    </div>
+
+    <!-- ── ACT II: 2,500 YEARS LATER ── -->
+    <div class="prologue-act prologue-act--time">
+      <p class="prologue-kicker">楔子·貳 <em>xiē zǐ · èr</em> · <span data-lang="en">Act Two — Two Thousand Five Hundred Years Later</span><span data-lang="th">บทที่สอง — สองพันห้าร้อยปีต่อมา</span></p>
+      <h2 class="prologue-title" data-lang="en">The gatekeeper kept reading. So did everyone after him.</h2>
+      <h2 class="prologue-title" data-lang="th">ผู้รักษาด่านยังคงอ่านต่อ และทุกคนหลังจากนั้นก็ทำเหมือนกัน</h2>
+
+      <div class="prologue-story prologue-story--single" data-lang="en">
+        <p>The book travelled. It travelled across the Han dynasty and survived the burning of the books. It travelled into Wang Bi's 王弼 <em class="cs-py-sub">wáng bì</em> hands — a 23-year-old in the third century CE who wrote the standard commentary the world still reads, and died at 24. It travelled into the Buddhism that arrived from India in the same century, and the translators reached for its vocabulary because they had no Chinese word for <em>sunyata</em> (emptiness) and so they used <strong>無 <em class="cs-py-sub">wú</em></strong> — Lao Tzu's word for non-being. Buddhism in China was learned through Daoist clothes; Chan 禪 <em class="cs-py-sub">chán</em> (which became Zen) was the result.</p>
+        <p>It travelled across emperors and dynasties, into Korean Seon and Japanese Zen and Vietnamese Thiền. It travelled into Wang Yangming's neo-Confucianism, into the Quanzhen 全真 <em class="cs-py-sub">quán zhēn</em> monasteries, into village funerals at the edge of every Chinese-speaking community. It travelled into Hokusai's brush and Tsai Chih-chung's pen. It became, after the Bible, the most-translated book in the world.</p>
+        <p>And it travelled here. To this page. To your phone, on your commute, on whatever evening this is. <strong>You are now Yin Xi the gatekeeper.</strong> The Old Master is about to ride past you, west, and he is going to leave you a book.</p>
+      </div>
+
+      <div class="prologue-story prologue-story--single" data-lang="th">
+        <p>หนังสือเล่มนี้เดินทาง มันข้ามราชวงศ์ฮั่น รอดพ้นจากการเผาตำรา และเดินทางไปสู่มือของหวังปี้ 王弼 <em class="cs-py-sub">wáng bì</em> — เด็กหนุ่มอายุ 23 ในศตวรรษที่ 3 ผู้เขียนอรรถาธิบายฉบับมาตรฐานที่โลกยังอ่านอยู่ทุกวันนี้ และเสียชีวิตในวัย 24 มันเดินทางไปสู่พุทธศาสนาที่เพิ่งมาถึงจีนจากอินเดียในศตวรรษเดียวกัน — และผู้แปลตำราพุทธก็หยิบยืมคำของเหล่าจื๊อ เพราะภาษาจีนยังไม่มีคำสำหรับ <em>สุญญตา</em> (ความว่าง) จึงใช้คำว่า <strong>無 <em class="cs-py-sub">wú</em></strong> — \"ไม่มี\" ของเหล่าจื๊อแทน พุทธศาสนาแบบจีนจึงถูกเรียนผ่านเสื้อผ้าเต๋า และนิกาย <strong>禪 <em class="cs-py-sub">chán</em></strong> (ซึ่งต่อมากลายเป็น \"เซน\" ในญี่ปุ่น) คือผลจากการสวมเสื้อนั้น</p>
+        <p>มันเดินทางผ่านจักรพรรดิและราชวงศ์ ผ่านไปยังเซนเกาหลี (ซอน) เซนญี่ปุ่น เซนเวียดนาม (เถี่ยน) ผ่านขงจื๊อใหม่ของหวังหยางหมิง ผ่านเข้าสู่อารามฉวนเจิน 全真 <em class="cs-py-sub">quán zhēn</em> ผ่านงานศพในหมู่บ้านชายขอบของชุมชนจีนทุกแห่ง ผ่านพู่กันของโฮกุไซ และปลายปากกาของไช่จื๋อจง สุดท้ายมันกลายเป็นหนังสือที่ถูกแปลมากที่สุดเป็นอันดับสอง รองจากพระคัมภีร์</p>
+        <p>และมันก็เดินทางมาถึงตรงนี้ ถึงหน้านี้ ถึงโทรศัพท์ของคุณ ระหว่างคุณเดินทางกลับบ้าน หรือเย็นวันใดก็ตาม <strong>ตอนนี้คุณคืออิ๋นสี ผู้รักษาด่าน</strong> ปรมาจารย์ผู้สูงวัยกำลังจะขี่ควายผ่านคุณไปทางตะวันตก และเขากำลังจะมอบหนังสือให้คุณ</p>
+      </div>
+    </div>
+
+    <!-- ── ACT III: WHY WE INHERIT IT TODAY ── -->
+    <div class="prologue-act prologue-act--why">
+      <p class="prologue-kicker">楔子·叁 <em>xiē zǐ · sān</em> · <span data-lang="en">Act Three — Civilization and its Discontents</span><span data-lang="th">บทที่สาม — อารยธรรมและความไม่เป็นสุข</span></p>
+      <h2 class="prologue-title" data-lang="en">Why does this book reach us today, of all moments?</h2>
+      <h2 class="prologue-title" data-lang="th">ทำไมหนังสือเล่มนี้จึงมาถึงเราในยุคนี้ ในจังหวะนี้?</h2>
+
+      <div class="prologue-story prologue-story--single" data-lang="en">
+        <p>Look at the world the Old Master fled. The Zhou kingdom was an information-rich, status-driven, increasingly performative society. Sharp swords on belts, fancy clothes with embroidered designs, courts full of careful protocol, granaries empty in the countryside. Lao Tzu's diagnosis was not "things are bad" — it was something more pointed: <em>civilization had begun confusing its signals for its substance</em>.</p>
+        <p>What was lost was not values; it was contact. Contact with what is so of itself — <strong>自然 <em class="cs-py-sub">zì rán</em></strong>, the Daoist word for "nature" that literally means "self-so." The Way had not gone anywhere. The Old Master's claim is gentler and more devastating: <em>we left the Way. We are still defining ourselves by what we own, what we wear, what we are seen wanting</em>. We mistook the lit dashboard for the road.</p>
+        <p>This is — and here you can hear Freud's <em>Civilization and Its Discontents</em> from across the centuries — the original diagnosis of the discontent. We are uncomfortable in a civilization we built to make us comfortable. We feel the gap. We name it stress, burnout, anxiety, the meaning crisis. The Old Master called it <em>leaving the mother</em> — leaving the source that fed us before we could name food.</p>
+        <p>This book is the gift the gatekeeper kept handing forward. It is not a system. It is not a religion (though one grew around it). <strong>It is a quiet correction</strong>, written by someone leaving the city, given to someone who would not. You are the someone who would not. That is exactly the right person to read it.</p>
+      </div>
+
+      <div class="prologue-story prologue-story--single" data-lang="th">
+        <p>ลองมองโลกที่ปรมาจารย์ผู้สูงวัยทิ้งหนีไป อาณาจักรโจวคือสังคมที่ข้อมูลล้น สถานะมีความหมาย และการแสดงออกเพื่อให้ถูกมองเริ่มกินที่ของชีวิตจริง ดาบคมห้อยอยู่ที่เข็มขัด เสื้อผ้าหรูหราปักลาย ราชสำนักเต็มไปด้วยพิธีรีตรอง ขณะที่ยุ้งฉางในชนบทกลับว่างเปล่า การวินิจฉัยของเหล่าจื๊อไม่ใช่ \"โลกแย่\" — มันแหลมคมกว่านั้น คือ <em>อารยธรรมเริ่มสับสนระหว่างสัญญาณกับเนื้อแท้ของมัน</em></p>
+        <p>สิ่งที่หายไปไม่ใช่คุณค่า สิ่งที่หายไปคือ \"การสัมผัส\" — สัมผัสกับสิ่งที่เป็นของมันเอง คือ <strong>自然 <em class="cs-py-sub">zì rán</em></strong> คำเต๋าสำหรับ \"ธรรมชาติ\" ซึ่งแปลตามตัวอักษรว่า \"เป็นของตัวเอง\" ทางไม่ได้ไปไหน ข้อเสนอของเหล่าจื๊ออ่อนโยนกว่าและลึกกว่านั้น — <em>เราต่างหากที่ทิ้งทางไป เรากำลังนิยามตัวเองด้วยสิ่งที่เราเป็นเจ้าของ เสื้อผ้าที่เราใส่ สิ่งที่เราถูกมองว่าอยากได้</em> เราเข้าใจผิดว่าหน้าจอแดชบอร์ดที่สว่างไสวคือถนนของจริง</p>
+        <p>นี่คือ — และคุณจะได้ยินเสียงของฟรอยด์ใน <em>Civilization and Its Discontents</em> ดังก้องข้ามศตวรรษ — การวินิจฉัย \"ความไม่เป็นสุข\" ฉบับต้นตำรับ เราอึดอัดในอารยธรรมที่เราสร้างขึ้นเพื่อให้ตัวเองสบาย เรารู้สึกถึงช่องว่าง เราเรียกมันว่าความเครียด หมดไฟ วิตกกังวล วิกฤตความหมายของชีวิต ปรมาจารย์ผู้สูงวัยเรียกมันว่า <em>การจากแม่</em> — การออกจากต้นทางที่หล่อเลี้ยงเรา ก่อนที่เราจะรู้จักคำว่า \"อาหาร\"</p>
+        <p>หนังสือเล่มนี้คือของขวัญที่ผู้รักษาด่านส่งต่อกันมาเรื่อย ๆ มันไม่ใช่ระบบความคิดสำเร็จรูป ไม่ใช่ศาสนา (แม้จะมีศาสนาหนึ่งงอกขึ้นรอบมัน) <strong>มันคือการแก้ไขเงียบ ๆ</strong> เขียนโดยคนที่กำลังเดินจากเมืองไป มอบให้คนที่จะไม่ไป คุณคือคนที่จะไม่ไป และนั่นแหละคือคนที่ควรอ่านมันที่สุด</p>
+      </div>
+    </div>
+
+    <!-- ── ACT IV: HOW TO READ IT ── -->
+    <div class="prologue-act prologue-act--how">
+      <p class="prologue-kicker">楔子·肆 <em>xiē zǐ · sì</em> · <span data-lang="en">Act Four — How to read the book the Old Master handed us</span><span data-lang="th">บทที่สี่ — วิธีอ่านหนังสือที่ปรมาจารย์มอบให้</span></p>
+      <h2 class="prologue-title" data-lang="en">Read it slowly. Sound out the Chinese. Each character is a small story.</h2>
+      <h2 class="prologue-title" data-lang="th">อ่านช้า ๆ ออกเสียงภาษาจีน แต่ละตัวอักษรคือเรื่องเล่าเล็ก ๆ</h2>
+
+      <div class="prologue-story prologue-story--single" data-lang="en">
+        <p>Each chapter has the Chinese with pinyin on top of every character and a literal translation underneath, so you can read it the way a Chinese child first reads it — syllable by syllable. Each chapter introduces <strong>one key character</strong>, in brushstroke, broken open into its parts, with a memorable image you can keep. By chapter 81 you will have <strong>81 Chinese characters</strong> in your head — enough to read tea-shop signs and temple plaques wherever you go.</p>
+        <p>Each chapter also has a one-sentence summary at the top — the cleanest, deepest meaning you can carry away in a breath. If you only have a minute, read that. If you have ten minutes, read the Chinese aloud and the literal translation under it. If you have an hour, read Dr Non's reading and the science that supports it. If you have a year, read the book once a chapter a week, with a notebook.</p>
+        <p>Take it at your own pace. Hand it forward when you're done. <strong>The book is not impatient.</strong></p>
+      </div>
+
+      <div class="prologue-story prologue-story--single" data-lang="th">
+        <p>ทุกบทมีตัวอักษรจีนพร้อมพินอินกำกับเหนือทุกตัว และคำแปลตรงตัวอยู่ข้างล่าง คุณจึงอ่านได้แบบเดียวกับที่เด็กจีนหัดอ่านครั้งแรก — ทีละพยางค์ แต่ละบทยังแนะนำ <strong>หนึ่งตัวอักษรสำคัญ</strong> ในแบบลายพู่กัน พร้อมแยกอธิบายส่วนประกอบของมัน และให้ภาพช่วยจำที่คุณเก็บกลับบ้านได้ พออ่านถึงบทที่ 81 คุณจะมีอักษรจีน <strong>81 ตัว</strong> อยู่ในหัว — มากพอที่จะอ่านป้ายร้านน้ำชาและป้ายวัดที่คุณเดินผ่านได้ ไม่ว่าจะอยู่ที่ไหนในโลก</p>
+        <p>แต่ละบทยังมีหนึ่งประโยคสรุปอยู่ด้านบน — ความหมายที่สะอาดและลึกที่สุดที่คุณนำกลับไปได้ในลมหายใจเดียว ถ้ามีเวลาแค่นาทีเดียว อ่านแค่นั้น ถ้ามีสิบนาที อ่านภาษาจีนออกเสียง พร้อมคำแปลตรง ๆ ด้านล่าง ถ้ามีหนึ่งชั่วโมง อ่านบท \"การตีความของอาจารย์นน\" และวิทยาศาสตร์ที่รองรับมัน ถ้ามีหนึ่งปี อ่านหนึ่งบทต่อสัปดาห์ พร้อมสมุดบันทึก</p>
+        <p>ใช้จังหวะของคุณเอง อ่านจบแล้วส่งต่อ <strong>หนังสือเล่มนี้ไม่รีบร้อน</strong></p>
+      </div>
+    </div>
+
+    <p class="prologue-arrow">↓ &nbsp; 第一章 <em class="cs-py-sub">dì yī zhāng</em> — <span data-lang="en">Chapter One begins below</span><span data-lang="th">บทที่หนึ่งเริ่มด้านล่าง</span></p>
+  </div>
+</section>
+
+<!-- ── NOTES OVERLAY · 注 — tabs for About / Currents / In the Wild ── -->
+<aside class="notes-overlay" id="notesOverlay" aria-hidden="true">
+  <div class="notes-shell">
+    <header class="notes-head">
+      <button class="notes-close" id="notesClose" aria-label="Close notes">×</button>
+      <p class="notes-kicker">注 <em>zhù</em> · Dr Non's Notes</p>
+      <h2 class="notes-title">Optional reading. The book itself is in the chapters — these are sidebars.</h2>
+      <nav class="notes-tabs" role="tablist">
+        <button class="notes-tab is-active" role="tab" data-tab="about" aria-selected="true">識人 <em>shí rén</em> · About</button>
+        <button class="notes-tab" role="tab" data-tab="currents" aria-selected="false">源流 <em>yuán liú</em> · Currents</button>
+        <button class="notes-tab" role="tab" data-tab="wild" aria-selected="false">在野 <em>zài yě</em> · In the Wild</button>
+      </nav>
+    </header>
+    <div class="notes-body">
+
+<!-- ── ABOUT THE READER 識人 ── -->
+<section class="about notes-pane is-active" id="about" data-pane="about">
+  <div class="about-inner">
+    <p class="about-kicker">識人 <em>shí rén</em> · Reading the Reader</p>
+    <h2 class="about-title">Eleven small things to know about the person who keeps re-reading this book.</h2>
+    <p class="about-blurb">Written in the voice the book has lent me. One person, three languages, eleven small notes. Read in any order — and if your eye goes to the Chinese first, that is exactly the right order.</p>
+
+    <ol class="about-grid">
+      <li class="about-stanza">
+        <span class="as-num">一</span><span class="as-label">名 <em>míng</em> · Name</span>
+        <p class="as-cn">阿諾，泰人。其姓難寫，故名牌常斷行。</p>
+        <p class="as-en">His name is Non. He is Thai. The surname does not fit on a name tag, so it usually breaks across two lines.</p>
+        <p class="as-th">ชื่อนน เป็นคนไทย นามสกุลยาว เซ็นช่องไม่พอเสมอ จึงตัดบรรทัด</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">二</span><span class="as-label">源 <em>yuán</em> · Source</span>
+        <p class="as-cn">第二代泰生華僑，祖籍潮州。家中有汕頭話，亦有曼谷腔。</p>
+        <p class="as-en">Second-generation Thai-born Chinese, ancestral home in Chaozhou (潮州). The house had Teochew at the table and Bangkok Thai at the door — never both at once.</p>
+        <p class="as-th">รุ่นสองของลูกหลานคนจีนแต้จิ๋วในไทย — บรรพบุรุษมาจากเฉาโจว ในบ้านมีภาษาแต้จิ๋วบนโต๊ะอาหาร และภาษาไทยกรุงเทพที่หน้าประตู ไม่เคยอยู่พร้อมกัน</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">三</span><span class="as-label">學 <em>xué</em> · Study</span>
+        <p class="as-cn">居波士頓十四年：麻省理工 Aga Khan 七年，哈佛人類學七年。後又於牛津修中國學碩士。</p>
+        <p class="as-en">Fourteen years in Boston — seven at MIT (Aga Khan, architecture), seven at Harvard (anthropology). Then a Master's in Chinese Studies at Oxford, to finally read his ancestors in their own language.</p>
+        <p class="as-th">อยู่บอสตันสิบสี่ปี — MIT (Aga Khan, สถาปัตย์) เจ็ดปี ฮาร์วาร์ด (มานุษยวิทยา) เจ็ดปี แล้วต่อปริญญาโท Chinese Studies ที่ออกซ์ฟอร์ด เพื่ออ่านบรรพบุรุษของตัวเองในภาษาของบรรพบุรุษเอง</p>
+      </li>
+      <li class="about-stanza about-stanza--with-art">
+        <span class="as-num">四</span><span class="as-label">師 <em>shī</em> · Teachers</span>
+        <p class="as-cn">蔡志忠老師之畫，自幼讀至今。先生不識，先生為師。Slingerland 教授亦由蔡先生入道。</p>
+        <p class="as-en">The cartoonist <strong>Tsai Chih-chung 蔡志忠</strong> has been his teacher since childhood — without ever meeting. The first time the chapter on water made sense, it was a Tsai cartoon, not a translation. The sinologist <strong>Edward Slingerland</strong> tells the same story, fifty years apart: a Chinese-language student in Taipei in 1988, struggling through classical Chinese, found Tsai's cartoon Zhuangzi in a bookstore — and finally understood. Two readers, one teacher.</p>
+        <p class="as-th">การ์ตูนของอาจารย์ ไช่จื๋อจง (蔡志忠) อ่านมาตั้งแต่เด็กถึงวันนี้ ท่านไม่เคยรู้จักผม — ท่านก็ยังเป็นครู ครั้งแรกที่บทว่าด้วยน้ำเข้าหัว ไม่ใช่จากบทแปล แต่จากการ์ตูนของท่าน นักวิชาการจีนวิทยา <strong>Edward Slingerland</strong> เล่าเรื่องเดียวกัน ห่างกันห้าสิบปี ในไทเป ปี 1988 นักศึกษาภาษาจีนที่กำลังจมอยู่กับบทคลาสสิก ไปเจอการ์ตูน 莊子 ของไช่ในร้านหนังสือ — และเข้าใจในที่สุด ผู้อ่านสองคน อาจารย์คนเดียว</p>
+        <figure class="as-art">
+          <img src="tsai/tsai-portrait.jpg" alt="Tsai Chih-chung's signed Lao Tzu portrait, the chapter 1 calligraphy on his robe" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <figcaption>蔡志忠 · 老子像 · 1989. The opening line — <em>道可道，非常道</em> — is written down the master's robe.</figcaption>
+        </figure>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">五</span><span class="as-label">行 <em>xíng</em> · Field</span>
+        <p class="as-cn">居上海三年，在楊浦區。看一城十年中變了三次。</p>
+        <p class="as-en">Three years in Shanghai, in Yangpu District. He watched a single city change three times in ten years.</p>
+        <p class="as-th">เคยอยู่เซี่ยงไฮ้สามปี เขตหยางผู่ ได้เห็นเมืองหนึ่งเปลี่ยนสามครั้งในสิบปี</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">六</span><span class="as-label">業 <em>yè</em> · Work</span>
+        <p class="as-cn">為亞洲之城作圖。觀者以為見城。其實見筆觸。</p>
+        <p class="as-en">He maps Asian cities for a living. People look at the maps and think they are seeing cities. They are seeing his brushstrokes.</p>
+        <p class="as-th">ทำแผนที่เมืองในเอเชียเป็นอาชีพ คนเห็นแผนที่ คิดว่าเห็นเมือง — ที่เห็น คือรอยพู่กัน</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">七</span><span class="as-label">教 <em>jiào</em> · Office</span>
+        <p class="as-cn">任 depa 高級智慧城市顧問，泰國。官語沉重，故近年改寫小書。</p>
+        <p class="as-en">Senior Smart City Expert at depa Thailand. The official register exhausts him, so recently he has been writing small books instead.</p>
+        <p class="as-th">เป็นผู้เชี่ยวชาญอาวุโสสมาร์ทซิตี้ที่ depa ภาษาราชการล้า ระยะหลังจึงเขียนหนังสือเล็ก ๆ แทน</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">八</span><span class="as-label">矛 <em>máo</em> · Contradiction</span>
+        <p class="as-cn">學城市學，愛無路之野。語通四方，獨食。寫字甚多，又信沉默。</p>
+        <p class="as-en">He studies cities and loves wilderness. Speaks four languages and eats alone. Writes constantly and trusts silence.</p>
+        <p class="as-th">เรียนเรื่องเมือง รักป่าไร้ทาง พูดสี่ภาษา กินคนเดียว เขียนทุกวัน เชื่อความเงียบ</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">九</span><span class="as-label">讀 <em>dú</em> · Reading</span>
+        <p class="as-cn">讀此書十遍以上，數篇過百。每讀必有新解，未必更易。</p>
+        <p class="as-en">He has read this book more than ten times. Some chapters more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
+        <p class="as-th">อ่านเล่มนี้สิบกว่าครั้ง บางบทเป็นร้อย ยิ่งอ่านยิ่งใส แต่ไม่เคยง่ายขึ้น</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">十</span><span class="as-label">譯 <em>yì</em> · Translation</span>
+        <p class="as-cn">多譯失之文。此譯失之直，因之得之。</p>
+        <p class="as-en">Most translations get lost in their own poetry. This one is lost on purpose in directness. That is how it finds.</p>
+        <p class="as-th">ฉบับแปลส่วนใหญ่ติดในบทกวีของตัวเอง เล่มนี้ตั้งใจหลงในความตรง — ทางนั้นถึงพบ</p>
+      </li>
+      <li class="about-stanza">
+        <span class="as-num">十一</span><span class="as-label">終 <em>zhōng</em> · Closing</span>
+        <p class="as-cn">非師徒之書。讀者譯，讀者議，讀者過。</p>
+        <p class="as-en">This is not a master-and-student book. The reader translates. The reader argues. The reader walks past.</p>
+        <p class="as-th">ไม่ใช่หนังสือศิษย์-อาจารย์ ผู้อ่านแปลเอง เถียงเอง เดินผ่านเอง</p>
+      </li>
+    </ol>
+
+    <p class="about-sig">— 非·阿諾 · Bangkok · Shanghai · Boston · 2026</p>
+  </div>
+</section>
+
+<!-- ── CURRENTS · 源流 — short history of where this book sits ── -->
+<section class="currents notes-pane" id="currents" data-pane="currents">
+  <div class="currents-inner">
+    <p class="currents-kicker">源流 <em>yuán liú</em> · Currents of the Way</p>
+    <h2 class="currents-title">A short story of how this book got to you.</h2>
+    <p class="currents-blurb">Five quick scenes across 2,500 years. Sages arguing in muddy fields. A book carried west on a water buffalo. Indian monks arriving with words no Chinese had ever heard. Two traditions politely rewriting each other for a thousand years. And then your phone, in your hand, right now.</p>
+
+    <ol class="currents-grid">
+      <li class="era-card era-card--with-art">
+        <p class="era-num">壹</p>
+        <p class="era-date">8th – 3rd c. BCE</p>
+        <h3 class="era-name"><span class="en-cn">春秋戰國 <em>chūn qiū zhàn guó</em></span><span class="en-en">Spring & Autumn · Warring States</span></h3>
+        <p class="era-body">The Hundred Schools. Confucius, Mozi, Yang Zhu, Zhuangzi, Han Feizi — all alive at roughly the same time, all arguing. Lao Tzu emerges in this conversation, not above it. The earliest physical Dao De Jing — the Guodian bamboo slips, c. 300 BCE — is older than Plato's Academy, younger than the Buddha by two centuries. The book is a participant in a debate, not a revelation.</p>
+        <figure class="era-art">
+          <img src="tsai/laozi-departure.jpg" alt="Tsai Chih-chung's cartoon of Lao Tzu departing through the Hangu Pass on a water buffalo, leaving the gatekeeper with the manuscript" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <figcaption>蔡志忠 · The legend of departure. Lao Tzu rides a water buffalo west through the Hangu Pass, hands the gatekeeper Yin Xi a 5,000-character manuscript, and is never heard from again. <em>The Way</em> + <em>The Virtue</em> = the book you are now reading.</figcaption>
+        </figure>
+      </li>
+
+      <li class="era-card">
+        <p class="era-num">貳</p>
+        <p class="era-date">206 BCE – 220 CE</p>
+        <h3 class="era-name"><span class="en-cn">漢 <em>hàn</em></span><span class="en-en">Han Dynasty</span></h3>
+        <p class="era-body">Imperial syncretism. Daoism is canonised, Confucianism is institutionalised, and around 65 CE Buddhism arrives via the Silk Road. The Han Emperor Ming dreams of a "golden man," sends emissaries west; they return with the <em>Sutra in 42 Sections</em> on white horses. A foreign religion now sits inside a Chinese empire — and almost no one yet has the vocabulary for what it is teaching.</p>
+      </li>
+
+      <li class="era-card">
+        <p class="era-num">叁</p>
+        <p class="era-date">3rd – 4th c. CE</p>
+        <h3 class="era-name"><span class="en-cn">格義 <em>gé yì</em></span><span class="en-en">The Translation Problem · Geyi</span></h3>
+        <p class="era-body">Sanskrit Buddhist concepts have no Chinese equivalent. <em>Sunyata</em> (emptiness)? <em>Dharma</em> (law-and-teaching)? <em>Nirvana</em>? Translators reach for the closest Chinese vocabulary they have — Daoist. The technique is called <strong>格義 (geyi) — "matching meanings."</strong> <em>Wu</em> (無, non-being) translates <em>sunyata</em>. <em>Dao</em> (道) translates <em>dharma</em>. The Daoist sage and the Buddhist arhat begin to look like cousins in Chinese. Wang Bi (王弼, 226–249 CE) writes the standard Dao De Jing commentary in this same period — reading Lao Tzu through Buddhist-tinted air without realising it.</p>
+      </li>
+
+      <li class="era-card">
+        <p class="era-num">肆</p>
+        <p class="era-date">6th – 10th c. CE</p>
+        <h3 class="era-name"><span class="en-cn">大乘 <em>dà chéng</em> · 禪 <em>chán</em></span><span class="en-en">Mahayana &amp; Chan emerge</span></h3>
+        <p class="era-body">Indian Mahayana Buddhism flourishes in China precisely <em>because</em> Daoist vocabulary made it land. <em>Sunyata</em> arrives as 空 (kong, the empty), which Lao Tzu had already taught readers to value. The <strong>Chan school (禪 → Zen)</strong> crystallises this fusion: meditative simplicity, direct insight, distrust of words. This is Buddhism speaking with a Daoist accent — the dialect that would later carry to Korea (Seon), Japan (Zen), and Vietnam (Thiền). The Daoist vocabulary is altered in return: by Tang dynasty, "Dao" carries Buddhist resonances Lao Tzu never intended.</p>
+      </li>
+
+      <li class="era-card">
+        <p class="era-num">伍</p>
+        <p class="era-date">2026 CE</p>
+        <h3 class="era-name"><span class="en-cn">今 <em>jīn</em></span><span class="en-en">Now · Reading on a Phone</span></h3>
+        <p class="era-body">The Dao De Jing you hold has been read for 2,400 years by Chinese minds shaped by Confucianism, Buddhism, neo-Confucianism, and modern materialism in turn. There is no "pure" reading. Each generation reads through the residue of every tradition that came before. The translator in this volume — a Thai-born, Chaozhou-descended, MIT-and-Harvard-trained, Oxford-Sinology-credentialed urban anthropologist — adds yet another layer. So do you. The book does not mind. It has absorbed bigger crowds than this.</p>
+      </li>
+    </ol>
+
+    <p class="currents-foot">
+      The point of this map is the same point the book itself makes: <em>every reading is a translation, and translation is a kind of reading</em>. Daoism is not the pure thing that got contaminated by Buddhism; Mahayana is not the pure thing that got watered down by China. They are versions of each other, on the same paper.
+    </p>
+  </div>
+</section>
+
+<!-- ── 在野 · IN THE WILD — what living Daoism actually wrestles with ── -->
+<section class="wild notes-pane" id="wild" data-pane="wild">
+  <div class="wild-inner">
+    <p class="wild-kicker">在野 <em>zài yě</em> · In the Wild</p>
+    <h2 class="wild-title">Eight things real Daoists argue about that the bookshop translation never mentions.</h2>
+    <p class="wild-blurb">Once you know the book, you start meeting people who also know it. Some are practising monks. Some are sinologists. Some are old aunties at the village temple. They argue. The arguments are interesting. Below are eight that have stayed with the author. He is one Thai-Chinese reader inside the conversation, not its referee.</p>
+
+    <!-- Movement 1: Hippies -->
+    <article class="wild-mvt">
+      <p class="wm-num">壹</p>
+      <h3 class="wm-title">Daoists were the original hippies.</h3>
+      <p class="wm-tag">After Edward Slingerland · <em>Trying Not to Try</em>, ch. 4</p>
+      <p class="wm-body">In the late strata of the <em>Analects</em>, Confucius keeps running into people who refuse to play. Two strange men yoked to a plough, calling themselves Standing Tall in the Marsh and Prominent in the Mud. A man with a wicker basket on his back who hears Confucius playing the stone chimes and walks past, muttering "<em>If no one understands you, just tend to yourself.</em>" These are not peasants. They are classically trained scholars who have <strong>fled the age</strong> — rejected their given names, rejected office, rejected rite. The Confucians get the last word inside the <em>Analects</em>. But the hippies eventually got their own book.</p>
+      <p class="wm-body">That book is the one you are now reading. The <em>Daodejing</em> — <em>The Classic of the Way and Virtue (de)</em> — is, in Slingerland's reading, the manifesto of the 4th-century BCE counterculture. Swap the human-drawn plough for a composting toilet, swap citations from the <em>Book of Odes</em> for citations of Emerson, and Standing Tall in the Marsh would feel right at home in 1968 Haight-Ashbury. The book's voice — <em>cut off learning, no worries</em>; <em>the five colours blind the eye</em>; <em>some wear fancy clothes and hang sharp swords from their belts: this is called being proud of being a robber</em> — is the voice of a person who has decided the cure is worse than the disease, and who would rather pull a plough by hand than be governed by liars.</p>
+      <p class="wm-body">Why does this matter for reading? Because most English translations smooth out this anger. They make Lao Tzu sound like a calm Zen master humming over a misty mountain. He is not. He is closer to Thoreau at Walden — in chronic, principled, slightly sarcastic disagreement with the city he can see from his cabin.</p>
+    </article>
+
+    <!-- Movement 2: Drunk on Heaven -->
+    <article class="wild-mvt">
+      <p class="wm-num">貳</p>
+      <h3 class="wm-title">"Drunk on Heaven" — wu-wei is religious before it is psychological.</h3>
+      <p class="wm-tag">After Slingerland · <em>Trying Not to Try</em>, ch. 2</p>
+      <p class="wm-body">The Zhuangzi has a famous parable: a drunk man falls out of a fast-moving cart and is unhurt because his bones and tendons are no different from anyone else's, but his fear is gone. <em>"His spirit is intact."</em> Slingerland's point is that drunkenness here is a deliberately crude analogy. The substance Zhuangzi really wants you drunk on is <strong>Heaven</strong> — <em>tian</em> 天. Wu-wei (無為, effortless action) only works because the practitioner has surrendered themselves into a cosmic order they trust to catch them.</p>
+      <p class="wm-body">Modern Western readings of wu-wei strip out the Heaven part. They turn "<em>do without doing</em>" into a productivity tip — flow at work, mindfulness on the cushion, "go with your gut." This is the book translated for an audience that no longer has a heaven to fall into. The early Chinese reader did not need an explanation of what holds the falling drunk. The contemporary reader does. That is a gap worth naming, not papering over.</p>
+      <p class="wm-body">The other half of this story is <em>de</em> (德) — the charisma that emanates from a person in wu-wei. Slingerland calls it a "tractor beam." The Confucian ruler with <em>de</em> is the Pole Star — fixed in the heavens, drawing the lesser stars into orbit. The Daoist sage with <em>de</em> is invisible — dwelling in the dark valleys, pulling everyone in the way gravity pulls water downhill. <strong>Same force, opposite metaphor.</strong> Both are real.</p>
+    </article>
+
+    <!-- Movement 3: Liezi (with Tsai cartoon) -->
+    <article class="wild-mvt wild-mvt--with-art">
+      <p class="wm-num">叁</p>
+      <h3 class="wm-title">Lao Tzu has neighbours: 莊子 Zhuangzi and 列子 Liezi.</h3>
+      <p class="wm-tag">Three Daoist masters, one tradition</p>
+      <p class="wm-body">Most English-language Daoism is "Lao Tzu only." This is a publishing accident. The classical Daoist canon is three: <em>Daodejing</em> (Lao Tzu, terse and political), <em>Zhuangzi</em> (storytelling and paradox), <em>Liezi</em> (the most playful and least famous). Each makes a different argument. Lao Tzu argues; Zhuangzi laughs; Liezi rides the wind.</p>
+      <p class="wm-body">The Liezi tells of a man — also called Liezi — who lived in the village of Zhengpu for forty years without anyone knowing he was there. Even the local sovereign did not recognise him. <em>"Heaven blesses those who live when they are able and punishes those who do not. Heaven blesses those who die when they are able and punishes those who do not."</em> This is the same tradition as Lao Tzu, but the volume is turned down further. If chapter 17 of this book ("the best leader is barely known") gives you a chill, the Liezi is what happens forty years later — when the leader has stopped governing entirely and the village still works.</p>
+      <figure class="wm-art">
+        <img src="tsai/liezi-on-wind.jpg" alt="Tsai Chih-chung's cartoon of Liezi riding the wind, surrounded by birds in flight" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <figcaption>蔡志忠 · 列子說 · Liezi rides the wind. The least famous of the three Daoist masters, and — <em>by his own argument</em> — the one who got the closest.</figcaption>
+      </figure>
+    </article>
+
+    <!-- Movement 4: Phases of the Way -->
+    <article class="wild-mvt wild-mvt--with-art">
+      <p class="wm-num">肆</p>
+      <h3 class="wm-title">There are phases. The book does not tell you which one you are in.</h3>
+      <p class="wm-tag">Yancheng Ziyou's nine-year arc · Zhuangzi 27</p>
+      <p class="wm-body">A Zhuangzi parable: the disciple Yancheng Ziyou reports nine years of practice to his teacher Dongguo Ziqi, one year per line. Year one: I was like a wild horse. Year two: I began to follow along. Year three: my mind had no obstacles. Year four: I became one with the external world. Year five: all things turned toward me. Year six: I understood the spiritual world. Year seven: I flowed with nature. Year eight: I dispensed with thoughts of life and death. Year nine: I attained profound enlightenment.</p>
+      <p class="wm-body">The cartoon below is the moral. <em>"When cultivating the Dao, don't over-emphasise self-control. By following your own self-nature, you will gradually be able to forget the self... If you try for too much self-control the very first year, you will still be a wild horse in ten years."</em> Most contemporary self-improvement is the wild-horse strategy run for a decade. The Daoist proposal is that the year-one move is to <strong>let the horse drink</strong>.</p>
+      <figure class="wm-art">
+        <img src="tsai/phases-of-the-way.jpg" alt="Tsai Chih-chung's cartoon of the nine-year phases of attaining the Dao, with images of horses transforming through the stages" loading="lazy" onerror="this.parentElement.style.display='none'">
+        <figcaption>蔡志忠 · 莊子 · The phases of attaining the Dao, year by year. The horse is the same horse — the rider has stopped being startled by it.</figcaption>
+      </figure>
+    </article>
+
+    <!-- Movement 5: Verbal overshadowing -->
+    <article class="wild-mvt">
+      <p class="wm-num">伍</p>
+      <h3 class="wm-title">"He who speaks does not know" — and there is a study.</h3>
+      <p class="wm-tag">Wilson &amp; Schooler · the jam study (1991)</p>
+      <p class="wm-body">In a now-classic study, Tim Wilson and Jonathan Schooler had subjects taste five jams. One group just tasted and rated. Another group tasted, articulated <em>why</em> they liked or didn't like each one, and then rated. The verbalisers' ratings drifted away from expert ratings. Their preferences became <em>worse</em>. A follow-up with dorm posters showed the verbalisers came home with posters they later disliked, while the silent tasters were still happy with their picks weeks on. The phenomenon now has a name: <strong>verbal overshadowing</strong>.</p>
+      <p class="wm-body">This is what Lao Tzu was reporting in chapter 56. Forced articulation displaces the body's verdict. The wise person doesn't refuse to talk; they refuse to talk before they have tasted. The instruction <em>"those who know do not speak"</em> is therefore not an injunction to silence — it is a clinical recommendation to stop letting the verbal layer overwrite the perceptual one.</p>
+      <p class="wm-body">A reasonable test for any chapter of this book: can it be falsified by a peer-reviewed study? In about a third of the cases, yes — and the chapter wins.</p>
+    </article>
+
+    <!-- Movement 6: Mahayana borrowed -->
+    <article class="wild-mvt">
+      <p class="wm-num">陸</p>
+      <h3 class="wm-title">Buddhism arrived in Chinese clothes — Daoist clothes.</h3>
+      <p class="wm-tag">格義 · geyi · the translation problem</p>
+      <p class="wm-body">When Indian Buddhist texts reached China in the Han, the translators had no word for <em>sunyata</em> (emptiness), no word for <em>dharma</em> (law-and-teaching), no word for <em>nirvana</em>. They reached for the closest Chinese vocabulary they had — Daoist. <em>Wu</em> (無, non-being) was pressed into service for <em>sunyata</em>. <em>Dao</em> (道) for <em>dharma</em>. The technique was called <strong>格義 geyi — "matching meanings."</strong></p>
+      <p class="wm-body">For 300 years, this was how Chinese Buddhism was learned. Wang Bi wrote his standard <em>Daodejing</em> commentary in 245 CE — the same century that translation was happening — and was almost certainly reading Lao Tzu through Buddhist-tinted air. By the time Mahayana Buddhism crystallised in China as <strong>Chan (禪 → Zen)</strong> — meditative simplicity, distrust of words, direct insight — it was Indian Buddhism speaking with a Daoist accent. The Chan school then carried that accent to Korea (Seon), Japan (Zen), and Vietnam (Thiền).</p>
+      <p class="wm-body">The implication for reading: there is no clean Daoism to recover. By the Tang dynasty, "Dao" was already carrying Buddhist resonances Lao Tzu never put there. The book in your hand has been read for 2,400 years through layers of translation between traditions that rewrote each other on the fly. The author of this volume is yet another such layer. So are you.</p>
+    </article>
+
+    <!-- Movement 7: Religious vs philosophical -->
+    <article class="wild-mvt">
+      <p class="wm-num">柒</p>
+      <h3 class="wm-title">Western Daoism vs. religious Daoism — the gap nobody mentions.</h3>
+      <p class="wm-tag">道家 (philosophical) vs 道教 (religious)</p>
+      <p class="wm-body">Most English-language Daoism is <em>daojia</em> (道家) — philosophical Daoism. The book, the Zhuangzi, wu-wei as a way of life. This is what is taught at Western universities and on meditation retreats.</p>
+      <p class="wm-body">The other half — <em>daojiao</em> (道教), institutional religious Daoism — is far larger and almost invisible to Western readers. Quanzhen monasteries with monks in topknots. Zhengyi priests performing village funerals. Inner-alchemy texts (<em>內丹</em>) describing breath-and-visualisation regimens to refine the body's three treasures (<em>jing 精, qi 氣, shen 神</em>) into immortality. Talismans. Liturgies. A pantheon of gods and immortals with names and stories. This is the Daoism most Chinese people have actually grown up around — quietly, in the corners of their grandmother's house, at the edges of village festivals.</p>
+      <p class="wm-body">Neither side speaks easily to the other. The Western philosophical Daoist regards the religious tradition as superstition. The religious Daoist regards the Western philosopher as someone who has read one book and stopped. The author has lived inside the Chinese diaspora's edge of <em>daojiao</em> his whole life — incense, ancestor altars, Teochew funeral rites — and inside the academic <em>daojia</em> via Oxford. Neither tradition is the other's substitute. They are <strong>two separate inheritances</strong>, both legitimate, both incomplete without the other.</p>
+    </article>
+
+    <!-- Movement 8: How Tsai is the on-ramp -->
+    <article class="wild-mvt">
+      <p class="wm-num">捌</p>
+      <h3 class="wm-title">Tsai Chih-chung is how most of us actually got in.</h3>
+      <p class="wm-tag">A small confession from two readers, fifty years apart</p>
+      <p class="wm-body">In the foreword to <em>The Way of Nature</em> — Princeton's English edition of Tsai's <em>Zhuangzi</em>, translated by Brian Bruya — Edward Slingerland recounts that he encountered Tsai's cartoon Zhuangzi as a Chinese-language student in Taiwan in the late 1980s. The classical text in the margins; the colloquial Chinese explanations and dialogues vivid enough to make sense of what he had been struggling through in scholarly translations. Slingerland writes that he later thought he might one day translate Tsai into English himself. Bruya beat him to it. Slingerland is glad.</p>
+      <p class="wm-body">The author of this volume met Tsai earlier — age six or seven, in a stack of his father's Chinese-language imports in Bangkok. The first time the chapter on water made sense, it was a Tsai panel, not a translation. The first time the relationship between Lao Tzu and Zhuangzi made sense — Lao Tzu serious, Zhuangzi laughing — it was a Tsai panel. The author has read this book more than ten times in three languages; the cartoons are still there underneath every reading.</p>
+      <p class="wm-body">The pedagogical point: <strong>do not be ashamed of cartoons</strong>. The right cartoon, drawn by someone who has thought for forty years about what the cartoon is for, is more philosophically dense than the dense translation it accompanies. If you are stuck on a chapter, find the Tsai panel for it. The panel is doing the work the chapter has been waiting for someone to do.</p>
+    </article>
+
+    <p class="wild-foot">
+      The eight movements above are the conversation Daoism has actually been having — among practitioners, among Sinologists, among diaspora Chinese for whom the book is half memory, half text. Most of these conversations do not survive translation into a Western paperback. They survive in a Facebook group, in Tsai's margins, in a forty-year hermit's village. <em>This section will keep growing.</em>
+    </p>
+  </div>
+</section>
+
+    </div><!-- /.notes-body -->
+  </div><!-- /.notes-shell -->
+</aside>
+<div class="notes-scrim" id="notesScrim"></div>
 
 <!-- ── CHAPTERS (rendered by JS) ── -->
 <main class="chapters" id="chapters"></main>
@@ -121,9 +521,51 @@
   </div>
 </footer>
 
-<script src="chapters.js?v=1"></script>
-<script src="extended.js?v=1"></script>
-<script src="app.js?v=2"></script>
+<!-- ════════ THE LIBRARY — all five books, current highlighted ════════ -->
+<aside class="library" aria-label="Other books by Non Arkaraprasertkul">
+  <p class="lib-head">Non · The Library</p>
+  <p class="lib-sub">Five small books, five different shapes. Read in any order. Each opens in a new tab.</p>
+  <div class="lib-grid">
+    <a href="https://100days.nonarkara.org" class="lib-card" target="_blank" rel="noopener">
+      <span class="lib-num">I</span>
+      <span class="lib-title">100 Days of Solitude</span>
+      <span class="lib-tag">An illustrated travelogue</span>
+    </a>
+    <a href="https://ninja.nonarkara.org" class="lib-card" target="_blank" rel="noopener">
+      <span class="lib-num">II</span>
+      <span class="lib-title">Ninja Innovation</span>
+      <span class="lib-tag">A people-centric practice for the AI era</span>
+    </a>
+    <a href="https://slowdown.nonarkara.org" class="lib-card" target="_blank" rel="noopener">
+      <span class="lib-num">III</span>
+      <span class="lib-title">The Things You Can See Only When You Slow Down</span>
+      <span class="lib-tag">A meditation in ten movements</span>
+    </a>
+    <a href="https://mean.nonarkara.org" class="lib-card" target="_blank" rel="noopener">
+      <span class="lib-num">IV</span>
+      <span class="lib-title">What I Mean When I Say</span>
+      <span class="lib-tag">A small dictionary</span>
+    </a>
+    <a href="https://dao.nonarkara.org" class="lib-card current">
+      <span class="lib-num">V</span>
+      <span class="lib-title">Reading Dao De Jing with Dr. Non</span>
+      <span class="lib-tag">道德經 · The complete Laozi in three languages</span>
+      <span class="lib-here">You are here</span>
+    </a>
+  </div>
+</aside>
+
+<script src="chapters.js?v=2"></script>
+<script src="extended.js?v=11"></script>
+<script src="pinyin.js?v=2"></script>
+<script src="pinyin_titles.js?v=1"></script>
+<script src="summaries.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+<script src="characters.js?v=3"></script>
+<script src="closers.js?v=1"></script>
+<script src="npm_art.js?v=1"></script>
+<script src="app.js?v=18"></script>
+<script src="datawall.js?v=1"></script>
 
 </body>
 </html>
