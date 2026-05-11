@@ -66,6 +66,7 @@ window.EXTENDED = {
 
   2: {
     direct_cn: "天下皆知美之为美，斯恶已；\n皆知善之为善，斯不善已。\n故有无相生，难易相成，\n长短相形，高下相倾，\n音声相和，前后相随。\n是以圣人处无为之事，行不言之教。\n万物作焉而不辞，\n生而不有，为而不恃，\n功成而弗居。\n夫唯弗居，是以不去。",
+    image: "whistler",
     reading_cn: "如果这一章只是在报告一个关于「对比」的基本事实？\n\n视觉皮层看不见「蓝色」——它看见的是蓝色对比着非蓝色。侧向抑制（Hartline, 1956 起；计算视觉的基础）就是机制：每一个为 X 放电的神经元，会主动抑制邻近神经元也为 X 放电。分类不可能单独存在。你有了「美」的那一瞬间，你就免费得到了它的对立面，在同一个神经基质上。\n\n但中国人早就把这个机制编进了日常生活。北京话里的「不是...而是...」结构，苏州评弹里的正反调，四川火锅的麻辣对比——我们的大脑天生就是为对比而设计的。老子没有发明这个，他只是第一个把它写下来的人。\n\n单极道德化——把某样东西叫做好，并且只意味着好——是一种认知失败模式。聪明人的回应不是停止看见分类（你做不到），而是停止假装它们可以没有对立面单独存在。所以才有了那一长串对子。有/无。难/易。长/短。高/下。它们由同一套线路构成。指令是：握住电线的两端。",
     direct: "Under heaven, all know beauty as beauty —\nthen ugly already is.\nAll know good as good — then not-good already is.\nSo: have and not-have produce each other.\nDifficult and easy complete each other.\nLong and short shape each other.\nHigh and low rest on each other.\nVoice and tone harmonise.\nFront and back follow.\nSo the sage acts without acting,\nteaches without speaking.\nThe ten thousand things arise and he does not refuse them.\nProduces and does not own.\nWorks and does not lean.\nFinishes and does not stay.\nBecause he does not stay, he does not leave.",
     direct_th: "ทั่วฟ้า ทุกคนรู้จักความงามเป็นความงาม — ความน่าเกลียดก็มีแล้ว\nทุกคนรู้จักความดีเป็นความดี — ความไม่ดีก็มีแล้ว\nมีและไม่มีสร้างกัน\nยากและง่ายเสริมกัน\nยาวและสั้นกำหนดกัน\nสูงและต่ำพิงกัน\nเสียงและน้ำเสียงประสานกัน\nหน้าและหลังตามกัน\nคนฉลาดทำโดยไม่ทำ\nสอนโดยไม่พูด\nหมื่นสิ่งเกิดขึ้น เขาไม่ปฏิเสธ\nสร้างและไม่ครอง\nทำงานและไม่พิง\nเสร็จและไม่อยู่\nเพราะไม่อยู่ จึงไม่ไป",
@@ -475,6 +476,7 @@ window.EXTENDED = {
   },
 
   56: {
+    image: "liang-kai",
     reading_cn: "如果「知者不言」是在说知识的诅咒？\n\nElizabeth Newton 在斯坦福做的敲击实验（1990）：敲击者预估听者能猜出歌曲的概率是 50%。实际结果是 2.5%。Newton 证明这个差距是普遍的——一旦你知道了某样东西，你就无法「不知道」它，而且你会系统性地高估它传递了多少。\n\n在中国，这个现象的版本更微妙。北京的老匠人带徒弟，前三年不让碰工具，只做杂活。不是刁难，是因为手艺的大部分无法用语言传递。你必须先让身体记住，然后语言才有附着点。老子说的「知者不言」不是反智主义。它是在说：专家之所以不停说话，通常是因为他们感觉不到那个自己看不见的差距。智者知道有这个差距，所以少说，多做演示，并且接受一个事实：他知道的大部分东西，无法用现有的语言表达。",
     direct: "Those who know do not speak.\nThose who speak do not know.\nBlock its openings, close its gates,\nblunt its sharpness, untie its knots,\nharmonise its glare, settle into its dust.\nThis is called 'dark sameness.'\nSo: cannot get close, cannot get far;\ncannot benefit, cannot harm;\ncannot honour, cannot debase.\nThus: the world's most valued.",
     reading: "What if 'those who know don't speak' is a comment on the curse of knowledge?\nElizabeth Newton's tapping experiment at Stanford (1990): tappers, who hear the song in their head, predicted listeners would identify the tune 50% of the time. The actual rate was 2.5%. Newton showed the gap is universal — once you know something, you cannot un-know it, and you systematically over-estimate how much of it has transferred.\nThe chapter's 'those who know don't speak' is therefore not anti-intellectual. It is recognising that experts who keep talking are usually filling in the gap they cannot perceive. The wise person, knowing the gap, speaks less, demonstrates more, and accepts that most of what they know cannot be communicated in the words they have.",

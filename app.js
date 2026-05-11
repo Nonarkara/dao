@@ -268,6 +268,8 @@
     'hiroshige-rain': { src: 'img/hiroshige-rain.jpg', credit: 'Hiroshige · Rain on a Bridge · c. 1857', cap: 'A gust does not last the morning.' },
     'hammershoi':  { src: 'img/hammershoi.jpg', credit: 'Vilhelm Hammershøi · Empty Interior · c. 1900', cap: 'You can know the world without leaving the room.' },
     'hokusai-rainstorm': { src: 'img/hokusai-rainstorm.jpg', credit: 'Hokusai · Rainstorm Beneath the Summit · c. 1830', cap: 'Water as force, not just reflection.' },
+    'liang-kai':     { src: 'img/liang-kai.jpg',     credit: 'Liang Kai · Sixth Patriarch Cutting Bamboo · 13th c.', cap: 'Knowledge in the hand, not the mouth.' },
+    'whistler':      { src: 'img/whistler.jpg',      credit: 'Whistler · Nocturne in Black and Gold · c. 1875', cap: 'Beauty that exists only because it vanishes.' },
   };
 
   // ----- RENDER CHAPTERS ----------------------------------------
