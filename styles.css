@@ -2091,6 +2091,18 @@ body.lang-th .cd-label [data-lang="en"] { display: none; }
 body.lang-en .direct-text[data-lang="th"] { display: none; }
 body.lang-th .direct-text[data-lang="en"] { display: none; }
 body.lang-th .direct-text { font-family: var(--th); font-size: clamp(18px, 1.7vw, 22px); line-height: 1.75; }
+body.lang-cn .direct-text[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+body.lang-cn .direct-text[data-lang="cn"] em {
+  font-family: var(--cn-serif);
+  font-style: normal;
+  color: var(--seal);
+}
 
 /* Panel 03 — READING (the substantive one) */
 .panel-reading {
@@ -2138,6 +2150,28 @@ body.lang-th .direct-text { font-family: var(--th); font-size: clamp(18px, 1.7vw
 body.lang-en .reading-body[data-lang="th"] { display: none; }
 body.lang-th .reading-body[data-lang="en"] { display: none; }
 body.lang-th .reading-body { font-family: var(--th); font-size: 17px; line-height: 1.78; }
+body.lang-cn .reading-body[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  font-size: clamp(17px, 1.45vw, 20px);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+body.lang-cn .reading-body[data-lang="cn"] em,
+body.lang-cn .reading-body[data-lang="cn"] strong {
+  font-family: var(--cn-serif);
+  font-style: normal;
+  font-weight: 600;
+}
+body.lang-cn .note-body[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  font-style: normal;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+body.lang-cn .note-body[data-lang="cn"] strong {
+  font-family: var(--cn-serif);
+  font-weight: 600;
+}
 
 .reading-sources {
   margin-top: 32px;
