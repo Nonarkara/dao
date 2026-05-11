@@ -2819,6 +2819,61 @@ body.lang-th .prologue-lead {
   font-family: var(--th);
   font-style: normal;
 }
+
+/* ── Chinese front-matter typography ── */
+body.lang-cn .prologue-story[data-lang="cn"] p {
+  font-family: var(--cn-serif);
+  font-style: normal;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+body.lang-cn .prologue-story[data-lang="cn"] .prologue-lead {
+  font-family: var(--cn-serif);
+  font-style: normal;
+  border-left-color: var(--seal);
+}
+body.lang-cn .prologue-story[data-lang="cn"] p:first-child {
+  font-style: normal;
+}
+body.lang-cn .prologue-story[data-lang="cn"] p em,
+body.lang-cn .prologue-story[data-lang="cn"] p strong {
+  font-family: var(--cn-serif);
+  font-style: normal;
+}
+body.lang-cn .preface-inner p[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+body.lang-cn .cover-sub[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  line-height: 1.85;
+}
+body.lang-cn .cover-kicker[data-lang="cn"] {
+  font-family: var(--cn-elegant);
+  letter-spacing: 0.1em;
+}
+body.lang-cn .preface-kicker[data-lang="cn"] {
+  font-family: var(--cn-elegant);
+  letter-spacing: 0.15em;
+}
+body.lang-cn .preface-title[data-lang="cn"] {
+  font-family: var(--cn-elegant);
+}
+body.lang-cn .prologue-title[data-lang="cn"] {
+  font-family: var(--cn-elegant);
+  font-style: normal;
+}
+body.lang-cn .prologue-claim[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  font-style: normal;
+}
+body.lang-cn .index-part span[data-lang="cn"],
+body.lang-cn .index-kicker span[data-lang="cn"],
+body.lang-cn .index-sub[data-lang="cn"] {
+  font-family: var(--cn-serif);
+}
+
 .prologue-story--single { max-width: 64ch; }
 .prologue-story--single p {
   font-family: var(--reader);
