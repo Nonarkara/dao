@@ -299,6 +299,28 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   margin-right: 6px;
   font-weight: 500;
 }
+.cover-note-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin-top: 18px;
+  padding: 0 18px;
+  border: 1px solid color-mix(in srgb, var(--seal) 48%, var(--rule));
+  background: color-mix(in srgb, var(--paper) 86%, var(--seal));
+  color: var(--seal);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease, border-color .2s ease;
+}
+.cover-note-btn:hover {
+  background: var(--paper);
+  border-color: var(--seal);
+  transform: translateY(-1px);
+}
 
 /* ============================================================
    PREFACE
@@ -1733,7 +1755,7 @@ body.lang-cn .summary-frame .su-th { display: none; }
 .chapter.scale-S .summary-frame .su-th { font-size: clamp(18px, 2vw, 24px); }
 .chapter.scale-S .panel-origin { padding-bottom: clamp(40px, 6vh, 80px); }
 .chapter.scale-S .origin-cn-title { letter-spacing: 8px; font-size: clamp(28px, 4vw, 48px); }
-.chapter.scale-S .panel-image { display: none; }
+.chapter.scale-S:not(.image-spotlight) .panel-image { display: none; }
 .chapter.scale-S .chapter-foot { padding: 24px 5vw; }
 
 /* M — Medium: standard, the baseline (no overrides needed) */
@@ -3120,11 +3142,29 @@ body.pinyin-off .notes-tab em { display: none; }
 .notes-pane.is-active { display: block; }
 
 /* When inside the notes overlay, soften the top padding of moved sections */
+.notes-overlay .prologue,
 .notes-overlay .about,
 .notes-overlay .currents,
 .notes-overlay .wild {
   border-top: none;
   padding-top: clamp(40px, 6vh, 80px);
+}
+.notes-overlay .prologue {
+  background: transparent;
+  border-bottom: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.notes-overlay .prologue-inner {
+  max-width: 1040px;
+}
+.notes-overlay .prologue-act:last-child {
+  margin-bottom: 0;
+}
+.notes-overlay .prologue-art--full figcaption a {
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, var(--seal) 55%, transparent);
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 600px) {
@@ -4324,4 +4364,3 @@ body.pinyin-off .index-list .ix-py { display: none; }
   .dw-inner { padding: 52px 4vw 32px; gap: 16px; }
   .dw-reveal-cn { letter-spacing: 8px; }
 }
-

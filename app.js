@@ -260,8 +260,10 @@
   // Image map for contemporary photos (light — reuse existing local art)
   const IMG_MAP = {
     'blank-page':  { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: 'Before words.' },
+    'sotatsu':     { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: 'The world before explanation.' },
     'river-stones': { src: 'img/hokusai-fuji.jpg', credit: 'Hokusai · Fine Wind, Clear Morning · c. 1830', cap: 'Water, doing its long careful sentence.' },
     'muji-room':   { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: 'The void is the deliverable.' },
+    'sesshu':      { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: 'A few marks, and then enough.' },
     'empty-desk':  { src: 'img/muqi.jpg',        credit: 'Muqi · Six Persimmons · 13th c.',                cap: 'Subtract until what remains is clearly working.' },
     'wanderer':    { src: 'img/wanderer.jpg',    credit: 'Caspar David Friedrich · Wanderer above the Sea of Fog · c. 1818', cap: 'The solitary figure above the mist — not wrong, just different.' },
     'monk-sea':    { src: 'img/monk-sea.jpg',    credit: 'Unknown · Monk Contemplating the Sea · 19th c.', cap: 'Stillness is the brain returning to its root.' },
@@ -271,6 +273,31 @@
     'liang-kai':     { src: 'img/liang-kai.jpg',     credit: 'Liang Kai · Sixth Patriarch Cutting Bamboo · 13th c.', cap: 'Knowledge in the hand, not the mouth.' },
     'whistler':      { src: 'img/whistler.jpg',      credit: 'Whistler · Nocturne in Black and Gold · c. 1875', cap: 'Beauty that exists only because it vanishes.' },
   };
+  const DEFAULT_IMAGE_BY_CHAPTER = {
+    6: 'monk-sea',
+    9: 'muji-room',
+    14: 'whistler',
+    20: 'wanderer',
+    23: 'hiroshige-rain',
+    30: 'hammershoi',
+    31: 'liang-kai',
+    47: 'hammershoi',
+    52: 'muji-room',
+    55: 'sotatsu',
+    67: 'muji-room',
+    70: 'wanderer',
+    76: 'hokusai-rainstorm',
+    78: 'hiroshige-rain',
+    80: 'sesshu',
+  };
+  const AVAILABLE_LOCAL_IMAGES = new Set([
+    'tsai/ch01-no-name.jpg',
+    'tsai/laozi-departure.jpg',
+    'tsai/laozi-studies.jpg',
+    'tsai/liezi-on-wind.jpg',
+    'tsai/phases-of-the-way.jpg',
+    'tsai/tsai-portrait.jpg',
+  ]);
 
   // ----- RENDER CHAPTERS ----------------------------------------
   function chapterHTML(ch, idx) {
@@ -292,10 +319,10 @@
     const note_th = ext.note_th || '';
     const note_cn = ext.note_cn || '';
     const sources = ext.sources || [];
-    const imgKey = ext.image;
+    const imgKey = ext.image || DEFAULT_IMAGE_BY_CHAPTER[ch.n];
     const img = imgKey ? IMG_MAP[imgKey] : null;
     const play = Array.isArray(ext.play) ? ext.play : [];
-    const tsai = ext.tsai && ext.tsai.src ? ext.tsai : null;
+    const tsai = ext.tsai && ext.tsai.src && AVAILABLE_LOCAL_IMAGES.has(ext.tsai.src) ? ext.tsai : null;
     const compare = Array.isArray(ext.compare) ? ext.compare : [];
 
     const su = SU[ch.n];
@@ -311,7 +338,7 @@
     const chStyle  = `--ch-hue: ${hueShift}deg; --ch-sat: ${satBoost}%;`;
 
     return `
-      <article class="chapter ${moodClass} ${scaleClass}" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}" data-scale="${scaleClass.replace('scale-','')}" style="${chStyle}">
+      <article class="chapter ${moodClass} ${scaleClass}${img ? ' image-spotlight' : ''}" id="ch${ch.n}" data-n="${ch.n}" data-mood="${ch.mood||'silence'}" data-scale="${scaleClass.replace('scale-','')}" style="${chStyle}">
         <div class="chapter-strip">
           <span class="cs-num">${toRoman(ch.n)} · 第 ${ch.n} 章 · <em class="cs-num-py">dì ${ch.n} zhāng</em></span>
           <button class="cs-cn cs-cn-link" data-char-jump="${ch.n}" title="Tap to learn this character" aria-label="Learn the key character for chapter ${ch.n}">
@@ -451,8 +478,12 @@
           <div class="reading-frame">
             <aside class="reading-aside">
               <p class="ra-q">${escapeHtml(ch.en || '').split('\n')[0]}</p>
-              <p>The chapter, restated.</p>
-              <p>What if X because Y, and research Z supports it?</p>
+              <p data-lang="en">The chapter, made practical.</p>
+              <p data-lang="th">บทนี้ในชีวิตจริง</p>
+              <p data-lang="cn">把这一章放回生活里</p>
+              <p data-lang="en">One idea, one example, no fog.</p>
+              <p data-lang="th">หนึ่งความคิด หนึ่งตัวอย่าง ไม่พร่าเลือน</p>
+              <p data-lang="cn">一个意思，一个例子，不绕雾。</p>
             </aside>
             <div>
               <div class="reading-body" data-lang="en">${escapeHtml(reading_en)}</div>
@@ -476,8 +507,12 @@
           <div class="reading-frame">
             <aside class="reading-aside">
               <p class="ra-q">${escapeHtml((ch.en||'').split('\n')[0] || '—')}</p>
-              <p>Dr. Non's reading.</p>
-              <p>The chapter, in modern English.</p>
+              <p data-lang="en">Dr. Non's reading.</p>
+              <p data-lang="th">คำอ่านของอาจารย์นน</p>
+              <p data-lang="cn">農博士的读法</p>
+              <p data-lang="en">Plain language first.</p>
+              <p data-lang="th">เริ่มจากภาษาที่เข้าใจง่าย</p>
+              <p data-lang="cn">先用明白的话。</p>
             </aside>
             <div>
               <div class="reading-body" data-lang="en" style="white-space: pre-line;">${escapeHtml(ch.en || '')}</div>
