@@ -486,9 +486,9 @@
               <p data-lang="cn">一个意思，一个例子，不绕雾。</p>
             </aside>
             <div>
-              <div class="reading-body" data-lang="en">${escapeHtml(reading_en)}</div>
-              <div class="reading-body" data-lang="cn" style="font-family: var(--cn-serif);">${escapeHtml(reading_cn)}</div>
-              <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">บทอ่านเชิงลึกภาษาไทยกำลังตามมา</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
+              <div class="reading-body" data-lang="en" lang="en">${escapeHtml(reading_en)}</div>
+              <div class="reading-body" data-lang="cn" lang="zh" style="font-family: var(--cn-serif);">${escapeHtml(reading_cn)}</div>
+              <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">ไทย · บทอ่านลึก · กำลังเขียน</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
               ${sources.length ? `
                 <div class="reading-sources">
                   <span class="rs-label">Where this comes from</span>
@@ -585,11 +585,13 @@
         ` : ''}
 
         <footer class="chapter-foot">
-          <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}>
+          <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}
+            aria-label="${prev ? 'Previous chapter: ' + prev.en_title : 'Beginning of book'}">
             ${prev ? '← ' + toRoman(prev.n) + ' · ' + (prev.cn_title||'') : '— Beginning —'}
           </button>
-          <span class="ch-marker">第 ${ch.n} 章 / 81</span>
-          <button data-jump="${next ? next.n : ''}" ${next ? '' : 'disabled'}>
+          <span class="ch-marker" aria-label="Chapter ${ch.n} of 81">第 ${ch.n} 章 / 81</span>
+          <button data-jump="${next ? next.n : ''}" ${next ? '' : 'disabled'}
+            aria-label="${next ? 'Next chapter: ' + next.en_title : 'End of book'}">
             ${next ? toRoman(next.n) + ' · ' + (next.cn_title||'') + ' →' : '— End —'}
           </button>
         </footer>
@@ -623,11 +625,15 @@
     document.body.classList.toggle('lang-en', L === 'en');
     document.body.classList.toggle('lang-th', L === 'th');
     document.body.classList.toggle('lang-cn', L === 'cn');
+    // Update <html lang> so screen readers announce the active language correctly
+    document.documentElement.lang = L === 'cn' ? 'zh' : L === 'th' ? 'th' : 'en';
     const toggle = $('#langToggle');
     if (toggle) {
       toggle.querySelectorAll('.lang-pill').forEach(pill => {
         pill.classList.toggle('is-active', pill.dataset.langCode === L);
       });
+      toggle.setAttribute('aria-label',
+        L === 'th' ? 'เปลี่ยนภาษา — ไทย' : L === 'cn' ? '切换语言 — 中文' : 'Switch language — English');
     }
     try { localStorage.setItem(KEY_LANG, L); } catch(e) {}
   }
