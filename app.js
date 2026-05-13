@@ -8,6 +8,8 @@
   const PY = window.PINYIN || {};
   const SU = window.SUMMARIES || {};
   const CHARS = window.CHARACTERS || {};
+  const CHARACTER_NOTES_CN = window.CHARACTER_NOTES_CN || {};
+  const CHARACTER_NOTES_TH = window.CHARACTER_NOTES_TH || {};
   const CLOSERS = window.CLOSERS || {};
   const NPM = window.NPM_ART || {};
   const PT = (window.PINYIN_TITLES || {});
@@ -175,6 +177,61 @@
   const $  = (s, c=document) => c.querySelector(s);
   const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
   const escapeHtml = (s) => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const tri = (en, th, cn, cls='') => {
+    const klass = cls ? ` class="${cls}"` : '';
+    return `<span${klass} data-lang="en">${escapeHtml(en)}</span><span${klass} data-lang="th">${escapeHtml(th || en)}</span><span${klass} data-lang="cn">${escapeHtml(cn || en)}</span>`;
+  };
+  const triText = (copy, cls='') => {
+    const text = typeof copy === 'string' ? { en: copy, th: copy, cn: copy } : (copy || {});
+    return tri(text.en || '', text.th || text.en || '', text.cn || text.en || '', cls);
+  };
+  const triBlock = (tag, cls, copy) => {
+    const text = typeof copy === 'string' ? { en: copy, th: copy, cn: copy } : (copy || {});
+    return `<${tag} class="${cls}" data-lang="en">${escapeHtml(text.en || '')}</${tag}>
+            <${tag} class="${cls}" data-lang="th">${escapeHtml(text.th || text.en || '')}</${tag}>
+            <${tag} class="${cls}" data-lang="cn">${escapeHtml(text.cn || text.en || '')}</${tag}>`;
+  };
+  const panelLabel = (num, en, th, cn, han, py) => `
+    <div class="panel-label">
+      <span class="pl-num">${escapeHtml(num)}</span>
+      ${tri(en, th, cn)}
+      <span class="pl-cn">${escapeHtml(han)} <em>${escapeHtml(py)}</em></span>
+    </div>`;
+  const uiButton = (key) => {
+    const copy = {
+      listen: ['Listen', 'ฟังภาษาจีน', '听中文'],
+      pause: ['Pause', 'พักเสียง', '暂停'],
+      watch: ['Watch strokes', 'ดูเส้นเขียน', '看笔顺'],
+      playing: ['Drawing...', 'กำลังเขียน...', '正在写...'],
+      try: ['Try writing', 'ลองเขียน', '试写'],
+      drawing: ['Your turn...', 'ถึงตาคุณ...', '轮到你写...'],
+      done: ['Well done', 'ทำได้ดี', '写得好'],
+      beginning: ['Beginning', 'จุดเริ่มต้น', '开始'],
+      end: ['End', 'จบบท', '结束'],
+    }[key] || ['', '', ''];
+    return tri(copy[0], copy[1], copy[2]);
+  };
+  const LEARNER_CHECKPOINTS = [
+    { until: 5, en: 'Language creates the first split.', th: 'ภาษาเริ่มต้นการแบ่งโลกเป็นคู่ตรงข้าม', cn: '语言先把世界切成对立面' },
+    { until: 10, en: 'Water wins by going low.', th: 'น้ำชนะเพราะยอมลงต่ำ', cn: '水因居下而得胜' },
+    { until: 15, en: 'Emptiness is part of the use.', th: 'ความว่างเปล่าคือส่วนหนึ่งของการใช้งาน', cn: '空处本身就是用途' },
+    { until: 20, en: 'Do less. Let the mud settle.', th: 'ทำให้น้อยลง แล้วรอให้โคลนตกตะกอน', cn: '少做一点，让泥自己沉下去' },
+    { until: 25, en: 'Sacred foolishness can see more.', th: 'ความโง่ศักดิ์สิทธิ์มองเห็นได้มากกว่า', cn: '有时“愚”比聪明看得更远' },
+    { until: 30, en: 'Tiptoe living collapses.', th: 'ชีวิตแบบเขย่งปลายเท้าอยู่ได้ไม่นาน', cn: '踮脚的人生站不久' },
+    { until: 35, en: 'The world resists being forced.', th: 'โลกต่อต้านคนที่พยายามฝืนมัน', cn: '世界最怕被硬拧' },
+    { until: 40, en: 'Know yourself before naming virtue.', th: 'รู้จักใจตัวเองก่อนนิยามความดี', cn: '先认识自己，再谈德行' },
+    { until: 45, en: 'Return is how the Way moves.', th: 'การย้อนกลับคือวิธีเคลื่อนไหวของเต๋า', cn: '回返就是道的运动' },
+    { until: 50, en: 'In study you add; in Dao you subtract.', th: 'หาความรู้คือการเพิ่ม แต่ปฏิบัติเต๋าคือการทิ้ง', cn: '求学是加法，入道是减法' },
+    { until: 55, en: 'Trust and inequality reveal a society.', th: 'ความไว้ใจและความเหลื่อมล้ำบอกอาการของสังคม', cn: '信任与贫富差距最能暴露社会病灶' },
+    { until: 60, en: 'Govern lightly. Do not over-stir.', th: 'บริหารเบามือ อย่าเขี่ยปลาตัวเล็กจนเละ', cn: '治大事要轻手，别把小鱼翻烂' },
+    { until: 65, en: 'Silence, infancy, and softness are strengths.', th: 'ความเงียบ ความเป็นทารก และความอ่อนโยนคือพลัง', cn: '安静、婴儿、柔软，本身就是力量' },
+    { until: 70, en: 'A thousand miles still begins below your feet.', th: 'หนทางหมื่นลี้ ยังเริ่มต้นที่ใต้ฝ่าเท้า', cn: '千里之行，仍从脚下开始' },
+    { until: 75, en: 'Mercy, thrift, and staying behind are not weakness.', th: 'เมตตา มัธยัสถ์ และการไม่แย่งนำ ไม่ใช่ความอ่อนแอ', cn: '慈、俭、不争先，并不软弱' },
+    { until: 81, en: 'Softness belongs to life; plain truth closes the book.', th: 'ความอ่อนโยนอยู่ฝ่ายชีวิต และคำจริงที่ไม่เพราะคือบทสรุปสุดท้าย', cn: '柔属于生命，而不好听的真话收束全书' },
+  ];
+  function checkpointFor(n) {
+    return LEARNER_CHECKPOINTS.find(cp => n <= cp.until) || LEARNER_CHECKPOINTS[LEARNER_CHECKPOINTS.length - 1];
+  }
 
   function toRoman(n) {
     const map = [['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]];
@@ -259,19 +316,19 @@
 
   // Image map for contemporary photos (light — reuse existing local art)
   const IMG_MAP = {
-    'blank-page':  { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: 'Before words.' },
-    'sotatsu':     { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: 'The world before explanation.' },
-    'river-stones': { src: 'img/hokusai-fuji.jpg', credit: 'Hokusai · Fine Wind, Clear Morning · c. 1830', cap: 'Water, doing its long careful sentence.' },
-    'muji-room':   { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: 'The void is the deliverable.' },
-    'sesshu':      { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: 'A few marks, and then enough.' },
-    'empty-desk':  { src: 'img/muqi.jpg',        credit: 'Muqi · Six Persimmons · 13th c.',                cap: 'Subtract until what remains is clearly working.' },
-    'wanderer':    { src: 'img/wanderer.jpg',    credit: 'Caspar David Friedrich · Wanderer above the Sea of Fog · c. 1818', cap: 'The solitary figure above the mist — not wrong, just different.' },
-    'monk-sea':    { src: 'img/monk-sea.jpg',    credit: 'Unknown · Monk Contemplating the Sea · 19th c.', cap: 'Stillness is the brain returning to its root.' },
-    'hiroshige-rain': { src: 'img/hiroshige-rain.jpg', credit: 'Hiroshige · Rain on a Bridge · c. 1857', cap: 'A gust does not last the morning.' },
-    'hammershoi':  { src: 'img/hammershoi.jpg', credit: 'Vilhelm Hammershøi · Empty Interior · c. 1900', cap: 'You can know the world without leaving the room.' },
-    'hokusai-rainstorm': { src: 'img/hokusai-rainstorm.jpg', credit: 'Hokusai · Rainstorm Beneath the Summit · c. 1830', cap: 'Water as force, not just reflection.' },
-    'liang-kai':     { src: 'img/liang-kai.jpg',     credit: 'Liang Kai · Sixth Patriarch Cutting Bamboo · 13th c.', cap: 'Knowledge in the hand, not the mouth.' },
-    'whistler':      { src: 'img/whistler.jpg',      credit: 'Whistler · Nocturne in Black and Gold · c. 1875', cap: 'Beauty that exists only because it vanishes.' },
+    'blank-page':  { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: { en:'Before words.', th:'ก่อนคำพูด', cn:'在语言之前。' } },
+    'sotatsu':     { src: 'img/sotatsu.jpg',     credit: 'Tawaraya Sōtatsu · Waves at Matsushima · 17th c.', cap: { en:'The world before explanation.', th:'โลกก่อนคำอธิบาย', cn:'解释之前的世界。' } },
+    'river-stones': { src: 'img/hokusai-fuji.jpg', credit: 'Hokusai · Fine Wind, Clear Morning · c. 1830', cap: { en:'Water, making its long sentence.', th:'น้ำกำลังเขียนประโยคยาวของมัน', cn:'水写着自己的长句。' } },
+    'muji-room':   { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: { en:'The void is the work.', th:'ความว่างคืองาน', cn:'空白就是作品。' } },
+    'sesshu':      { src: 'img/sesshu.jpg',      credit: 'Sesshū Tōyō · Splashed-Ink Landscape · 1495',    cap: { en:'A few marks. Enough.', th:'ไม่กี่รอย ก็พอแล้ว', cn:'几笔，已经足够。' } },
+    'empty-desk':  { src: 'img/muqi.jpg',        credit: 'Muqi · Six Persimmons · 13th c.',                cap: { en:'Subtract until it works.', th:'ลบออกจนมันทำงานได้', cn:'减到它开始有用。' } },
+    'wanderer':    { src: 'img/wanderer.jpg',    credit: 'Caspar David Friedrich · Wanderer above the Sea of Fog · c. 1818', cap: { en:'A person above mist, still unsure.', th:'คนหนึ่งเหนือหมอก ยังไม่แน่ใจ', cn:'人在雾上，仍不确定。' } },
+    'monk-sea':    { src: 'img/monk-sea.jpg',    credit: 'Unknown · Monk Contemplating the Sea · 19th c.', cap: { en:'Stillness returns to root.', th:'ความนิ่งกลับสู่ราก', cn:'静，返回根。' } },
+    'hiroshige-rain': { src: 'img/hiroshige-rain.jpg', credit: 'Hiroshige · Rain on a Bridge · c. 1857', cap: { en:'A gust does not last.', th:'ลมแรงอยู่ไม่นาน', cn:'疾风不会久留。' } },
+    'hammershoi':  { src: 'img/hammershoi.jpg', credit: 'Vilhelm Hammershøi · Empty Interior · c. 1900', cap: { en:'The room already knows.', th:'ห้องรู้อยู่แล้ว', cn:'房间已经知道。' } },
+    'hokusai-rainstorm': { src: 'img/hokusai-rainstorm.jpg', credit: 'Hokusai · Rainstorm Beneath the Summit · c. 1830', cap: { en:'Water as force.', th:'น้ำในฐานะแรง', cn:'水也是力量。' } },
+    'liang-kai':     { src: 'img/liang-kai.jpg',     credit: 'Liang Kai · Sixth Patriarch Cutting Bamboo · 13th c.', cap: { en:'Knowledge in the hand.', th:'ความรู้อยู่ในมือ', cn:'知识在手上。' } },
+    'whistler':      { src: 'img/whistler.jpg',      credit: 'Whistler · Nocturne in Black and Gold · c. 1875', cap: { en:'Beauty because it vanishes.', th:'งาม เพราะมันหายไป', cn:'因消逝而美。' } },
   };
   const DEFAULT_IMAGE_BY_CHAPTER = {
     6: 'monk-sea',
@@ -298,6 +355,50 @@
     'tsai/phases-of-the-way.jpg',
     'tsai/tsai-portrait.jpg',
   ]);
+  const NPM_COPY = {
+    1:  { meaning:{en:'A small temple sits in mist and high rocks.', th:'วัดเล็กอยู่กลางหมอกและผาสูง', cn:'小寺在雾和高岩之间。'}, relevance:{en:'The named temple is tiny. The unnamed mist carries the painting.', th:'วัดมีชื่อแต่เล็ก หมอกไร้ชื่อคือสิ่งที่พาภาพไป', cn:'有名的寺很小；无名的雾托住整幅画。'} },
+    4:  { meaning:{en:'Tiny travelers move under a huge mountain.', th:'นักเดินทางเล็กมากอยู่ใต้ภูเขาใหญ่', cn:'小旅人在大山下行走。'}, relevance:{en:'The empty silk gives the mountain its weight.', th:'ผ้าไหมที่ว่างทำให้ภูเขามีน้ำหนัก', cn:'空白的绢让山有重量。'} },
+    6:  { meaning:{en:'Mist holds valleys, streams, and a tiny bridge.', th:'หมอกโอบหุบเขา ลำธาร และสะพานเล็ก', cn:'雾托着山谷、溪水和小桥。'}, relevance:{en:'The valley is not a gap. It is where life gathers.', th:'หุบเขาไม่ใช่ช่องว่าง แต่คือที่ชีวิตมารวมตัว', cn:'山谷不是空缺，是生命聚集的地方。'} },
+    8:  { meaning:{en:'Water is barely drawn. You feel it in the blank space.', th:'น้ำแทบไม่ถูกวาด แต่รู้สึกได้ในที่ว่าง', cn:'水几乎没画出来，却在空白里被感到。'}, relevance:{en:'The painting flows around force, like the chapter.', th:'ภาพไหลอ้อมแรง เหมือนบทนี้', cn:'画绕过力量流动，像这一章。'} },
+    11: { meaning:{en:'Six fruit. Much empty paper.', th:'ผลไม้หกลูก กระดาษว่างจำนวนมาก', cn:'六个柿子，大量空白。'}, relevance:{en:'The space around them is the real lesson.', th:'ที่ว่างรอบผลไม้คือบทเรียนจริง', cn:'它们周围的空白才是真课。'} },
+    16: { meaning:{en:'Six trees stand in silence across water.', th:'ต้นไม้หกต้นยืนเงียบเหนือน้ำ', cn:'六棵树隔水静立。'}, relevance:{en:'Stillness is not empty. It is return.', th:'ความนิ่งไม่ใช่ความว่าง มันคือการกลับคืน', cn:'静不是空，是返回。'} },
+    17: { meaning:{en:'No hero stands in the center. The land simply works.', th:'ไม่มีวีรบุรุษกลางภาพ แผ่นดินทำงานเอง', cn:'画中没有主角，土地自己运作。'}, relevance:{en:'The best leader feels like this: present, almost unseen.', th:'ผู้นำที่ดีที่สุดก็แบบนี้ อยู่ แต่แทบไม่เห็น', cn:'最好的领导像这样：在场，却几乎不可见。'} },
+    25: { meaning:{en:'Mountains and river are watched, not invented.', th:'ภูเขาและแม่น้ำถูกสังเกต ไม่ได้ถูกประดิษฐ์', cn:'山水是被观看的，不是被发明的。'}, relevance:{en:'This is ziran: letting the thing be itself.', th:'นี่คือจื้อหราน ปล่อยให้สิ่งนั้นเป็นตัวเอง', cn:'这就是自然：让事物成为自己。'} },
+    48: { meaning:{en:'A sage appears in a few wet strokes.', th:'ปราชญ์ปรากฏจากหมึกเปียกไม่กี่เส้น', cn:'几笔湿墨，一个仙人出现。'}, relevance:{en:'The missing strokes are the practice.', th:'เส้นที่หายไปคือการฝึก', cn:'少掉的笔画就是修行。'} },
+    56: { meaning:{en:'Bamboo bends in a wind you cannot see.', th:'ไผ่โค้งในลมที่มองไม่เห็น', cn:'竹子在看不见的风里弯。'}, relevance:{en:'It says nothing. You still know the wind is there.', th:'มันไม่พูดอะไร แต่คุณรู้ว่าลมอยู่ตรงนั้น', cn:'它什么都不说，你仍知道风在那里。'} },
+    76: { meaning:{en:'Pines bend. Rock holds. Wind moves both.', th:'สนโค้ง หินตั้ง ลมขยับทั้งสอง', cn:'松树弯，岩石立，风推动两者。'}, relevance:{en:'Life stays flexible. What cannot bend is already near death.', th:'ชีวิตยืดหยุ่น สิ่งที่โค้งไม่ได้ใกล้ตายแล้ว', cn:'生命保持柔韧；不能弯的，已靠近死亡。'} },
+  };
+  function tsaiCaptionFor(ch, tsai) {
+    if (!tsai) return null;
+    const bySrc = {
+      'tsai/ch01-no-name.jpg': {
+        en: 'A doorway, a sage, and a name too small for the Way.',
+        th: 'ประตูหนึ่ง บัณฑิตหนึ่ง และชื่อที่เล็กเกินกว่าจะกักทางไว้',
+        cn: '一扇门，一位圣人，一个装不下道的名字。'
+      },
+      'tsai/laozi-studies.jpg': {
+        en: 'Laozi as archivist: the man of decrease first had to read too much.',
+        th: 'เหล่าจื๊อในฐานะบรรณารักษ์: คนที่สอนการลด ต้องเคยอ่านมากเกินไปก่อน',
+        cn: '作为档案官的老子：讲“减少”的人，先读过太多。'
+      },
+      'tsai/laozi-departure.jpg': {
+        en: 'The old teacher leaves. The gatekeeper receives the book.',
+        th: 'ครูเฒ่าจากไป ผู้รักษาด่านรับหนังสือไว้',
+        cn: '老教师离开，守关人留下书。'
+      },
+      'tsai/liezi-on-wind.jpg': {
+        en: 'Liezi rides the wind: the quietest Daoist master becomes the lightest.',
+        th: 'เลี่ยจื๊อขี่ลม: ปรมาจารย์เต๋าที่เงียบที่สุด กลายเป็นผู้เบาที่สุด',
+        cn: '列子御风：最安静的道家大师，变得最轻。'
+      },
+      'tsai/phases-of-the-way.jpg': {
+        en: 'The horse is the same horse. The rider has stopped fighting it.',
+        th: 'ม้ายังเป็นม้าตัวเดิม คนขี่เลิกสู้กับมันแล้ว',
+        cn: '马还是那匹马；骑者不再与它搏斗。'
+      },
+    };
+    return bySrc[tsai.src] || { en: tsai.caption || '', th: tsai.caption_th || tsai.caption || '', cn: tsai.caption_cn || tsai.caption || '' };
+  }
 
   // ----- RENDER CHAPTERS ----------------------------------------
   function chapterHTML(ch, idx) {
@@ -322,10 +423,12 @@
     const imgKey = ext.image || DEFAULT_IMAGE_BY_CHAPTER[ch.n];
     const img = imgKey ? IMG_MAP[imgKey] : null;
     const play = Array.isArray(ext.play) ? ext.play : [];
+    const jokes = Array.isArray(ext.jokes) ? ext.jokes : [];
     const tsai = ext.tsai && ext.tsai.src && AVAILABLE_LOCAL_IMAGES.has(ext.tsai.src) ? ext.tsai : null;
     const compare = Array.isArray(ext.compare) ? ext.compare : [];
 
     const su = SU[ch.n];
+    const checkpoint = checkpointFor(ch.n);
     const moodClass = moodClassFor(ch);
     const scaleClass = scaleClassFor(ch);
 
@@ -364,11 +467,20 @@
         </section>
         ` : ''}
 
+        ${checkpoint ? `
+        <section class="panel panel-checkpoint">
+          <div class="checkpoint-frame">
+            <p class="checkpoint-kicker">${tri('Checkpoint for learners', 'จุดเช็กอินสำหรับผู้เรียน', '给学习者的检查点')}</p>
+            <p class="checkpoint-main">${escapeHtml(checkpoint.th)}</p>
+            <p class="checkpoint-gloss" data-lang="en">${escapeHtml(checkpoint.en)}</p>
+            <p class="checkpoint-gloss" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(checkpoint.cn)}</p>
+          </div>
+        </section>
+        ` : ''}
+
         <!-- 01 ORIGIN -->
         <section class="panel panel-origin">
-          <div class="panel-label">
-            <span class="pl-num">01</span><span>Origin</span><span class="pl-cn">原文 <em>yuán wén</em></span>
-          </div>
+          ${panelLabel('01', 'Origin', 'ต้นฉบับ', '原文', '原文', 'yuán wén')}
           <header class="origin-head">
             <div class="origin-num-roman">${toRoman(ch.n)} · 第 ${ch.n} 章 · <em>dì ${ch.n} zhāng</em></div>
             ${tpy ? `<p class="origin-cn-title-py">${escapeHtml(tpy)}</p>` : ''}
@@ -380,7 +492,7 @@
             </p>
             <audio id="cn-audio-${ch.n}" preload="none" src="audio/ch${String(ch.n).padStart(2,'0')}-cn.mp3"></audio>
             <button class="cn-listen-btn" aria-label="Listen to the Chinese" data-ch="${ch.n}">
-              ▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; Listen to the Chinese
+              ▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}
             </button>
           </header>
           <div class="origin-stack">
@@ -390,14 +502,14 @@
 
         ${CHARS[ch.n] ? (() => {
           const c = CHARS[ch.n];
+          const cnNotes = CHARACTER_NOTES_CN[ch.n] || {};
+          const thNotes = CHARACTER_NOTES_TH[ch.n] || {};
           const hasStrokeGuide = Array.isArray(c.stroke_guide) && c.stroke_guide.length;
           const isSimple = c.strokes && c.strokes <= 7;
           return `
         <!-- CHARACTER OF THE CHAPTER · 字 -->
         <section class="panel panel-character" id="char-panel-${ch.n}">
-          <div class="panel-label">
-            <span class="pl-num">字</span><span>Character</span><span class="pl-cn">字 <em>zì</em></span>
-          </div>
+          ${panelLabel('字', 'Character', 'ตัวอักษร', '汉字', '字', 'zì')}
           <div class="character-frame">
             <div class="char-brush">
               ${c.strokes ? `<span class="char-stroke-count">${c.strokes} stroke${c.strokes === 1 ? '' : 's'}</span>` : ''}
@@ -408,32 +520,38 @@
               <div class="char-meaning">${escapeHtml(c.meaning)}</div>
               <div class="char-controls">
                 <button class="char-btn char-btn-animate" data-cn="${ch.n}" aria-label="Animate strokes for ${escapeHtml(c.char)}">
-                  ▶ Watch it draw
+                  ▶ ${uiButton('watch')}
                 </button>
-                ${isSimple ? `<button class="char-btn char-btn-quiz" data-cn="${ch.n}" aria-label="Quiz mode">✏ Try writing it</button>` : ''}
+                ${isSimple ? `<button class="char-btn char-btn-quiz" data-cn="${ch.n}" aria-label="Quiz mode">✏ ${uiButton('try')}</button>` : ''}
               </div>
             </div>
             <div class="char-detail">
               <p class="cd-label">
                 <span data-lang="en">Breakdown · 字源 <em>zì yuán</em></span>
                 <span data-lang="th" style="font-family:var(--th)">ที่มา · 字源 <em>zì yuán</em></span>
+                <span data-lang="cn" style="font-family:var(--cn-serif)">字源 <em>zì yuán</em></span>
               </p>
               <p class="cd-breakdown" data-lang="en">${escapeHtml(c.breakdown)}</p>
-              <p class="cd-breakdown" data-lang="th" style="font-family:var(--th)">${escapeHtml(c.breakdown_th || c.breakdown)}</p>
+              <p class="cd-breakdown" data-lang="th" style="font-family:var(--th)">${escapeHtml(thNotes.breakdown || c.breakdown_th || c.breakdown)}</p>
+              <p class="cd-breakdown" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(c.breakdown_cn || cnNotes.breakdown || c.breakdown)}</p>
               <p class="cd-label">
                 <span data-lang="en">Mnemonic · 記法 <em>jì fǎ</em></span>
                 <span data-lang="th" style="font-family:var(--th)">วิธีจำ · 記法 <em>jì fǎ</em></span>
+                <span data-lang="cn" style="font-family:var(--cn-serif)">记法 <em>jì fǎ</em></span>
               </p>
               <p class="cd-mnemonic" data-lang="en">${escapeHtml(c.mnemonic)}</p>
-              <p class="cd-mnemonic" data-lang="th" style="font-family:var(--th)">${escapeHtml(c.mnemonic_th || c.mnemonic)}</p>
+              <p class="cd-mnemonic" data-lang="th" style="font-family:var(--th)">${escapeHtml(thNotes.mnemonic || c.mnemonic_th || c.mnemonic)}</p>
+              <p class="cd-mnemonic" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(c.mnemonic_cn || cnNotes.mnemonic || c.mnemonic)}</p>
               <p class="cd-label">
                 <span data-lang="en">Why this character anchors the chapter</span>
                 <span data-lang="th" style="font-family:var(--th)">ทำไมตัวอักษรนี้จึงสำคัญในบทนี้</span>
+                <span data-lang="cn" style="font-family:var(--cn-serif)">为什么这个字支撑本章</span>
               </p>
               <p class="cd-pivot" data-lang="en">${escapeHtml(c.chapter_pivot)}</p>
-              <p class="cd-pivot" data-lang="th" style="font-family:var(--th)">${escapeHtml(c.chapter_pivot_th || c.chapter_pivot)}</p>
+              <p class="cd-pivot" data-lang="th" style="font-family:var(--th)">${escapeHtml(thNotes.chapter_pivot || c.chapter_pivot_th || c.chapter_pivot)}</p>
+              <p class="cd-pivot" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(c.chapter_pivot_cn || cnNotes.chapter_pivot || c.chapter_pivot)}</p>
               ${hasStrokeGuide ? `
-              <p class="cd-label">Stroke by stroke · 筆順 <em>bǐ shùn</em></p>
+              <p class="cd-label">${tri('Stroke by stroke', 'ทีละเส้น', '一笔一画')} · 筆順 <em>bǐ shùn</em></p>
               <ol class="stroke-guide">
                 ${c.stroke_guide.map(s => `
                   <li class="sg-step">
@@ -456,14 +574,12 @@
         ${tsai ? `
         <!-- TSAI CHIH-CHUNG CARTOON -->
         <section class="panel panel-tsai" data-tsai-host>
-          <div class="panel-label">
-            <span class="pl-num">畫</span><span>Tsai</span><span class="pl-cn">蔡志忠 <em>cài zhì zhōng</em></span>
-          </div>
+          ${panelLabel('畫', 'Tsai', 'ไช่จื๋อจง', '蔡志忠', '蔡志忠', 'cài zhì zhōng')}
           <figure class="tsai-frame">
             <div class="tsai-img-wrap">
               <img src="${escapeHtml(tsai.src)}" alt="${escapeHtml(tsai.caption || 'Tsai Chih-chung cartoon')}" loading="lazy" onerror="this.closest('[data-tsai-host]').classList.add('is-missing')">
             </div>
-            ${tsai.caption ? `<figcaption class="tsai-caption">${escapeHtml(tsai.caption)}</figcaption>` : ''}
+            ${tsai.caption ? `<figcaption class="tsai-caption">${triText(tsaiCaptionFor(ch, tsai))}</figcaption>` : ''}
             <p class="tsai-credit">${escapeHtml(tsai.credit || '蔡志忠 · Tsai Chih-chung')}</p>
           </figure>
         </section>
@@ -472,9 +588,7 @@
         ${reading_en ? `
         <!-- 02 READING -->
         <section class="panel panel-reading">
-          <div class="panel-label">
-            <span class="pl-num">02</span><span>Reading</span><span class="pl-cn">解讀 <em>jiě dú</em></span>
-          </div>
+          ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}
           <div class="reading-frame">
             <aside class="reading-aside">
               <p class="ra-q">${escapeHtml(ch.en || '').split('\n')[0]}</p>
@@ -491,7 +605,7 @@
               <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">ไทย · บทอ่านลึก · กำลังเขียน</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
               ${sources.length ? `
                 <div class="reading-sources">
-                  <span class="rs-label">Where this comes from</span>
+                  <span class="rs-label">${tri('Sources', 'แหล่งอ้างอิง', '来源')}</span>
                   <ul>${sources.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
                 </div>
               ` : ''}
@@ -501,9 +615,7 @@
         ` : `
         <!-- 02 READING (existing translation as reading) -->
         <section class="panel panel-reading">
-          <div class="panel-label">
-            <span class="pl-num">02</span><span>Reading</span><span class="pl-cn">解讀 <em>jiě dú</em></span>
-          </div>
+          ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}
           <div class="reading-frame">
             <aside class="reading-aside">
               <p class="ra-q">${escapeHtml((ch.en||'').split('\n')[0] || '—')}</p>
@@ -526,7 +638,7 @@
         ${img ? `
         <section class="panel-image">
           <div class="image-bg" style="background-image: url('${img.src}')"></div>
-          <div class="image-caption"><em>${escapeHtml(img.cap)}</em>${escapeHtml(img.credit)}</div>
+          <div class="image-caption"><em>${triText(img.cap)}</em>${escapeHtml(img.credit)}</div>
         </section>
         ` : ''}
 
@@ -536,9 +648,7 @@
           return `
         <!-- 畫 NPM CHINESE PAINTING -->
         <section class="panel panel-npm" data-npm-host>
-          <div class="panel-label">
-            <span class="pl-num">畫</span><span>Painting</span><span class="pl-cn">畫 <em>huà</em></span>
-          </div>
+          ${panelLabel('畫', 'Painting', 'ภาพเขียน', '绘画', '畫', 'huà')}
           <figure class="npm-frame">
             <div class="npm-img-wrap">
               <img src="${escapeHtml(a.src)}" alt="${escapeHtml(a.title_en)} by ${escapeHtml(a.artist)}" loading="lazy" onerror="this.closest('[data-npm-host]').classList.add('is-missing')">
@@ -547,11 +657,11 @@
               <p class="npm-title-cn">${escapeHtml(a.title_cn)} <em class="npm-title-py">${escapeHtml(a.title_py)}</em></p>
               <p class="npm-title-en"><em>${escapeHtml(a.title_en)}</em></p>
               <p class="npm-artist">${escapeHtml(a.artist)} · ${escapeHtml(a.dynasty)}</p>
-              <p class="npm-label">What you are looking at</p>
-              <p class="npm-meaning">${escapeHtml(a.meaning)}</p>
-              <p class="npm-label">Why it reads with this chapter</p>
-              <p class="npm-relevance">${escapeHtml(a.relevance)}</p>
-              <p class="npm-credit">Public domain · National Palace Museum 故宮博物院 · via Wikimedia Commons</p>
+              <p class="npm-label">${tri('What you see', 'คุณกำลังเห็นอะไร', '你看到什么')}</p>
+              ${triBlock('p', 'npm-meaning', (NPM_COPY[ch.n] && NPM_COPY[ch.n].meaning) || a.meaning)}
+              <p class="npm-label">${tri('Why this chapter', 'เกี่ยวกับบทนี้อย่างไร', '为什么配这一章')}</p>
+              ${triBlock('p', 'npm-relevance', (NPM_COPY[ch.n] && NPM_COPY[ch.n].relevance) || a.relevance)}
+              <p class="npm-credit">${tri('Public domain · National Palace Museum · Wikimedia Commons', 'สาธารณสมบัติ · พิพิธภัณฑ์กู้กง · Wikimedia Commons', '公有领域 · 故宫博物院 · Wikimedia Commons')}</p>
             </figcaption>
           </figure>
         </section>
@@ -561,9 +671,7 @@
         ${(note_en || note_th || note_cn) ? `
         <!-- 03 NOTE -->
         <section class="panel panel-note">
-          <div class="panel-label">
-            <span class="pl-num">03</span><span>Note</span><span class="pl-cn">注 <em>zhù</em></span>
-          </div>
+          ${panelLabel('03', 'Note', 'บันทึก', '注', '注', 'zhù')}
           <div class="note-frame">
             <p class="note-body" data-lang="en">${escapeHtml(note_en)}</p>
             <p class="note-body" data-lang="cn" style="font-family: var(--cn-serif); font-style: normal;">${escapeHtml(note_cn)}</p>
@@ -572,11 +680,51 @@
         </section>
         ` : ''}
 
+        ${jokes.length ? `
+        <section class="panel panel-play">
+          ${panelLabel('笑', 'Side Door', 'ทางขำเล็ก ๆ', '旁门小笑', '笑', 'xiào')}
+          <div class="play-frame">
+            ${jokes.map((j, jIdx) => `
+              <details class="play-details">
+                <summary class="play-summary">
+                  <span class="play-summary-mark">▸</span>
+                  <span class="play-summary-copy">
+                    ${triText({
+                      en: j.summary_en || j.title_en || `Daoist joke ${jIdx + 1}`,
+                      th: j.summary_th || j.title_th || j.summary_en || j.title_en || `Daoist joke ${jIdx + 1}`,
+                      cn: j.summary_cn || j.title_cn || j.summary_en || j.title_en || `Daoist joke ${jIdx + 1}`
+                    })}
+                  </span>
+                </summary>
+                <article class="play-card">
+                  ${j.tag ? `<span class="pc-tag">${escapeHtml(j.tag)}</span>` : ''}
+                  ${j.title_en || j.title_th || j.title_cn ? `<h3 class="pc-title">${triText({ en: j.title_en || '', th: j.title_th || j.title_en || '', cn: j.title_cn || j.title_en || '' })}</h3>` : ''}
+                  ${j.body_en || j.body_th || j.body_cn ? `
+                    <div class="pc-body-stack">
+                      <p class="pc-body" data-lang="en">${escapeHtml(j.body_en || '')}</p>
+                      <p class="pc-body" data-lang="th" style="font-family:var(--th)">${escapeHtml(j.body_th || j.body_en || '')}</p>
+                      <p class="pc-body" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(j.body_cn || j.body_en || '')}</p>
+                    </div>
+                  ` : ''}
+                  ${j.illustration && j.illustration.src ? `
+                    <figure class="play-figure">
+                      <img src="${escapeHtml(j.illustration.src)}" alt="${escapeHtml(j.illustration.alt || j.title_en || 'Daoist joke illustration')}" loading="lazy">
+                      ${j.illustration.cap ? `<figcaption class="play-figcaption">${triText(j.illustration.cap)}</figcaption>` : ''}
+                    </figure>
+                  ` : ''}
+                  ${j.cite ? `<span class="pc-cite">${escapeHtml(j.cite)}</span>` : ''}
+                </article>
+              </details>
+            `).join('')}
+          </div>
+        </section>
+        ` : ''}
+
         ${CLOSERS[ch.n] ? `
         <!-- 問 wèn — closing question -->
         <section class="panel panel-closer">
           <div class="closer-frame">
-            <p class="closer-kicker">問 <em>wèn</em> · A question for you, reader</p>
+            <p class="closer-kicker">問 <em>wèn</em> · ${tri('A question for you', 'คำถามสำหรับคุณ', '给你的问题')}</p>
             <p class="closer-q" data-lang="en">${escapeHtml(CLOSERS[ch.n].en || '')}</p>
             <p class="closer-q" data-lang="cn" style="font-family: var(--cn-serif);">${escapeHtml(CLOSERS[ch.n].cn || CLOSERS[ch.n].en || '')}</p>
             <p class="closer-q" data-lang="th">${escapeHtml(CLOSERS[ch.n].th || CLOSERS[ch.n].en || '')}</p>
@@ -587,12 +735,12 @@
         <footer class="chapter-foot">
           <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}
             aria-label="${prev ? 'Previous chapter: ' + prev.en_title : 'Beginning of book'}">
-            ${prev ? '← ' + toRoman(prev.n) + ' · ' + (prev.cn_title||'') : '— Beginning —'}
+            ${prev ? '← ' + toRoman(prev.n) + ' · ' + (prev.cn_title||'') : `— ${uiButton('beginning')} —`}
           </button>
           <span class="ch-marker" aria-label="Chapter ${ch.n} of 81">第 ${ch.n} 章 / 81</span>
           <button data-jump="${next ? next.n : ''}" ${next ? '' : 'disabled'}
             aria-label="${next ? 'Next chapter: ' + next.en_title : 'End of book'}">
-            ${next ? toRoman(next.n) + ' · ' + (next.cn_title||'') + ' →' : '— End —'}
+            ${next ? toRoman(next.n) + ' · ' + (next.cn_title||'') + ' →' : `— ${uiButton('end')} —`}
           </button>
         </footer>
       </article>
@@ -739,6 +887,77 @@
     openNotes(trigger.dataset.openNotes || 'about');
   });
 
+  // ----- DEEPWORK SUMMARY OPEN/CLOSE ---------------------------
+  const deepworkOverlay = $('#deepworkOverlay');
+  const deepworkBtn = $('#deepworkBtn');
+  const deepworkClose = $('#deepworkClose');
+  let deepworkHoldTimer = null;
+  let deepworkHoldStarted = 0;
+  let deepworkHoldRaf = null;
+
+  function resetDeepworkHold() {
+    if (!deepworkClose) return;
+    if (deepworkHoldTimer) {
+      clearTimeout(deepworkHoldTimer);
+      deepworkHoldTimer = null;
+    }
+    if (deepworkHoldRaf) {
+      cancelAnimationFrame(deepworkHoldRaf);
+      deepworkHoldRaf = null;
+    }
+    deepworkClose.classList.remove('is-holding');
+    deepworkClose.style.setProperty('--hold-pct', '0%');
+    const hint = $('.deepwork-close-hint', deepworkClose);
+    if (hint) hint.textContent = 'hold to leave';
+  }
+  function closeDeepwork() {
+    if (!deepworkOverlay) return;
+    resetDeepworkHold();
+    deepworkOverlay.classList.remove('open');
+    deepworkOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function openDeepwork() {
+    if (!deepworkOverlay) return;
+    closeNotes();
+    if (indexOverlay) indexOverlay.classList.remove('open');
+    if (indexScrim) indexScrim.classList.remove('show');
+    deepworkOverlay.classList.add('open');
+    deepworkOverlay.setAttribute('aria-hidden', 'false');
+    deepworkOverlay.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    resetDeepworkHold();
+  }
+  function tickDeepworkHold() {
+    if (!deepworkClose || !deepworkHoldStarted) return;
+    const elapsed = Date.now() - deepworkHoldStarted;
+    const pct = Math.min(100, (elapsed / 5000) * 100);
+    deepworkClose.style.setProperty('--hold-pct', pct + '%');
+    const hint = $('.deepwork-close-hint', deepworkClose);
+    if (hint) hint.textContent = elapsed >= 5000 ? 'leaving…' : `keep holding ${Math.max(1, Math.ceil((5000 - elapsed) / 1000))}s`;
+    if (elapsed < 5000) deepworkHoldRaf = requestAnimationFrame(tickDeepworkHold);
+  }
+  function startDeepworkHold(e) {
+    if (!deepworkClose) return;
+    e.preventDefault();
+    resetDeepworkHold();
+    deepworkHoldStarted = Date.now();
+    deepworkClose.classList.add('is-holding');
+    deepworkHoldTimer = setTimeout(closeDeepwork, 5000);
+    deepworkHoldRaf = requestAnimationFrame(tickDeepworkHold);
+  }
+  function stopDeepworkHold() {
+    deepworkHoldStarted = 0;
+    resetDeepworkHold();
+  }
+  if (deepworkBtn) deepworkBtn.addEventListener('click', openDeepwork);
+  if (deepworkClose) {
+    deepworkClose.addEventListener('pointerdown', startDeepworkHold);
+    deepworkClose.addEventListener('pointerup', stopDeepworkHold);
+    deepworkClose.addEventListener('pointerleave', stopDeepworkHold);
+    deepworkClose.addEventListener('pointercancel', stopDeepworkHold);
+  }
+
   // ----- INDEX OVERLAY OPEN/CLOSE -------------------------------
   const indexOverlay = $('#indexOverlay');
   const indexScrim   = $('#indexScrim');
@@ -853,10 +1072,25 @@
       e.preventDefault();
       if (notesOverlay && notesOverlay.classList.contains('open')) closeNotes();
       else openNotes();
+    } else if (e.key === 'm' || e.key === 'M') {
+      e.preventDefault();
+      if (deepworkOverlay && deepworkOverlay.classList.contains('open')) return;
+      openDeepwork();
     } else if (e.key === 'Escape') {
+      if (deepworkOverlay && deepworkOverlay.classList.contains('open')) {
+        resetDeepworkHold();
+        return;
+      }
       indexOverlay.classList.remove('open');
       indexScrim.classList.remove('show');
       closeNotes();
+    } else if (e.key === 'e' || e.key === 'E') {
+      e.preventDefault();
+      if (deepworkOverlay && deepworkOverlay.classList.contains('open')) {
+        resetDeepworkHold();
+      } else {
+        openDeepwork();
+      }
     } else if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
       e.preventDefault();
       $('#indexBtn').click();
@@ -926,7 +1160,7 @@
     if (animBtn) {
       const n = parseInt(animBtn.dataset.cn);
       const w = getWriter(n);
-      if (w) { w.animateCharacter(); animBtn.textContent = '▶ Playing…'; setTimeout(() => { animBtn.textContent = '▶ Watch it draw'; }, (CHARS[n]?.strokes || 8) * 700 + 1400); }
+      if (w) { w.animateCharacter(); animBtn.innerHTML = `▶ ${uiButton('playing')}`; setTimeout(() => { animBtn.innerHTML = `▶ ${uiButton('watch')}`; }, (CHARS[n]?.strokes || 8) * 700 + 1400); }
       return;
     }
     const quizBtn = e.target.closest('.char-btn-quiz');
@@ -934,8 +1168,8 @@
       const n = parseInt(quizBtn.dataset.cn);
       const w = getWriter(n);
       if (w) {
-        w.quiz({ onComplete: () => { quizBtn.textContent = '✓ Well done!'; setTimeout(() => quizBtn.textContent = '✏ Try writing it', 2000); } });
-        quizBtn.textContent = '✏ Drawing…';
+        w.quiz({ onComplete: () => { quizBtn.innerHTML = `✓ ${uiButton('done')}`; setTimeout(() => quizBtn.innerHTML = `✏ ${uiButton('try')}`, 2000); } });
+        quizBtn.innerHTML = `✏ ${uiButton('drawing')}`;
       }
       return;
     }
@@ -954,15 +1188,15 @@
       $$('audio[id^="cn-audio-"]').forEach(a => { if (!a.paused) a.pause(); });
       audio.play();
       btn.classList.add('is-playing');
-      btn.innerHTML = '▐▐ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; Pause';
+      btn.innerHTML = `▐▐ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('pause')}`;
       audio.onended = () => {
         btn.classList.remove('is-playing');
-        btn.innerHTML = '▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; Listen to the Chinese';
+        btn.innerHTML = `▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}`;
       };
     } else {
       audio.pause();
       btn.classList.remove('is-playing');
-      btn.innerHTML = '▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; Listen to the Chinese';
+      btn.innerHTML = `▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}`;
     }
   });
 

@@ -4804,3 +4804,180 @@ body.pinyin-off .index-list .ix-py { display: none; }
   .dw-inner { padding: 52px 4vw 32px; gap: 16px; }
   .dw-reveal-cn { letter-spacing: 8px; }
 }
+
+/* ============================================================
+   SELF TAB — 自述 zì shù · Non's spoken reflections
+   ============================================================ */
+.self-pane { display: none; }
+.self-pane.is-active { display: block; }
+.self-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 48px 6vw 80px;
+}
+.self-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--seal);
+  margin: 0 0 16px;
+}
+.self-title {
+  font-family: var(--display);
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+.self-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  line-height: 1.65;
+  color: var(--ink-fade);
+  max-width: 52ch;
+  margin: 0 0 56px;
+}
+.self-piece {
+  margin: 0 0 72px;
+  border-top: 1px solid var(--rule);
+  padding-top: 36px;
+}
+.sp-heading {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  margin: 0 0 28px;
+}
+.self-piece p {
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin: 0 0 22px;
+  max-width: 60ch;
+}
+.self-piece p em {
+  font-style: italic;
+}
+.sp-sig {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+  color: var(--ink-fade) !important;
+  margin-top: 40px !important;
+}
+
+/* ============================================================
+   CHAPTER VARIATION — MONUMENTAL SCALE-S (short lesson chapters)
+   Some scale-S chapters get a giant CN character layout when the
+   origin panel has only 1–2 lines of text (≤ ~40 Chinese chars)
+   ============================================================ */
+
+/* Giant character mode — triggered by .scale-s.mood-ink and .scale-s.mood-wabi
+   for haiku-length chapters: the origin text takes one third of the viewport */
+.chapter.scale-s .panel-origin .origin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.chapter.scale-s .origin-cn-title {
+  font-size: clamp(48px, 8vw, 108px);
+  letter-spacing: 8px;
+  margin-bottom: 6px;
+}
+/* Scale-S chapters: push the Chinese character line even bigger */
+.chapter.scale-s .cn-stack-char .cs-c,
+.chapter.scale-s .cn-stack-punct {
+  font-size: clamp(28px, 4.5vw, 48px);
+}
+
+/* ============================================================
+   MOOD ENHANCEMENTS — more dramatic treatments for select moods
+   ============================================================ */
+
+/* mood-cryptic: full cyberpunk — scanline overlay, neon palette */
+.chapter.mood-cryptic {
+  position: relative;
+}
+.chapter.mood-cryptic::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,.04) 2px,
+    rgba(0,0,0,.04) 4px
+  );
+}
+.chapter.mood-cryptic .panel-origin {
+  background: #0d1224;
+  color: #d4f5b5;
+}
+.chapter.mood-cryptic .origin-cn-title {
+  font-size: clamp(56px, 9vw, 120px);
+  letter-spacing: 12px;
+  color: #ff6ec7;
+  text-shadow: 0 0 40px rgba(255,110,199,.35), 0 0 80px rgba(180,51,96,.2);
+}
+.chapter.mood-cryptic .panel-label {
+  color: #d4f5b5;
+  border-bottom-color: rgba(212,245,181,.2);
+}
+.chapter.mood-cryptic .pl-num { color: #ff6ec7; }
+
+/* mood-mirror (ch81): full inversion, maximum drama */
+.chapter.mood-mirror .panel-origin .origin-cn-title {
+  font-size: clamp(64px, 10vw, 140px);
+  letter-spacing: 16px;
+  color: var(--paper);
+  text-shadow: none;
+}
+.chapter.mood-mirror .origin-num-roman {
+  font-size: clamp(14px, 2vw, 24px);
+  letter-spacing: .4em;
+  color: rgba(244,235,213,.5);
+}
+
+/* mood-pop (ch38 — the virtue decay chapter): bold editorial layout */
+.chapter.mood-pop .panel-origin {
+  background: var(--seal);
+  color: var(--paper);
+}
+.chapter.mood-pop .origin-cn-title {
+  color: var(--paper);
+  font-size: clamp(44px, 7vw, 96px);
+}
+.chapter.mood-pop .origin-en-title,
+.chapter.mood-pop .origin-th-title {
+  color: rgba(244,235,213,.8);
+}
+.chapter.mood-pop .cn-stack-char .cs-c { color: var(--paper); }
+.chapter.mood-pop .cn-stack-char .cs-py { color: rgba(244,235,213,.65) !important; }
+.chapter.mood-pop .panel-label { color: var(--paper); border-bottom-color: rgba(244,235,213,.25); }
+.chapter.mood-pop .pl-num { color: var(--paper); }
+
+/* mood-ink: maximally spare — pure void treatment */
+.chapter.mood-ink .panel-origin {
+  background: #000;
+}
+.chapter.mood-ink .origin-cn-title {
+  color: rgba(244,235,213,.85);
+  font-size: clamp(52px, 8.5vw, 112px);
+  letter-spacing: 14px;
+}
+.chapter.mood-ink .cn-stack-char .cs-c { color: rgba(244,235,213,.9); }
+.chapter.mood-ink .cn-stack-char .cs-py { color: rgba(244,235,213,.35) !important; }
+
+/* Keyboard shortcut visible in cover footer */
+.cover-instructions .cover-key-e::before { content: "E"; }
+
