@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
 
@@ -29,6 +29,9 @@
   <div class="topbar-tools">
     <button class="tool-btn pinyin-toggle is-on" id="pinyinToggle" title="Hide pinyin (P)" aria-label="Toggle pinyin" aria-pressed="true">
       <span class="pt-han">拼</span><span class="pt-roman">āē</span>
+    </button>
+    <button class="tool-btn deepwork-btn" id="deepworkBtn" title="5-minute emergency summary" aria-label="Open five-minute summary">
+      <span class="dw-short">5M</span>
     </button>
     <button class="tool-btn notes-btn" id="notesBtn" title="Dr Non's notes (N)" aria-label="Open notes">
       <span class="nb-han">注</span>
@@ -124,6 +127,138 @@
   </div>
 </section>
 
+<!-- ── DEEPWORK EMERGENCY SUMMARY ── -->
+<aside class="deepwork-overlay" id="deepworkOverlay" aria-hidden="true">
+  <div class="deepwork-shell">
+    <header class="deepwork-head">
+      <button class="deepwork-close" id="deepworkClose" aria-label="Hold five seconds to close summary">
+        <span class="deepwork-close-x">×</span>
+        <span class="deepwork-close-hint">hold to leave</span>
+      </button>
+      <p class="deepwork-exit-note">
+        Hold the exit button for 5 seconds to leave this room.
+      </p>
+      <p class="deepwork-kicker">五分鐘 <em>wǔ fēn zhōng</em> · Deepwork mode</p>
+      <h2 class="deepwork-title">สรุปคัมภีร์ เต้า เต๋อ จิง ฉบับอ่านง่ายที่สุดในสามโลก</h2>
+      <p class="deepwork-sub">ถ้ามีเวลาแค่ห้านาที ไม่ต้องวิ่งผ่าน 81 บท — อ่านทางลัดที่ยังสวยอยู่ทางนี้ก่อน</p>
+    </header>
+    <div class="deepwork-body">
+      <section class="dw-section dw-section--ox">
+        <div class="dw-copy">
+          <p>เปิดหนังสือมาหน้าแรก เล่าจื๊อก็เหมือนจะเล่นตลกกับเราเสียแล้ว เขาเปิดฉากด้วยประโยคสุดคลาสสิกที่ทำเอานักปรัชญาทั่วโลกเกาหัวว่า "เต๋าที่อธิบายได้ ไม่ใช่เต๋าที่แท้จริง"</p>
+          <p>คิดดูครับ คุณซื้อหนังสือคู่มือการใช้ชีวิตมาเล่มหนึ่ง แต่บรรทัดแรกคนเขียนบอกว่า "สิ่งที่ผมกำลังจะบอกคุณเนี่ย ถ้าคุณเข้าใจมันเป็นคำพูด แสดงว่ามันไม่ใช่ของจริงนะ"</p>
+          <p>อ้าว แล้วจะอ่านต่อยังไงล่ะทีนี้ แต่ความตลกร้ายนี้แหละคือแก่นแท้ของเรื่องทั้งหมดครับ เล่าจื๊อกำลังจะบอกเราว่า ความจริงสูงสุด หรือ "เต๋า" นั้น ยิ่งใหญ่และลึกซึ้งเกินกว่าที่ภาษามนุษย์อันแสนจะจำกัดของเราจะไปตีกรอบมันได้</p>
+          <p>การที่เราไปตั้งชื่อให้สิ่งต่างๆ คือจุดเริ่มต้นของการแบ่งแยก พอเราเรียกสิ่งนี้ว่า "สวย" อีกสิ่งจะกลายเป็น "ขี้เหร่" ทันที พอเรานิยามคำว่า "ดี" คำว่า "เลว" ก็จะโผล่ขึ้นมาเป็นเงาตามตัว โลกใบนี้ทำงานเป็นคู่ๆ เสมอ มีสั้นก็มียาว มีสูงก็มีต่ำ เหมือนเหรียญที่มีสองด้านเสมอ คุณจะเอาแต่หัวไม่เอาก้อยไม่ได้</p>
+          <p>ทีนี้ พอเราเข้าใจแล้วว่าโลกมันเต็มไปด้วยคู่ตรงข้าม สิ่งที่เล่าจื๊อแนะนำให้เราทำคืออะไร?</p>
+          <p class="dw-pull">คำตอบคือ "ไม่ต้องทำอะไร" หรือที่ในภาษาจีนเรียกว่า "อู๋เหวย" (Wu Wei)</p>
+          <p>แต่นี่ไม่ใช่ข้ออ้างให้นอนอืดอยู่บนโซฟาแล้วบอกแม่ว่า "ผมกำลังปฏิบัติธรรมอยู่" นะครับ การไม่กระทำในที่นี้ไม่ได้แปลว่าขี้เกียจ แต่มันคือการกระทำที่บริสุทธิ์และทรงพลังที่สุด</p>
+          <p>ลองนึกภาพนักกีฬาที่กำลังเข้าฝัก หรือศิลปินที่วาดรูปเพลินจนลืมเวลา ตอนนั้น "คนทำ" ได้หายไป เหลือแต่ "การกระทำ" ล้วนๆ นั่นแหละคือสภาวะที่เล่าจื๊อต้องการจะสื่อ</p>
+          <p>เขาบอกว่าจอมปราชญ์จะทำงานโดยไม่คาดหวังผลลัพธ์ ทำเสร็จแล้วก็ปล่อยวาง ลืมมันไปซะ เพราะถ้าคุณมัวแต่ยึดติดกับผลงาน คุณจะกลายเป็นนักโทษของสายตาคนอื่น การปล่อยวางนี่แหละที่จะทำให้ผลงานของคุณเป็นอมตะอย่างแท้จริง</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--water">
+        <div class="dw-copy">
+          <h3>0. หุ่นฟาง แม่ผู้ยิ่งใหญ่ และไอดอลที่ชื่อว่า "น้ำ"</h3>
+          <p>ขยับมาสู่เรื่องที่มักถูกเข้าใจผิดมากที่สุดเรื่องหนึ่งในคัมภีร์นี้ นั่นคือประโยคที่ว่า "ฟ้าดินมองสรรพสิ่งเหมือนหุ่นฟาง" ฟังดูโหดร้ายใช่ไหมครับ? แต่ประเด็นไม่ได้อยู่ที่ความโหดร้าย แต่อยู่ที่ "ความไม่ลำเอียง" ต่างหาก</p>
+          <p>จักรวาลนี้ไม่ได้เกลียดคุณ และก็ไม่ได้รักคุณเป็นพิเศษ จักรวาลแค่เป็นจักรวาล จอมปราชญ์ก็เช่นกัน ท่านต้อนรับทั้งคนบาปและนักบุญ เพราะท่านมองทะลุเปลือกนอกเข้าไปถึงแก่นว่า ทุกคนล้วนมาจากแหล่งกำเนิดเดียวกัน</p>
+          <p>เล่าจื๊อพาเราไปรู้จักกับ "แม่ผู้ยิ่งใหญ่" เต๋านั้นมีความเป็นหญิงสูงมาก มันคือความว่างเปล่าที่โอบอุ้มทุกสิ่ง เหมือนมดลูกของจักรวาลที่ให้กำเนิดโลกนับล้าน</p>
+          <p>และเพราะเต๋าไม่มีความต้องการของตัวเอง มันจึงดำรงอยู่ชั่วนิรันดร์ จอมปราชญ์จึงเลียนแบบเต๋าด้วยการ "อยู่ข้างหลัง" แต่กลับกลายเป็นผู้นำที่อยู่ "ข้างหน้า" นี่คือกลยุทธ์แบบยอมแพ้เพื่อชนะ</p>
+          <p class="dw-pull">แล้วอะไรล่ะที่เป็นตัวแทนของเต๋าได้ดีที่สุดในโลกวัตถุนี้? คำตอบคือ "น้ำ"</p>
+          <p>น้ำเลี้ยงดูสรรพสิ่งโดยไม่พยายามและไม่เรียกร้องบุญคุณ มันชอบไหลลงสู่ที่ต่ำ ซึ่งเป็นที่ที่มนุษย์ส่วนใหญ่รังเกียจ แต่น้ำก็ชนะทุกสิ่ง ความนุ่มนวลของน้ำชนะความแข็งกระด้างของหินได้เสมอ</p>
+          <p>จริงๆ แล้วเราทุกคนก็คือน้ำที่มีกล้ามเนื้อ เรากำเนิดมาจากน้ำคร่ำแห่งความรัก และควรใช้ชีวิตให้ลื่นไหลเหมือนน้ำ ไม่แข็งขืน ไม่ต่อต้าน</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--empty">
+        <div class="dw-copy">
+          <h3>1. ประโยชน์ของความว่างเปล่าและความน่ากลัวของความสำเร็จ</h3>
+          <p>เล่าจื๊อเตือนพวกบ้างานและพวกชอบสะสมว่า "เติมถ้วยให้เต็มปริ่ม น้ำก็หก" "ลับมีดให้คมกริบ เดี๋ยวก็ทื่อเร็ว" ยิ่งพยายามไขว่คว้าเงินทองและความปลอดภัย ใจคุณยิ่งไม่มีวันสงบ</p>
+          <p>คำแนะนำสั้นๆ แต่เจ็บจี๊ดคือ "ทำงานของคุณให้เสร็จ แล้วก็ถอยออกมา" แค่นั้นแหละคือหนทางสู่ความสงบ ไม่ต้องดราม่า ไม่ต้องรอเสียงปรบมือ</p>
+          <p>เล่าจื๊อชวนเรามอง "ความว่าง" ในมุมใหม่ ล้อเกวียนใช้การได้เพราะรูตรงกลาง หม้อใช้ได้เพราะช่องว่างข้างใน บ้านอยู่ได้เพราะพื้นที่ว่างภายใน</p>
+          <p class="dw-pull">เราทำงานกับสิ่งที่มีอยู่ แต่เราใช้ประโยชน์จากความไม่มี</p>
+          <p>พื้นที่ว่าง เวลาว่าง และใจที่ว่าง มีประโยชน์มหาศาล อย่าไปเติมมันจนแน่นเอี๊ยดซะหมด</p>
+          <p>และความสำเร็จก็อันตรายพอๆ กับความล้มเหลว เพราะความกลัวจะเสียความสำเร็จ หลอกหลอนเราไม่ต่างจากความกลัวจะล้มเหลว ทั้งความหวังและความกลัวเป็นปีศาจที่เกิดจากการยึดติดกับตัวตน</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--mud">
+        <div class="dw-copy">
+          <h3>2. รอให้โคลนตกตะกอน และสุดยอดผู้นำล่องหน</h3>
+          <p>เล่าจื๊อถามเราว่า "คุณมีความอดทนพอที่จะรอให้โคลนของคุณตกตะกอนจนน้ำใสไหม?" ใจเราก็เหมือนแก้วน้ำขุ่น คนส่วนใหญ่มักจะเอามือลงไปคน ยิ่งทำยิ่งขุ่น</p>
+          <p class="dw-pull">วิธีเดียวที่จะทำให้น้ำใสคือไม่ต้องทำอะไรเลย</p>
+          <p>แค่นั่งเฉยๆ รอให้ตะกอนนอนก้นไปเอง นี่คือสุดยอดเทคนิคการจัดการความเครียดแบบเต๋า คือปล่อยให้การกระทำที่ถูกต้องผุดขึ้นมาเองเมื่อถึงเวลาที่เหมาะสม</p>
+          <p>ในเรื่องการบริหาร เล่าจื๊อบอกว่าผู้นำที่ดีที่สุดคือผู้นำที่คนแทบไม่รู้ว่ามีตัวตนอยู่ เมื่อภารกิจสำเร็จ ผู้คนจะอุทานว่า "เฮ้ย พวกเราทำสำเร็จด้วยตัวเราเอง!"</p>
+          <p>นี่คือการบริหารแบบไว้ใจ ถ้าคุณไม่ไว้ใจคน เขาจะกลายเป็นคนที่ไม่น่าไว้ใจ มันคือจิตวิทยาแบบกระจกสะท้อนตรงๆ</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--fool">
+        <div class="dw-copy">
+          <h3>3. โยนความศักดิ์สิทธิ์ทิ้งไป แล้วมาเป็น "คนโง่" กันเถอะ</h3>
+          <p>เล่าจื๊อบอกว่า เมื่อไหร่ที่เต๋าอันยิ่งใหญ่ถูกลืม เมื่อนั้นแหละ "ความดี" และ "ความศรัทธา" ถึงจะโผล่หัวออกมา ในสังคมที่เป็นธรรมชาติจริงๆ คนเราจะทำดีต่อกันโดยไม่ต้องติดป้ายว่าเป็นความดี</p>
+          <p>พอสังคมเริ่มป่วย เราถึงต้องสร้างกฎศีลธรรมขึ้นมาควบคุม วิธีแก้ของเล่าจื๊อจึงสุดโต่งมาก: ทิ้งความศักดิ์สิทธิ์และภูมิปัญญาไปซะ แล้วคนจะมีความสุขขึ้นร้อยเท่า</p>
+          <p>เขาไม่ได้บอกให้เราเป็นคนเลว แต่บอกให้เราเลิกยึดติดกับ "เปลือก" ของความดี เลิกแสดงละครว่าเป็นคนดี แล้วกลับไปสู่ความเรียบง่ายที่แก่นแท้แทน</p>
+          <p class="dw-pull">การยอมเป็นคนโง่ในสายตาโลก คือการเป็นผู้รู้แจ้งในสายตาเต๋า</p>
+          <p>เมื่อคุณไม่มีกรอบความรู้มากั้น คุณก็พร้อมจะรับความจริงได้ทั้งหมด</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--mountain">
+        <div class="dw-copy">
+          <h3>4–5. เขย่งเท้าแล้วจะล้ม นักเดินทางผู้หลงทาง และครูของคนเลว</h3>
+          <p>เล่าจื๊อให้คาถาที่ฟังดูเหมือนแพ้ตลอดกาลแต่จริงๆ คือชนะขาดลอย: ถ้าอยากจะสมบูรณ์ ให้ยอมแหว่งวิ่น ถ้าอยากจะตรง ให้ยอมคดงอ ถ้าอยากได้รับทุกอย่าง ให้ยอมสละทุกสิ่ง</p>
+          <p>คนที่ยืนเขย่งปลายเท้าจะยืนได้ไม่นาน คนที่รีบวิ่งก้าวยาวๆ จะไปได้ไม่ไกล ยิ่งพยายามส่องไฟใส่ตัวเอง แสงในตัวก็ยิ่งดับลง</p>
+          <p>เล่าจื๊อบอกว่า "ความหนักคือรากฐานของความเบา" และ "ความสงบคือเจ้านายของความเคลื่อนไหว" คุณต้องมีจุดศูนย์ถ่วงภายใน ไม่อย่างนั้นความเร็วภายนอกจะพัดคุณหลุดจากราก</p>
+          <p>นักเดินทางที่ดีไม่มีแผนที่แน่นอน และไม่ได้มุ่งมั่นว่าจะต้องไปถึงปลายทาง ถ้าคุณมัวแต่ก้มดูแผนที่ คุณจะพลาดดอกไม้สวยๆ ข้างทางทั้งหมด</p>
+          <p class="dw-pull">คนดีคือครูของคนเลว และคนเลวคืองานของคนดี</p>
+          <p>อย่าไปรังเกียจคนแย่ๆ ที่เข้ามาในชีวิต เพราะพวกเขาคือบททดสอบที่ทำให้ความอดทนและเมตตาของเรากลายเป็นของจริง</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--state">
+        <div class="dw-copy">
+          <h3>6–11. อย่าหาทำ ถ้าอยากกู้โลก</h3>
+          <p>เล่าจื๊อฝากข้อความถึงพวก perfectionist และพวก savior complex ว่า "อยากจะปรับปรุงโลกเหรอ? ข้าไม่เห็นว่าจะทำได้เลย" โลกนี้ศักดิ์สิทธิ์และสมบูรณ์ในแบบของมันอยู่แล้ว ยิ่งจับยิ่งเละ ยิ่งแก้ยิ่งพัง</p>
+          <p>อาวุธคือเครื่องมือแห่งความกลัว ถ้าจำใจต้องรบแล้วชนะ ก็อย่าจัดงานฉลอง ชัยชนะจากการฆ่าฟันควรฉลองด้วยพิธีศพเท่านั้น</p>
+          <p>ถ้าอยากจะหดอะไรลง ต้องปล่อยให้มันขยายก่อน ถ้าอยากชนะของแข็ง ให้เรียนจากของอ่อน นี่คือกฎของน้ำ ลิ้นอยู่ทนกว่าฟันเพราะมันนุ่มกว่า</p>
+          <p>เล่าจื๊อแยก "ความฉลาด" ออกจาก "ปัญญา" การรู้ทันคนอื่นคือความฉลาด แต่การรู้ทันใจตัวเองคือปัญญา ถ้าคุณรวยแต่ไม่รู้จักพอ คุณก็ยังยากจนอยู่ดี</p>
+          <p>เมื่อสังคมสูญเสียเต๋า เราถึงต้องหันมาพึ่งศีลธรรมและพิธีกรรม พิธีกรรมจึงเป็นเพียงเปลือกนอกของศรัทธา และเป็นจุดเริ่มต้นของความวุ่นวาย</p>
+          <p>เล่าจื๊อด่าเศรษฐีและผู้มีอำนาจแบบไม่อ้อมค้อม: ถ้าราชสำนักสะอาดเอี่ยม แต่ไร่นารกร้างและยุ้งฉางว่างเปล่า นั่นไม่ใช่ผู้นำ นั่นคือหัวหน้าแก๊งโจร</p>
+          <p class="dw-pull">การปกครองประเทศใหญ่ ก็เหมือนทอดปลาตัวเล็ก อย่าไปแหย่มันมาก</p>
+          <p>ยิ่งมีกฎหมายมาก คนยิ่งเลว ยิ่งมีข้อห้ามมาก โจรยิ่งชุม การปกครองที่ดีที่สุดคือการปกครองแบบหลวมๆ ที่ทำให้คนสบายใจพอจะซื่อสัตย์กันเอง</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--child">
+        <div class="dw-copy">
+          <h3>12–14. ชมรมคนหุบปาก หนทางหมื่นลี้ และสามสมบัติสุดเชย</h3>
+          <p>"คนที่รู้จริงไม่พูด คนที่พูดมากไม่รู้จริง" เล่าจื๊อเปิดคอร์สสอนการสื่อสารด้วยการให้เราปิดปาก ลบเหลี่ยมคม และกลับไปกลมกลืนกับฝุ่นผง</p>
+          <p>เขายกย่องทารกว่าเป็นสุดยอดปรมาจารย์ กระดูกอ่อนแต่กำหมัดแน่น ร้องไห้ทั้งวันก็ไม่แหบ เพราะเขากลมกลืนกับธรรมชาติอย่างสมบูรณ์</p>
+          <p class="dw-pull">หนทางหมื่นลี้ เริ่มต้นที่ใต้ฝ่าเท้า</p>
+          <p>ต้นไม้ใหญ่เริ่มจากหน่อเล็กๆ หอสูงเริ่มจากก้อนดิน ความสำเร็จทั้งหมดเริ่มจากก้าวที่เล็กจนคนส่วนใหญ่ดูถูกมัน</p>
+          <p>ทะเลรับแม่น้ำทุกสายได้ เพราะมันอยู่ต่ำกว่า ถ้าอยากเป็นผู้นำคน คุณต้องเอาตัวเองไปไว้ข้างหลังและอยู่ข้างล่างพวกเขา</p>
+          <p>สมบัติสามชิ้นของเล่าจื๊อดูเชยในโลกทุนนิยม แต่จริงๆ คือของแรง: ความเมตตา ความมัธยัสถ์ และการไม่กล้าเป็นที่หนึ่งในโลก เพราะมีเมตตาจึงกล้าได้ เพราะประหยัดจึงใจกว้างได้ และเพราะไม่แย่งเป็นที่หนึ่ง จึงกลายเป็นผู้นำแท้จริงได้</p>
+        </div>
+      </section>
+
+      <section class="dw-section dw-section--soft">
+        <div class="dw-copy">
+          <h3>15–16. ความอ่อนโยนคือสาวกของชีวิต</h3>
+          <p>มนุษย์เกิดมาอ่อนนุ่ม แต่ตายไปแล้วแข็งทื่อ ต้นไม้เกิดมาอ่อนไหว แต่ตายไปแล้วแห้งกรอบ ดังนั้นความแข็งกระด้างคือสาวกของความตาย ส่วนความอ่อนโยนคือสาวกของชีวิต</p>
+          <p>ไม่มีอะไรในโลกอ่อนนุ่มไปกว่าน้ำ แต่ก็ไม่มีอะไรชนะของแข็งได้ดีไปกว่าน้ำ ทุกคนรู้ แต่มีน้อยคนจะใช้ชีวิตตามมันได้จริง</p>
+          <p>เต๋าทำงานเหมือนการง้างธนู ส่วนที่สูงไปก็กดลง ส่วนที่ต่ำไปก็ยกขึ้น มันเอาจากที่มีมากเกินไป ไปเติมให้ที่ขาดแคลน แต่มนุษย์มักทำตรงข้าม</p>
+          <p>ประเทศอุดมคติของเล่าจื๊อฟังดูฮิปสเตอร์มาก: บ้านเมืองเล็ก คนพอประมาณ มีเครื่องมือแต่ไม่ฟุ้งกับมัน มีอาหารง่ายๆ เสื้อผ้าธรรมดา และพอใจจะอยู่บ้านของตัวเอง</p>
+          <p class="dw-pull">คำจริงไม่เพราะ คำเพราะไม่จริง</p>
+          <p>พวกนักโต้วาทีหรือคนที่พูดสละสลวยมักไม่น่าเชื่อถือ ส่วนคนรู้จริงมักไม่เถียงใคร ยิ่งปราชญ์ช่วยคนอื่น เขายิ่งมี ยิ่งให้ เขายิ่งมั่งคั่ง เต๋าบำรุงเลี้ยงโดยไม่ทำร้าย ปราชญ์ทำงานโดยไม่แข่งขัน</p>
+          <p>และนี่คือทั้งหมดของ <em>เต้า เต๋อ จิง</em> ในมุมมองที่เข้าใจบ้าง ไม่เข้าใจบ้าง จากบทแรกที่บอกว่า "อธิบายไม่ได้" มาจนถึงบทสุดท้ายที่บอกว่า "ไอ้ที่พูดเพราะๆ น่ะโกหกทั้งนั้น"</p>
+          <p>จำไว้ว่า บางทีการ "ไม่ทำอะไรเลย" อาจเป็นการทำที่ยิ่งใหญ่ที่สุด และการยอมเป็น "คนโง่" อาจเป็นความฉลาดที่สุดที่คุณจะทำได้ในชาตินี้</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</aside>
+
 <!-- ── NOTES OVERLAY · 注 — tabs for About / Currents / In the Wild ── -->
 <aside class="notes-overlay" id="notesOverlay" aria-hidden="true">
   <div class="notes-shell">
@@ -218,8 +353,8 @@
 <section class="about notes-pane" id="about" data-pane="about">
   <div class="about-inner">
     <p class="about-kicker">識人 <em>shí rén</em> · Reading the Reader</p>
-    <h2 class="about-title">Eleven small things to know about the person who keeps re-reading this book.</h2>
-    <p class="about-blurb">Written in the voice the book has lent me. One person, three languages, eleven small notes. Read in any order — and if your eye goes to the Chinese first, that is exactly the right order.</p>
+    <h2 class="about-title">Fourteen small things to know about the person who keeps re-reading this book.</h2>
+    <p class="about-blurb">Written in the voice the book has lent me. One person, three languages, fourteen small notes — each paired with a line from the book that, when you stand at the right angle, is doing the same work as the note. Read in any order. If your eye goes to the Chinese first, that is exactly the right order.</p>
 
     <ol class="about-grid">
       <li class="about-stanza">
@@ -227,18 +362,42 @@
         <p class="as-cn">阿諾，泰人。其姓難寫，故名牌常斷行。</p>
         <p class="as-en">His name is Non. He is Thai. The surname does not fit on a name tag, so it usually breaks across two lines.</p>
         <p class="as-th">ชื่อนน เป็นคนไทย นามสกุลยาว เซ็นช่องไม่พอเสมอ จึงตัดบรรทัด</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 1 · 體道 · <em>tǐ dào</em></p>
+          <p class="aq-cn">名可名，非常名。</p>
+          <p class="aq-py">míng kě míng, fēi cháng míng</p>
+          <p class="aq-tr" data-lang="en">The name you can give is not the name.</p>
+          <p class="aq-tr" data-lang="th">ชื่อที่ตั้งได้ ไม่ใช่ชื่อจริง</p>
+          <p class="aq-tr" data-lang="cn">可以叫出来的名，就不是那永恒的名。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">二</span><span class="as-label">源 <em>yuán</em> · Source</span>
         <p class="as-cn">第二代泰生華僑，祖籍潮州。家中有汕頭話，亦有曼谷腔。</p>
         <p class="as-en">Second-generation Thai-born Chinese, ancestral home in Chaozhou (潮州). The house had Teochew at the table and Bangkok Thai at the door — never both at once.</p>
         <p class="as-th">รุ่นสองของลูกหลานคนจีนแต้จิ๋วในไทย — บรรพบุรุษมาจากเฉาโจว ในบ้านมีภาษาแต้จิ๋วบนโต๊ะอาหาร และภาษาไทยกรุงเทพที่หน้าประตู ไม่เคยอยู่พร้อมกัน</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 6 · 成象 · <em>chéng xiàng</em></p>
+          <p class="aq-cn">谷神不死，是謂玄牝。</p>
+          <p class="aq-py">gǔ shén bù sǐ, shì wèi xuán pìn</p>
+          <p class="aq-tr" data-lang="en">The valley spirit does not die — we call her the dark mother.</p>
+          <p class="aq-tr" data-lang="th">จิตวิญญาณแห่งหุบเขาไม่ตาย เราเรียกเธอว่ามารดามืด</p>
+          <p class="aq-tr" data-lang="cn">谷神不死，这就叫做玄牝。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">三</span><span class="as-label">學 <em>xué</em> · Study</span>
         <p class="as-cn">居波士頓十四年：麻省理工 Aga Khan 七年，哈佛人類學七年。後又於牛津修中國學碩士。</p>
         <p class="as-en">Fourteen years in Boston — seven at MIT (Aga Khan, architecture), seven at Harvard (anthropology). Then a Master's in Chinese Studies at Oxford, to finally read his ancestors in their own language.</p>
         <p class="as-th">อยู่บอสตันสิบสี่ปี — MIT (Aga Khan, สถาปัตย์) เจ็ดปี ฮาร์วาร์ด (มานุษยวิทยา) เจ็ดปี แล้วต่อปริญญาโท Chinese Studies ที่ออกซ์ฟอร์ด เพื่ออ่านบรรพบุรุษของตัวเองในภาษาของบรรพบุรุษเอง</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 64 · 守微 · <em>shǒu wēi</em></p>
+          <p class="aq-cn">九層之臺，起於累土。</p>
+          <p class="aq-py">jiǔ céng zhī tái, qǐ yú lěi tǔ</p>
+          <p class="aq-tr" data-lang="en">A nine-storey terrace rises from a heap of earth.</p>
+          <p class="aq-tr" data-lang="th">ระเบียงเก้าชั้นสูงขึ้นจากกองดิน</p>
+          <p class="aq-tr" data-lang="cn">九层高台，从一筐土开始堆起。</p>
+        </div>
       </li>
       <li class="about-stanza about-stanza--with-art">
         <span class="as-num">四</span><span class="as-label">師 <em>shī</em> · Teachers</span>
@@ -249,48 +408,157 @@
           <img src="tsai/tsai-portrait.jpg" alt="Tsai Chih-chung's signed Lao Tzu portrait, the chapter 1 calligraphy on his robe" loading="lazy" onerror="this.parentElement.style.display='none'">
           <figcaption>蔡志忠 · 老子像 · 1989. The opening line — <em>道可道，非常道</em> — is written down the master's robe.</figcaption>
         </figure>
+        <div class="about-quote">
+          <p class="aq-ref">CH 41 · 同異 · <em>tóng yì</em></p>
+          <p class="aq-cn">上士聞道，勤而行之。</p>
+          <p class="aq-py">shàng shì wén dào, qín ér xíng zhī</p>
+          <p class="aq-tr" data-lang="en">The best student hears the Way and gets to work.</p>
+          <p class="aq-tr" data-lang="th">ศิษย์ชั้นเอกได้ยินเรื่องทาง แล้วลงมือทำทันที</p>
+          <p class="aq-tr" data-lang="cn">最好的学生听到道，立刻动手去做。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">五</span><span class="as-label">行 <em>xíng</em> · Field</span>
         <p class="as-cn">居上海三年，在楊浦區。看一城十年中變了三次。</p>
         <p class="as-en">Three years in Shanghai, in Yangpu District. He watched a single city change three times in ten years.</p>
         <p class="as-th">เคยอยู่เซี่ยงไฮ้สามปี เขตหยางผู่ ได้เห็นเมืองหนึ่งเปลี่ยนสามครั้งในสิบปี</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 25 · 象元 · <em>xiàng yuán</em></p>
+          <p class="aq-cn">道法自然。</p>
+          <p class="aq-py">dào fǎ zì rán</p>
+          <p class="aq-tr" data-lang="en">The Way models itself on what is so of itself.</p>
+          <p class="aq-tr" data-lang="th">ทางเอาแบบจากสิ่งที่เป็นอยู่ตามธรรมชาติ</p>
+          <p class="aq-tr" data-lang="cn">道遵循的，就是事物本来的样子。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">六</span><span class="as-label">業 <em>yè</em> · Work</span>
         <p class="as-cn">為亞洲之城作圖。觀者以為見城。其實見筆觸。</p>
         <p class="as-en">He maps Asian cities for a living. People look at the maps and think they are seeing cities. They are seeing his brushstrokes.</p>
         <p class="as-th">ทำแผนที่เมืองในเอเชียเป็นอาชีพ คนเห็นแผนที่ คิดว่าเห็นเมือง — ที่เห็น คือรอยพู่กัน</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 32 · 聖德 · <em>shèng dé</em></p>
+          <p class="aq-cn">名亦既有，夫亦將知止。</p>
+          <p class="aq-py">míng yì jì yǒu, fū yì jiāng zhī zhǐ</p>
+          <p class="aq-tr" data-lang="en">Once names appear, know when to stop.</p>
+          <p class="aq-tr" data-lang="th">เมื่อชื่อปรากฏแล้ว ก็ต้องรู้จักหยุด</p>
+          <p class="aq-tr" data-lang="cn">名字一旦出现，就要知道在哪里停止。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">七</span><span class="as-label">教 <em>jiào</em> · Office</span>
         <p class="as-cn">任 depa 高級智慧城市顧問，泰國。官語沉重，故近年改寫小書。</p>
         <p class="as-en">Senior Smart City Expert at depa Thailand. The official register exhausts him, so recently he has been writing small books instead.</p>
         <p class="as-th">เป็นผู้เชี่ยวชาญอาวุโสสมาร์ทซิตี้ที่ depa ภาษาราชการล้า ระยะหลังจึงเขียนหนังสือเล็ก ๆ แทน</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 17 · 淳風 · <em>chún fēng</em></p>
+          <p class="aq-cn">太上，不知有之。</p>
+          <p class="aq-py">tài shàng, bù zhī yǒu zhī</p>
+          <p class="aq-tr" data-lang="en">Best leader: the people barely know they have one.</p>
+          <p class="aq-tr" data-lang="th">ผู้นำที่ดีที่สุด ประชาชนแทบไม่รู้ว่ามีอยู่</p>
+          <p class="aq-tr" data-lang="cn">最好的领导者，百姓只是知道他存在。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">八</span><span class="as-label">矛 <em>máo</em> · Contradiction</span>
         <p class="as-cn">學城市學，愛無路之野。語通四方，獨食。寫字甚多，又信沉默。</p>
         <p class="as-en">He studies cities and loves wilderness. Speaks four languages and eats alone. Writes constantly and trusts silence.</p>
         <p class="as-th">เรียนเรื่องเมือง รักป่าไร้ทาง พูดสี่ภาษา กินคนเดียว เขียนทุกวัน เชื่อความเงียบ</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 28 · 反樸 · <em>fǎn pǔ</em></p>
+          <p class="aq-cn">知其雄，守其雌。</p>
+          <p class="aq-py">zhī qí xióng, shǒu qí cí</p>
+          <p class="aq-tr" data-lang="en">Know the male. Hold the female.</p>
+          <p class="aq-tr" data-lang="th">รู้จักเพศชาย ถือเพศหญิงไว้</p>
+          <p class="aq-tr" data-lang="cn">知道阳刚的一面，安住于阴柔的一面。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">九</span><span class="as-label">讀 <em>dú</em> · Reading</span>
         <p class="as-cn">讀此書十遍以上，數篇過百。每讀必有新解，未必更易。</p>
         <p class="as-en">He has read this book more than ten times. Some chapters more than a hundred. They get clearer every time, and clearer is not the same as easier.</p>
         <p class="as-th">อ่านเล่มนี้สิบกว่าครั้ง บางบทเป็นร้อย ยิ่งอ่านยิ่งใส แต่ไม่เคยง่ายขึ้น</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 81 · 顯質 · <em>xiǎn zhì</em></p>
+          <p class="aq-cn">信言不美，美言不信。</p>
+          <p class="aq-py">xìn yán bù měi, měi yán bù xìn</p>
+          <p class="aq-tr" data-lang="en">True words are not beautiful. Beautiful words are not true.</p>
+          <p class="aq-tr" data-lang="th">คำจริงไม่งาม คำงามไม่จริง</p>
+          <p class="aq-tr" data-lang="cn">真实的话不动听，动听的话不真实。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">十</span><span class="as-label">譯 <em>yì</em> · Translation</span>
         <p class="as-cn">多譯失之文。此譯失之直，因之得之。</p>
         <p class="as-en">Most translations get lost in their own poetry. This one is lost on purpose in directness. That is how it finds.</p>
         <p class="as-th">ฉบับแปลส่วนใหญ่ติดในบทกวีของตัวเอง เล่มนี้ตั้งใจหลงในความตรง — ทางนั้นถึงพบ</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 56 · 玄德 · <em>xuán dé</em></p>
+          <p class="aq-cn">知者不言，言者不知。</p>
+          <p class="aq-py">zhī zhě bù yán, yán zhě bù zhī</p>
+          <p class="aq-tr" data-lang="en">Those who know don't speak. Those who speak don't know.</p>
+          <p class="aq-tr" data-lang="th">ผู้รู้ไม่พูด ผู้พูดไม่รู้</p>
+          <p class="aq-tr" data-lang="cn">知道的人不说，说的人不知道。</p>
+        </div>
       </li>
       <li class="about-stanza">
         <span class="as-num">十一</span><span class="as-label">終 <em>zhōng</em> · Closing</span>
         <p class="as-cn">非師徒之書。讀者譯，讀者議，讀者過。</p>
         <p class="as-en">This is not a master-and-student book. The reader translates. The reader argues. The reader walks past.</p>
         <p class="as-th">ไม่ใช่หนังสือศิษย์-อาจารย์ ผู้อ่านแปลเอง เถียงเอง เดินผ่านเอง</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 27 · 巧用 · <em>qiǎo yòng</em></p>
+          <p class="aq-cn">善行無轍跡。</p>
+          <p class="aq-py">shàn xíng wú zhé jì</p>
+          <p class="aq-tr" data-lang="en">Good walking leaves no track.</p>
+          <p class="aq-tr" data-lang="th">การเดินที่ดี ไม่ทิ้งร่องรอย</p>
+          <p class="aq-tr" data-lang="cn">善于走路的人，不留下车辙。</p>
+        </div>
+      </li>
+
+      <li class="about-stanza">
+        <span class="as-num">十二</span><span class="as-label">勳 <em>xūn</em> · Honors</span>
+        <p class="as-cn">2025 年 Tomorrow City 中國領袖獎。2024 年 Smart City Expo 全球領袖獎。獎乃滯後指標：表彰之事多年前已做，領獎者此時已略有尷尬。</p>
+        <p class="as-en">Tomorrow City China Leaders Award, 2025. Smart City Expo Global Leadership, 2024. Asian-Oceanian Best Project, 2024. Awards are a lagging indicator — they recognise work done several years ago by someone now slightly embarrassed about the award.</p>
+        <p class="as-th">รางวัล Tomorrow City China Leaders 2025 · รางวัล Smart City Expo Global Leadership 2024 · รางวัลโครงการดีเด่น Asian-Oceanian 2024 · รางวัลคือตัวชี้วัดที่ตามหลัง — มันยกย่องงานที่ทำไว้หลายปีก่อนหน้านี้ โดยคนที่ตอนนี้รู้สึกเขินกับรางวัลแล้ว</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 22 · 益謙 · <em>yì qiān</em></p>
+          <p class="aq-cn">夫唯不爭，故天下莫能與之爭。</p>
+          <p class="aq-py">fū wéi bù zhēng, gù tiān xià mò néng yǔ zhī zhēng</p>
+          <p class="aq-tr" data-lang="en">Because he does not contend, none in the world can contend with him.</p>
+          <p class="aq-tr" data-lang="th">เพราะเขาไม่แข่ง จึงไม่มีใครในโลกแข่งกับเขาได้</p>
+          <p class="aq-tr" data-lang="cn">正因为不争，所以天下没有人能跟他争。</p>
+        </div>
+      </li>
+
+      <li class="about-stanza">
+        <span class="as-num">十三</span><span class="as-label">廣 <em>guǎng</em> · Reach</span>
+        <p class="as-cn">於泰國七十七省作項目逾百二十。培訓官員五十餘人。發表主題演講百餘場。皆數字，非工作。工作在演講畢後之會議室裡。</p>
+        <p class="as-en">120+ projects across all 77 Thai provinces. 50+ government officials trained. 100+ keynotes. These are numbers, not work. The work happens in the rooms after the keynote ends.</p>
+        <p class="as-th">กว่า 120 โครงการ ใน 77 จังหวัดทั่วประเทศไทย อบรมข้าราชการกว่า 50 คน ปาฐกถาเปิดงานกว่า 100 ครั้ง สิ่งเหล่านี้คือตัวเลข ไม่ใช่งาน งานจริงเกิดในห้องประชุมหลังปาฐกถาจบ</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 9 · 運夷 · <em>yùn yí</em></p>
+          <p class="aq-cn">功成身退，天之道。</p>
+          <p class="aq-py">gōng chéng shēn tuì, tiān zhī dào</p>
+          <p class="aq-tr" data-lang="en">Finish the work. Step away. The way of heaven.</p>
+          <p class="aq-tr" data-lang="th">งานเสร็จ ก้าวออก นั่นคือวิถีของฟ้า</p>
+          <p class="aq-tr" data-lang="cn">功业完成就退身，这是天的道理。</p>
+        </div>
+      </li>
+
+      <li class="about-stanza">
+        <span class="as-num">十四</span><span class="as-label">徑 <em>jìng</em> · Trajectory</span>
+        <p class="as-cn">建築（KMITL 一等榮譽）→ 建築學（MIT, Aga Khan）→ 中國學（牛津）→ 人類學（哈佛）→ 智慧城市（depa）。一雙手，五種詞彙。回望似有計，當時並非。</p>
+        <p class="as-en">Architecture (KMITL, First Class Honours) → Architecture Studies (MIT, Aga Khan) → Modern Chinese Studies (Oxford) → Anthropology (Harvard) → Smart Cities (depa). Same hands. Five vocabularies. The path looks deliberate now. It was not.</p>
+        <p class="as-th">สถาปัตยกรรม (KMITL เกียรตินิยมอันดับหนึ่ง) → สถาปัตยกรรมศาสตร์ (MIT, Aga Khan) → จีนศึกษาสมัยใหม่ (Oxford) → มานุษยวิทยา (Harvard) → สมาร์ทซิตี้ (depa) มือคู่เดียว ห้าภาษา ดูเหมือนตั้งใจตอนนี้ ตอนนั้นไม่ใช่</p>
+        <div class="about-quote">
+          <p class="aq-ref">CH 28 · 反樸 · <em>fǎn pǔ</em></p>
+          <p class="aq-cn">樸散則為器。</p>
+          <p class="aq-py">pǔ sàn zé wéi qì</p>
+          <p class="aq-tr" data-lang="en">When the uncarved block is cut, it becomes instruments.</p>
+          <p class="aq-tr" data-lang="th">เมื่อไม้ที่ยังไม่แกะสลักถูกตัด มันกลายเป็นเครื่องมือ</p>
+          <p class="aq-tr" data-lang="cn">朴木一旦被切割，就成了各种器具。</p>
+        </div>
       </li>
     </ol>
 
@@ -301,16 +569,20 @@
 <!-- ── CURRENTS · 源流 — short history of where this book sits ── -->
 <section class="currents notes-pane" id="currents" data-pane="currents">
   <div class="currents-inner">
-    <p class="currents-kicker">源流 <em>yuán liú</em> · Currents of the Way</p>
-    <h2 class="currents-title">A short story of how this book got to you.</h2>
-    <p class="currents-blurb">Five quick scenes across 2,500 years. Sages arguing in muddy fields. A book carried west on a water buffalo. Indian monks arriving with words no Chinese had ever heard. Two traditions politely rewriting each other for a thousand years. And then your phone, in your hand, right now.</p>
+    <p class="currents-kicker">源流 <em>yuán liú</em> · <span data-lang="en">Currents of the Way</span><span data-lang="th" style="font-family:var(--th)">กระแสของทาง</span><span data-lang="cn" style="font-family:var(--cn-serif)">道之流</span></p>
+    <h2 class="currents-title"><span data-lang="en">A short story of how this book got to you.</span><span data-lang="th" style="font-family:var(--th)">เรื่องสั้น ๆ ของเส้นทางที่หนังสือเล่มนี้เดินทางมาถึงคุณ</span><span data-lang="cn" style="font-family:var(--cn-serif)">这本书是怎么走到你手上的——一个短故事。</span></h2>
+    <p class="currents-blurb" data-lang="en">Five quick scenes across 2,500 years. Sages arguing in muddy fields. A book carried west on a water buffalo. Indian monks arriving with words no Chinese had ever heard. Two traditions politely rewriting each other for a thousand years. And then your phone, in your hand, right now.</p>
+    <p class="currents-blurb" data-lang="th" style="font-family:var(--th)">ห้าฉากผ่าน 2,500 ปี นักปราชญ์เถียงกันในทุ่งโคลน หนังสือเล่มหนึ่งถูกแบกข้ามตะวันตกบนหลังควาย พระอินเดียมาถึงพร้อมคำที่คนจีนไม่เคยได้ยินมาก่อน สองประเพณีเขียนทับกันอย่างสุภาพยาวพันปี แล้วก็ถึงโทรศัพท์ของคุณ ในมือคุณ ตอนนี้</p>
+    <p class="currents-blurb" data-lang="cn" style="font-family:var(--cn-serif)">横跨2,500年的五个快镜头。圣人们在泥泞的田里争论。一本书被牛车驮去西边。印度僧人到达，带着汉人从未听过的词。两个传统礼貌地重写彼此一千年。然后是你的手机，在你手上，现在。</p>
 
     <ol class="currents-grid">
       <li class="era-card era-card--with-art">
         <p class="era-num">壹</p>
         <p class="era-date">8th – 3rd c. BCE</p>
         <h3 class="era-name"><span class="en-cn">春秋戰國 <em>chūn qiū zhàn guó</em></span><span class="en-en">Spring & Autumn · Warring States</span></h3>
-        <p class="era-body">The Hundred Schools. Confucius, Mozi, Yang Zhu, Zhuangzi, Han Feizi — all alive at roughly the same time, all arguing. Lao Tzu emerges in this conversation, not above it. The earliest physical Dao De Jing — the Guodian bamboo slips, c. 300 BCE — is older than Plato's Academy, younger than the Buddha by two centuries. The book is a participant in a debate, not a revelation.</p>
+        <p class="era-body" data-lang="en">The Hundred Schools. Confucius, Mozi, Yang Zhu, Zhuangzi, Han Feizi — all alive at roughly the same time, all arguing. Lao Tzu emerges in this conversation, not above it. The earliest physical Dao De Jing — the Guodian bamboo slips, c. 300 BCE — is older than Plato's Academy, younger than the Buddha by two centuries. The book is a participant in a debate, not a revelation.</p>
+        <p class="era-body" data-lang="th" style="font-family:var(--th)">ยุคร้อยสำนัก ขงจื๊อ มอจื๊อ หยางจู จวงจื่อ ฮั่นเฟยจื๊อ — มีชีวิตในช่วงใกล้กัน เถียงกันหมด เหล่าจื๊อโผล่ขึ้นมาในบทสนทนานี้ ไม่ใช่ลอยอยู่เหนือมัน เต้าเต๋อจิงรุ่นแรกที่หาเจอ — แผ่นไม้ไผ่กั๋วเตี้ยน ราว 300 ปีก่อนคริสตกาล — เก่ากว่าสำนักของเพลโต และอ่อนกว่าพระพุทธเจ้าสองศตวรรษ หนังสือเล่มนี้คือผู้ร่วมเถียง ไม่ใช่บทเปิดเผยจากเบื้องบน</p>
+        <p class="era-body" data-lang="cn" style="font-family:var(--cn-serif)">百家争鸣的时代。孔子、墨子、杨朱、庄子、韩非子——大致同时活着，互相争论。老子是在这场对话里冒出来的，不是漂浮在它之上。现存最早的《道德经》——郭店楚墓竹简，约公元前300年——比柏拉图的学园还古老，比释迦牟尼晚两百年。这本书是辩论的参与者，不是天降的启示。</p>
         <figure class="era-art">
           <img src="img/laozi-riding-ox-cma.jpg" alt="Chen Hongshou painting of Laozi riding an ox" loading="lazy" onerror="this.parentElement.style.display='none'">
           <figcaption>
@@ -325,33 +597,47 @@
         <p class="era-num">貳</p>
         <p class="era-date">206 BCE – 220 CE</p>
         <h3 class="era-name"><span class="en-cn">漢 <em>hàn</em></span><span class="en-en">Han Dynasty</span></h3>
-        <p class="era-body">Imperial syncretism. Daoism is canonised, Confucianism is institutionalised, and around 65 CE Buddhism arrives via the Silk Road. The Han Emperor Ming dreams of a "golden man," sends emissaries west; they return with the <em>Sutra in 42 Sections</em> on white horses. A foreign religion now sits inside a Chinese empire — and almost no one yet has the vocabulary for what it is teaching.</p>
+        <p class="era-body" data-lang="en">Imperial syncretism. Daoism is canonised, Confucianism is institutionalised, and around 65 CE Buddhism arrives via the Silk Road. The Han Emperor Ming dreams of a "golden man," sends emissaries west; they return with the <em>Sutra in 42 Sections</em> on white horses. A foreign religion now sits inside a Chinese empire — and almost no one yet has the vocabulary for what it is teaching.</p>
+        <p class="era-body" data-lang="th" style="font-family:var(--th)">ยุคจักรวรรดิหลอมความเชื่อ เต๋าถูกบัญญัติเป็นคัมภีร์ ขงจื๊อกลายเป็นสถาบัน และราว ค.ศ. 65 พุทธศาสนาเดินทางเข้ามาตามเส้นทางสายไหม ฮั่นหมิงตี้ฝันเห็น "คนทอง" จึงส่งทูตไปทางตะวันตก คณะนั้นกลับมาพร้อม <em>พระสูตร 42 บท</em> บนหลังม้าขาว ศาสนาต่างชาติได้นั่งอยู่ในจักรวรรดิจีน — และยังแทบไม่มีใครมีคำศัพท์อธิบายสิ่งที่ศาสนาใหม่นี้สอน</p>
+        <p class="era-body" data-lang="cn" style="font-family:var(--cn-serif)">帝国合流的时代。道家被列入经典，儒家被制度化，约公元65年佛教沿丝绸之路传入中国。汉明帝梦见"金人"，派使者西去；他们带回了用白马驮的《四十二章经》。一个外来宗教此时坐进了中华帝国——而几乎没有人有词汇可以描述它在教什么。</p>
       </li>
 
       <li class="era-card">
         <p class="era-num">叁</p>
         <p class="era-date">3rd – 4th c. CE</p>
         <h3 class="era-name"><span class="en-cn">格義 <em>gé yì</em></span><span class="en-en">The Translation Problem · Geyi</span></h3>
-        <p class="era-body">Sanskrit Buddhist concepts have no Chinese equivalent. <em>Sunyata</em> (emptiness)? <em>Dharma</em> (law-and-teaching)? <em>Nirvana</em>? Translators reach for the closest Chinese vocabulary they have — Daoist. The technique is called <strong>格義 (geyi) — "matching meanings."</strong> <em>Wu</em> (無, non-being) translates <em>sunyata</em>. <em>Dao</em> (道) translates <em>dharma</em>. The Daoist sage and the Buddhist arhat begin to look like cousins in Chinese. Wang Bi (王弼, 226–249 CE) writes the standard Dao De Jing commentary in this same period — reading Lao Tzu through Buddhist-tinted air without realising it.</p>
+        <p class="era-body" data-lang="en">Sanskrit Buddhist concepts have no Chinese equivalent. <em>Sunyata</em> (emptiness)? <em>Dharma</em> (law-and-teaching)? <em>Nirvana</em>? Translators reach for the closest Chinese vocabulary they have — Daoist. The technique is called <strong>格義 (geyi) — "matching meanings."</strong> <em>Wu</em> (無, non-being) translates <em>sunyata</em>. <em>Dao</em> (道) translates <em>dharma</em>. The Daoist sage and the Buddhist arhat begin to look like cousins in Chinese. Wang Bi (王弼, 226–249 CE) writes the standard Dao De Jing commentary in this same period — reading Lao Tzu through Buddhist-tinted air without realising it.</p>
+        <p class="era-body" data-lang="th" style="font-family:var(--th)">แนวคิดทางพุทธศาสนาจากภาษาสันสกฤตไม่มีคำเทียบในภาษาจีน <em>Sunyata</em> (ความว่าง)? <em>Dharma</em> (กฎและคำสอน)? <em>Nirvana</em>? นักแปลจึงคว้าคำที่ใกล้ที่สุดในภาษาจีนเท่าที่มี — คำของเต๋า เทคนิคนี้เรียกว่า <strong>格義 (geyi) — "จับคู่ความหมาย"</strong> <em>Wu</em> (無 ความไม่มี) แปล <em>sunyata</em> <em>Dao</em> (道) แปล <em>dharma</em> ในภาษาจีน นักปราชญ์เต๋ากับพระอรหันต์ของพุทธเริ่มดูเหมือนญาติพี่น้องกัน หวังปี้ (王弼, ค.ศ. 226–249) เขียนอรรถกถาเต้าเต๋อจิงฉบับมาตรฐานในยุคเดียวกัน — อ่านเหล่าจื๊อผ่านอากาศที่เจือสีพุทธโดยไม่รู้ตัว</p>
+        <p class="era-body" data-lang="cn" style="font-family:var(--cn-serif)">梵语佛教概念在汉语里没有对应词。<em>Sunyata</em>（空）？<em>Dharma</em>（法）？<em>Nirvana</em>（涅槃）？译者只能去找汉语里最接近的词——道家的词。这种做法叫做 <strong>格义——"匹配意思"</strong>。"无"翻译 sunyata，"道"翻译 dharma。汉语里的道家圣人和佛教阿罗汉开始看起来像表亲。王弼（226–249）在这同一时期写出标准的《道德经》注本——他在不自知的情况下，透过带着佛味的空气读老子。</p>
       </li>
 
       <li class="era-card">
         <p class="era-num">肆</p>
         <p class="era-date">6th – 10th c. CE</p>
         <h3 class="era-name"><span class="en-cn">大乘 <em>dà chéng</em> · 禪 <em>chán</em></span><span class="en-en">Mahayana &amp; Chan emerge</span></h3>
-        <p class="era-body">Indian Mahayana Buddhism flourishes in China precisely <em>because</em> Daoist vocabulary made it land. <em>Sunyata</em> arrives as 空 (kong, the empty), which Lao Tzu had already taught readers to value. The <strong>Chan school (禪 → Zen)</strong> crystallises this fusion: meditative simplicity, direct insight, distrust of words. This is Buddhism speaking with a Daoist accent — the dialect that would later carry to Korea (Seon), Japan (Zen), and Vietnam (Thiền). The Daoist vocabulary is altered in return: by Tang dynasty, "Dao" carries Buddhist resonances Lao Tzu never intended.</p>
+        <p class="era-body" data-lang="en">Indian Mahayana Buddhism flourishes in China precisely <em>because</em> Daoist vocabulary made it land. <em>Sunyata</em> arrives as 空 (kong, the empty), which Lao Tzu had already taught readers to value. The <strong>Chan school (禪 → Zen)</strong> crystallises this fusion: meditative simplicity, direct insight, distrust of words. This is Buddhism speaking with a Daoist accent — the dialect that would later carry to Korea (Seon), Japan (Zen), and Vietnam (Thiền). The Daoist vocabulary is altered in return: by Tang dynasty, "Dao" carries Buddhist resonances Lao Tzu never intended.</p>
+        <p class="era-body" data-lang="th" style="font-family:var(--th)">พุทธศาสนามหายานจากอินเดียเจริญรุ่งเรืองในจีนได้ <em>เพราะ</em> คำศัพท์เต๋าทำให้มันลงตัว <em>Sunyata</em> มาในรูปของ 空 (kong ความว่าง) ซึ่งเหล่าจื๊อสอนผู้อ่านให้เห็นคุณค่ามาแล้วก่อนหน้า <strong>สำนักฉาน (禪 → เซน)</strong> ตกผลึกการรวมตัวนี้ — ภาวนาเรียบง่าย หยั่งรู้ตรง ไม่ไว้ใจคำพูด นี่คือพุทธศาสนาที่พูดด้วยสำเนียงเต๋า — ภาษาถิ่นที่ต่อมาเดินทางสู่เกาหลี (ซอน) ญี่ปุ่น (เซน) และเวียดนาม (เถี่ยน) คำศัพท์เต๋าก็ถูกเปลี่ยนกลับ — พอถึงราชวงศ์ถัง คำว่า "ทาง" เริ่มมีกลิ่นของพุทธที่เหล่าจื๊อไม่เคยตั้งใจ</p>
+        <p class="era-body" data-lang="cn" style="font-family:var(--cn-serif)">印度大乘佛教在中国蓬勃发展，恰恰是<em>因为</em>道家词汇让它落地。Sunyata 以"空"的形式进入汉语——而老子早就教读者珍视这个字。<strong>禅宗（禪 → Zen）</strong>把这种融合结晶化：禅修的简朴、直接的洞见、对文字的不信任。这是带着道家口音的佛教——这个方言后来传到了韩国（禅 Seon）、日本（禅 Zen）和越南（Thiền）。道家词汇也被反向改变：到了唐代，"道"已经承载着老子从未打算过的佛教共鸣。</p>
       </li>
 
       <li class="era-card">
         <p class="era-num">伍</p>
         <p class="era-date">2026 CE</p>
         <h3 class="era-name"><span class="en-cn">今 <em>jīn</em></span><span class="en-en">Now · Reading on a Phone</span></h3>
-        <p class="era-body">The Dao De Jing you hold has been read for 2,400 years by Chinese minds shaped by Confucianism, Buddhism, neo-Confucianism, and modern materialism in turn. There is no "pure" reading. Each generation reads through the residue of every tradition that came before. The translator in this volume — a Thai-born, Chaozhou-descended, MIT-and-Harvard-trained, Oxford-Sinology-credentialed urban anthropologist — adds yet another layer. So do you. The book does not mind. It has absorbed bigger crowds than this.</p>
+        <p class="era-body" data-lang="en">The Dao De Jing you hold has been read for 2,400 years by Chinese minds shaped by Confucianism, Buddhism, neo-Confucianism, and modern materialism in turn. There is no "pure" reading. Each generation reads through the residue of every tradition that came before. The translator in this volume — a Thai-born, Chaozhou-descended, MIT-and-Harvard-trained, Oxford-Sinology-credentialed urban anthropologist — adds yet another layer. So do you. The book does not mind. It has absorbed bigger crowds than this.</p>
+        <p class="era-body" data-lang="th" style="font-family:var(--th)">เต้าเต๋อจิงที่คุณถืออยู่ ถูกอ่านโดยจิตจีนมา 2,400 ปี ที่ถูกหล่อหลอมโดยขงจื๊อ พุทธศาสนา ขงจื๊อใหม่ และวัตถุนิยมสมัยใหม่ ตามลำดับ ไม่มีการอ่านที่ "บริสุทธิ์" แต่ละรุ่นอ่านผ่านตะกอนของทุกประเพณีที่มาก่อน ผู้แปลในเล่มนี้ — คนเกิดในไทย เชื้อสายแต้จิ๋ว เรียน MIT และฮาร์วาร์ด มีปริญญาจีนวิทยาที่ออกซ์ฟอร์ด เป็นนักมานุษยวิทยาเมือง — เพิ่มอีกหนึ่งชั้น คุณก็เช่นกัน หนังสือเล่มนี้ไม่ถือ มันเคยซับฝูงชนที่ใหญ่กว่านี้มาแล้ว</p>
+        <p class="era-body" data-lang="cn" style="font-family:var(--cn-serif)">你手上的《道德经》已经被中国人读了2,400年，先后被儒家、佛教、新儒学、现代唯物主义塑形。没有"纯粹"的阅读。每一代都透过此前所有传统的残留来读。本卷的译者——泰国出生、潮州血统、MIT 和哈佛受训、牛津汉学背景的城市人类学家——又加了一层。你也加了一层。这本书不介意。它吸收过比这更大的人群。</p>
       </li>
     </ol>
 
-    <p class="currents-foot">
+    <p class="currents-foot" data-lang="en">
       The point of this map is the same point the book itself makes: <em>every reading is a translation, and translation is a kind of reading</em>. Daoism is not the pure thing that got contaminated by Buddhism; Mahayana is not the pure thing that got watered down by China. They are versions of each other, on the same paper.
+    </p>
+    <p class="currents-foot" data-lang="th" style="font-family:var(--th)">
+      ภาพรวมนี้พูดเรื่องเดียวกับที่หนังสือทั้งเล่มพูด: <em>ทุกการอ่านคือการแปล และการแปลคือการอ่านอย่างหนึ่ง</em> เต๋าไม่ใช่ของบริสุทธิ์ที่ถูกพุทธมาทำให้แปดเปื้อน มหายานไม่ใช่ของบริสุทธิ์ที่ถูกจีนทำให้เจือจาง ทั้งสองคือเวอร์ชันของกันและกัน บนกระดาษแผ่นเดียวกัน
+    </p>
+    <p class="currents-foot" data-lang="cn" style="font-family:var(--cn-serif)">
+      这张地图说的是这本书自己说的同一件事：<em>每一次阅读都是翻译，而翻译是一种阅读</em>。道家不是被佛教污染的纯净物；大乘也不是被中国稀释的纯净物。它们是彼此的不同版本，写在同一张纸上。
     </p>
   </div>
 </section>
@@ -516,8 +802,10 @@
 <script src="summaries.js?v=1"></script>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
 <script src="characters.js?v=3"></script>
+<script src="character_notes_cn.js?v=1"></script>
+<script src="character_notes_th.js?v=1"></script>
 <script src="closers.js?v=1"></script>
 <script src="npm_art.js?v=1"></script>
-<script src="app.js?v=20"></script>
+<script src="app.js?v=24"></script>
 </body>
 </html>

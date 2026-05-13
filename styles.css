@@ -1059,6 +1059,53 @@ body.lang-cn .summary-frame .su-th { display: none; }
   margin-bottom: 22px !important;
 }
 
+/* ============================================================
+   LEARNER CHECKPOINTS — distributed benchmark banners
+   ============================================================ */
+.panel-checkpoint {
+  background:
+    linear-gradient(135deg, rgba(168,51,50,.06), rgba(184,137,58,.08)),
+    var(--paper-soft);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: clamp(42px, 7vh, 84px) 6vw;
+}
+.checkpoint-frame {
+  max-width: 980px;
+  margin: 0 auto;
+}
+.checkpoint-kicker {
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.checkpoint-main {
+  margin: 0;
+  font-family: var(--th);
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.25;
+  color: var(--ink);
+  max-width: 22ch;
+}
+.checkpoint-gloss {
+  margin: 18px 0 0;
+  max-width: 44ch;
+  font-family: var(--reader);
+  font-size: clamp(17px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-fade);
+}
+body.lang-en .checkpoint-gloss[data-lang="cn"] { display: none; }
+body.lang-th .checkpoint-gloss[data-lang="en"] { display: none; }
+body.lang-th .checkpoint-gloss[data-lang="cn"] { display: none; }
+body.lang-cn .checkpoint-gloss[data-lang="en"] { display: none; }
+@media (max-width: 720px) {
+  .checkpoint-main { max-width: 100%; font-size: clamp(24px, 8vw, 38px); }
+}
+
 /* NPM artwork — break out of panels to feel full-width */
 .npm-img-wrap {
   padding: 0;
@@ -2458,11 +2505,50 @@ body.lang-cn .note-body[data-lang="th"] { display: none; }
   display: grid;
   gap: 20px;
 }
+.play-details {
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+.play-details:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+.play-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0 12px;
+  font-family: var(--display);
+  font-size: clamp(16px, 1.45vw, 19px);
+  color: var(--ink-soft);
+  transition: color .2s ease;
+}
+.play-summary::-webkit-details-marker { display: none; }
+.play-summary:hover { color: var(--ink); }
+.play-summary-mark {
+  width: 18px;
+  flex: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--gold);
+  text-align: center;
+  transition: transform .2s ease, color .2s ease;
+}
+.play-details[open] .play-summary-mark { transform: rotate(90deg); }
+.play-details[open] .play-summary .play-summary-mark { color: var(--seal); }
+.play-summary-copy {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .35em;
+}
 .play-card {
   border-left: 2px solid var(--gold);
   padding: 8px 0 8px 22px;
   position: relative;
 }
+.play-details:not([open]) .play-card { display: none; }
 .play-card .pc-tag {
   display: inline-block;
   font-family: var(--mono);
@@ -2492,6 +2578,29 @@ body.lang-cn .note-body[data-lang="th"] { display: none; }
 }
 .play-card .pc-body em { color: var(--seal); font-style: italic; }
 .play-card .pc-body strong { color: var(--ink); font-weight: 500; }
+.pc-body-stack { display: block; }
+body.lang-en .pc-body-stack .pc-body[data-lang="th"] { display: none; }
+body.lang-th .pc-body-stack .pc-body[data-lang="en"] { display: none; }
+body.lang-cn .pc-body-stack .pc-body[data-lang="en"] { display: none; }
+body.lang-cn .pc-body-stack .pc-body[data-lang="th"] { display: none; }
+.play-figure {
+  margin: 14px 0 0;
+  display: grid;
+  gap: 8px;
+}
+.play-figure img {
+  width: 100%;
+  max-width: 420px;
+  display: block;
+  border: 1px solid var(--rule);
+}
+.play-figcaption {
+  margin: 0;
+  font-family: var(--reader);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-fade);
+}
 .play-card .pc-cite {
   display: block;
   margin-top: 10px;
@@ -2604,6 +2713,74 @@ body.lang-cn .note-body[data-lang="th"] { display: none; }
   font-family: var(--th);
   font-size: 13px;
 }
+
+/* ── Dao De Jing quote callout — one per About stanza ─────────────────────
+   A small geometric block: hairline top border, mono chapter reference,
+   Chinese source line, pinyin underneath, then trilingual translation.
+   House style: no border-radius, no shadow, no gradient. */
+.about-quote {
+  margin: 22px 0 4px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--rule-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.about-quote .aq-ref {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  line-height: 1;
+}
+.about-quote .aq-ref em {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: .05em;
+  color: var(--ink-mute);
+}
+.about-quote .aq-cn {
+  margin: 2px 0 0;
+  font-family: var(--cn-serif);
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: var(--seal);
+  line-height: 1.4;
+}
+.about-quote .aq-py {
+  margin: 0;
+  font-family: var(--mono);
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--ink-mute);
+  line-height: 1.2;
+}
+.about-quote .aq-tr {
+  margin: 4px 0 0;
+  font-family: var(--display-body, "Cormorant Garamond"), serif;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.about-quote .aq-tr[data-lang="th"] {
+  font-family: var(--th);
+  font-style: normal;
+}
+.about-quote .aq-tr[data-lang="cn"] {
+  font-family: var(--cn-serif);
+  font-style: normal;
+}
+body.lang-en .about-quote .aq-tr[data-lang="th"],
+body.lang-en .about-quote .aq-tr[data-lang="cn"],
+body.lang-th .about-quote .aq-tr[data-lang="en"],
+body.lang-th .about-quote .aq-tr[data-lang="cn"],
+body.lang-cn .about-quote .aq-tr[data-lang="en"],
+body.lang-cn .about-quote .aq-tr[data-lang="th"] { display: none; }
+
 .about-stanza--with-art .as-art {
   grid-column: 1 / span 2;
   margin: 18px 0 0;
@@ -3045,6 +3222,186 @@ body.pinyin-off .prologue em.cs-py-sub,
 body.pinyin-off .prologue-arrow em,
 body.pinyin-off .prologue-kicker em,
 body.pinyin-off .prologue-title em { display: none; }
+
+/* ============================================================
+   DEEPWORK OVERLAY — 5 minute emergency reading room
+   ============================================================ */
+.deepwork-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: var(--gold);
+}
+.deepwork-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 230;
+  background: #11100d;
+  color: var(--paper);
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease, visibility 0s linear .35s;
+}
+.deepwork-overlay.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity .35s ease;
+}
+.deepwork-head {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  padding: 22px 6vw 18px;
+  background: rgba(17,16,13,.84);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(244,235,213,.12);
+}
+.deepwork-kicker {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.deepwork-exit-note {
+  margin: 0 96px 12px 0;
+  max-width: 34ch;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: rgba(244,235,213,.62);
+}
+.deepwork-title {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--th);
+  font-size: clamp(28px, 4vw, 54px);
+  line-height: 1.16;
+  color: var(--paper);
+}
+.deepwork-sub {
+  margin: 14px 0 0;
+  max-width: 52ch;
+  font-family: var(--th);
+  font-size: clamp(16px, 1.6vw, 21px);
+  line-height: 1.6;
+  color: rgba(244,235,213,.75);
+}
+.deepwork-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 76px;
+  height: 76px;
+  border-radius: 999px;
+  border: 1px solid rgba(244,235,213,.18);
+  background:
+    radial-gradient(circle at center, rgba(17,16,13,.95) 0 58%, transparent 59%),
+    conic-gradient(var(--seal) 0 var(--hold-pct, 0%), rgba(244,235,213,.12) 0 100%);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.deepwork-close:hover { border-color: rgba(244,235,213,.34); }
+.deepwork-close.is-holding { transform: scale(.985); }
+.deepwork-close-x {
+  display: block;
+  font-family: var(--mono);
+  font-size: 26px;
+  line-height: 1;
+}
+.deepwork-close-hint {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(244,235,213,.82);
+}
+.deepwork-body {
+  display: flex;
+  flex-direction: column;
+}
+.dw-section {
+  position: relative;
+  min-height: max(72vh, 620px);
+  display: flex;
+  align-items: end;
+  padding: clamp(72px, 10vh, 120px) 6vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.dw-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(17,16,13,.34) 0%, rgba(17,16,13,.52) 28%, rgba(17,16,13,.82) 100%);
+}
+.dw-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 70ch;
+}
+.dw-copy h3 {
+  margin: 0 0 20px;
+  font-family: var(--th);
+  font-size: clamp(24px, 2.8vw, 40px);
+  line-height: 1.25;
+  color: var(--paper);
+}
+.dw-copy p {
+  margin: 0 0 16px;
+  font-family: var(--th);
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.95;
+  color: rgba(244,235,213,.96);
+}
+.dw-copy .dw-pull {
+  margin: 26px 0;
+  max-width: 28ch;
+  font-size: clamp(24px, 2.7vw, 40px);
+  line-height: 1.4;
+  color: var(--gold);
+}
+.dw-section--ox { background-image: url('img/laozi-riding-ox-cma.jpg'); }
+.dw-section--water { background-image: url('img/hokusai-rainstorm.jpg'); }
+.dw-section--empty { background-image: url('img/muqi.jpg'); }
+.dw-section--mud { background-image: url('img/sesshu.jpg'); }
+.dw-section--fool { background-image: url('img/wanderer.jpg'); }
+.dw-section--mountain { background-image: url('img/hokusai-fuji.jpg'); }
+.dw-section--state { background-image: url('img/whistler.jpg'); }
+.dw-section--child { background-image: url('img/liang-kai.jpg'); }
+.dw-section--soft { background-image: url('img/monk-sea.jpg'); }
+@media (max-width: 720px) {
+  .deepwork-close {
+    width: 64px;
+    height: 64px;
+  }
+  .deepwork-exit-note {
+    margin-right: 84px;
+    max-width: 26ch;
+  }
+  .deepwork-title { max-width: none; padding-right: 84px; }
+  .dw-section {
+    min-height: 0;
+    padding-top: 96px;
+    padding-bottom: 72px;
+    align-items: end;
+  }
+  .dw-copy p { font-size: 18px; line-height: 1.82; }
+}
 
 /* ============================================================
    NOTES OVERLAY · 注 — Dr Non's optional notes, behind a tab system
