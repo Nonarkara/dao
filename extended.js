@@ -233,6 +233,29 @@ window.EXTENDED = {
       ,
         title_th: "น้ำไหลไปไหน?",
         body_th: "เดินหนึ่งช่วงตึก สังเกตทุกทิศทางที่น้ำจะไหลถ้าฝนตกบนถนนนี้ตอนนี้ ท่อระบาย ความลาดชัน รอยแตก จุดต่ำใกล้มุมถนน ข้อโต้แย้งของบทนี้คือคนฉลาดอ่านห้องแบบที่ถนนอ่านฝน — ทางนั้นมีอยู่แล้ว คุณแค่หยุดขวางมัน"}
+    ],
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one water joke.",
+        summary_th: "กดถ้าอยากได้มุกเรื่องน้ำหนึ่งมุก",
+        summary_cn: "想看一个水的笑话，就点开。",
+        title_en: "Water's career advice",
+        title_th: "คำแนะนำเรื่องงานจากน้ำ",
+        title_cn: "水的职业建议",
+        body_en: "A young stream asked an old river, “How do I become powerful?” The river said, “Take the lowest place in the valley and be patient. Everything else will eventually work for you.”",
+        body_th: "ลำธารหนุ่มถามแม่น้ำแก่ว่า “ทำอย่างไรถึงจะมีอำนาจ?” แม่น้ำตอบว่า “ไปอยู่ที่ต่ำที่สุดของหุบเขา แล้วรอ เดี๋ยวทุกอย่างจะไหลมาทำงานให้เอง”",
+        body_cn: "一条年轻的小溪问老河：“我怎么才能变得有力量？” 老河说：“先去谷底最低的地方，然后耐心一点。到最后，别的东西都会替你工作。”",
+        illustration: {
+          src: "img/hiroshige-rain.jpg",
+          alt: "Rain over a river",
+          cap: {
+            en: "Rain does not hold a meeting before going downhill.",
+            th: "ฝนไม่ต้องประชุมก่อนจะไหลลงที่ต่ำ",
+            cn: "雨下坡之前，不先开会。"
+          }
+        }
+      }
     ]
   },
 
@@ -338,6 +361,20 @@ window.EXTENDED = {
         body_th: "Slingerland ชี้ว่าความยืดหยุ่นแบบขงจื๊อและเต๋าต่างกัน ขงจื๊อโค้งเพราะกฎนั้นผิด ผู้ปฏิบัติเต๋าโค้งเพราะไม่มีกฎไหนถูกต้องตลอดกาล ผมเติบโตมาแบบ Confucian-adjacent และกำลังเรียนรู้ที่จะทิ้งมันผ่านคำสอนในบทนี้ มันค่อนข้างช้า",
         cite: "Slingerland · Effortless Action (2003)"
       }
+    ],
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one joke about bending.",
+        summary_th: "กดถ้าอยากได้มุกเรื่องการยอมโค้ง",
+        summary_cn: "想看一个关于弯下来的笑话，就点开。",
+        title_en: "After the storm",
+        title_th: "หลังพายุ",
+        title_cn: "风暴之后",
+        body_en: "The pine told the reed, “You should stand up straight.” The reed said, “I plan to. Tomorrow.” The next morning only the reed was available for comment.",
+        body_th: "สนพูดกับอ้อว่า “เธอควรยืนตรงหน่อยนะ” อ้อตอบว่า “ได้สิ พรุ่งนี้ค่อยยืน” เช้าวันถัดมา คนที่ยังให้สัมภาษณ์ได้มีแต่อ้อ",
+        body_cn: "松树对芦苇说：“你该站直一点。” 芦苇说：“会的，明天再直。” 第二天早上，还能接受采访的只有芦苇。"
+      }
     ]
   },
 
@@ -356,6 +393,7 @@ window.EXTENDED = {
   33: {
     direct: "Knowing others — wisdom.\nKnowing oneself — clarity.\nOvercoming others — strength.\nOvercoming oneself — power.\nKnowing what is enough — wealth.\nForcing oneself onward — willpower.\nNot losing one's place — endurance.\nDying without perishing — longevity.",
     reading: "What if 'knowing yourself is clarity' is not a moral claim but a measurement claim?\nMetacognition — knowing what you know and don't know — is the most reliably trainable skill in cognitive psychology. Dunning & Kruger (1999) showed the bottom quartile of any skill systematically over-rate themselves; the top quartile slightly under-rate. The fix is not more skill. The fix is calibration — exactly the chapter's 'clarity.'\nThe chapter's eight lines are a calibration ladder. Each pair contrasts an external metric (wisdom, strength, willpower, endurance) with an internal one (clarity, power, enough, longevity). The internal metric is harder. The internal metric is the actual game.",
+    reading_th: "ถ้า 'รู้จักตัวเองคือความกระจ่าง' ไม่ใช่การกล่าวอ้างทางศีลธรรม แต่เป็นการกล่าวอ้างทางการวัด?\nMetacognition — รู้ว่าตัวเองรู้อะไรและไม่รู้อะไร — คือทักษะที่ฝึกได้อย่างน่าเชื่อถือที่สุดในจิตวิทยาการรู้คิด Dunning & Kruger (1999) แสดงให้เห็นว่าไตรมาสล่างของทักษะใดก็ตามประเมินตัวเองสูงเกินจริงอย่างเป็นระบบ ส่วนไตรมาสบนประเมินต่ำกว่าเล็กน้อย วิธีแก้ไขไม่ใช่ทักษะที่มากขึ้น วิธีแก้ไขคือการสอบเทียบ — ซึ่งตรงพอดีกับคำว่า 'ความกระจ่าง' ของบทนี้\nแปดบรรทัดของบทคือบันไดการสอบเทียบ แต่ละคู่เปรียบเทียบตัวชี้วัดภายนอก (ปัญญา ความแข็งแกร่ง พลังเจตนา ความอดทน) กับตัวชี้วัดภายใน (ความกระจ่าง พลัง ความพอ อายุยืน) ตัวชี้วัดภายในยากกว่า และตัวชี้วัดภายในคือเกมจริง ผมใช้เวลาหลายปีศึกษาเมืองของคนอื่นอย่างแม่นยำ ก่อนที่จะสังเกตว่าผมแทบไม่รู้อะไรเกี่ยวกับแผนที่ของตัวเองเลย",
     reading_cn: "如果『自知者明』不是道德宣言，而是测量声明？\n\n元认知——知道你知道什么、不知道什么——是认知心理学中最可靠地可训练的技能。Dunning & Kruger（1999）显示，任何技能的底层四分之一都会系统性地高估自己；顶层四分之一则轻微低估。解决办法不是更多技能。解决办法是校准——正是这一章的『明』。\n\n这一章的八行是一个校准梯子。每一对对比一个外部指标（智、力、志、久）和一个内部指标（明、强、富、寿）。内部指标更难。内部指标才是真正的游戏。\n\n在中国，这个洞察有更古老的名称：「知人者智，自知者明」。北京故宫的日晷不是告诉皇帝别人在做什么，是告诉他时间在做什么——而时间对所有人一样。真正的权力不是知道别人的弱点，是知道自己的。",
     code: "// Dunning-Kruger calibration\ntype Skill = number;\ntype SelfEstimate = number;\n\nconst calibrated = (s: Skill, e: SelfEstimate) => Math.abs(s - e) < 5;\n\n// The top of any skill is the corner of the graph\n// where calibrated === true.",
     sources: [
@@ -385,6 +423,7 @@ window.EXTENDED = {
     note_cn: "我在曼谷 BTS 阿索克站附近见过一个自动扶梯，台阶之间的间隙已经被踩成了同一个深度。所有人的重心都落在同一个位置。那个位置最省力。但它也是最脆弱的——一旦某个台阶在那个位置断裂，整个系统就会记住这个弱点。\n\n老子没有说「扔掉扶梯」。他说：知道你在哪一级。中国的年轻人有个说法叫「躺平」。它不是放弃，是看见梯子之后的主动选择。老子说的「上德不德」——最高级的德甚至不知道自己有德——大概就是这个状态。",
     direct: "High virtue is not virtue — therefore it has virtue.\nLow virtue does not lose virtue — therefore has none.\nHigh virtue does not act, has nothing to act for.\nLow virtue acts, has things to act for.\nHigh benevolence acts, has nothing to act for.\nHigh righteousness acts, has things to act for.\nHigh ritual acts — and when none responds, rolls up sleeves and casts them out.\nThus: lose the way, and virtue follows;\nlose virtue, and benevolence follows;\nlose benevolence, and righteousness follows;\nlose righteousness, and ritual follows.\nNow ritual — the husk of loyalty and faith, and the head of disorder.\nForeknowledge — the flower of the way, and the start of folly.\nSo the great man dwells in thickness, not in thinness;\nin the fruit, not the flower.\nLeaves that, takes this.",
     reading: "What if the chapter is describing virtue signaling, two-and-a-half millennia early?\nGeoffrey Miller's research on costly signaling (The Mating Mind, 2000), Robin Hanson on hidden motives in everyday life (Elephant in the Brain, 2018), Jonathan Haidt on the moralizing machinery of group cohesion — they converge. Once a virtue becomes visible, it becomes an asset, and the asset crowds out the underlying behavior. The signal eats the substance.\nLao Tzu's ladder — way, virtue, benevolence, righteousness, ritual — is the order of decay. We are now somewhere on the ritual rung. We have brand guidelines. We have ESG reports. We have ethics committees. We have, in modern terms, very well-developed virtue signaling — and a corresponding decline of the underlying behavior the signals were originally tracking.",
+    reading_th: "ถ้าบทนี้กำลังอธิบาย virtue signaling ก่อนที่คำนั้นจะถูกประดิษฐ์ขึ้นสองพันห้าร้อยปี?\nงานวิจัยของ Geoffrey Miller เรื่อง costly signaling (The Mating Mind, 2000), Robin Hanson เรื่องแรงจูงใจที่ซ่อนในชีวิตประจำวัน (Elephant in the Brain, 2018), Jonathan Haidt เรื่องเครื่องจักรสร้างศีลธรรมของกลุ่ม — ทั้งหมดบรรจบกัน เมื่อคุณธรรมมองเห็นได้ มันกลายเป็นสินทรัพย์ และสินทรัพย์นั้นแย่งที่พฤติกรรมที่แท้จริง สัญญาณกลืนกินสาระ\nบันไดของเหล่าจื๊อ — ทาง คุณธรรม ความเมตตา ความถูกต้อง พิธีกรรม — คือลำดับการเสื่อมถอย เราอยู่บนขั้นพิธีกรรมในตอนนี้ เรามีแนวทางแบรนด์ รายงาน ESG คณะกรรมการจริยธรรม ในภาษาสมัยใหม่ เรามีการส่งสัญญาณคุณธรรมที่พัฒนาแล้วอย่างมาก — และพฤติกรรมที่แท้จริงซึ่งสัญญาณเหล่านั้นเดิมติดตามอยู่ กำลังเสื่อมลงไปด้วย เหล่าจื๊อไม่ได้บอกให้ทิ้งพิธีกรรม เขาบอกให้รู้ว่าคุณอยู่บนขั้นไหนของบันได",
     code: "type Stage = 'way' | 'virtue' | 'benevolence' | 'righteousness' | 'ritual';\n// Each stage is the signal of the previous, after the previous decayed.\n\nfunction decay(s: Stage): Stage {\n  const next: Record<Stage, Stage> = {\n    way: 'virtue', virtue: 'benevolence',\n    benevolence: 'righteousness',\n    righteousness: 'ritual',\n    ritual: 'ritual',  // terminal\n  };\n  return next[s];\n}",
     sources: [
       "Robin Hanson & Kevin Simler, The Elephant in the Brain (2018).",
@@ -519,6 +558,29 @@ window.EXTENDED = {
         body: "Next time you talk with someone you care about, notice when you are <strong>tracking the conversation</strong> versus <strong>composing your next sentence</strong>. The first is hot; the second is cold. Chapter 56's <em>those who know do not speak</em> isn't an instruction to shut up. It is an observation that hot listening looks like silence from outside, because composing has been cancelled.",
         body_th: "ครั้งต่อไปที่คุยกับคนที่คุณรัก สังเกตว่าคุณกำลัง ติดตามบทสนทนา หรือ เรียบเรียงคำตอบถัดไป อย่างไหน การฟัง hot ดูเหมือนความเงียบจากภายนอก เพราะการเรียบเรียงถูกยกเลิก"
       }
+    ],
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one quiet joke.",
+        summary_th: "กดถ้าอยากได้มุกเงียบ ๆ หนึ่งมุก",
+        summary_cn: "想看一个安静的笑话，就点开。",
+        title_en: "Masterclass",
+        title_th: "มาสเตอร์คลาส",
+        title_cn: "大师课",
+        body_en: "A student asked the master, “Why do wise people speak so little?” The master poured tea until it overflowed. The student shouted, “It's full!” The master said, “Good. Today you learned one thing without a lecture.”",
+        body_th: "ศิษย์ถามอาจารย์ว่า “ทำไมคนฉลาดถึงพูดน้อย?” อาจารย์รินชาจนล้น ศิษย์ร้องว่า “เต็มแล้ว!” อาจารย์ตอบว่า “ดี วันนี้เธอเรียนรู้อย่างหนึ่งได้โดยไม่ต้องฟังบรรยาย”",
+        body_cn: "学生问老师：“为什么聪明人话那么少？” 老师把茶一直倒到溢出来。学生喊：“满了！” 老师说：“很好。今天你学会了一件事，而且不用我讲课。”",
+        illustration: {
+          src: "img/liang-kai.jpg",
+          alt: "Liang Kai painting",
+          cap: {
+            en: "A good demonstration saves a long paragraph.",
+            th: "การสาธิตที่ดีช่วยประหยัดย่อหน้ายาว ๆ ได้มาก",
+            cn: "一次好的示范，省掉一大段解释。"
+          }
+        }
+      }
     ]
   },
 
@@ -599,6 +661,29 @@ window.EXTENDED = {
         body: "Pick today's most confident headline — yours, your boss's, the news's. Write its exact opposite as a single sentence. Sit with it for one full minute before deciding which is closer to the truth. The chapter's claim is that, on average, the reversal is closer 30 to 40 percent of the time. The trick is being honest about which 30 percent.",
         body_th: "หยิบหัวข้อข่าวที่มั่นใจที่สุดของวันนี้ เขียนตรงข้ามเป๊ะเป็นประโยคเดียว นั่งอยู่กับมันหนึ่งนาทีเต็มก่อนตัดสินใจว่าอันไหนใกล้ความจริงกว่า โดยเฉลี่ยแล้วการพลิกกลับนั้นใกล้กว่า 30 ถึง 40 เปอร์เซ็นต์ของเวลา"
       }
+    ],
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one weak-water joke.",
+        summary_th: "กดถ้าอยากได้มุกเรื่องน้ำอ่อนแอ",
+        summary_cn: "想看一个“弱水”的笑话，就点开。",
+        title_en: "The argument",
+        title_th: "การโต้เถียง",
+        title_cn: "这场争论",
+        body_en: "The stone told the water, “You'll never win. You don't even hit back.” A thousand years later the water still said nothing. The canyon answered for it.",
+        body_th: "ก้อนหินบอกน้ำว่า “เธอไม่มีวันชนะหรอก เธอยังไม่สวนกลับเลย” ผ่านไปพันปี น้ำก็ยังไม่ตอบ แต่หุบผาตอบแทนให้เรียบร้อยแล้ว",
+        body_cn: "石头对水说：“你赢不了，你连还手都不会。” 一千年后，水还是没说话。峡谷替它回答了。",
+        illustration: {
+          src: "img/hokusai-rainstorm.jpg",
+          alt: "Rainstorm over water and rock",
+          cap: {
+            en: "Water is patient enough to outsource the punchline to geology.",
+            th: "น้ำอดทนพอจะจ้างธรณีวิทยามาเป็นคนปล่อยมุกแทน",
+            cn: "水很有耐心，把包袱交给地质学来抖。"
+          }
+        }
+      }
     ]
   },
 
@@ -657,7 +742,22 @@ window.EXTENDED = {
   21: { code: "// Virtue follows the way\ntype Virtue<T extends Way> = T extends infer V ? V : never;\n// Definition tracks the substrate, never overrides it." },
   23: { code: "// Wind, rain, words — all bounded\nconst wind  = ({ duration }: Storm) => duration < '1 morning';\nconst words = (n: number) => n < 100 || 'exhausted';",
     image: "hiroshige-rain" },
-  24: { code: "type Tiptoe = { stable: false };\nconst stand = (height: number): boolean =>\n  height === 0;     // anything else collapses" },
+  24: { code: "type Tiptoe = { stable: false };\nconst stand = (height: number): boolean =>\n  height === 0;     // anything else collapses",
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one joke about tiptoes.",
+        summary_th: "กดถ้าอยากได้มุกเรื่องการเขย่ง",
+        summary_cn: "想看一个关于踮脚的笑话，就点开。",
+        title_en: "The leadership technique",
+        title_th: "เทคนิคความเป็นผู้นำ",
+        title_cn: "领导术",
+        body_en: "A man spent all day standing on tiptoe so people would look up to him. By evening they did. They were checking whether he was about to fall.",
+        body_th: "ชายคนหนึ่งเขย่งทั้งวันเพื่อให้คนอื่นเงยหน้ามองเขา ตอนเย็นทุกคนมองจริง ๆ แต่เขามองเพราะอยากรู้ว่าเขาจะล้มเมื่อไร",
+        body_cn: "有个人整天踮着脚，好让别人仰头看他。到了傍晚，大家果然都在看他。因为他们想知道他什么时候会摔下来。"
+      }
+    ]
+  },
   26: { code: "// Heavy is the root of light\nconst heavy = { stable: true,  visible: false };\nconst light = { stable: false, visible: true  };\n// The light at the window kills the cart." },
   27: { code: "// Good work leaves no track\nfunction walk(path: Path): Trace {\n  return null;     // good walking\n}" },
   28: { code: "// Three triplets\ntype Knew = 'male'  | 'white' | 'glory';\ntype Held = 'female'| 'black' | 'shame';\n// Know the first. Live in the second." },
@@ -671,7 +771,22 @@ window.EXTENDED = {
   39: { code: "// The One — six manifestations\nconst sky    = clear(One);\nconst earth  = steady(One);\nconst spirit = alert(One);\nconst valley = full(One);\nconst things = alive(One);\nconst king   = standard(One);\n// Drop the One, all six fail simultaneously." },
   41: { code: "// Three students\ntype Reaction = 'work' | 'half-believe' | 'laugh';\nconst best:    Reaction = 'work';\nconst average: Reaction = 'half-believe';\nconst worst:   Reaction = 'laugh';\n// If `worst` doesn't laugh, the way isn't the way." },
   43: { code: "// The softest rides the hardest\nconst air = { density: 0.001 };\nconst rock = { density: 2700 };\n// Air enters every solid; rock enters nothing." },
-  45: { code: "// Greatness looks wrong\nconst great = {\n  accomplishment: 'looks unfinished',\n  fullness:       'looks empty',\n  straightness:   'looks bent',\n};" },
+  45: { code: "// Greatness looks wrong\nconst great = {\n  accomplishment: 'looks unfinished',\n  fullness:       'looks empty',\n  straightness:   'looks bent',\n};",
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one imperfect cup.",
+        summary_th: "กดถ้าอยากได้ถ้วยที่ไม่สมบูรณ์หนึ่งใบ",
+        summary_cn: "想看一只不完美的杯子，就点开。",
+        title_en: "The expensive flaw",
+        title_th: "ตำหนิราคาแพง",
+        title_cn: "昂贵的瑕疵",
+        body_en: "A potter apologized for a cup that leaned a little to one side. The buyer said, “Perfect. Now tea has somewhere to think.”",
+        body_th: "ช่างปั้นขอโทษที่ถ้วยใบหนึ่งเอียงนิด ๆ คนซื้อบอกว่า “ดีเลย ชาเลยมีที่ให้คิดบ้าง”",
+        body_cn: "陶匠为一只微微歪着的杯子道歉。买家说：“正好。这样茶就有地方想事情了。”"
+      }
+    ]
+  },
   46: { code: "// War-horse arithmetic\nconst peace = (war_horses: number) => 'fertilize fields';\nconst war   = (war_horses: number) => 'bred in the suburbs';" },
   47: { code: "// Travel and knowing\nfunction know(world: World, distance_traveled: number): number {\n  return Math.max(0, 100 - distance_traveled);\n  // The further you go, the less you know.\n}",
     image: "hammershoi" },
@@ -685,7 +800,22 @@ window.EXTENDED = {
   57: { code: "// Less government\nconst less = {\n  taboos: 0,           // → less poverty\n  weapons: 0,          // → less chaos\n  cleverness: 0,       // → less strange goods\n  laws: 0,             // → fewer thieves\n};" },
   58: { code: "// Misfortune leans on fortune\ntype Pair = { fortune: 'high'; misfortune_loaded: true };\n// Every win has a debt buried in it." },
   59: { code: "// Thrift first\nconst budget = { display: 0, reserve: 100 };\n// Reserve is what you govern with." },
-  60: { code: "// Cook a small fish\nfunction govern_country(c: Country): Country {\n  return c;       // do not flip more than once\n}" },
+  60: { code: "// Cook a small fish\nfunction govern_country(c: Country): Country {\n  return c;       // do not flip more than once\n}",
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one small-fish government joke.",
+        summary_th: "กดถ้าอยากได้มุกรัฐบาลปลาตัวเล็ก",
+        summary_cn: "想看一个小鱼治国笑话，就点开。",
+        title_en: "Cabinet meeting",
+        title_th: "ประชุมคณะรัฐมนตรี",
+        title_cn: "内阁会议",
+        body_en: "An impatient cook flipped the little fish every thirty seconds, adjusted the flame six times, and issued three urgent speeches. At dinner he served fish paste. Everyone agreed he had been a very active leader.",
+        body_th: "พ่อครัวใจร้อนกลับปลาตัวเล็กทุกสามสิบวินาที ปรับไฟหกครั้ง และกล่าวสุนทรพจน์ด่วนสามรอบ มื้อเย็นวันนั้นเขาเสิร์ฟปลาบด ทุกคนเห็นตรงกันว่าเขาเป็นผู้นำที่ขยันมาก",
+        body_cn: "一个着急的厨子每三十秒翻一次小鱼，调了六次火，还发表了三次紧急讲话。到了晚饭，他端上来的是鱼泥。大家一致同意：他是个非常积极的领导。"
+      }
+    ]
+  },
   61: { code: "// The great country lies low\nconst sea = { altitude: 0, gathered: 'all rivers' };\n// Lowest position. Most water." },
   62: { code: "// The way as storehouse\nclass Storehouse {\n  rejects(person: Person): false { return false; }   // takes everyone\n}" },
   63: { code: "// Hard things from easy starts\nfunction plan(state: 'easy' | 'hard'): Action {\n  return state === 'easy'\n    ? 'address the hard parts now'\n    : 'it is too late to plan; ship anyway';\n}" },
@@ -731,6 +861,214 @@ window.EXTENDED = {
         body: "The reading you have just finished is the one that prepares you for the reading. The chapters get clearer every time. Clearer is not the same as easier. Bookmark it. Argue with it. Cross out my readings and write your own — the book itself does not mind.",
         body_th: "การอ่านที่คุณเพิ่งเสร็จคือการอ่านที่เตรียมคุณสำหรับการอ่าน บทต่าง ๆ ชัดขึ้นทุกครั้ง ชัดขึ้นไม่ได้แปลว่าง่ายขึ้น บุ๊กมาร์กไว้ เถียงกับมัน ขีดฆ่าการตีความของผมแล้วเขียนของคุณเอง"
       }
+    ]
+  },
+
+  // ─── full extended blocks — bare chapters ────────────────────────────────
+
+  9: {
+    direct: "Hold a cup overflowing — better to put it down.\nSharpen a blade too long — the edge won't last.\nFill a hall with gold and jade — no one can guard it.\nWealth, power, arrogance — you bring your own downfall.\nFinish the work. Step away.\nThe way of heaven.",
+    direct_th: "เต็มแก้วจนล้น — ดีกว่าวางมันลง\nลับคมนานเกินไป — คมจะไม่อยู่\nเต็มห้องด้วยทองและหยก — ไม่มีใครรักษาได้\nร่ำรวย มีอำนาจ หยิ่งผยอง — คุณนำความหายนะมาเอง\nทำงานเสร็จ แล้วก้าวออกไป\nวิถีของฟ้า",
+    reading: "What if the chapter is the earliest formulation of the satisficing principle?\nHerbert Simon coined 'satisficing' in 1956 — the insight that optimal decisions are not made by maximizing, but by stopping at 'good enough.' Barry Schwartz's Paradox of Choice (2004) showed empirically that people with more options consistently report lower satisfaction than people with fewer — because the larger choice set makes any outcome feel inadequate against the alternatives not taken. The overflowing cup is a satisficing problem: the optimal point was before the overflow. The extra poured in is pure cost.\nThe last line is the hardest. 'Finish the work. Step away.' Not: don't do the work. Not: do less. Do it fully — and then let it be finished. The modern failure mode is not doing too little; it is continuing past the natural ending because stopping feels like failure. The chapter is correcting that instinct.",
+    reading_th: "ถ้าบทนี้คือการแสดงหลัก satisficing ที่เก่าแก่ที่สุด?\nHerbert Simon บัญญัติคำว่า 'satisficing' ในปี 1956 — ข้อสรุปว่าการตัดสินใจที่ดีที่สุดไม่ได้เกิดจากการ maximize แต่จากการหยุดที่ 'ดีพอ' Barry Schwartz ใน The Paradox of Choice (2004) แสดงเชิงประจักษ์ว่าคนที่มีตัวเลือกมากกว่ารายงานความพึงพอใจต่ำกว่าคนที่มีน้อยกว่าอย่างสม่ำเสมอ — เพราะตัวเลือกที่มากทำให้ผลลัพธ์ใดดูไม่พอเมื่อเทียบกับทางเลือกที่ไม่ได้เลือก แก้วที่ล้นคือปัญหา satisficing จุดที่ดีที่สุดคือก่อนล้น ส่วนที่เทเพิ่มเข้าไปคือต้นทุนล้วน ๆ\nบรรทัดสุดท้ายยากที่สุด 'ทำงานเสร็จ แล้วก้าวออกไป' ไม่ใช่: ไม่ต้องทำงาน ไม่ใช่: ทำน้อยลง ทำให้เต็มที่ — แล้วให้มันเสร็จสิ้น โหมดล้มเหลวสมัยใหม่ไม่ใช่ทำน้อยเกินไป มันคือการดำเนินต่อเลยจุดที่ควรจบเพราะการหยุดรู้สึกเหมือนความพ่ายแพ้",
+    code: "function hold(cup: number): boolean {\n  return cup < 1.0;  // stop before full — overflow is pure loss\n}\n// The chapter: the optimal stopping point is just before the edge.\n// Continuing past it isn't ambition. It's forgetting where the edge was.",
+    sources: [
+      "Herbert Simon, 'Rational Choice and the Structure of the Environment,' Psychological Review 63 (1956).",
+      "Barry Schwartz, The Paradox of Choice: Why More Is Less (2004)."
+    ]
+  },
+
+  10: {
+    direct: "Hold body and spirit as one — can you?\nSoften your breath until it is almost a baby's — can you?\nWipe the dark mirror clean — can you?\nLove the people, govern the state — without knowing? Can you?\nOpen and close the gate of heaven — like a female? Can you?\nSee clearly in all four directions — without acting? Can you?\nProduce. Nourish. Produce but do not own. Act but do not rely. Lead but do not command.\nThis is called dark virtue.",
+    direct_th: "ถือกายและจิตเป็นหนึ่ง — คุณทำได้ไหม\nทำลมหายใจให้นุ่มนวลเหมือนของทารก — คุณทำได้ไหม\nเช็ดกระจกมืดให้สะอาด — คุณทำได้ไหม\nรักประชาชน ปกครองรัฐ — โดยไม่รู้ คุณทำได้ไหม\nเปิดและปิดประตูฟ้า — เหมือนหญิง คุณทำได้ไหม\nมองเห็นอย่างชัดเจนทุกทิศ — โดยไม่กระทำ คุณทำได้ไหม\nสร้าง เลี้ยงดู สร้างแต่ไม่ครอง กระทำแต่ไม่พึ่ง นำแต่ไม่สั่งการ\nนี่เรียกว่าคุณธรรมมืด",
+    reading: "What if every question in this chapter is a diagnostic, not a prescription?\nAntoine Lutz and Richard Davidson's neuroimaging work on long-term meditators (2004) found that experienced practitioners can voluntarily sustain states of focused non-reactive awareness — holding multiple inputs simultaneously without suppressing any. The 'wiped mirror' is not metaphor: the default-mode network running uninterrupted background noise is the uncleaned mirror; meditation practice is the cleaning. This is not spiritual — it is neurological.\nThe chapter's questions work as a checklist. Not 'can humans do this?' — obviously not always. But 'can you do this now, today, in the state you are in?' The six questions are six failure modes, each one a place where the integration breaks. The chapter is asking which ones are currently broken for you. Most people, on most days, fail at least three.",
+    reading_th: "ถ้าทุกคำถามในบทนี้คือการวินิจฉัย ไม่ใช่การสั่งสอน?\nงานถ่ายภาพสมองของ Antoine Lutz และ Richard Davidson เกี่ยวกับผู้ฝึกสมาธิระยะยาว (2004) พบว่าผู้ที่มีประสบการณ์สามารถรักษาสภาวะของการรับรู้ที่โฟกัสและไม่ตอบสนองโดยสมัครใจ — ถือปัจจัยนำเข้าหลายอย่างพร้อมกันโดยไม่กดสิ่งใด 'กระจกที่เช็ดแล้ว' ไม่ใช่อุปมาอุปไมย default-mode network ที่รันเสียงรบกวนพื้นหลังอย่างต่อเนื่องคือกระจกที่ยังไม่ได้เช็ด การฝึกสมาธิคือการเช็ด สิ่งนี้ไม่ใช่เรื่องจิตวิญญาณ มันคือเรื่องประสาทวิทยา\nคำถามของบทใช้เป็น checklist ไม่ใช่ 'มนุษย์ทำสิ่งนี้ได้ไหม' — เห็นได้ชัดว่าไม่เสมอไป แต่ 'คุณทำสิ่งนี้ได้ไหมตอนนี้ วันนี้ ในสภาวะที่คุณอยู่' คำถามหกข้อคือโหมดล้มเหลวหกแบบ แต่ละแบบคือจุดที่การบูรณาการแตก บทกำลังถามว่าแบบไหนที่กำลังพังอยู่สำหรับคุณ คนส่วนใหญ่ในวันส่วนใหญ่ล้มเหลวอย่างน้อยสาม",
+    code: "// Six integration checks — fail any one and the system fragments\ntype Check = () => boolean;\nconst checks: Check[] = [\n  () => body_spirit_unified(),\n  () => breath_soft_as_infant(),\n  () => mirror_clean(),\n  () => governing_without_knowing(),\n  () => opening_closing_receptively(),\n  () => seeing_without_acting(),\n];\nconst passing = checks.filter(c => c()).length;\n// Most days: passing < 6. The chapter is fine with that.",
+    sources: [
+      "Antoine Lutz et al., 'Long-term meditators self-induce high-amplitude gamma synchrony,' PNAS 101 (2004).",
+      "Michael Pollan, How to Change Your Mind (2018), on the default-mode network as ego."
+    ]
+  },
+
+  12: {
+    direct: "Five colors blind you.\nFive notes deafen you.\nFive flavors dull your tongue.\nGalloping and hunting drive your heart wild.\nRare goods make you act wrong.\nSo the wise person acts for the belly, not the eyes.\nLeaves that, takes this.",
+    direct_th: "ห้าสี ทำให้ตาบอด\nห้าโน้ต ทำให้หูหนวก\nห้ารส ทำให้ลิ้นทื่อ\nการขี่ม้าและล่าสัตว์ทำให้ใจคลั่งไคล้\nของหายากทำให้กระทำผิด\nคนฉลาดจึงกระทำเพื่อท้อง ไม่ใช่เพื่อตา\nละทิ้งสิ่งนั้น รับสิ่งนี้",
+    reading: "What if the chapter is the first attention-economics critique?\nTim Wu's The Attention Merchants (2016) argues that the core business model of the modern information economy is the capture and resale of human attention. The five-color, five-note problem is not aesthetic overload — it is the discovery that when the input exceeds the processing capacity, the sensor itself degrades. Prolonged high-stimulation environments literally alter the hedonic baseline: what once registered as pleasurable stops registering at all (Kahneman's hedonic adaptation, revisited).\nThe chapter's solution is not sensory deprivation. 'The belly, not the eyes' — the belly is what knows satiation. The eyes can always want more (there is always another color). The belly has a stop signal. The chapter is recommending an organ upgrade: route decisions through the mechanism that knows when enough is enough, not the one that doesn't.",
+    reading_th: "ถ้าบทนี้คือการวิจารณ์เศรษฐศาสตร์ความสนใจครั้งแรก?\nTim Wu ใน The Attention Merchants (2016) โต้แย้งว่าโมเดลธุรกิจหลักของเศรษฐกิจสารสนเทศสมัยใหม่คือการจับและขายต่อความสนใจของมนุษย์ ปัญหาห้าสี ห้าโน้ตไม่ใช่การล้นเกินทางสุนทรีย์ มันคือการค้นพบว่าเมื่อปัจจัยนำเข้าเกินความจุในการประมวลผล ตัวรับสัญญาณเองก็เสื่อมลง สภาพแวดล้อมที่มีการกระตุ้นสูงเป็นเวลานานจะเปลี่ยนค่าพื้นฐาน hedonic จริง ๆ สิ่งที่เคยลงทะเบียนว่าน่าพอใจหยุดลงทะเบียนเลย (hedonic adaptation ของ Kahneman)\nทางออกของบทไม่ใช่การอดอาหารทางประสาทสัมผัส 'ท้อง ไม่ใช่ตา' — ท้องคือสิ่งที่รู้จักความอิ่ม ตาสามารถอยากได้เสมอ (มีสีใหม่เสมอ) ท้องมีสัญญาณหยุด บทแนะนำการอัปเกรดอวัยวะ เส้นทางการตัดสินใจผ่านกลไกที่รู้ว่าพอคือพอ ไม่ใช่กลไกที่ไม่รู้",
+    code: "// Sensory inflation — sensor degrades under sustained overload\ntype Sensor = { baseline: number; current_threshold: number };\n\nfunction after_exposure(s: Sensor, intensity: number): Sensor {\n  return { ...s, current_threshold: s.current_threshold + intensity * 0.1 };\n}\n// At t=∞, nothing registers.\n// The belly doesn't have this problem: it has a hard stop.",
+    sources: [
+      "Tim Wu, The Attention Merchants: The Epic Scramble to Get Inside Our Heads (2016).",
+      "Daniel Kahneman, 'Experienced Utility and Objective Happiness,' in Choices, Values, and Frames (2000)."
+    ]
+  },
+
+  14: {
+    direct: "Look — you can't see it. Call it smooth.\nListen — you can't hear it. Call it rare.\nReach — you can't grab it. Call it fine.\nThese three can't be examined further.\nSo they mix and become One.\nIts top isn't bright. Its bottom isn't dark.\nUnceasing, unnameable — returning to the nothing of things.\nThis is called the formless form. The image without image.\nCall it: the confusing and the dark.\nMeet it and you don't see its face.\nFollow it and you don't see its back.\nHold the ancient Way to handle things of the present.\nKnow the ancient beginning.\nThis is the thread of the Way.",
+    direct_th: "มอง — มองไม่เห็น เรียกว่าเรียบ\nฟัง — ไม่ได้ยิน เรียกว่าหายาก\nเอื้อม — จับไม่ได้ เรียกว่าละเอียด\nสามสิ่งนี้ตรวจสอบต่อไปไม่ได้\nจึงผสมกันเป็นหนึ่ง\nด้านบนไม่สว่าง ด้านล่างไม่มืด\nไม่หยุด ไม่มีชื่อ — กลับสู่ความว่างของสิ่ง\nนี่เรียกว่ารูปแบบที่ไม่มีรูป ภาพที่ไม่มีภาพ\nเรียกว่า สับสนและมืด\nพบมัน คุณไม่เห็นหน้า\nตามมัน คุณไม่เห็นหลัง\nถือทางโบราณเพื่อจัดการสิ่งของปัจจุบัน\nรู้จุดเริ่มต้นโบราณ\nนี่คือด้ายของทาง",
+    reading: "What if the chapter is negative theology applied to physics?\nApophatic theology — defining the divine by what it is not — arrives at the same structural insight as modern physics: some entities can only be described indirectly. Dark matter constitutes ~27% of the universe's mass-energy content; it has never been seen, heard, or touched, only inferred from gravitational effects on what we can see. The chapter's three negations (can't see, can't hear, can't touch) are the exact three sensory channels dark matter evades.\nWittgenstein's Tractatus: 'Whereof one cannot speak, thereof one must be silent.' The chapter disagrees — not by speaking directly, but by holding the ancient thread as a navigational tool. You don't need to see the origin to use the pattern it generates. The electromagnetic spectrum was navigated before radio waves were understood. The Way is older than any description of it.",
+    reading_th: "ถ้าบทนี้คือ negative theology ที่นำไปใช้กับฟิสิกส์?\nApophatic theology — การนิยามสิ่งศักดิ์สิทธิ์โดยสิ่งที่มันไม่ใช่ — มาถึงข้อสรุปเชิงโครงสร้างเดียวกับฟิสิกส์สมัยใหม่ สสารมืดประกอบขึ้นประมาณ 27% ของมวล-พลังงานในจักรวาล มันไม่เคยถูกมองเห็น ได้ยิน หรือสัมผัส ถูกอนุมานจากผลกระทบแรงโน้มถ่วงบนสิ่งที่มองเห็นได้เท่านั้น การปฏิเสธสามประการของบท (มองไม่เห็น ไม่ได้ยิน จับไม่ได้) คือช่องทางรับสัมผัสสามช่องที่สสารมืดหลีกเลี่ยง\nWittgenstein ใน Tractatus กล่าวว่า 'สิ่งใดที่พูดไม่ได้ ต้องเงียบเกี่ยวกับมัน' บทนี้ไม่เห็นด้วย — ไม่ใช่โดยการพูดตรง ๆ แต่โดยการถือด้ายโบราณเป็นเครื่องมือนำทาง คุณไม่จำเป็นต้องมองเห็นต้นกำเนิดเพื่อใช้แบบแผนที่มันสร้าง",
+    code: "// Three senses fail — entity still real\ntype Sense = 'sight' | 'sound' | 'touch';\nfunction detect(sense: Sense, entity: 'The Way'): undefined {\n  return undefined;  // always\n}\n\n// But: gravitational lensing works without direct detection.\n// The thread of the way works the same way.\nfunction navigate(pattern: AncientWay, present: Situation): Action {\n  return read(pattern, present);  // inference, not perception\n}",
+    sources: [
+      "Vera Rubin, 'Dark Matter in Spiral Galaxies,' Scientific American 248 (1983).",
+      "Denys Turner, The Darkness of God: Negativity in Christian Mysticism (1995), on apophatic method."
+    ]
+  },
+
+  15: {
+    direct: "The old masters of the Way were subtle, alert, deep — too deep to read.\nSince you can't read them, here is a sketch:\nCautious — like crossing a winter river.\nAlert — like someone who suspects four neighbors.\nCourteous — like a guest.\nYielding — like ice about to melt.\nSimple — like the uncarved block.\nOpen — like a valley.\nMurky — like cloudy water.\nWho can be murky and, by stilling, slowly grow clear?\nWho can be at rest and, by moving, slowly come alive?\nThe one who holds the Way does not want to be full.\nBecause not full, they can wear out without needing renewal.",
+    direct_th: "ปรมาจารย์โบราณแห่งทางนั้นละเอียดอ่อน ตื่นตัว ลึกซึ้ง — ลึกเกินไปจะอ่าน\nเนื่องจากอ่านไม่ได้ นี่คือภาพร่าง:\nระมัดระวัง — เหมือนข้ามแม่น้ำในฤดูหนาว\nตื่นตัว — เหมือนคนที่สงสัยเพื่อนบ้านสี่คน\nสุภาพ — เหมือนแขก\nโอนอ่อน — เหมือนน้ำแข็งที่กำลังละลาย\nเรียบง่าย — เหมือนไม้ที่ยังไม่ได้แกะสลัก\nเปิดกว้าง — เหมือนหุบเขา\nขุ่นมัว — เหมือนน้ำที่ขุ่น\nใครสามารถขุ่นมัวและโดยการสงบ ค่อย ๆ ใสขึ้นได้\nใครสามารถอยู่นิ่งและโดยการเคลื่อนไหว ค่อย ๆ มีชีวิตขึ้นได้\nผู้ที่ถือทางไม่ต้องการเต็ม\nเพราะไม่เต็ม พวกเขาสึกหรอได้โดยไม่ต้องการการต่ออายุ",
+    reading: "What if the chapter is about tacit knowledge — and why you can't transmit wisdom directly?\nMichael Polanyi's Tacit Dimension (1966) opens: 'We can know more than we can tell.' Expert skiers, surgeons, and musicians operate with knowledge that cannot be fully articulated — not because it is mystical, but because the knowledge is distributed across body, environment, and context in ways that resist serialization into words. The seven similes are Lao Tzu's workaround: you can't define the old master, but you can gesture at their texture. The simile is a lossy compression. Better than silence; worse than presence.\nThe chapter's last question is the functional test: can you go from murky to clear by holding still? That's the expert intuition diagnostic Gary Klein uses in Sources of Power (1998) — can the practitioner, given a chaotic situation, recognize the relevant pattern without conscious deliberation? The murky-settling-clear sequence is exactly that: pattern recognition emerging from stillness, not calculation.",
+    reading_th: "ถ้าบทนี้เกี่ยวกับความรู้โดยปริยาย — และเหตุใดคุณไม่สามารถถ่ายทอดปัญญาโดยตรงได้?\nMichael Polanyi ใน The Tacit Dimension (1966) เปิดว่า 'เราสามารถรู้มากกว่าที่เราบอกได้' นักสกีผู้เชี่ยวชาญ ศัลยแพทย์ และนักดนตรีทำงานด้วยความรู้ที่ไม่สามารถระบุได้อย่างสมบูรณ์ — ไม่ใช่เพราะมันลึกลับ แต่เพราะความรู้นั้นกระจายอยู่ทั่วร่างกาย สิ่งแวดล้อม และบริบทในแบบที่ต้านการเปลี่ยนเป็นคำพูด อุปมาเจ็ดข้อคือทางอ้อมของเหล่าจื๊อ คุณนิยาม 'ปรมาจารย์โบราณ' ไม่ได้ แต่สามารถชี้ให้เห็นพื้นผิวของพวกเขา อุปมาคือการบีบอัดที่สูญเสียบางส่วน ดีกว่าความเงียบ แย่กว่าการมีอยู่จริง\nคำถามสุดท้ายของบทคือการทดสอบเชิงหน้าที่ คุณสามารถจากขุ่นมัวไปสู่ใสโดยนิ่งได้ไหม นั่นคือการวินิจฉัยสัญชาตญาณผู้เชี่ยวชาญที่ Gary Klein ใช้ใน Sources of Power (1998)",
+    code: "// Tacit knowledge: more known than told\ntype Knowledge = 'explicit' | 'tacit';\n\nfunction transmit(k: Knowledge): string {\n  if (k === 'explicit') return 'can be told';\n  if (k === 'tacit')    return 'can only be gestured at';\n}\n\n// The seven similes are gestures.\n// The chapter knows this. That's why it uses seven.",
+    sources: [
+      "Michael Polanyi, The Tacit Dimension (1966).",
+      "Gary Klein, Sources of Power: How People Make Decisions (1998)."
+    ]
+  },
+
+  17: {
+    direct: "Best leader: the people barely know they have one.\nNext: they love and praise.\nNext: they fear.\nWorst: they mock.\nWhen trust is insufficient, there will be distrust.\nHesitant — how precious words are.\nWork done, affairs complete — and the people all say: we did it ourselves.",
+    direct_th: "ผู้นำที่ดีที่สุด ประชาชนแทบไม่รู้ว่ามีอยู่\nรองลงมา พวกเขารักและสรรเสริญ\nรองลงมา พวกเขากลัว\nแย่ที่สุด พวกเขาเยาะเย้ย\nเมื่อความไว้วางใจไม่เพียงพอ จะมีความไม่ไว้วางใจ\nลังเล — คำพูดมีค่าแค่ไหน\nงานเสร็จ กิจการสมบูรณ์ — และประชาชนทุกคนกล่าวว่า เราทำมันเอง",
+    reading: "What if the chapter describes the four levels of leadership presence as an inverse visibility gradient?\nAmy Edmondson's research on psychological safety (The Fearless Organization, 2018) found that the most productive teams are those where leaders create conditions for others to act — not those where the leader's vision is most visible. The 'barely known' leader is operating at full capacity; their output is the team's confidence in their own agency. Robert Greenleaf's servant leadership formulation (1970) is structurally identical: the test of the servant-leader is whether those served become freer, more capable, more likely to say 'we did it ourselves.'\nThe chapter's last line — 'the people all say: we did it ourselves' — is not about the leader's humility. It is about the quality of the intervention. A well-designed system does not advertise its designer. Good governance, like good infrastructure, is invisible until it fails.",
+    reading_th: "ถ้าบทนี้อธิบายสี่ระดับของการปรากฏตัวในภาวะผู้นำในฐานะ gradient การมองเห็นแบบกลับหัว?\nงานวิจัยของ Amy Edmondson เรื่อง psychological safety (The Fearless Organization, 2018) พบว่าทีมที่มีประสิทธิภาพสูงสุดคือทีมที่ผู้นำสร้างเงื่อนไขให้คนอื่นกระทำ — ไม่ใช่ทีมที่วิสัยทัศน์ของผู้นำมองเห็นได้ชัดที่สุด ผู้นำที่ 'แทบไม่รู้ว่ามีอยู่' กำลังทำงานเต็มกำลัง ผลผลิตของพวกเขาคือความมั่นใจของทีมในความสามารถของตัวเอง\nบรรทัดสุดท้ายของบท — 'ประชาชนทุกคนกล่าวว่า เราทำมันเอง' — ไม่ใช่เรื่องความถ่อมตนของผู้นำ มันเป็นเรื่องคุณภาพของการแทรกแซง ระบบที่ออกแบบดีไม่โฆษณาผู้ออกแบบ การปกครองที่ดี เหมือนโครงสร้างพื้นฐานที่ดี มองไม่เห็นจนกว่าจะล้มเหลว ผมเห็นสิ่งนี้ในงาน Smart City — โครงการที่ดีที่สุดที่เคยทำคือโครงการที่ประชาชนจำชื่อผู้ออกแบบไม่ได้",
+    code: "type Visibility = 'invisible' | 'loved' | 'feared' | 'mocked';\ntype LeaderQuality = 4 | 3 | 2 | 1;\n\nconst quality: Record<Visibility, LeaderQuality> = {\n  invisible: 4,\n  loved:     3,\n  feared:    2,\n  mocked:    1,\n};\n\n// Counterintuitive: the best leader is the least visible.\n// The system's output is the team saying 'we did it ourselves.'",
+    sources: [
+      "Amy Edmondson, The Fearless Organization (2018), on psychological safety.",
+      "Robert Greenleaf, 'The Servant as Leader' (1970)."
+    ]
+  },
+
+  18: {
+    direct: "The Way is abandoned — 'kindness' and 'justice' appear.\nCleverness arrives — great hypocrisy with it.\nFamily falls apart — 'filial piety' and 'devotion' show up.\nThe state is dark and confused — 'loyal officials' emerge.",
+    direct_th: "ทางถูกละทิ้ง — 'ความเมตตา' และ 'ความยุติธรรม' ปรากฏขึ้น\nความฉลาดมาถึง — ความหน้าไหว้หลังหลอกอย่างยิ่งมาด้วย\nครอบครัวล่มสลาย — 'ความกตัญญู' และ 'ความเลื่อมใส' ปรากฏขึ้น\nรัฐมืดและสับสน — 'ข้าราชการที่ซื่อสัตย์' ปรากฏขึ้น",
+    reading: "What if the chapter is Goodhart's Law, 2400 years early?\nGoodhart's Law (1975): when a measure becomes a target, it ceases to be a good measure. 'Kindness' is not a measure of the underlying condition when it shows up as a term — it is a symptom that the underlying condition has degraded enough to require a name. Charles Goodhart was describing monetary policy, but the structural insight is the same: the vocabulary of virtue expands exactly as the practice of virtue contracts. The word is the signal of the thing's absence.\nRobert Jackall's Moral Mazes (1988) documented this in American corporations: as organizational ethics collapsed, ethics committees multiplied. The emergence of formal virtue — the compliance department, the values statement, the leadership award — is diagnostic, not curative. The chapter is not cynical about kindness. It is precise about when the word appears.",
+    reading_th: "ถ้าบทนี้คือ Goodhart's Law ล่วงหน้า 2400 ปี?\nGoodhart's Law (1975) ตัวชี้วัดใดก็ตามที่กลายเป็นเป้าหมายจะหยุดเป็นตัวชี้วัดที่ดี 'ความเมตตา' ไม่ใช่การวัดสภาวะที่เป็นรากฐานเมื่อมันปรากฏขึ้นเป็นคำ มันเป็นอาการว่าสภาวะที่เป็นรากฐานเสื่อมลงพอที่จะต้องการชื่อ Charles Goodhart อธิบายนโยบายการเงิน แต่ข้อสรุปเชิงโครงสร้างเหมือนกัน คำศัพท์ของคุณธรรมขยายตัวพอดีกับที่การปฏิบัติคุณธรรมหดตัว คำคือสัญญาณของการขาดหายของสิ่ง\nRobert Jackall ใน Moral Mazes (1988) บันทึกสิ่งนี้ในองค์กรอเมริกัน เมื่อจริยธรรมองค์กรล่มสลาย คณะกรรมการจริยธรรมขยายตัว การปรากฏขึ้นของคุณธรรมอย่างเป็นทางการ — แผนกปฏิบัติตาม คำแถลงค่านิยม รางวัลภาวะผู้นำ — คือการวินิจฉัย ไม่ใช่การรักษา",
+    code: "// Goodhart's Law applied to virtue\ntype Measure = string;\nfunction signal_of_absence(m: Measure): boolean {\n  // When 'kindness' appears as a formal category,\n  // kindness as practice is already degrading.\n  return m === 'kindness' || m === 'justice' || m === 'loyalty';\n}\n// The vocabulary of virtue is a lagging indicator.",
+    sources: [
+      "Charles Goodhart, 'Problems of Monetary Management,' Papers in Monetary Economics (1975).",
+      "Robert Jackall, Moral Mazes: The World of Corporate Managers (1988)."
+    ]
+  },
+
+  19: {
+    direct: "Drop sainthood and abandon wisdom — and the people gain a hundredfold.\nDrop kindness and abandon justice — and the people return to love and duty.\nDrop cleverness and abandon profit — and thieves have nothing to work with.\nThese three, used as ornament, are not enough.\nSo: belong somewhere.\nSee the plain. Hold the uncarved.\nReduce the self. Have few desires.",
+    direct_th: "ละทิ้งความศักดิ์สิทธิ์และความรอบรู้ — ประชาชนได้ร้อยเท่า\nละทิ้งความเมตตาและความยุติธรรม — ประชาชนกลับสู่ความรักและหน้าที่\nละทิ้งความฉลาดและผลกำไร — โจรไม่มีอะไรทำงานด้วย\nสามสิ่งนี้ ใช้เป็นเครื่องประดับ ไม่เพียงพอ\nฉะนั้น เป็นส่วนหนึ่งของบางสิ่ง\nมองเห็นความเรียบง่าย ถือไม้ที่ยังไม่แกะสลัก\nลดตัวเอง มีความปรารถนาน้อย",
+    reading: "What if 'drop the ornaments' is the via negativa — and the most testable approach to institutional reform?\nNassim Taleb's via negativa in Antifragile (2012): many systems improve not by adding but by removing interventions that were causing undetected harm. The chapter makes the same move: drop the saint, the wise person, kindness, justice, cleverness, profit — and see what remains. What remains is not nothing. It is the pre-labeled behavior that didn't need a label.\nThe practical implication is counterintuitive: the cure for a virtue-signaling culture is not more virtue campaigns. It is the removal of the virtue-signaling infrastructure. The plain that the chapter asks you to 'see' is the state of things before the labels arrived. The uncarved block is not an ideal — it is the diagnostic baseline.",
+    reading_th: "ถ้า 'ละทิ้งเครื่องประดับ' คือ via negativa — และวิธีที่ทดสอบได้มากที่สุดสำหรับการปฏิรูปสถาบัน?\nNassim Taleb ใน via negativa ใน Antifragile (2012) ระบบหลายอย่างพัฒนาขึ้นไม่ใช่โดยการเพิ่มแต่โดยการลบการแทรกแซงที่ก่อให้เกิดความเสียหายโดยไม่รู้ตัว บทนี้เคลื่อนเหมือนกัน ละทิ้งนักบุญ คนฉลาด ความเมตตา ความยุติธรรม ความฉลาด ผลกำไร — แล้วดูว่าอะไรเหลืออยู่ สิ่งที่เหลือไม่ใช่ความว่าง มันคือพฤติกรรมก่อนติดป้ายกำกับที่ไม่ต้องการป้ายกำกับ\nผลกระทบเชิงปฏิบัติขัดสัญชาตญาณ การรักษาสำหรับวัฒนธรรมส่งสัญญาณคุณธรรมไม่ใช่แคมเปญคุณธรรมที่มากขึ้น มันคือการลบโครงสร้างพื้นฐานการส่งสัญญาณคุณธรรม ความเรียบง่ายที่บทขอให้คุณ 'มองเห็น' คือสภาวะของสิ่งก่อนที่ป้ายกำกับจะมาถึง",
+    code: "// Via negativa: improve by removal\nfunction reform(system: Society): Society {\n  // Don't add virtue programs.\n  return remove(system, [\n    'saint_category',\n    'wisdom_designation',\n    'kindness_award',\n    'profit_incentive',\n  ]);\n  // What remains is the pre-labeled behavior.\n  // That behavior is the actual baseline.",
+    sources: [
+      "Nassim Nicholas Taleb, Antifragile: Things That Gain from Disorder (2012), on via negativa.",
+      "Ivan Illich, Deschooling Society (1971), on institutional counterproductivity."
+    ]
+  },
+
+  21: {
+    direct: "What virtue looks like: it follows the Way.\nThe Way as a thing — a shimmer, a flicker.\nIn the flicker, there are images.\nIn the shimmer, there are things.\nIn the depth and dark, there are seeds.\nThe seeds are very real. In them is trust.\nFrom of old until now, its name has not gone away — to oversee the beginning of all things.\nHow do I know the beginning of all things is like this?\nBy this.",
+    direct_th: "คุณธรรมมีรูปลักษณ์อย่างไร มันตามทาง\nทางในฐานะสิ่ง — แวบ แสงกะพริบ\nในแสงกะพริบ มีภาพ\nในแวบ มีสิ่ง\nในความลึกและมืด มีเมล็ด\nเมล็ดเหล่านั้นเป็นจริงมาก ในพวกมันมีความไว้วางใจ\nตั้งแต่โบราณจนถึงตอนนี้ ชื่อของมันไม่ได้จากไป — เพื่อดูแลจุดเริ่มต้นของทุกสิ่ง\nผมรู้ได้อย่างไรว่าจุดเริ่มต้นของทุกสิ่งเป็นแบบนี้\nโดยสิ่งนี้",
+    reading: "What if the chapter is describing what emergence looks like from the inside?\nIn complexity science (Santa Fe Institute, Stuart Kauffman, At Home in the Universe, 1995), emergence is the appearance of higher-order patterns from lower-order interactions — patterns that cannot be predicted from the components alone. A flicker of interaction produces an image that no single component contains. The 'shimmer and flicker' is a precise phenomenological description of what it looks like to watch emergence: you can't point to the thing; you can point to the space where the pattern keeps appearing.\nThe last line — 'how do I know? By this' — is a direct rejection of foundationalism. Lao Tzu is not appealing to prior knowledge or logic. He is pointing at the method: the same observational posture that works for the Way is the only way to know the Way. The chapter is self-referential in the most honest sense.",
+    reading_th: "ถ้าบทนี้กำลังอธิบายว่า emergence มีลักษณะอย่างไรจากมุมมองภายใน?\nในวิทยาศาสตร์ความซับซ้อน (Santa Fe Institute, Stuart Kauffman, At Home in the Universe, 1995) emergence คือการปรากฏขึ้นของแบบแผนระดับสูงกว่าจากปฏิสัมพันธ์ระดับต่ำกว่า แบบแผนที่ไม่สามารถทำนายได้จากส่วนประกอบเพียงอย่างเดียว แสงกะพริบของปฏิสัมพันธ์ผลิตภาพที่ไม่มีส่วนประกอบใดมีอยู่ 'แวบและแสงกะพริบ' คือการอธิบายทางปรากฏการณ์ที่แม่นยำว่ามันมีลักษณะอย่างไรเมื่อมอง emergence คุณชี้ไปที่สิ่งนั้นไม่ได้ คุณชี้ไปที่ช่องว่างที่แบบแผนยังคงปรากฏขึ้น\nบรรทัดสุดท้าย — 'ผมรู้ได้อย่างไร โดยสิ่งนี้' — คือการปฏิเสธ foundationalism โดยตรง เหล่าจื๊อไม่ได้อ้างอิงความรู้ก่อนหน้าหรือตรรกะ เขากำลังชี้ไปที่วิธีการ",
+    code: "// Emergence: the pattern that no component contains\ntype Component = unknown;\ntype Pattern = { emergent: true; not_in_any_component: true };\n\nfunction emerge(interactions: Component[]): Pattern | undefined {\n  // Cannot be computed from components alone.\n  // Can only be observed from the watching posture.\n  return watch(interactions);\n}\n// 'How do I know? By this.' — the method is the answer.",
+    sources: [
+      "Stuart Kauffman, At Home in the Universe: The Search for Laws of Self-Organization (1995).",
+      "Philip Anderson, 'More is Different,' Science 177 (1972), on emergence."
+    ]
+  },
+
+  23: {
+    direct: "Few words — the way nature does it.\nA gust does not last the morning.\nA cloudburst does not last the day.\nWho does this? Heaven and earth.\nIf heaven and earth can't make things last, how much less can humans?\nSo: those who follow the Way are with the Way.\nThose who follow virtue are with virtue.\nThose who follow loss are with loss.\nThe Way welcomes those who are with it.\nVirtue welcomes those who are with it.\nLoss welcomes those who are with it.\nWhen trust is insufficient, there will be distrust.",
+    direct_th: "คำพูดน้อย — วิธีที่ธรรมชาติทำ\nพายุไม่อยู่ตลอดเช้า\nฝนหนักไม่อยู่ตลอดวัน\nใครทำสิ่งนี้ ฟ้าและดิน\nถ้าฟ้าและดินไม่สามารถทำให้สิ่งต่าง ๆ อยู่ยาวนาน มนุษย์ยิ่งน้อยกว่า\nฉะนั้น ผู้ที่ตามทางอยู่กับทาง\nผู้ที่ตามคุณธรรมอยู่กับคุณธรรม\nผู้ที่ตามการสูญเสียอยู่กับการสูญเสีย\nทางต้อนรับผู้ที่อยู่กับมัน\nคุณธรรมต้อนรับผู้ที่อยู่กับมัน\nการสูญเสียต้อนรับผู้ที่อยู่กับมัน\nเมื่อความไว้วางใจไม่เพียงพอ จะมีความไม่ไว้วางใจ",
+    reading: "What if the chapter is about bandwidth — and the natural limit of any signal?\nClaude Shannon's information theory (1948) gives us the concept of channel capacity: no channel can transmit information faster than a rate determined by its bandwidth and noise level. A storm is a high-intensity, low-duration event not because nature is weak, but because high intensity is inherently expensive to sustain. The gust and the cloudburst are operating at maximum power — which is precisely why they can't last. Sustainable transmission requires modulation, not maximum amplitude.\nThe practical application: the people who talk the most about their ideas rarely execute at the highest rate. High-intensity discourse (manifestos, lectures, proclamations) burns channel capacity without transmitting proportional information. The chapter's advice — 'few words' — is a bandwidth management recommendation. Say less. Sustain longer. The morning gust cannot outlast the afternoon breeze.",
+    reading_th: "ถ้าบทนี้เกี่ยวกับ bandwidth — และขีดจำกัดตามธรรมชาติของสัญญาณใด ๆ?\nทฤษฎีสารสนเทศของ Claude Shannon (1948) ให้แนวคิดของ channel capacity ไม่มีช่องทางใดส่งข้อมูลได้เร็วกว่าอัตราที่กำหนดโดย bandwidth และระดับสัญญาณรบกวน พายุคือเหตุการณ์ที่เข้มข้นสูง ระยะเวลาต่ำ ไม่ใช่เพราะธรรมชาติอ่อนแอ แต่เพราะความเข้มสูงมีต้นทุนสูงในการรักษา พายุและฝนหนักทำงานที่กำลังสูงสุด ซึ่งเป็นเหตุผลว่าทำไมถึงอยู่ไม่ได้นาน การส่งสัญญาณที่ยั่งยืนต้องการการปรับ ไม่ใช่แอมพลิจูดสูงสุด\nการประยุกต์ใช้เชิงปฏิบัติ คนที่พูดถึงความคิดของพวกเขามากที่สุดมักไม่ได้ดำเนินการในอัตราสูงสุด คำพูดน้อย — เป็นคำแนะนำการจัดการ bandwidth พูดน้อยลง รักษานานขึ้น",
+    code: "// Shannon channel capacity — high intensity, short duration\nfunction sustainable(intensity: number, duration: number): boolean {\n  return intensity * duration <= CHANNEL_CAPACITY;\n  // The morning gust: high intensity, cannot sustain.\n  // The afternoon breeze: low intensity, all day.\n}\n// 'Few words' is bandwidth management, not silence.",
+    sources: [
+      "Claude Shannon, 'A Mathematical Theory of Communication,' Bell System Technical Journal (1948).",
+      "Cal Newport, Deep Work (2016), on the cost of low-value communication."
+    ]
+  },
+
+  24: {
+    direct: "Stand on tiptoe — you can't stay up.\nTake oversize strides — you can't keep going.\nShow off — you're not seen.\nInsist you're right — you're not distinguished.\nBoast — you get no credit.\nBrag — you don't last.\nFrom the Way's point of view, these are called leftover food and useless growths.\nThings find them ugly.\nThe one who holds the Way doesn't stay near them.",
+    direct_th: "ยืนบนปลายเท้า — คุณอยู่ไม่ได้\nก้าวยาวเกินไป — คุณไปต่อไม่ได้\nอวด — คุณไม่ถูกมองเห็น\nยืนกรานว่าถูก — คุณไม่โดดเด่น\nคุยโม้ — คุณไม่ได้รับเครดิต\nอ้างสิทธิ์ — คุณไม่อยู่ยาวนาน\nจากมุมมองของทาง สิ่งเหล่านี้เรียกว่าอาหารเหลือและการเจริญเติบโตที่ไม่มีประโยชน์\nสิ่งทั้งหลายพบว่ามันน่าเกลียด\nผู้ที่ถือทางไม่อยู่ใกล้มัน",
+    reading: "What if 'standing on tiptoe' is the chapter's image for all performance not supported by underlying structure?\nErving Goffman's Presentation of Self in Everyday Life (1959) documented what happens when the front-stage performance diverges from the backstage reality: the system becomes fragile because maintaining the performance requires continuous effort that could otherwise go into the actual work. Tiptoe-standing is inherently high-maintenance. The body cannot sustain it; neither can a professional reputation built on performance rather than substance.\nThe chapter's diagnosis is physical, not moral. It doesn't call show-offs bad people. It calls their behavior structurally unsustainable — 'leftover food and useless growths.' These are not metaphors for evil; they are descriptions of waste. In the same way that a crooked bone knits back crooked if set wrong, a reputation built on performance knits back as performance — not as the thing it was supposed to represent.",
+    reading_th: "ถ้า 'ยืนบนปลายเท้า' คือภาพของบทสำหรับการแสดงทั้งหมดที่ไม่ได้รับการสนับสนุนจากโครงสร้างที่อยู่ใต้?\nErving Goffman ใน The Presentation of Self in Everyday Life (1959) บันทึกสิ่งที่เกิดขึ้นเมื่อการแสดงบนเวทีหน้าแตกต่างจากความเป็นจริงเบื้องหลัง ระบบกลายเป็นเปราะบางเพราะการรักษาการแสดงต้องใช้ความพยายามต่อเนื่องที่อาจไปลงที่งานจริงแทน การยืนบนปลายเท้าเป็นงานที่ต้องการการดูแลสูงโดยธรรมชาติ ร่างกายรักษาไม่ได้ ชื่อเสียงที่สร้างบนการแสดงมากกว่าสาระก็เช่นกัน\nการวินิจฉัยของบทเป็นเรื่องทางกายภาพ ไม่ใช่ศีลธรรม มันไม่เรียกคนที่ชอบอวดว่าเป็นคนไม่ดี มันเรียกพฤติกรรมของพวกเขาว่าไม่ยั่งยืนเชิงโครงสร้าง — 'อาหารเหลือและการเจริญเติบโตที่ไม่มีประโยชน์'",
+    code: "// Tiptoe: high maintenance, unsustainable\ntype Posture = 'tiptoe' | 'standing';\n\nfunction duration(p: Posture): number {\n  return p === 'tiptoe' ? seconds(30) : hours(8);\n}\n\n// Performance not backed by substance degrades on the same curve.\n// The chapter doesn't moralize. It just notes the physics.",
+    sources: [
+      "Erving Goffman, The Presentation of Self in Everyday Life (1959).",
+      "Adam Grant, Give and Take (2013), on takers vs givers in professional credibility."
+    ],
+    jokes: [
+      {
+        tag: "Daoist joke",
+        summary_en: "Open if you want one joke about tiptoes.",
+        summary_th: "กดถ้าอยากได้มุกเรื่องการเขย่ง",
+        summary_cn: "想看一个关于踮脚的笑话，就点开。",
+        title_en: "The leadership technique",
+        title_th: "เทคนิคความเป็นผู้นำ",
+        title_cn: "领导术",
+        body_en: "A man spent all day standing on tiptoe so people would look up to him. By evening they did. They were checking whether he was about to fall.",
+        body_th: "ชายคนหนึ่งเขย่งทั้งวันเพื่อให้คนอื่นเงยหน้ามองเขา ตอนเย็นทุกคนมองจริง ๆ แต่เขามองเพราะอยากรู้ว่าเขาจะล้มเมื่อไร",
+        body_cn: "有个人整天踮着脚，好让别人仰头看他。到了傍晚，大家果然都在看他。因为他们想知道他什么时候会摔下来。"
+      }
+    ]
+  },
+
+  26: {
+    direct: "Heavy is the root of light.\nStill is the master of restless.\nSo the wise person does not, all day, lose the cart that carries the heavy.\nThough there are fine sights, they sit easy — and rise above.\nHow can the lord of ten thousand chariots take himself lightly before the world?\nLight — you lose the root.\nRestless — you lose the master.",
+    direct_th: "หนักคือรากของเบา\nสงบคือนายของไม่สงบ\nคนฉลาดจึงไม่ ตลอดทั้งวัน สูญเสียเกวียนที่บรรทุกของหนัก\nแม้จะมีสิ่งที่น่าชมที่ดี พวกเขานั่งอย่างสบาย — และขึ้นอยู่เหนือ\nเจ้าแห่งรถศึกหมื่นคัน จะเบาตัวต่อโลกได้อย่างไร\nเบา — คุณสูญเสียราก\nไม่สงบ — คุณสูญเสียนาย",
+    reading: "What if 'heavy is the root of light' is an observation about cognitive load and decision quality?\nDaniel Kahneman's work distinguishes System 1 (fast, reactive, light) from System 2 (slow, deliberate, heavy). The 'heavy cart' that the wise person carries all day is not a burden — it is the slow-thinking capacity that allows good decisions under pressure. When leaders lose access to deliberate thinking — under excitement, urgency, or novelty — they are literally losing the root. System 1 goes on tiptoe; System 2 keeps weight on the heel.\nThe 'fine sights' that the chapter warns against are not beauty — they are distractions that trigger System 1 reactivity. The lord of ten thousand chariots who takes himself lightly in front of attractive distractions is not being charismatic. He is abandoning the cognitive architecture that makes him useful.",
+    reading_th: "ถ้า 'หนักคือรากของเบา' เป็นการสังเกตเกี่ยวกับ cognitive load และคุณภาพการตัดสินใจ?\nงานของ Daniel Kahneman แยก System 1 (เร็ว ตอบสนอง เบา) จาก System 2 (ช้า จงใจ หนัก) 'เกวียนหนัก' ที่คนฉลาดแบกตลอดทั้งวันไม่ใช่ภาระ มันคือความสามารถในการคิดช้าที่อนุญาตให้ตัดสินใจได้ดีภายใต้ความกดดัน เมื่อผู้นำสูญเสียการเข้าถึงการคิดอย่างจงใจ — ภายใต้ความตื่นเต้น ความเร่งด่วน หรือสิ่งใหม่ — พวกเขากำลังสูญเสียรากอย่างแท้จริง System 1 ยืนบนปลายเท้า System 2 รักษาน้ำหนักบนส้นเท้า\n'สิ่งที่น่าชม' ที่บทเตือนไม่ใช่ความสวยงาม มันคือสิ่งที่ทำให้เสียสมาธิที่กระตุ้น System 1 reactivity",
+    code: "// System 1 vs System 2 — heavy vs light\ntype System = 'fast' | 'slow';\n\nfunction decision_quality(s: System, pressure: number): number {\n  return s === 'slow' ? 0.85 : Math.max(0.3, 0.85 - pressure * 0.1);\n}\n// Under pressure, fast thinking degrades. Slow thinking holds.\n// The cart is not a burden. The cart is the edge.",
+    sources: [
+      "Daniel Kahneman, Thinking, Fast and Slow (2011), on System 1 and System 2.",
+      "Gary Klein, Sources of Power (1998), on decision-making under time pressure."
+    ]
+  },
+
+  27: {
+    direct: "Good walking leaves no track.\nGood speech leaves no flaw.\nGood counting needs no abacus.\nGood closing needs no bolt — yet cannot be opened.\nGood knotting needs no rope — yet cannot be untied.\nSo the wise person is always good at saving people — abandons no one.\nAlways good at saving things — abandons nothing.\nThis is called wearing the light.\nSo: the good person is the teacher of the bad.\nThe bad person is the material for the good.\nNot to value one's teacher, not to love one's material — wisdom, but big confusion.\nThis is called the essential mystery.",
+    direct_th: "การเดินที่ดีไม่ทิ้งร่องรอย\nคำพูดที่ดีไม่มีข้อบกพร่อง\nการนับที่ดีไม่ต้องใช้ลูกคิด\nการปิดที่ดีไม่ต้องใช้กลอน — แต่ไม่สามารถเปิดได้\nการผูกที่ดีไม่ต้องใช้เชือก — แต่ไม่สามารถแก้ได้\nคนฉลาดจึงเก่งในการช่วยคน เสมอ — ไม่ทอดทิ้งใคร\nเก่งในการช่วยสิ่ง เสมอ — ไม่ทอดทิ้งอะไร\nนี่เรียกว่าสวมแสง\nฉะนั้น คนดีคืออาจารย์ของคนไม่ดี\nคนไม่ดีคือวัสดุของคนดี\nไม่ให้คุณค่าครู ไม่รักวัสดุของตน — ปัญญา แต่สับสนใหญ่\nนี่เรียกว่าความลึกลับสำคัญ",
+    reading: "What if 'good work leaves no track' is a description of what automation researchers call transparent design?\nDon Norman's Design of Everyday Things (1988) defines good design as design that makes itself invisible — where the action required maps so cleanly to the affordance offered that the user never notices the design, only the result. The 'no track' principle is Norman's principle stated as a positive: good work achieves its purpose without calling attention to the mechanism. The abacus left behind is the visible interface; the good counter has internalized the process.\nThe last lines are harder: the bad person as 'material' for the good. This is not cruel — it is the same logic as adversarial training in machine learning. The model that has been tested against adversarial inputs is more robust than the one trained on clean data. Not valuing the adversarial input — not recognizing what the difficult person taught — is the 'big confusion' the chapter names.",
+    reading_th: "ถ้า 'งานที่ดีไม่ทิ้งร่องรอย' เป็นการอธิบายสิ่งที่นักวิจัยการออกแบบเรียกว่า transparent design?\nDon Norman ใน The Design of Everyday Things (1988) นิยามการออกแบบที่ดีว่าเป็นการออกแบบที่ทำให้ตัวเองมองไม่เห็น ที่การกระทำที่ต้องการแมปกับ affordance ที่เสนออย่างสะอาดจนผู้ใช้ไม่เคยสังเกตการออกแบบ มีแค่ผลลัพธ์ หลักการ 'ไม่ทิ้งร่องรอย' คือหลักการของ Norman ที่แสดงเชิงบวก งานที่ดีบรรลุวัตถุประสงค์โดยไม่ดึงความสนใจไปที่กลไก\nบรรทัดสุดท้ายยากกว่า คนไม่ดีในฐานะ 'วัสดุ' ของคนดี ไม่ใช่ความโหดร้าย มันคือตรรกะเดียวกับ adversarial training ใน machine learning โมเดลที่ถูกทดสอบกับ adversarial inputs แข็งแกร่งกว่าโมเดลที่ฝึกกับข้อมูลที่สะอาด",
+    code: "// Good design: invisible mechanism, visible result\ninterface GoodWork {\n  track:    never;  // no footprint\n  flaw:     never;  // no error\n  result:   true;   // always\n}\n// The bad person as adversarial input:\n// function train(model: Self, adversary: Difficult): Self {\n//   return model.robustness + adversary.challenge;\n// }",
+    sources: [
+      "Don Norman, The Design of Everyday Things (1988).",
+      "Ian Goodfellow et al., 'Generative Adversarial Networks,' NeurIPS (2014)."
+    ]
+  },
+
+  28: {
+    direct: "Know the male. Hold the female.\nBe the valley of the world.\nBe the valley — and the steady virtue stays. Return to the infant.\nKnow the white. Hold the black.\nBe the pattern of the world.\nBe the pattern — and the steady virtue never strays. Return to the limitless.\nKnow the glory. Hold the shame.\nBe the valley of the world.\nBe the valley — and the steady virtue is enough. Return to the uncarved block.\nWhen the block is carved, it becomes instruments.\nIn the hands of the wise, they become officials.\nThe great carver does not cut.",
+    direct_th: "รู้จักเพศชาย ถือเพศหญิง\nเป็นหุบเขาของโลก\nเป็นหุบเขา — คุณธรรมที่มั่นคงยังอยู่ กลับสู่ทารก\nรู้จักสีขาว ถือสีดำ\nเป็นแบบแผนของโลก\nเป็นแบบแผน — คุณธรรมที่มั่นคงไม่เบี่ยงเบน กลับสู่ไม่มีขอบเขต\nรู้จักความรุ่งโรจน์ ถือความอัปยศ\nเป็นหุบเขาของโลก\nเป็นหุบเขา — คุณธรรมที่มั่นคงเพียงพอ กลับสู่ไม้ที่ยังไม่แกะสลัก\nเมื่อแกะสลักไม้ มันกลายเป็นเครื่องมือ\nในมือของคนฉลาด มันกลายเป็นเจ้าหน้าที่\nช่างแกะสลักผู้ยิ่งใหญ่ไม่ตัด",
+    reading: "What if the three pairs — male/female, white/black, glory/shame — are describing three axes of the same organizational principle?\nCarol Gilligan's In a Different Voice (1982) and later work by relational psychologists identified that dominant (male-coded) and receptive (female-coded) modes are not opposites but complementary operating modes that systems need to alternate between. The 'hold the female' instruction is not about gender — it is about the structural preference for the receptive, low-profile mode even in contexts where the active mode is more visible.\nThe 'great carver who does not cut' is the final synthesis: the highest skill is knowing when not to apply the skill. This appears in surgical teaching ('sometimes the best operation is no operation'), in software architecture ('sometimes the best code is the code you don't write'), in governance ('sometimes the best policy is restraint'). The chapter names this 'not cutting' as the mark of greatness — not because cutting is bad, but because knowing when not to cut is rarer.",
+    reading_th: "ถ้าสามคู่ — ชาย/หญิง ขาว/ดำ รุ่งโรจน์/อัปยศ — กำลังอธิบายสามแกนของหลักการจัดระเบียบเดียวกัน?\nงานของ Carol Gilligan ใน In a Different Voice (1982) และงานในภายหลังโดยนักจิตวิทยาเชิงสัมพันธ์ระบุว่าโหมดที่โดดเด่น (มีรหัสเพศชาย) และโหมดรับ (มีรหัสเพศหญิง) ไม่ใช่ขั้วตรงข้ามแต่เป็นโหมดการทำงานเสริมกันที่ระบบต้องสลับกัน คำสั่ง 'ถือเพศหญิง' ไม่ใช่เรื่องเพศ มันเป็นเรื่องความชอบเชิงโครงสร้างสำหรับโหมดรับที่มีโปรไฟล์ต่ำแม้ในบริบทที่โหมดที่ใช้งานอยู่มองเห็นได้ชัดกว่า\n'ช่างแกะสลักผู้ยิ่งใหญ่ไม่ตัด' คือการสังเคราะห์ขั้นสุดท้าย ทักษะสูงสุดคือการรู้ว่าเมื่อใดไม่ควรใช้ทักษะ สิ่งนี้ปรากฏในการสอนทางการแพทย์ ในสถาปัตยกรรมซอฟต์แวร์ ในการปกครอง การไม่ตัดคือเครื่องหมายของความยิ่งใหญ่",
+    code: "// The three pairs — know one, hold the other\ntype Pair = [known: string, held: string];\nconst pairs: Pair[] = [\n  ['male',  'female'],\n  ['white', 'black'],\n  ['glory', 'shame'],\n];\n// In each: know the active. Inhabit the receptive.\n\n// The great carver:\nfunction carve(wood: Wood, skill: Skill): Wood {\n  if (skill === 'master') return wood;  // does not cut\n  return cut(wood, skill);\n}",
+    sources: [
+      "Carol Gilligan, In a Different Voice (1982).",
+      "Christopher Alexander, The Nature of Order (2002), on the generative role of negative space."
+    ]
+  },
+
+  29: {
+    direct: "Want to take the world and improve it? I've seen — it can't be done.\nThe world is a sacred vessel.\nYou can't make it. You can't grip it.\nMake — you spoil it. Grip — you lose it.\nSo: things lead or follow, breathe out or in, are strong or weak, carry or overturn.\nSo the wise person avoids extremes. Avoids excess. Avoids arrogance.",
+    direct_th: "ต้องการยึดโลกและปรับปรุงมัน ผมเห็นแล้ว — ทำไม่ได้\nโลกคือภาชนะศักดิ์สิทธิ์\nคุณทำมันไม่ได้ คุณจับมันไม่ได้\nทำ — คุณทำลายมัน จับ — คุณสูญเสียมัน\nฉะนั้น สิ่งต่าง ๆ นำหรือตาม หายใจออกหรือเข้า แข็งแกร่งหรืออ่อนแอ แบกหรือพลิกคว่ำ\nคนฉลาดจึงหลีกเลี่ยงสุดขีด หลีกเลี่ยงส่วนเกิน หลีกเลี่ยงความหยิ่งผยอง",
+    reading: "What if the chapter is the founding text of complexity governance — the insight that complex systems cannot be optimized from the outside?\nDonella Meadows' Thinking in Systems (2008) and Nassim Taleb's work on intervention in complex systems converge on the same observation: systems that appear to be improvable by external intervention are usually already at an equilibrium that the intervention disrupts. The cobra effect (the British colonial policy of paying for dead cobras that led to cobra farming) is the pattern — every attempt to 'grip' the system produces the opposite of the intended result.\n'Sacred vessel' is not mysticism — it is a systems science term. A vessel that has achieved dynamic equilibrium has properties that no external actor fully understands. Gripping it reorganizes the equilibrium around the act of gripping, not around the original function. The wise person who 'avoids extremes' is practicing what Taleb calls 'negative action' — the discipline of knowing when not to intervene.",
+    reading_th: "ถ้าบทนี้คือตัวบทก่อตั้งของการปกครองความซับซ้อน?\nDonella Meadows ใน Thinking in Systems (2008) และงานของ Nassim Taleb เรื่องการแทรกแซงในระบบซับซ้อนบรรจบกันที่การสังเกตเดียวกัน ระบบที่ดูเหมือนปรับปรุงได้โดยการแทรกแซงจากภายนอกมักอยู่ที่สมดุลแล้วซึ่งการแทรกแซงรบกวน cobra effect (นโยบายอาณานิคมอังกฤษที่จ่ายค่าหัวงูเห่าที่ตายนำไปสู่การเลี้ยงงูเห่า) คือแบบแผน ทุกความพยายาม 'จับ' ระบบผลิตสิ่งตรงข้ามกับผลลัพธ์ที่ตั้งใจ\n'ภาชนะศักดิ์สิทธิ์' ไม่ใช่ลัทธิมันเป็นคำศัพท์วิทยาศาสตร์ระบบ คนฉลาดที่ 'หลีกเลี่ยงสุดขีด' กำลังปฏิบัติสิ่งที่ Taleb เรียกว่า 'negative action' วินัยของการรู้ว่าเมื่อใดไม่ควรแทรกแซง",
+    code: "function improve(world: ComplexSystem, intervention: Action): ComplexSystem {\n  // The cobra effect: intervention reorganizes the equilibrium\n  // around itself, not around the original function.\n  return world.reorganize_around(intervention);  // not what you wanted\n}\n\n// The wise alternative:\nfunction govern(world: ComplexSystem): ComplexSystem {\n  return world;  // avoid extremes, excess, arrogance\n}",
+    sources: [
+      "Donella Meadows, Thinking in Systems: A Primer (2008).",
+      "Nassim Nicholas Taleb, 'The Tragedy of the Intervention,' Incerto series."
+    ]
+  },
+
+  30: {
+    direct: "If you advise a lord by way of the Way, don't use armies against the world.\nThe business comes back the same way.\nWhere the army camps, thorns grow.\nAfter a great war, a hungry year.\nA good general gets the result and stops.\nDoesn't dare to take more.\nGets the result — doesn't boast.\nGets the result — doesn't claim credit.\nGets the result — doesn't stay.\nGets the result because there was no other choice.\nGets the result and doesn't use strength.\nThings grow strong and then grow old.\nThis is called not the Way.\nNot the Way ends early.",
+    direct_th: "ถ้าคุณแนะนำเจ้าโดยวิถีของทาง อย่าใช้กองทัพกับโลก\nกิจการกลับมาในแบบเดียวกัน\nที่กองทัพตั้งค่าย หนามงอก\nหลังสงครามใหญ่ ปีที่หิวโหย\nนายพลที่ดีได้ผลลัพธ์แล้วหยุด\nไม่กล้าเอาเพิ่ม\nได้ผลลัพธ์ — ไม่คุยโม้\nได้ผลลัพธ์ — ไม่อ้างสิทธิ์\nได้ผลลัพธ์ — ไม่อยู่\nได้ผลลัพธ์เพราะไม่มีทางเลือกอื่น\nได้ผลลัพธ์และไม่ใช้ความแข็งแกร่ง\nสิ่งต่าง ๆ เจริญแล้วแก่\nนี่เรียกว่าไม่ใช่ทาง\nไม่ใช่ทางจบเร็ว",
+    reading: "What if 'things grow strong and then grow old' is a statement about imperial overreach that applies equally to organisations and careers?\nChalmers Johnson's Blowback (2000) documented how military interventions create secondary effects — 'thorns growing where the army camped' — that persist long after the original objective is achieved or forgotten. The pattern is consistent across scales: empires that extend their military advantage past the point of necessity generate the exact resistance that ultimately defeats them. It is not military weakness that ends empires; it is the cost of maintaining the system past its natural endpoint.\nThe chapter's 'good general' is not a pacifist. He achieves the result — and stops. 'Because there was no other choice' is the key phrase: this general used force as a last resort and stopped precisely at the resolution. The overreach doesn't happen in the crisis; it happens in the afterglow, when the result is used as a platform for the next ambition.",
+    reading_th: "ถ้า 'สิ่งต่าง ๆ เจริญแล้วแก่' เป็นคำกล่าวเกี่ยวกับการขยายตัวเกินขีดจำกัดที่นำไปใช้ได้เท่า ๆ กันกับองค์กรและอาชีพ?\nChalmers Johnson ใน Blowback (2000) บันทึกว่าการแทรกแซงทางทหารสร้างผลกระทบรอง — 'หนามงอกที่กองทัพตั้งค่าย' — ที่ยังคงอยู่นานหลังจากวัตถุประสงค์เดิมบรรลุหรือถูกลืม รูปแบบสอดคล้องกันในทุกระดับ จักรวรรดิที่ขยายข้อได้เปรียบทางทหารเลยจุดที่จำเป็นสร้างการต่อต้านที่แม่นยำซึ่งในที่สุดเอาชนะพวกมัน ไม่ใช่ความอ่อนแอทางทหารที่จบจักรวรรดิ มันคือต้นทุนการรักษาระบบเลยจุดสิ้นสุดตามธรรมชาติ\nนายพลที่ดีของบทไม่ใช่นักสันติวิธี เขาบรรลุผลลัพธ์ — แล้วหยุด การขยายตัวเกินขีดไม่ได้เกิดในวิกฤต มันเกิดในช่วงหลังจากนั้น เมื่อผลลัพธ์ถูกใช้เป็นแพลตฟอร์มสำหรับความทะเยอทะยานต่อไป",
+    code: "// Imperial overreach — overshoot past resolution\ntype Campaign = { objective: string; achieved: boolean; stopped: boolean };\n\nfunction evaluate(c: Campaign): 'good general' | 'overreach' {\n  if (c.achieved && c.stopped) return 'good general';\n  return 'overreach';  // things grow strong, then grow old\n}\n// The danger isn't during the campaign. It's after.",
+    sources: [
+      "Chalmers Johnson, Blowback: The Costs and Consequences of American Empire (2000).",
+      "Paul Kennedy, The Rise and Fall of the Great Powers (1987), on imperial overextension."
     ]
   }
 };
