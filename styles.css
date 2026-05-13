@@ -3384,6 +3384,63 @@ body.pinyin-off .prologue-title em { display: none; }
 .dw-section--state { background-image: url('img/whistler.jpg'); }
 .dw-section--child { background-image: url('img/liang-kai.jpg'); }
 .dw-section--soft { background-image: url('img/monk-sea.jpg'); }
+/* Deepwork overlay — multilingual lang-toggle support */
+body.lang-en .deepwork-overlay [data-lang="th"],
+body.lang-en .deepwork-overlay [data-lang="cn"],
+body.lang-th .deepwork-overlay [data-lang="en"],
+body.lang-th .deepwork-overlay [data-lang="cn"],
+body.lang-cn .deepwork-overlay [data-lang="en"],
+body.lang-cn .deepwork-overlay [data-lang="th"] { display: none; }
+
+/* Per-language font overrides inside dw-copy */
+.dw-copy p[data-lang="en"],
+.dw-copy .dw-pull[data-lang="en"] {
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+}
+.dw-copy h3[data-lang="en"] {
+  font-family: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+}
+.dw-copy p[data-lang="cn"],
+.dw-copy .dw-pull[data-lang="cn"],
+.dw-copy h3[data-lang="cn"] {
+  font-family: var(--cn-serif);
+}
+.dw-copy .dw-science {
+  margin-top: 24px;
+  font-size: clamp(13px, 1.3vw, 16px);
+  line-height: 1.65;
+  color: rgba(244,235,213,.55);
+  font-style: italic;
+}
+.dw-copy .dw-science[data-lang="en"] {
+  font-family: "Cormorant Garamond", serif;
+}
+.dw-copy .dw-chref {
+  margin: 0 0 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.dw-source {
+  padding: 48px 6vw;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  line-height: 1.7;
+  color: rgba(244,235,213,.4);
+  border-top: 1px solid rgba(244,235,213,.1);
+}
+.dw-source a { color: rgba(244,235,213,.55); border-bottom: 1px dotted currentColor; text-decoration: none; }
+.dw-source[data-lang="th"], .dw-source[data-lang="cn"] { font-family: var(--th); font-size: 12px; letter-spacing: 0; }
+.dw-source[data-lang="cn"] { font-family: var(--cn-serif); }
+/* Deepwork title / sub multilingual */
+.deepwork-title[data-lang="en"] { font-family: "Cormorant Garamond", serif; }
+.deepwork-title[data-lang="cn"] { font-family: var(--cn-serif); }
+.deepwork-sub[data-lang="en"] { font-family: "Cormorant Garamond", serif; }
+.deepwork-sub[data-lang="cn"] { font-family: var(--cn-serif); }
+
 @media (max-width: 720px) {
   .deepwork-close {
     width: 64px;
