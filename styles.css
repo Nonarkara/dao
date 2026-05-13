@@ -4872,6 +4872,43 @@ body.pinyin-off .index-list .ix-py { display: none; }
   color: var(--ink-fade) !important;
   margin-top: 40px !important;
 }
+.sp-photo {
+  margin: 0 0 32px;
+  padding: 0;
+}
+.sp-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.sp-photo--lead {
+  margin: -4px 0 36px;
+}
+.sp-photo--lead img {
+  max-height: 72vh;
+  object-position: center 20%;
+}
+.sp-photo--inline {
+  margin: 32px 0;
+}
+.sp-photo--inline img {
+  max-height: 56vh;
+}
+.sp-photo--close {
+  margin: 32px 0 0;
+}
+.sp-photo--close img {
+  max-height: 60vh;
+}
+.sp-photo figcaption {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  color: var(--ink-fade);
+  margin-top: 8px;
+  text-transform: uppercase;
+}
 
 /* ============================================================
    CHAPTER VARIATION — MONUMENTAL SCALE-S (short lesson chapters)
