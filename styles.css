@@ -5018,3 +5018,256 @@ body.pinyin-off .index-list .ix-py { display: none; }
 /* Keyboard shortcut visible in cover footer */
 .cover-instructions .cover-key-e::before { content: "E"; }
 
+/* ============================================================
+   FINAL IMPRESSION PASS — scale extremes, mood drama, chapter art
+   ============================================================ */
+
+/* ── XL: push to true monument scale ─────────────────────── */
+.chapter.scale-XL .origin-cn-title {
+  font-size: clamp(72px, 11vw, 160px) !important;
+  letter-spacing: clamp(16px, 2.5vw, 36px) !important;
+  line-height: .92 !important;
+}
+.chapter.scale-XL .panel-summary {
+  min-height: 80vh !important;
+  padding-top: clamp(160px, 26vh, 320px) !important;
+  padding-bottom: clamp(120px, 20vh, 240px) !important;
+}
+.chapter.scale-XL .summary-frame .su-en,
+.chapter.scale-XL .summary-frame .su-th {
+  font-size: clamp(30px, 4vw, 52px) !important;
+  line-height: 1.22 !important;
+}
+
+/* ── S: haiku mode — the shortest teachings get the most space ─ */
+.chapter.scale-S .panel-summary {
+  min-height: 50vh;
+  padding-top: clamp(60px, 10vh, 120px) !important;
+  padding-bottom: clamp(40px, 7vh, 80px) !important;
+}
+.chapter.scale-S .origin-cn-title {
+  font-size: clamp(52px, 8.5vw, 120px) !important;
+  letter-spacing: clamp(10px, 2vw, 28px) !important;
+  line-height: .9 !important;
+}
+/* Ultra-compact S chapters: the summary sentence is the chapter */
+.chapter.scale-S .summary-frame .su-en,
+.chapter.scale-S .summary-frame .su-th {
+  font-size: clamp(20px, 2.4vw, 30px) !important;
+  max-width: 26ch;
+}
+
+/* ── mood-cosmic: starfield entry, maximum depth ─────────────*/
+.chapter.mood-cosmic .panel-summary {
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 120%, rgba(168,51,50,.28) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 60% at 30% -10%, rgba(100,60,20,.15) 0%, transparent 60%),
+    #0a0906;
+}
+.chapter.mood-cosmic .summary-frame .su-en,
+.chapter.mood-cosmic .summary-frame .su-th {
+  color: rgba(244,235,213,.92);
+  text-shadow: 0 0 60px rgba(184,137,58,.3);
+}
+.chapter.mood-cosmic .panel-origin {
+  background: #0a0906;
+}
+.chapter.mood-cosmic .origin-cn-title {
+  font-size: clamp(72px, 11vw, 160px) !important;
+  letter-spacing: 28px !important;
+  color: var(--paper);
+  text-shadow: 0 0 80px rgba(184,137,58,.25), 0 0 160px rgba(168,51,50,.15);
+}
+
+/* ── mood-sea: deep water, bioluminescent edge ─────────────── */
+.chapter.mood-sea .panel-summary {
+  background: linear-gradient(180deg, #0a1f1f 0%, #061414 100%);
+}
+.chapter.mood-sea .panel-origin {
+  background: #061414;
+}
+.chapter.mood-sea .origin-cn-title {
+  color: #b8e4e4;
+  text-shadow: 0 0 40px rgba(100,180,180,.3);
+  font-size: clamp(64px, 10vw, 150px) !important;
+  letter-spacing: 20px !important;
+}
+.chapter.mood-sea .summary-frame .su-en,
+.chapter.mood-sea .summary-frame .su-th { color: rgba(184,228,228,.88); }
+
+/* ── mood-natural: living forest, jade and earth ───────────── */
+.chapter.mood-natural .panel-summary {
+  background: linear-gradient(160deg, #1a2a1a 0%, #0e1a10 100%);
+}
+.chapter.mood-natural .origin-cn-title {
+  color: #c8e4b0;
+  font-size: clamp(56px, 9vw, 128px) !important;
+}
+.chapter.mood-natural .summary-frame .su-en,
+.chapter.mood-natural .summary-frame .su-th { color: rgba(200,228,176,.88); }
+
+/* ── mood-stone: weight, gravity, funeral grey ──────────────── */
+.chapter.mood-stone .panel-summary {
+  background: linear-gradient(180deg, #1a1a18 0%, #111110 100%);
+}
+.chapter.mood-stone .panel-origin {
+  background: #111110;
+}
+.chapter.mood-stone .origin-cn-title {
+  color: rgba(200,200,194,.82);
+  letter-spacing: 14px !important;
+  font-size: clamp(52px, 8vw, 112px) !important;
+}
+.chapter.mood-stone .summary-frame .su-en,
+.chapter.mood-stone .summary-frame .su-th { color: rgba(190,190,184,.85); }
+
+/* ── mood-flesh: warmth, intimacy, the organic ──────────────── */
+.chapter.mood-flesh .panel-summary {
+  background: linear-gradient(160deg, #1f0e0e 0%, #160808 100%);
+}
+.chapter.mood-flesh .origin-cn-title {
+  color: #e8c4b0;
+  font-size: clamp(52px, 8vw, 112px) !important;
+}
+.chapter.mood-flesh .summary-frame .su-en,
+.chapter.mood-flesh .summary-frame .su-th { color: rgba(232,196,176,.88); }
+
+/* ── mood-weather: atmosphere, clouds, the fleeting ─────────── */
+.chapter.mood-weather .panel-summary {
+  background: linear-gradient(200deg, #1a2030 0%, #0e1422 100%);
+}
+.chapter.mood-weather .origin-cn-title {
+  color: rgba(180,200,230,.85);
+  font-size: clamp(52px, 8vw, 112px) !important;
+}
+
+/* ── mood-ember: dying fire, amber, the turning point ────────── */
+.chapter.mood-ember .panel-summary {
+  background: linear-gradient(180deg, #1a1008 0%, #110a04 100%);
+}
+.chapter.mood-ember .origin-cn-title {
+  color: #e8c080;
+  text-shadow: 0 0 40px rgba(200,140,60,.2);
+  font-size: clamp(52px, 8vw, 112px) !important;
+}
+
+/* ── mood-physics: structural, scientific, precise ───────────── */
+.chapter.mood-physics .panel-summary {
+  background: linear-gradient(180deg, #0e1418 0%, #080e12 100%);
+}
+.chapter.mood-physics .origin-cn-title {
+  color: rgba(180,220,240,.85);
+  font-size: clamp(52px, 8vw, 112px) !important;
+  letter-spacing: 20px !important;
+}
+
+/* ── mood-civic: practical, earthy, action ───────────────────── */
+.chapter.mood-civic .panel-summary {
+  background: linear-gradient(180deg, #181410 0%, #100e0a 100%);
+}
+.chapter.mood-civic .origin-cn-title {
+  color: rgba(220,200,170,.9);
+  font-size: clamp(52px, 8vw, 112px) !important;
+}
+
+/* ── mood-wabi: stillness, understatement, the default ─────── */
+.chapter.mood-wabi .panel-summary {
+  background: linear-gradient(180deg, #181410 0%, #110f0c 100%);
+}
+.chapter.mood-wabi .origin-cn-title {
+  font-size: clamp(52px, 8vw, 112px) !important;
+  letter-spacing: 12px !important;
+}
+
+/* ── Chapter-specific overrides: three keystones ─────────────
+   Ch 1  體道 · the opening — cosmic, portal
+   Ch 8  易性 · water — the deepest moment
+   Ch 81 顯質 · the closing — the book ends itself       ──── */
+
+/* Ch 1: cosmic portal, maximum drama */
+.chapter[data-n="1"] .panel-summary {
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(168,51,50,.35) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 100% at 80% 0%, rgba(60,20,10,.4) 0%, transparent 50%),
+    #050402 !important;
+  min-height: 88vh !important;
+}
+.chapter[data-n="1"] .origin-cn-title {
+  font-size: clamp(80px, 13vw, 180px) !important;
+  letter-spacing: 36px !important;
+  color: var(--paper) !important;
+  text-shadow: 0 0 100px rgba(184,137,58,.28) !important;
+}
+.chapter[data-n="1"] .panel-origin { background: #050402 !important; }
+
+/* Ch 8: water — deep and still */
+.chapter[data-n="8"] .panel-summary {
+  background: linear-gradient(180deg, #03100e 0%, #020c0a 100%) !important;
+  min-height: 82vh !important;
+}
+.chapter[data-n="8"] .origin-cn-title {
+  font-size: clamp(76px, 12vw, 160px) !important;
+  letter-spacing: 28px !important;
+  color: #9ee4e0 !important;
+  text-shadow: 0 0 60px rgba(60,180,170,.25) !important;
+}
+.chapter[data-n="8"] .panel-origin { background: #02100e !important; }
+
+/* Ch 81: closing monument — the book ends by undermining itself */
+.chapter[data-n="81"] .panel-summary {
+  background: #000 !important;
+  min-height: 88vh !important;
+}
+.chapter[data-n="81"] .summary-frame .su-en,
+.chapter[data-n="81"] .summary-frame .su-th {
+  font-size: clamp(32px, 4.5vw, 60px) !important;
+  letter-spacing: .04em !important;
+  color: rgba(244,235,213,.7) !important;
+}
+.chapter[data-n="81"] .origin-cn-title {
+  font-size: clamp(80px, 13vw, 180px) !important;
+  letter-spacing: 36px !important;
+  color: var(--paper) !important;
+  opacity: .82 !important;
+}
+.chapter[data-n="81"] .panel-origin { background: #000 !important; }
+
+/* Ch 37 / 47 / 48: the three subtraction chapters — strip to the minimum */
+.chapter[data-n="37"] .origin-cn-title,
+.chapter[data-n="47"] .origin-cn-title,
+.chapter[data-n="48"] .origin-cn-title {
+  font-size: clamp(64px, 10vw, 140px) !important;
+  letter-spacing: 22px !important;
+  opacity: .75 !important;
+}
+
+/* ── deepwork overlay: dramatic section transitions ──────────── */
+.dw-section { transition: opacity .3s ease; }
+.dw-section:target { opacity: 1; }
+
+/* ── about-quote: more presence ─────────────────────────────── */
+.about-quote { margin: 28px 0 8px !important; padding: 18px 0 0 !important; }
+.about-quote .aq-cn { font-size: 22px !important; letter-spacing: 4px !important; }
+.about-quote .aq-tr { font-size: 14px !important; }
+
+/* ── Self tab: larger leading paragraph ─────────────────────── */
+.self-piece p:first-of-type {
+  font-size: clamp(19px, 1.8vw, 22px) !important;
+  line-height: 1.9 !important;
+  color: var(--ink) !important;
+}
+
+/* ── panel-label upgrade: more present, less ghost ──────────── */
+.panel-label {
+  letter-spacing: .22em !important;
+}
+
+/* Mobile tweaks for all scale enhancements */
+@media (max-width: 600px) {
+  .chapter.scale-XL .origin-cn-title { font-size: clamp(56px, 14vw, 96px) !important; }
+  .chapter[data-n="1"] .origin-cn-title,
+  .chapter[data-n="8"] .origin-cn-title,
+  .chapter[data-n="81"] .origin-cn-title { font-size: clamp(60px, 15vw, 100px) !important; }
+  .chapter.scale-S .origin-cn-title { font-size: clamp(44px, 11vw, 80px) !important; }
+}
+
