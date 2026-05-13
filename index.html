@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=27">
+<link rel="stylesheet" href="styles.css?v=29">
 </head>
 <body>
 
@@ -813,15 +813,28 @@
 <section class="self-pane notes-pane" id="self" data-pane="self">
   <div class="self-inner">
     <p class="self-kicker">自述 <em>zì shù</em> · Story</p>
-    <h2 class="self-title">From the horse's mouth.</h2>
-    <p class="self-sub">Three spoken reflections, lightly edited. The house. The time. The Nanny. Names and possessions. The website team that broke everything by trying too hard. The simulation.</p>
+    <h2 class="self-title" data-lang="en">From the horse's mouth.</h2>
+    <h2 class="self-title" data-lang="th">จากปากม้าเอง</h2>
+    <h2 class="self-title" data-lang="cn" style="font-family:var(--cn-serif)">出自当事人之口。</h2>
+    <p class="self-sub" data-lang="en">Three spoken reflections, lightly edited. The house. The time. The Nanny. Names and possessions. The website team that broke everything by trying too hard. The simulation.</p>
+    <p class="self-sub" data-lang="th">สามบทสะท้อนที่พูดออกมา แก้ไขเล็กน้อย บ้าน เวลา ยาย ชื่อและสมบัติ ทีมที่ทำทุกอย่างพังเพราะพยายามมากเกินไป การจำลอง</p>
+    <p class="self-sub" data-lang="cn" style="font-family:var(--cn-serif)">三篇口述反思，略加编辑。房子。时间。阿婆。名字与占有。因为太努力而把网站搞崩的团队。还有模拟论。</p>
 
     <article class="self-piece">
-      <h3 class="sp-heading">I. The House</h3>
+      <h3 class="sp-heading">
+        <span data-lang="en">I. The House</span>
+        <span data-lang="th">๑. บ้าน</span>
+        <span data-lang="cn" style="font-family:var(--cn-serif)">一、家</span>
+      </h3>
       <figure class="sp-photo sp-photo--lead">
-        <img src="public/607062705.606838.jpg" alt="Non as a boy in the living room of the family house, Bangkok — Chinese carved furniture, light through the window" loading="lazy">
-        <figcaption>Bangkok, 1990s. The house.</figcaption>
+        <img src="public/607062705.606838.jpg" alt="Non as a boy in the living room of the family house, Bangkok" loading="lazy">
+        <figcaption>
+          <span data-lang="en">Bangkok, 1990s. The house.</span>
+          <span data-lang="th">กรุงเทพฯ ยุค 1990 บ้านหลังนี้</span>
+          <span data-lang="cn">曼谷，1990年代。这栋房子。</span>
+        </figcaption>
       </figure>
+      <div class="sp-lang" data-lang="en">
       <p>I've been thinking about time. Not abstractly — I'm thinking about it because I'm still living in the same house.</p>
       <p>This house is getting old. Forty years we've lived here. There were five of us once: my parents, my brother, myself, and my Nanny. Her compound was technically outside, connected through an inside doorway, so she was part of the household but also apart from it — which is how those arrangements usually went.</p>
       <p>Then things changed in the way they do. My dad passed away. My Nanny developed memory loss, and we had to move her to a public elderly care home — we couldn't afford private. She had three children. None of them were there when she died. Just me and my dad. We cremated her together.</p>
@@ -830,46 +843,117 @@
       <p>The only reason I feel time is simpler: I'm no longer that little boy in the photograph. The neighborhood is gone too, in the way that neighborhoods go. What was once suburban rice fields and small pathways is today a metro station within walking distance. I can get drunk and take the SkyTrain home.</p>
       <p>Things change a lot. I change a lot. I've been through a lot — physical, emotional, cognitive, spiritual. I've been at the abyss because I trusted people with titles and positions and stature. I thought: they must be good. I looked at all these superficial things and assumed they must be great. I was disappointed because they were human, like me — escaping from things they hated, doing whatever they needed to survive. I wasn't ready for those survival strategies.</p>
       <p>In a sense, there's no time. We evolved from a single-cell organism into a body, and the body, in order to maintain ecological balance, must eventually decay once its responsibility on the earth is done. Our cognitive capacity — the thing that allows us to think more, feel more, describe things in increasingly sophisticated layers — gives us enormous power when it comes to philosophy and theology. But it also prevents us from seeing what actually is. We symbolize everything so much. Just like I fell into the trap of trusting titles. When you believe in the superficial rather than the real, when you name something and believe in the name without understanding the content, you lose track of the quality of the actual thing. And usually, that's when you make the wrong decision.</p>
+      </div>
+      <div class="sp-lang" data-lang="th">
+        <p>ผมคิดเรื่องเวลา ไม่ใช่แบบนามธรรม แต่เพราะผมยังอาศัยอยู่บ้านหลังเดิม</p>
+        <p>บ้านหลังนี้แก่ลง สี่สิบปีแล้ว ครั้งหนึ่งมีห้าคน พ่อแม่ พี่ชาย ผม และยาย แม้ห้องพักยายจะอยู่นอกอย่างเป็นทางการ เชื่อมกันผ่านประตูด้านใน ยายเป็นส่วนหนึ่งของบ้านแต่ก็แยกออกไป อย่างที่การจัดการแบบนั้นมักเป็น</p>
+        <p>แล้วสิ่งต่าง ๆ ก็เปลี่ยนไปตามที่มักจะเป็น พ่อจากไป ยายเริ่มความจำเสื่อม เราต้องส่งท่านไปบ้านพักผู้สูงอายุของรัฐ เพราะเงินไม่พอสำหรับเอกชน ท่านมีลูกสามคน ไม่มีใครอยู่ตอนท่านจากไป มีแค่ผมกับพ่อ เราเผาศพท่านด้วยกัน</p>
+        <p>ท่านจากไป พี่ย้ายออก ตอนนี้เหลือสุนัขสองตัว แม่ และผม</p>
+        <p>ดูรูปถ่ายจากสามสิบห้าปีที่แล้ว ผมจำได้ชัดถึงสิ่งที่เกิดขึ้น ทุกอย่างรอบข้างยังดูเหมือนเดิม ซ่อมบ้านครั้งหนึ่ง ช่างทิ้งจุดขาวไว้ทั่วเฟอร์นิเจอร์ แม่ไม่ค่อยสนใจนัก ฤดูกาลเปลี่ยน อุณหภูมิเปลี่ยน แต่นั่นแทบไม่เกี่ยวกับเวลาเลย</p>
+        <p>เหตุผลที่ผมรู้สึกถึงเวลา ง่ายกว่านั้น ผมไม่ใช่เด็กชายในรูปถ่ายนั้นอีกต่อไป ย่านก็หายไป จากนาข้าวชานเมืองและทางเดินเล็ก ๆ วันนี้มีสถานีรถไฟฟ้าหน้าบ้าน เมาแล้วขึ้น BTS กลับได้</p>
+        <p>สิ่งต่าง ๆ เปลี่ยน ผมก็เปลี่ยน ผ่านมาหลายอย่าง ทั้งร่างกาย จิตใจ ปัญญา จิตวิญญาณ ผมเคยตกลงไปในเหวเพราะเชื่อใจคนที่มีตำแหน่งและฐานะ ผิดหวัง เพราะพวกเขาเป็นมนุษย์เหมือนผม กำลังหนีจากสิ่งที่เกลียด ทำทุกอย่างเพื่ออยู่รอด ผมไม่พร้อมสำหรับกลยุทธ์เหล่านั้น</p>
+        <p>จริง ๆ แล้วไม่มีเวลา จากมุมมองชีววิทยา เราวิวัฒนาการจากสิ่งมีชีวิตเซลล์เดียวกลายเป็นร่างกาย และร่างกายต้องเสื่อมสลายเมื่อภาระหน้าที่บนโลกสิ้นสุด ความสามารถทางปัญญาที่ทำให้เราคิดมากขึ้น รู้สึกมากขึ้น อธิบายในชั้นที่ซับซ้อนขึ้น ให้พลังงานมากมายด้านปรัชญา แต่ก็ขัดขวางไม่ให้เราเห็นสิ่งที่เป็นจริง เราทำสัญลักษณ์กับทุกอย่างมากเกินไป เหมือนที่ผมตกหลุมพรางการเชื่อใจตำแหน่ง เมื่อเชื่อในสิ่งผิวเผิน เมื่อตั้งชื่อแล้วเชื่อในชื่อโดยไม่เข้าใจเนื้อหา คุณสูญเสียการรับรู้คุณภาพของมัน และปกติ นั่นคือตอนที่คุณตัดสินใจผิด</p>
+      </div>
+      <div class="sp-lang" data-lang="cn">
+        <p>我想时间的事，不是抽象地想，而是因为我还住在同一栋房子里。</p>
+        <p>这栋房子老了。我们住了四十年。曾经有五个人：父母、哥哥、我，还有阿婆。虽然阿婆的房间从技术上来说在外面，通过一扇内门连接，但她是家的一部分，只是也分开着。</p>
+        <p>然后事情就按它一贯的方式变了。父亲走了。阿婆开始记忆衰退，我们不得不把她送进公立老人院。她有三个孩子，没有一个人在场。只有我和父亲。我们两个一起给她火化。</p>
+        <p>她走了。哥哥搬出去了。现在只剩两条狗、妈妈，和我。</p>
+        <p>看三十五年前的照片，我还清楚地记得那时候发生的事。周围一切看起来还是老样子。装修过一次——油漆工在家具上留下了白点，妈妈似乎不太在意。季节变，温度变，但那跟时间关系不大。</p>
+        <p>让我感受到时间的原因，比那简单：照片里那个小男孩，不再是我了。那个街区也消失了。曾经是郊区稻田和小路，现在门口有地铁站。喝了酒也能坐地铁回家。</p>
+        <p>很多事情变了。我也变了很多。经历了很多。我曾跌入深渊，因为我相信有头衔有地位的人，以为他们一定很好。我失望了，因为他们也是普通人——为了生存不得不做任何事。我没准备好应对那些生存策略。</p>
+        <p>真正说来，并不存在时间。从生物学角度看，我们从单细胞生物进化成身体，而这个身体，为了维持生态系统的平衡，在完成它在地球上的责任之后，必须衰亡。我们的认知能力给了我们巨大的力量，但同时也阻止我们看清事物的本来面目。我们把一切都符号化得太厉害了。就像我陷入了相信头衔的陷阱。当你相信表面而非真实，你就失去了对它本质的感知。而通常，这就是你作出错误决定的时候。</p>
+      </div>
       <figure class="sp-photo sp-photo--close">
-        <img src="public/607062759.940088.jpg" alt="Non sitting on the stairs of the house — the same staircase is still there" loading="lazy">
-        <figcaption>The same staircase is still there.</figcaption>
+        <img src="public/607062759.940088.jpg" alt="Non sitting on the stairs of the family house" loading="lazy">
+        <figcaption>
+          <span data-lang="en">The same staircase is still there.</span>
+          <span data-lang="th">บันไดหลังเดิมยังอยู่</span>
+          <span data-lang="cn">同一段楼梯，还在那里。</span>
+        </figcaption>
       </figure>
     </article>
 
     <article class="self-piece">
-      <h3 class="sp-heading">II. On Time and Names</h3>
+      <h3 class="sp-heading">
+        <span data-lang="en">II. On Time and Names</span>
+        <span data-lang="th">๒. เรื่องเวลาและชื่อ</span>
+        <span data-lang="cn" style="font-family:var(--cn-serif)">二、时间与名字</span>
+      </h3>
       <figure class="sp-photo sp-photo--lead">
         <img src="public/IMG_0915.PNG" alt="Non standing at the Arbeit Macht Frei gate of Auschwitz" loading="lazy">
-        <figcaption>Auschwitz, Poland. We build things to hold the names of the dead. This is what that looks like at scale.</figcaption>
+        <figcaption>
+          <span data-lang="en">Auschwitz, Poland. We build things to hold the names of the dead. This is what that looks like at scale.</span>
+          <span data-lang="th">ออชวิตซ์ โปแลนด์ เราสร้างสิ่งต่าง ๆ เพื่อเก็บชื่อของผู้ตาย นี่คือลักษณะของมันในระดับใหญ่</span>
+          <span data-lang="cn">波兰，奥斯维辛。我们建造事物，用来承载逝者的名字。这就是那件事在大尺度上的模样。</span>
+        </figcaption>
       </figure>
+      <div class="sp-lang" data-lang="en">
       <p>We deal with time because of fear — fear of not having it anymore, which is death.</p>
       <p>Animals mourn the loss of those they spent time with. They behave differently for a while, then they move on. They don't have the cognitive capacity to replay memories — no rewinds of good times looping in the brain. Humans do. That's why we build the Taj Mahal. That's why we name geography after people. That's why architecture carries the weight of the dead in ways other mammals simply cannot manage.</p>
       <p>We're attached to the experiences our brains can absorb and remember. And that's also why — according to Edward Slingerland's research on alcohol and human civilization — once humans accidentally fermented something for the first time and tasted what it did, we never wanted to leave it alone. We started with fermentation, made beer, moved to wine, got to spirits, and now we produce 99% alcohol by volume. The brain always wants to run further, enhance its own capacity, push past whatever limit it just crossed.</p>
       <figure class="sp-photo sp-photo--inline">
         <img src="public/RenderedImage.jpg" alt="Non pointing at the MIT Campus Information sign — his first day at MIT, Boston, winter" loading="lazy">
-        <figcaption>MIT, Cambridge. March 1998. The first title I was going to trust.</figcaption>
+        <figcaption>
+          <span data-lang="en">MIT, Cambridge. March 1998. The first title I was going to trust.</span>
+          <span data-lang="th">MIT, เคมบริดจ์ มีนาคม 1998 ตำแหน่งแรกที่ผมจะไว้ใจ</span>
+          <span data-lang="cn">麻省理工学院，剑桥。1998年3月。我即将相信的第一个头衔。</span>
+        </figcaption>
       </figure>
       <p>This cognitive capacity is also what made language — and language, as anthropologists and linguists have repeatedly shown, dictates thought. You can only think as far as your language provides the mental framework for thinking. A society without a word for "time" experiences time very differently. A culture with many precise words for snow perceives snow with a granularity others simply don't register. I'm an architect. I have many different words for dome structures — geodesic, Brunelleschi-an, Florentine — and because I have those names, I see differences that others walk past entirely.</p>
       <p>Names are things we come up with for things that were there before we named them. The Dao De Jing's first chapter says this: the moment you start naming something, you begin forming attachment to it. And the moment you attach to it, you can no longer see it clearly.</p>
       <p>Just like naming the past and the present. The moment you do, you stop realizing that the past doesn't exist. It's a fixation in memory — and memory is unreliable. My brain and your brain might remember the exact same event completely differently. What we actually have is only the present. A body that grows stronger, then grows weaker, then dies. This is how the ecosystem maintains balance. Death is the only mechanism that transfers power. If nobody died, those who held it would never release it.</p>
       <p>A story, briefly. A woman stays with a man for twenty years. She absorbs signals that something is wrong, but her brain refuses to fully process them because she believes, somewhere, that she can change him. Then he does what her brain had been quietly warning her about. And when it happens, she can't metabolize it. He can't either — he realizes, at the exact wrong moment, that he deeply loves her. But that realization arrives at the same time as a new memory she's now carrying like a chain. Her dignity will not let her release the chain. So both of them carry it for the rest of their lives. This is what the Dao De Jing means when it says that naming the past prevents you from seeing the present. The chain is not the event. The chain is the name she gave it.</p>
       <p>My mother. I love her — I think because she has been constant, and because she has loved me unconditionally. To be loved unconditionally is a specific and rare thing. My response to it is to want to be what she would want me to be, and simultaneously to pursue my own path, which she supports. I could call this filial piety. But I'm not doing it for her. I'm doing it for myself. That's the distinction — and it's also the distinction the whole book is trying to make. The name says one thing. What's actually happening inside it is something else entirely.</p>
-      <p class="sp-sig">— Non Arkaraprasertkul · Bangkok · 2026</p>
+      </div>
+      <div class="sp-lang" data-lang="th">
+        <p>เราจัดการกับเวลาเพราะความกลัว ความกลัวที่จะไม่มีเวลาอีกต่อไป ซึ่งก็คือความตาย</p>
+        <p>สัตว์ต่าง ๆ โศกเศร้ากับการสูญเสียผู้ที่ใช้เวลาด้วยกัน พฤติกรรมเปลี่ยนไประยะหนึ่ง แล้วก็ก้าวต่อไป พวกมันไม่มีความสามารถทางปัญญาที่จะเล่นซ้ำความทรงจำ มนุษย์มี นั่นคือสาเหตุที่เราสร้างทัชมาฮาล นั่นคือสาเหตุที่เราตั้งชื่อภูมิศาสตร์ตามคน นั่นคือสาเหตุที่สถาปัตยกรรมแบกน้ำหนักของผู้ตายในแบบที่สัตว์อื่นทำไม่ได้</p>
+        <p>เราผูกพันกับประสบการณ์ที่สมองดูดซับและจดจำ ตามงานวิจัยของ Edward Slingerland เรื่องแอลกอฮอล์และอารยธรรมมนุษย์ เมื่อมนุษย์หมักบางอย่างได้ครั้งแรกและได้ลิ้มรสมัน เราไม่อยากจากมันไป เริ่มจากการหมัก ทำเบียร์ ไปไวน์ ถึงสปิริต จนตอนนี้เราผลิตแอลกอฮอล์ 99 เปอร์เซ็นต์ สมองมักจะอยากวิ่งต่อไป ผ่านขีดจำกัดที่เพิ่งข้ามไป</p>
+        <p>ความสามารถทางปัญญานี้ยังสร้างภาษา และภาษากำหนดความคิด คุณคิดได้แค่ไกลเท่าที่ภาษาให้กรอบสำหรับการคิด สังคมที่ไม่มีคำว่า "เวลา" ประสบเวลาต่างกันมาก วัฒนธรรมที่มีคำแม่นยำหลายคำสำหรับหิมะรับรู้หิมะในรายละเอียดที่คนอื่นไม่ลงทะเบียน ผมเป็นสถาปนิก มีคำศัพท์ต่าง ๆ สำหรับโครงสร้างโดม และเพราะผมมีชื่อเหล่านั้น ผมมองเห็นความแตกต่างที่คนอื่นเดินผ่านโดยไม่สนใจ</p>
+        <p>ชื่อเป็นสิ่งที่เราสร้างขึ้นสำหรับสิ่งที่มีอยู่ก่อน บทแรกของเต้าเต๋อจิงบอกเรื่องนี้ ทันทีที่คุณเริ่มตั้งชื่อสิ่งหนึ่ง คุณเริ่มก่อให้เกิดการยึดติดกับมัน และทันทีที่ยึดติด คุณมองมันได้ไม่ชัดอีกต่อไป</p>
+        <p>เหมือนกับการตั้งชื่ออดีตและปัจจุบัน ทันทีที่คุณทำ คุณหยุดตระหนักว่าอดีตไม่มีอยู่จริง มันเป็นการยึดในความทรงจำที่ไม่น่าเชื่อถือ สิ่งที่เรามีจริง ๆ คือปัจจุบันเท่านั้น ร่างกายที่แข็งแกร่งขึ้น อ่อนแอลง แล้วตาย นี่คือวิธีที่ระบบนิเวศรักษาสมดุล ความตายเป็นกลไกเดียวที่ถ่ายโอนอำนาจ</p>
+        <p>เรื่องสั้น ๆ ผู้หญิงคนหนึ่งอยู่กับผู้ชายคนหนึ่งยี่สิบปี สมองของเธอดูดซับสัญญาณว่ามีบางอย่างผิด แต่ปฏิเสธที่จะประมวลผลอย่างเต็มที่เพราะเธอเชื่อว่าสามารถเปลี่ยนเขาได้ แล้วเขาก็ทำสิ่งที่สมองเธอเตือนอย่างเงียบ ๆ เมื่อมันเกิดขึ้น เธอรับมือไม่ได้ เขาก็เหมือนกัน เขาตระหนักในเวลาที่ผิดว่าเขารักเธอ แต่การตระหนักนั้นมาพร้อมกับความทรงจำที่เธอแบกมาเหมือนโซ่ตรวน ศักดิ์ศรีของเธอไม่ยอมให้ปล่อย ทั้งสองจึงแบกมันไปตลอดชีวิต โซ่ตรวนไม่ใช่เหตุการณ์ มันคือชื่อที่เธอตั้งให้มัน</p>
+        <p>แม่ผม ผมรักท่าน คิดว่าเป็นเพราะท่านอยู่มาตลอด และเพราะท่านรักผมโดยไม่มีเงื่อนไข การตอบสนองของผมคือการอยากเป็นสิ่งที่ท่านอยากให้ผมเป็น และดำเนินชีวิตในแบบของตัวเอง ซึ่งท่านสนับสนุน ผมอาจเรียกสิ่งนี้ว่าความกตัญญู แต่ผมไม่ได้ทำเพื่อท่าน ผมทำเพื่อตัวเอง นั่นคือความแตกต่าง และมันก็คือความแตกต่างที่หนังสือทั้งเล่มพยายามพูดถึง ชื่อบอกอย่างหนึ่ง สิ่งที่เกิดขึ้นจริงภายในมันคืออีกอย่างหนึ่งโดยสิ้นเชิง</p>
+      </div>
+      <div class="sp-lang" data-lang="cn">
+        <p>我们之所以与时间纠缠，是因为恐惧——害怕不再拥有时间，也就是死亡。</p>
+        <p>动物会因失去一起度过时光的伴侣而哀伤，有一段时间行为改变，然后继续前行。它们没有这种认知能力去重播记忆。人类有。这就是为什么我们建造了泰姬陵，用人名来命名地理，为什么建筑以其他哺乳动物无法做到的方式承载着逝者的重量。</p>
+        <p>我们依附于大脑能吸收和记住的经历。根据Edward Slingerland关于酒精与人类文明的研究，当人类第一次偶然发酵出什么并尝到它的滋味之后，我们就再也不想离开它了。从发酵到啤酒，再到葡萄酒、蒸馏酒，现在生产99度的酒精。大脑总是想跑得更远，突破它刚刚越过的极限。</p>
+        <p>这种认知能力也创造了语言——而语言决定了思想。你只能想到你的语言提供了心智框架的事物。一个没有"时间"这个词的社会，对时间的体验截然不同。一种对雪有许多精确说法的文化，感知到的细节是其他人无从察觉的。我是建筑师，有很多描述穹顶结构的词汇——因为有这些名字，我看到了别人走过却注意不到的差异。</p>
+        <p>名字是我们为那些在命名之前就已存在的事物创造的。《道德经》第一章就说了：你一旦开始给某样东西命名，就开始对它产生执着。一旦执着了，就无法再清晰地看见它。</p>
+        <p>就像给过去和现在命名一样。一旦你这样做，你就停止意识到过去并不存在。它不过是固化在不可靠的记忆中的东西。我们实际拥有的只有当下。一个由强变弱、然后死去的身体。这就是生态系统保持平衡的方式。</p>
+        <p>一个简短的故事。一个女人和一个男人在一起二十年。她的大脑一直在接收信号，但她相信自己能改变他，于是拒绝充分处理。然后他做了她的大脑一直在悄悄警告的事。她无法消化；他也一样——他在最错误的时刻意识到他深深地爱着她。但那个意识和一条新的枷锁同时到来，她的尊严不允许她放手。于是两个人就这样把它背了一辈子。枷锁不是那件事本身，而是她给它起的那个名字。</p>
+        <p>我的母亲。我爱她——我想是因为她一直在，也因为她无条件地爱着我。被无条件地爱是一件具体而罕见的事。我的回应是想成为她希望我成为的样子，同时也追求自己的道路，而她支持这一切。我可以把这叫做孝顺。但我不是为了她这样做，我是为了自己。这是区别所在——也是这整本书试图说明的区别。名字说的是一件事，名字里面实际发生的是完全另一回事。</p>
+      </div>
     </article>
 
     <article class="self-piece">
-      <h3 class="sp-heading">III. On Names, Possession, and the Way</h3>
+      <h3 class="sp-heading">
+        <span data-lang="en">III. On Names, Possession, and the Way</span>
+        <span data-lang="th">๓. เรื่องชื่อ การครอบครอง และทาง</span>
+        <span data-lang="cn" style="font-family:var(--cn-serif)">三、名字、占有与道</span>
+      </h3>
       <figure class="sp-photo sp-photo--lead">
         <img src="public/IMG_7250.JPG" alt="Non in school uniform playing guitar in an outdoor pavilion, Thailand — before the titles" loading="lazy">
-        <figcaption>Thailand, mid-1990s. Before the titles.</figcaption>
+        <figcaption>
+          <span data-lang="en">Thailand, mid-1990s. Before the titles.</span>
+          <span data-lang="th">ไทย กลางยุค 1990 ก่อนที่จะมีตำแหน่ง</span>
+          <span data-lang="cn">泰国，1990年代中期。在所有头衔到来之前。</span>
+        </figcaption>
       </figure>
+      <div class="sp-lang" data-lang="en">
       <p>If we believe Alfred North Whitehead's definition of religion — that it must provide some kind of moral direction for life — then Daoism qualifies clearly. It's remarkably close to Buddhism, so close that there's even a speculation about a meeting. The monk carrying the Buddha's teachings from India into China must have been traveling through the same territory Lao Tzu was leaving when he rode west. The story goes that they met and conversed, and either their two ways of thinking were so similar they merged into each other — which is why, reading either text, we see the resemblance — or it's simply that two very clear thinkers happened to reach similar conclusions from overlapping geographies. Both possibilities are interesting. Neither diminishes what either of them was saying.</p>
       <p>What Daoism teaches first, and what Buddhism also teaches, is this: don't attach to anything with a name. Once you name something, you begin to think of it as a possession. And possessions are never necessities. You can always change them, replace them, lose them. But when you give them names, and then adjectives, and then attach memories and scarcity to the names, you build a structure of desire that the Buddha's First Noble Truth calls the origin of all suffering. What Lao Tzu calls "not the Way," the Buddha calls Dukkha. They are the same observation about the same trap.</p>
       <p>My dad kept every document about himself, meticulously. Passports going back decades, neatly arranged. After he died, during a move, a construction worker dropped them. They scattered on the ground in front of the house — rain could have destroyed them entirely. What struck me was how close we came to losing what had been, to him, precious evidence of himself, and how little it would have mattered. Nobody would have noticed. Not even me. That's the lesson. The passports were the name he gave to his own life. After he left, the name had no one to carry it.</p>
       <p>This applies not just to objects. Lao Tzu was an imperial archivist — in modern terms, a Harvard professor advising the president. He had every title available to a scholar of his era. And he left. On a water buffalo, traveling west. What he said on the way out was not that those things were bad. He said they were not the Way.</p>
       <figure class="sp-photo sp-photo--inline">
         <img src="public/IMG_1076.JPG" alt="Non waving in an open winter landscape in New England — horses in the background" loading="lazy">
-        <figcaption>New England, late 1990s. What cannot be possessed belongs to everyone.</figcaption>
+        <figcaption>
+          <span data-lang="en">New England, late 1990s. What cannot be possessed belongs to everyone.</span>
+          <span data-lang="th">นิวอิงแลนด์ ปลายยุค 1990 สิ่งที่ครอบครองไม่ได้เป็นของทุกคน</span>
+          <span data-lang="cn">新英格兰，1990年代末。无法被占有的东西，属于每一个人。</span>
+        </figcaption>
       </figure>
       <p>What cannot be possessed belongs to everyone. Clean air. Clean water. The forest. The quality of not being stressed because nature is beautiful. Forest bathing is real therapy. It doesn't come with a title. Our evolution equipped us to be creatures who need these things, and we still are, regardless of how long we spend in concrete.</p>
       <p>The second teaching is closer to Stoicism. Everything passes. Time is often the best resolution to a problem — not fighting it, not solving it, but letting enough distance accumulate for it to clarify. Ryan Holiday writes about this. Stillness is not surrender. Stillness is the posture that lets you see what you're actually dealing with before you make it worse.</p>
@@ -877,7 +961,32 @@
       <p>The third teaching is simpler to say and harder to live: meaning comes from flow, not from naming. The communities that live without the concept of time tend to be measurably happier than those of us who live inside it. We built the concept of time for ourselves, and then couldn't stop thinking about it. The only reliable escape is the state in which you are so absorbed in something difficult and beautiful that the clock disappears. Csikszentmihalyi called it flow. Lao Tzu called it wu-wei. They're describing the same disappearance.</p>
       <p>I'll end with a speculation. Some people think this is a simulation. Nick Bostrom's argument — which Elon Musk has also endorsed — is that a sufficiently advanced civilization would almost certainly run more simulated realities than real ones, which means statistically, you're probably in one. I don't have proof. But I notice that Lao Tzu, who was clearly one of the clearest thinkers of any era, seems to have understood something he couldn't say directly. He had to wrap it in philosophical subtext that bypassed what the simulation wants you to think — bypassed language, possession, the concept of time, past and present and future, all the names we give to the inside of experience. He said: the Way that can be described is not the Way. Which is, in philosophical terms, exactly what you'd say if you were trying to tell people they were living inside a constructed reality without getting dismissed as someone who was simply making things up.</p>
       <p>Forest bathing is better than shopping malls. That's as close as I can get to a conclusion. And if we can get there — even fifty percent — I think that's the start of something real.</p>
-      <p class="sp-sig">— Non Arkaraprasertkul · Bangkok · 2026</p>
+      </div>
+      <div class="sp-lang" data-lang="th">
+        <p>ถ้าเราเชื่อนิยามของศาสนาของ Alfred North Whitehead ว่าต้องให้ทิศทางทางศีลธรรมสำหรับชีวิต เต๋าก็ผ่านเกณฑ์นั้นชัดเจน มันใกล้เคียงกับพุทธศาสนามากจนมีการคาดเดาถึงการพบกัน พระที่นำคำสอนของพระพุทธเจ้าจากอินเดียสู่จีนต้องเดินทางผ่านดินแดนเดียวกับที่เหล่าจื๊อกำลังจากไป ไม่ว่าจะเป็นเพราะสองแนวคิดของพวกเขาคล้ายกันจนรวมเป็นหนึ่ง หรือเป็นเพียงเพราะนักคิดสองคนที่ชัดเจนมากบรรลุข้อสรุปที่คล้ายกันจากพื้นที่ที่ทับซ้อนกัน ความเป็นไปได้ทั้งสองน่าสนใจ ไม่มีอย่างใดลดคุณค่าของอีกฝ่าย</p>
+        <p>สิ่งที่เต๋าสอนเป็นอันดับแรก ซึ่งพุทธศาสนาก็สอนเช่นกัน คือ อย่ายึดติดกับสิ่งใดที่มีชื่อ เมื่อคุณตั้งชื่อสิ่งหนึ่ง คุณเริ่มคิดว่ามันเป็นสมบัติ และสมบัติไม่ใช่สิ่งจำเป็น คุณสามารถเปลี่ยน ทดแทน สูญเสียได้เสมอ แต่เมื่อคุณให้ชื่อ แล้วคำคุณศัพท์ แล้วผูกความทรงจำและความขาดแคลนกับชื่อ คุณสร้างโครงสร้างของความปรารถนาที่อริยสัจข้อแรกเรียกว่าที่มาของทุกข์ทั้งหมด สิ่งที่เหล่าจื๊อเรียกว่า "ไม่ใช่ทาง" พระพุทธเจ้าเรียกว่า ทุกข์ มันเป็นการสังเกตเดียวกันเกี่ยวกับกับดักเดียวกัน</p>
+        <p>พ่อผมเก็บเอกสารทุกชิ้นเกี่ยวกับตัวเองอย่างพิถีพิถัน พาสปอร์ตย้อนหลังหลายสิบปี จัดเรียงอย่างเรียบร้อย หลังท่านจากไป ระหว่างการย้าย คนงานก่อสร้างทำหล่น มันกระจายบนพื้นหน้าบ้าน ฝนอาจทำลายมันได้ทั้งหมด สิ่งที่ทำให้ผมตกใจคือเราเกือบสูญเสียสิ่งที่เคยเป็น สำหรับท่าน หลักฐานอันล้ำค่าของตัวเอง และมันสำคัญน้อยมาก ไม่มีใครสังเกต แม้แต่ผม นั่นแหละคือบทเรียน พาสปอร์ตคือชื่อที่ท่านตั้งให้ชีวิตของตัวเอง หลังจากท่านจากไป ไม่มีใครแบกชื่อนั้นอีกแล้ว</p>
+        <p>สิ่งที่ครอบครองไม่ได้เป็นของทุกคน อากาศสะอาด น้ำสะอาด ป่า คุณภาพของการไม่เครียดเพราะธรรมชาติสวยงาม Forest bathing เป็นการบำบัดจริง ไม่มีตำแหน่งมาด้วย วิวัฒนาการสร้างเราให้เป็นสิ่งมีชีวิตที่ต้องการสิ่งเหล่านี้ และเราก็ยังเป็นแบบนั้น ไม่ว่าจะใช้เวลาอยู่ในคอนกรีตนานแค่ไหน</p>
+        <p>การสอนที่สองใกล้เคียงกับปรัชญาสโตอิกมากกว่า ทุกอย่างผ่านไป เวลามักเป็นการแก้ปัญหาที่ดีที่สุด ไม่ใช่การสู้กับมัน แต่ปล่อยให้ระยะห่างสะสมพอที่จะทำให้มันชัดขึ้น Ryan Holiday เขียนเกี่ยวกับเรื่องนี้ ความสงบไม่ใช่การยอมแพ้ มันคือท่าทางที่ทำให้คุณเห็นว่าคุณกำลังจัดการอะไรอยู่จริง ๆ ก่อนที่คุณจะทำให้มันแย่ลง</p>
+        <p>ผมเคยมีทีมหนึ่ง เป็นคนจบเกียรตินิยมอันดับหนึ่งจากสถาบันชั้นนำ ทุกคนเก่งในตัวเอง ผมให้งานหนึ่งอย่าง ดูแลให้เว็บไซต์ทำงาน เพราะพวกเขาเก่งและกระสับกระส่าย พวกเขาไม่ได้แค่ monitor มัน แต่เริ่มเพิ่มฟีเจอร์ coding ฟังก์ชันใหม่ แต่ละคนทำงานคนเดียว ภายในไม่กี่สัปดาห์ เว็บไซต์พัง สิ่งที่ความเก่งกาจของแต่ละคนผลิตไม่ได้คือการประสานงาน นี่ก็เกิดขึ้นกับสโมสรฟุตบอลที่ไซน์ซูเปอร์สตาร์สิบเอ็ดคน ค้นพบว่าเงินเดือนไม่ใช่ข้อจำกัด ตัวตนคือ ความสงบคือสิ่งที่ไม่มีใครฝึกจนชำนาญ</p>
+        <p>การสอนที่สามบอกง่ายกว่าและยากกว่าที่จะใช้ชีวิตตาม ความหมายมาจาก flow ไม่ใช่จากการตั้งชื่อ ชุมชนที่อยู่โดยไม่มีแนวคิดของเวลามักมีความสุขมากกว่า เราสร้างแนวคิดของเวลาให้ตัวเอง แล้วก็คิดไม่หยุด ทางหนีจากความวิตกกังวลเรื่องเวลาที่เชื่อถือได้เพียงอย่างเดียวคือสภาวะที่คุณถูกดูดซับอยู่ในสิ่งที่ยากและสวยงามจนนาฬิกาหายไป Csikszentmihalyi เรียกว่า flow เหล่าจื๊อเรียกว่า Wu-wei พวกเขาอธิบายการหายไปเดียวกัน</p>
+        <p>ผมจบด้วยการคาดเดา Nick Bostrom โต้แย้งว่าอารยธรรมที่พัฒนาพอจะสร้างความเป็นจริงจำลองมากกว่าความเป็นจริงจริง ๆ เกือบแน่นอน ซึ่งหมายความว่าเชิงสถิติ คุณอาจอยู่ในนั้น ผมไม่มีหลักฐาน แต่ผมสังเกตว่าเหล่าจื๊อดูเหมือนจะเข้าใจบางอย่างที่เขาพูดตรง ๆ ไม่ได้ เขาต้องห่อมันในบทข้อความทางปรัชญาที่หลบเลี่ยงสิ่งที่การจำลองต้องการให้คุณคิด ภาษา การครอบครอง แนวคิดของเวลา ชื่อทั้งหมดที่เราตั้งให้ด้านในของประสบการณ์ เขาบอกว่า ทางที่อธิบายได้ ไม่ใช่ทางจริง ซึ่งในแง่ปรัชญา คือสิ่งที่คุณจะพูดถ้าพยายามบอกคนว่าพวกเขาอยู่ในความเป็นจริงที่สร้างขึ้น โดยไม่ถูกดูถูก</p>
+        <p>Forest bathing ดีกว่าการเดินในห้าง นั่นคือสิ่งที่ผมใกล้เคียงที่สุดกับข้อสรุป และถ้าเราไปถึงได้ แม้แค่ห้าสิบเปอร์เซ็นต์ ผมคิดว่านั่นคือจุดเริ่มต้นของบางอย่างที่แท้จริง</p>
+      </div>
+      <div class="sp-lang" data-lang="cn">
+        <p>如果我们相信Alfred North Whitehead对宗教的定义——它必须为生活提供某种道德方向——那么道家显然符合标准。它与佛教极为接近，近到甚至有人猜测曾经有过一次相遇。那位将佛陀教义从印度带入中国的僧人，一定经过了老子离开时所穿越的同一片土地。不管是因为两种思想极为相似而合二为一，还是仅仅因为两位清醒的思想家恰好从地理重叠的区域得出了相似的结论，这两种可能性都很有趣，都无损于对方所说的话。</p>
+        <p>道家教导的第一件事，佛教也同样教导：不要执着于任何有名字的东西。一旦你给某样东西命名，你就开始把它当作一种占有物来看待。而占有物从来都不是必需品。你总是可以改变它们、替换它们、失去它们。但当你给它们起了名字，又加上形容词，再把记忆和稀缺性附着在名字上，你就建起了一个欲望的结构，佛陀的第一圣谛称之为一切苦的根源。老子称之为"不是道"，佛陀称之为苦。这是对同一个陷阱的同一个观察。</p>
+        <p>我父亲保存着关于他自己的每一份文件，一丝不苟。数十年来的护照，排列整齐。他走后，在一次搬家中，一个建筑工人把它们弄掉了。它们散落在房子前面的地上——雨水本可以把它们全部毁掉。让我震惊的是，我们险些失去了对他而言无比珍贵的东西，而这件事却如此无足轻重。没有人会注意到，连我自己也不会。那些护照是他给自己生命所起的名字。他走了之后，就没有人再背负那个名字了。</p>
+        <p>无法被占有的东西属于所有人。清洁的空气。干净的水。森林。不因压力而烦恼，因为大自然美丽的那种品质。森林浴是真实的疗愈，不附带任何头衔。进化让我们成为需要这些东西的生命，无论我们在混凝土中待了多长时间，我们依然如此。</p>
+        <p>第二个教导更接近斯多葛主义。一切都会过去。时间往往是解决问题的最好办法——不是对抗它，而是让足够多的距离积累起来，让它得以澄清。Ryan Holiday写过这件事。静止不是投降，而是一种姿态，让你在把事情弄得更糟之前，先看清楚自己真正面对的是什么。</p>
+        <p>我曾经有一支团队——来自顶尖学府的优秀毕业生，每个人个人能力都极强。我交给他们一个任务：确保网站正常运行。因为他们聪明而躁动，他们没有只是监控它——他们开始添加功能，各自独立工作。几周之内，网站就崩溃了。每个人的个人才华所无法产生的，是协调。这也是一些足球俱乐部签下十一位超级巨星后的遭遇——他们发现薪资不是制约因素，自我才是。</p>
+        <p>第三个教导说起来更简单，活出来更难：意义来自心流，而不是来自命名。没有时间概念的社群，往往比生活在时间中的我们更幸福。我们给自己构建了时间的概念，然后就无法停止去想它。从时间焦虑中唯一可靠的逃脱，是那种你完全沉浸于某件困难而美好的事物中以至于时钟消失的状态。Csikszentmihalyi把它叫做心流。老子称它为无为。他们在描述同一种消失。</p>
+        <p>我以一个推测作结。Nick Bostrom的论证是一个足够先进的文明几乎必然会运行更多的模拟现实而不是真实的现实，这意味着从统计上看，你很可能身处其中。我没有证据。但我注意到，老子似乎理解了某件他无法直说的事。他不得不把它包裹在一种哲学的潜台词里，绕过了模拟想让你去想的事情——语言、占有、时间的概念、过去和现在和未来、我们给经验内部所起的一切名字。他说：可道之道，非常道。这在哲学上，正是你在试图告诉人们他们生活在一个被构建的现实中，又不想被当作胡说八道的时候，所会说的话。</p>
+        <p>森林浴比逛购物中心要好。这是我能得出的最接近结论的东西。如果我们能做到——哪怕五十个百分点——我认为那就是某件真实的事情的开端。</p>
+      </div>
+      <p class="sp-sig" data-lang="en">— Non Arkaraprasertkul · Bangkok · 2026</p>
+      <p class="sp-sig" data-lang="th">— นน อาร์คาราประเสริฐกุล · กรุงเทพฯ · 2026</p>
+      <p class="sp-sig" data-lang="cn" style="font-family:var(--cn-serif)">— 農博士 · 曼谷 · 2026</p>
     </article>
   </div>
 </section>
@@ -947,6 +1056,7 @@
 <script src="character_notes_th.js?v=1"></script>
 <script src="closers.js?v=1"></script>
 <script src="npm_art.js?v=1"></script>
-<script src="app.js?v=25"></script>
+<script src="comparative_notes.js?v=2"></script>
+<script src="app.js?v=27"></script>
 </body>
 </html>
