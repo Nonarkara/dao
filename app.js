@@ -440,6 +440,7 @@
     const reading_th = ext.reading_th || '';
     const reading_cn = ext.reading_cn || '';
     const reading_th_is_fallback = !ext.reading_th && !!reading_en;
+    const reading_cn_is_fallback = !ext.reading_cn && !!reading_en;
     const code = ext.code || '';
     // note_th is only shown when explicitly written — no fallback to English ch.note
     const note_en = ext.note_en || ch.note || '';
@@ -640,7 +641,7 @@
             </aside>
             <div>
               <div class="reading-body" data-lang="en" lang="en">${escapeHtml(reading_en)}</div>
-              <div class="reading-body" data-lang="cn" lang="zh" style="font-family: var(--cn-serif);">${escapeHtml(reading_cn)}</div>
+              <div class="reading-body${reading_cn_is_fallback ? ' is-fallback' : ''}" data-lang="cn" lang="zh" style="font-family: var(--cn-serif);">${reading_cn_is_fallback ? '<span class="lang-fallback-tag" style="font-family:var(--mono)">中文 · 深度解讀 · 即將推出</span>' : ''}${escapeHtml(reading_cn || reading_en)}</div>
               <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">ไทย · บทอ่านลึก · กำลังเขียน</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
               ${sources.length ? `
                 <div class="reading-sources">
