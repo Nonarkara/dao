@@ -234,7 +234,8 @@
     { until: 81, en: 'Softness belongs to life; plain truth closes the book.', th: 'ความอ่อนโยนอยู่ฝ่ายชีวิต และคำจริงที่ไม่เพราะคือบทสรุปสุดท้าย', cn: '柔属于生命，而不好听的真话收束全书' },
   ];
   function checkpointFor(n) {
-    return LEARNER_CHECKPOINTS.find(cp => n <= cp.until) || LEARNER_CHECKPOINTS[LEARNER_CHECKPOINTS.length - 1];
+    // Only show on the exact milestone chapter (n === until), not every chapter before it
+    return LEARNER_CHECKPOINTS.find(cp => n === cp.until) || null;
   }
 
   function toRoman(n) {
@@ -508,10 +509,10 @@
         ${checkpoint ? `
         <section class="panel panel-checkpoint">
           <div class="checkpoint-frame">
-            <p class="checkpoint-kicker">${tri('Checkpoint for learners', 'จุดเช็กอินสำหรับผู้เรียน', '给学习者的检查点')}</p>
-            <p class="checkpoint-main">${escapeHtml(checkpoint.th)}</p>
-            <p class="checkpoint-gloss" data-lang="en">${escapeHtml(checkpoint.en)}</p>
-            <p class="checkpoint-gloss" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(checkpoint.cn)}</p>
+            <p class="checkpoint-kicker">${tri('Checkpoint', 'จุดเช็กอิน', '检查点')} · <em>${tri('chapters 1–' + checkpoint.until, 'บทที่ 1–' + checkpoint.until, '第1–' + checkpoint.until + '章')}</em></p>
+            <p class="checkpoint-main" data-lang="en">${escapeHtml(checkpoint.en)}</p>
+            <p class="checkpoint-main" data-lang="th">${escapeHtml(checkpoint.th)}</p>
+            <p class="checkpoint-main" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(checkpoint.cn)}</p>
           </div>
         </section>
         ` : ''}

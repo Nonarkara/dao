@@ -1184,9 +1184,16 @@ body.lang-cn .summary-frame .su-th { display: none; }
   line-height: 1.5;
   color: var(--ink-fade);
 }
+/* checkpoint-main language switching */
+body.lang-en .checkpoint-main[data-lang="th"],
+body.lang-en .checkpoint-main[data-lang="cn"],
 body.lang-en .checkpoint-gloss[data-lang="cn"] { display: none; }
-body.lang-th .checkpoint-gloss[data-lang="en"] { display: none; }
+body.lang-th .checkpoint-main[data-lang="en"],
+body.lang-th .checkpoint-main[data-lang="cn"],
+body.lang-th .checkpoint-gloss[data-lang="en"],
 body.lang-th .checkpoint-gloss[data-lang="cn"] { display: none; }
+body.lang-cn .checkpoint-main[data-lang="en"],
+body.lang-cn .checkpoint-main[data-lang="th"],
 body.lang-cn .checkpoint-gloss[data-lang="en"] { display: none; }
 @media (max-width: 720px) {
   .checkpoint-main { max-width: 100%; font-size: clamp(24px, 8vw, 38px); }
