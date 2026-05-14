@@ -214,11 +214,26 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
    ============================================================ */
 .cover {
   min-height: 100vh;
-  padding: 14vh 6vw 6vh;
+  padding: 0 6vw 6vh;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+}
+.cover-hero-media {
+  width: calc(100% + 12vw);
+  margin: 0 -6vw clamp(24px, 5vh, 48px);
+  border-bottom: 1px solid var(--ink);
+  background: var(--bone);
+  position: relative;
+}
+.cover-hero-media img {
+  display: block;
+  width: 100%;
+  height: min(72vh, 56.25vw);
+  min-height: 360px;
+  object-fit: cover;
+  object-position: center;
 }
 .cover-meta {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -229,6 +244,8 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   color: var(--ink-fade);
   border-bottom: 1px solid var(--ink);
   padding-bottom: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .cover-stack {
@@ -3769,7 +3786,8 @@ body.pinyin-off .notes-tab em { display: none; }
 .notes-overlay .prologue,
 .notes-overlay .about,
 .notes-overlay .currents,
-.notes-overlay .wild {
+.notes-overlay .wild,
+.notes-overlay .reference-pane {
   border-top: none;
   padding-top: clamp(40px, 6vh, 80px);
 }
@@ -3957,6 +3975,106 @@ body.pinyin-off .notes-tab em { display: none; }
   font-weight: 500;
 }
 
+.reference-pane {
+  padding: clamp(56px, 8vh, 96px) 6vw;
+}
+.reference-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+.reference-blurb {
+  max-width: 760px;
+  margin: 0 0 32px;
+  font-family: var(--reader);
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+.reference-blurb[data-lang="th"] { font-family: var(--th); }
+.slingerland-deep {
+  margin: 34px 0;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--ink);
+  background: var(--bone);
+}
+.slingerland-deep h3 {
+  margin: 6px 0 16px;
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 500;
+}
+.slingerland-deep ul {
+  margin: 0 0 18px;
+  padding-left: 20px;
+  font-family: var(--reader);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.slingerland-deep p:last-child {
+  margin: 0;
+  font-family: var(--reader);
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 18px;
+}
+.reference-card {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--bone) 72%, white);
+}
+.reference-card img {
+  width: 118px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.reference-card h3 {
+  margin: 4px 0 6px;
+  font-family: var(--display);
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+.reference-author {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+}
+.reference-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+.reference-card dt {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.reference-card dd {
+  margin: -5px 0 4px;
+  font-family: var(--reader);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+@media (max-width: 620px) {
+  .reference-card { grid-template-columns: 92px 1fr; padding: 12px; gap: 14px; }
+  .reference-card img { width: 92px; }
+}
+
 /* ============================================================
    ANIMATIONS — subtle reveals as the reader scrolls
    The book breathes; the panels emerge. JS adds .is-visible
@@ -3967,6 +4085,7 @@ body.pinyin-off .notes-tab em { display: none; }
   .era-card,
   .about-stanza,
   .play-card,
+  .reference-card,
   .panel-tsai .tsai-frame {
     opacity: 0;
     transform: translateY(14px);
@@ -3976,6 +4095,7 @@ body.pinyin-off .notes-tab em { display: none; }
   .era-card.is-visible,
   .about-stanza.is-visible,
   .play-card.is-visible,
+  .reference-card.is-visible,
   .panel-tsai.is-visible .tsai-frame {
     opacity: 1;
     transform: translateY(0);
@@ -4057,10 +4177,29 @@ body.pinyin-off .notes-tab em { display: none; }
   font-size: 16px;
   line-height: 1.55;
   color: var(--ink-soft);
-  font-style: italic;
   margin: 0;
   text-wrap: pretty;
 }
+.tsai-caption-main {
+  margin: 0 0 14px;
+  font-style: italic;
+}
+.tsai-note-label {
+  display: inline-block;
+  margin: 10px 0 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.tsai-caption-note {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+}
+.tsai-caption-note--th { font-family: var(--th); }
+.tsai-caption-note--cn { font-family: var(--cn-serif); }
 .tsai-credit {
   font-family: var(--mono);
   font-size: 10px;
@@ -4070,6 +4209,116 @@ body.pinyin-off .notes-tab em { display: none; }
   margin: 0;
 }
 .panel-tsai.is-missing { display: none; }
+
+.tsai-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 245;
+  background: rgba(22, 18, 13, .72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.tsai-overlay.open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity .25s ease;
+}
+.tsai-gallery-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 28px auto;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: clamp(24px, 4vw, 48px);
+  position: relative;
+}
+.tsai-gallery-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 24px;
+  cursor: pointer;
+}
+.tsai-gallery-kicker,
+.slingerland-kicker,
+.reference-kicker,
+.reference-kind,
+.tsai-gallery-credit {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.tsai-gallery-title,
+.reference-title {
+  margin: 8px 0 12px;
+  font-family: var(--display);
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 500;
+}
+.tsai-gallery-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 22px 0 30px;
+  color: var(--ink-soft);
+}
+.tsai-gallery-note-th,
+.tsai-gallery-card figcaption p:nth-of-type(1) {
+  font-family: var(--th);
+}
+.tsai-gallery-note-cn,
+.tsai-gallery-card figcaption p:nth-of-type(2) {
+  font-family: var(--cn-serif);
+}
+.tsai-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+.tsai-gallery-card {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--bone);
+  padding: 12px;
+}
+.tsai-gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--paper);
+}
+.tsai-gallery-card figcaption {
+  padding: 12px 4px 2px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.tsai-gallery-card figcaption span {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  color: var(--seal);
+}
+.tsai-gallery-card figcaption p {
+  margin: 4px 0 10px;
+}
+@media (max-width: 720px) {
+  .tsai-gallery-notes { grid-template-columns: 1fr; }
+  .tsai-gallery-shell { width: min(100% - 16px, 1180px); margin: 8px auto; }
+}
 
 /* Panel image — appears between panels for some chapters */
 .panel-image {
@@ -4587,7 +4836,17 @@ body.pinyin-off .index-list .ix-py { display: none; }
   body { font-size: 17px; }
   .topbar { padding: 8px 12px; }
   .lang-toggle, .tool-btn { padding: 0 8px; height: 36px; min-width: 36px; }
-  .cover { padding: 12vh 5vw 5vh; }
+  .cover { padding: 0 5vw 5vh; }
+  .cover-hero-media {
+    width: calc(100% + 10vw);
+    margin-left: -5vw;
+    margin-right: -5vw;
+  }
+  .cover-hero-media img {
+    height: 58vh;
+    min-height: 300px;
+    object-position: center top;
+  }
   .cover-stack { grid-template-columns: 1fr; padding: 24px 0; gap: 24px; }
   .cover-cn-vertical {
     writing-mode: horizontal-tb;
