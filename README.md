@@ -1,10 +1,14 @@
 <p align="center">
-  <img src="assets/reading-dao-hero.png" alt="Reading Dao De Jing with Dr Non illustrated hero" width="100%">
+  <a href="https://dao.nonarkara.org">
+    <img src="public/hero.jpg" alt="Reading Dao De Jing with Dr Non — Lao Tzu, readers, mountains, dao.nonarkara.org" width="100%">
+  </a>
 </p>
 
 # Reading Dao De Jing with Dr. Non
 
-A playful, serious, trilingual reading of the **Dao De Jing**: Chinese, English, and Thai side by side, with comics, pinyin, character notes, Buddhist parallels, psychology notes, and a growing reference shelf.
+**[dao.nonarkara.org](https://dao.nonarkara.org)**
+
+A trilingual reading of the complete Dao De Jing — 81 chapters in Chinese, English, and Thai — with Tsai Chih-chung comics, Slingerland psychology, pinyin, character stroke learning, Dr. Non's personal reflections, and a five-minute emergency overview for when you need the whole book in one breath.
 
 The live site is designed as a reading room, not a landing page. Open a chapter, change language, tap the character title, open the Tsai comic notes, or fall into the reference library.
 
