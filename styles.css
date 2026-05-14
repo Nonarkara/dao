@@ -230,10 +230,8 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
 .cover-hero-media img {
   display: block;
   width: 100%;
-  height: min(38vh, 56.25vw);
-  min-height: 240px;
-  object-fit: cover;
-  object-position: center 30%; /* show the title text in top third */
+  height: auto; /* full image — no cropping, all characters visible */
+  object-fit: fill;
 }
 .cover-meta {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -5923,6 +5921,13 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
   letter-spacing: .22em !important;
 }
 
+/* On desktop: the hero image already says "Reading Dao De Jing with Dr Non"
+   so the cover-stack text below it is redundant — hide it. Keep on mobile. */
+@media (min-width: 768px) {
+  .cover .cover-stack { display: none; }
+  .cover .cover-meta { border-bottom: none; padding-bottom: 4px; }
+}
+
 /* Mobile tweaks for all scale enhancements */
 @media (max-width: 600px) {
   .chapter.scale-XL .origin-cn-title { font-size: clamp(56px, 14vw, 96px) !important; }
@@ -5968,5 +5973,5 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
   }
   /* Cover: fit without overflow on mobile */
   .cover { min-height: auto; padding-bottom: 4vh; }
-  .cover-hero-media img { height: min(36vh, 56.25vw); min-height: 200px; }
+  .cover-hero-media img { height: auto; } /* full image on mobile too */
 }
