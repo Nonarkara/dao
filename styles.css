@@ -316,6 +316,30 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   margin-right: 6px;
   font-weight: 500;
 }
+.cover-begin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 20px;
+  padding: 0 24px;
+  border: 1px solid var(--seal);
+  background: var(--seal);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.cover-begin-btn:hover {
+  background: var(--seal-deep);
+  border-color: var(--seal-deep);
+  color: var(--paper);
+  text-decoration: none;
+}
 .cover-note-btn {
   display: inline-flex;
   align-items: center;
@@ -5734,4 +5758,43 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
   .chapter[data-n="8"] .origin-cn-title,
   .chapter[data-n="81"] .origin-cn-title { font-size: clamp(60px, 15vw, 100px) !important; }
   .chapter.scale-S .origin-cn-title { font-size: clamp(44px, 11vw, 80px) !important; }
+
+  /* ── KILL the blank space on mobile — halve all summary padding ── */
+  .chapter.scale-XL .panel-summary {
+    min-height: 44vh !important;
+    padding-top: clamp(48px, 7vh, 80px) !important;
+    padding-bottom: clamp(36px, 5vh, 60px) !important;
+  }
+  .chapter.scale-XL .summary-frame .su-en,
+  .chapter.scale-XL .summary-frame .su-th {
+    font-size: clamp(22px, 5.5vw, 30px) !important;
+  }
+  /* Chapter keystones: also cut min-height on mobile */
+  .chapter[data-n="1"] .panel-summary,
+  .chapter[data-n="8"] .panel-summary,
+  .chapter[data-n="81"] .panel-summary {
+    min-height: 50vh !important;
+    padding-top: clamp(56px, 8vh, 90px) !important;
+    padding-bottom: clamp(40px, 6vh, 64px) !important;
+  }
+  /* S chapters: already compact, make tighter */
+  .chapter.scale-S .panel-summary {
+    min-height: 36vh !important;
+    padding-top: clamp(36px, 5vh, 56px) !important;
+    padding-bottom: clamp(24px, 4vh, 40px) !important;
+  }
+  /* L scale: moderate reduction */
+  .chapter.scale-L .panel-summary {
+    padding-top: clamp(60px, 9vh, 90px) !important;
+    padding-bottom: clamp(48px, 7vh, 72px) !important;
+  }
+  /* All panel-reading and panel-note: tighter on mobile */
+  .chapter.scale-XL .panel-reading,
+  .chapter.scale-XL .panel-note {
+    padding-top: clamp(40px, 6vh, 64px) !important;
+    padding-bottom: clamp(40px, 6vh, 64px) !important;
+  }
+  /* Cover: fit without overflow on mobile */
+  .cover { min-height: auto; padding-bottom: 4vh; }
+  .cover-hero-media img { height: min(46vh, 56.25vw); min-height: 220px; }
 }
