@@ -80,8 +80,10 @@ window.EXTENDED = {
     ],
     tsai: {
       src: "tsai/ch02-pairs-arise.jpg",
-      caption: "Pairs arise together — Tsai's stick-figure sage holds beauty in one hand and ugliness in the other and tries, very seriously, not to drop either.",
-      credit: "蔡志忠 · 老子說 · Ch. 2"
+      caption: "Tsai's Zhuangzi page turns wind, water, coarse sound, fine sound, distance, and nearness into one chorus. It is chapter 2's point in motion: opposites do not cancel each other; they make the music audible.",
+      caption_th: "หน้าจากจวงจื่อของไช่จื๋อจงทำให้ลม น้ำ เสียงหยาบ เสียงละเอียด ระยะไกล และระยะใกล้กลายเป็นเพลงเดียวกัน นี่คือใจของบทที่ 2: คู่ตรงข้ามไม่ได้หักล้างกัน แต่มันทำให้เราได้ยินเพลง",
+      caption_cn: "蔡志忠的《庄子》这一页，把风、水、粗声、细声、远处、近处画成同一首合唱。这正是第二章的意思：对立不是互相取消，而是让音乐成为可能。",
+      credit: "蔡志忠 · 庄子说 / The Way of Nature · On Seeing Things Evenly"
     },
     play: [
       {
@@ -274,8 +276,10 @@ window.EXTENDED = {
     image: "muji-room",
     tsai: {
       src: "tsai/ch11-empty-cup.jpg",
-      caption: "A wheel with no hub. A cup with no hollow. A room with no door. Tsai draws the absurdity of each, then the reverse — and the reader laughs at the right place, which is the whole pedagogy.",
-      credit: "蔡志忠 · 老子說 · Ch. 11"
+      caption: "Huizi throws away giant gourds because he can only imagine one kind of use. That makes a sharp companion to chapter 11: emptiness becomes useful only when the mind stops demanding the old use.",
+      caption_th: "ฮุ่ยจื่อทิ้งน้ำเต้ายักษ์ เพราะเขาจินตนาการการใช้งานได้แค่แบบเดียว ภาพนี้เข้ากับบทที่ 11 อย่างคมมาก: ความว่างมีประโยชน์ก็ต่อเมื่อใจหยุดบังคับให้มันใช้แบบเดิม",
+      caption_cn: "惠子把大葫芦扔掉，是因为他只想得到一种用途。这正好照亮第十一章：空的东西之所以有用，是因为心先停止要求它只能有旧用途。",
+      credit: "蔡志忠 · 庄子说 / The Way of Nature · Huizi's Giant Gourds"
     },
     play: [
       {
@@ -387,6 +391,13 @@ window.EXTENDED = {
       "Spinoza, Ethics (1677), Deus sive Natura.",
       "Stuart Kauffman, Reinventing the Sacred (2008), on emergent law in complex systems."
     ],
+    tsai: {
+      src: "tsai/ch25-natural-scale.jpg",
+      caption: "The Peng bird rises until the ordinary world falls into haze. Tsai gives chapter 25 a scale-image: the Way is not another object inside the world, but the vastness in which every object finds its size.",
+      caption_th: "นกเผิงบินสูงขึ้นจนโลกธรรมดาจางหายไปในหมอก ไช่จื๋อจงให้ภาพของขนาดแก่บทที่ 25: ทางไม่ใช่วัตถุอีกชิ้นหนึ่งในโลก แต่คือความกว้างที่ทำให้ทุกสิ่งรู้ขนาดของตัวเอง",
+      caption_cn: "鹏鸟越飞越高，下面的世界渐渐成了迷雾。蔡志忠给第二十五章一个尺度的画面：道不是世界里的另一个东西，而是让万物显出自身大小的广大。",
+      credit: "蔡志忠 · 庄子说 / The Way of Nature · The Giant Bird"
+    },
     reading_th: "ถ้าประโยคสุดท้ายของบทนี้คือบทนั้นเอง?\n\"ทางตามรูปของสิ่งที่เป็นของตัวเอง\" (道法自然) ทางไม่ตามกฎที่สูงกว่า มันตามรูปแบบโดยธรรมชาติของสิ่งต่าง ๆ ไม่มีผู้บัญญัติกฎจากเบื้องบน\nการเคลื่อนไหวนี้เหมือนกันกับที่ฟิสิกส์ยุคใหม่ทำ — แทนที่ \"พระเจ้าสั่งให้ดาวเคราะห์โคจร\" ด้วย \"แรงโน้มถ่วงเกิดจากความโค้งของมวล\" กฎหมายที่ไม่มีผู้ออกกฎ Spinoza คิดเรื่องนี้แล้วถูกขับออก เต๋าคิดเรื่องนี้ก่อน 1,900 ปี และสร้างวัฒนธรรมรอบมัน เมื่อถามว่า \"ควรทำอะไร?\" คำตอบไม่ใช่อยู่ต้นน้ำ มันอยู่ปลายน้ำ ในสิ่งที่กำลังเกิดขึ้นอยู่แล้ว"
   },
 

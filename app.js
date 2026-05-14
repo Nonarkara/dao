@@ -12,6 +12,10 @@
   const CHARACTER_NOTES_TH = window.CHARACTER_NOTES_TH || {};
   const CLOSERS = window.CLOSERS || {};
   const NPM = window.NPM_ART || {};
+  const COMP = window.COMPARATIVE_NOTES || {};
+  const TSAI = window.TSAI_LAOZI || {};
+  const REF_LIBRARY = window.REFERENCE_LIBRARY || [];
+  const SLINGERLAND_DEEP = window.SLINGERLAND_DEEP || {};
   const PT = (window.PINYIN_TITLES || {});
   const TITLE_PY    = PT.titles    || {};   // { "1": "tǐ dào", ... }
   const SUMMARY_PY  = PT.summaries || {};   // { "1": "míng zhī jí fù zhī", ... }
@@ -399,6 +403,27 @@
     };
     return bySrc[tsai.src] || { en: tsai.caption || '', th: tsai.caption_th || tsai.caption || '', cn: tsai.caption_cn || tsai.caption || '' };
   }
+  function tsaiChapterFor(n) {
+    return (TSAI.chapters && TSAI.chapters[String(n)]) || (TSAI.chapters && TSAI.chapters[n]) || null;
+  }
+  function tsaiShortNotes(tsai, chapterTsai) {
+    return {
+      th: tsai && tsai.caption_th ? tsai.caption_th : (chapterTsai && chapterTsai.note && chapterTsai.note.th) || (TSAI.note && TSAI.note.th) || '',
+      cn: tsai && tsai.caption_cn ? tsai.caption_cn : (chapterTsai && chapterTsai.note && chapterTsai.note.cn) || (TSAI.note && TSAI.note.cn) || ''
+    };
+  }
+  function tsaiCaptionHTML(ch, tsai, chapterTsai) {
+    const cap = tsaiCaptionFor(ch, tsai);
+    const notes = tsaiShortNotes(tsai, chapterTsai);
+    if (!cap && !notes.th && !notes.cn) return '';
+    return `<figcaption class="tsai-caption">
+      ${cap ? `<p class="tsai-caption-main">${triText(cap)}</p>` : ''}
+      <span class="tsai-note-label">ไทย</span>
+      <p class="tsai-caption-note tsai-caption-note--th">${escapeHtml(notes.th)}</p>
+      <span class="tsai-note-label">中文</span>
+      <p class="tsai-caption-note tsai-caption-note--cn">${escapeHtml(notes.cn)}</p>
+    </figcaption>`;
+  }
 
   // ----- RENDER CHAPTERS ----------------------------------------
   function chapterHTML(ch, idx) {
@@ -424,7 +449,12 @@
     const img = imgKey ? IMG_MAP[imgKey] : null;
     const play = Array.isArray(ext.play) ? ext.play : [];
     const jokes = Array.isArray(ext.jokes) ? ext.jokes : [];
-    const tsai = ext.tsai && ext.tsai.src && AVAILABLE_LOCAL_IMAGES.has(ext.tsai.src) ? ext.tsai : null;
+    const chapterTsai = tsaiChapterFor(ch.n);
+    const tsai = ext.tsai && ext.tsai.src && AVAILABLE_LOCAL_IMAGES.has(ext.tsai.src)
+      ? ext.tsai
+      : (chapterTsai && chapterTsai.inline && chapterTsai.pages && chapterTsai.pages[0])
+        ? { src: chapterTsai.pages[0], caption: (chapterTsai.title && chapterTsai.title.en) || `Tsai visual reading for chapter ${ch.n}`, credit: TSAI.source || 'C. C. Tsai · Dao De Jing' }
+        : null;
     const compare = Array.isArray(ext.compare) ? ext.compare : [];
 
     const su = SU[ch.n];
@@ -450,6 +480,14 @@
           </button>
           <span class="cs-en">${escapeHtml(ch.en_title || '')}</span>
           <span class="cs-th">${escapeHtml(ch.th_title || '')}</span>
+          <button class="cs-echo-btn" data-open-echo="${ch.n}" title="Comparative notes: Buddhism, religion, psychology" aria-label="Open comparative notes for chapter ${ch.n}">
+            <span class="cs-echo-han">同</span>
+            <span class="cs-echo-copy">${tri('Echoes', 'แสงสะท้อน', '相應')}</span>
+          </button>
+          ${chapterTsai ? `<button class="cs-echo-btn cs-tsai-btn" data-open-tsai="${ch.n}" title="Open Tsai illustrations" aria-label="Open Tsai illustrations for chapter ${ch.n}">
+            <span class="cs-echo-han">漫</span>
+            <span class="cs-echo-copy">${tri('Tsai', 'ไช่จื๋อจง', '蔡志忠')}</span>
+          </button>` : ''}
           <span class="cs-progress">${ch.n} / 81</span>
         </div>
 
@@ -579,7 +617,7 @@
             <div class="tsai-img-wrap">
               <img src="${escapeHtml(tsai.src)}" alt="${escapeHtml(tsai.caption || 'Tsai Chih-chung cartoon')}" loading="lazy" onerror="this.closest('[data-tsai-host]').classList.add('is-missing')">
             </div>
-            ${tsai.caption ? `<figcaption class="tsai-caption">${triText(tsaiCaptionFor(ch, tsai))}</figcaption>` : ''}
+            ${tsaiCaptionHTML(ch, tsai, chapterTsai)}
             <p class="tsai-credit">${escapeHtml(tsai.credit || '蔡志忠 · Tsai Chih-chung')}</p>
           </figure>
         </section>
@@ -784,6 +822,9 @@
         L === 'th' ? 'เปลี่ยนภาษา — ไทย' : L === 'cn' ? '切换语言 — 中文' : 'Switch language — English');
     }
     try { localStorage.setItem(KEY_LANG, L); } catch(e) {}
+    const activeEcho = window.__daoActiveEchoChapter;
+    const echoNode = document.getElementById('echoOverlay');
+    if (activeEcho && echoNode && echoNode.classList.contains('open')) openEcho(activeEcho);
   }
   setLang(lang);
   $('#langToggle').addEventListener('click', () => {
@@ -870,7 +911,7 @@
     // Reveal all animated children immediately — IntersectionObserver does not
     // fire reliably across display:none ↔ block transitions inside an overlay.
     requestAnimationFrame(() => {
-      $$('.notes-pane.is-active .about-stanza, .notes-pane.is-active .era-card, .notes-pane.is-active .wild-mvt')
+      $$('.notes-pane.is-active .about-stanza, .notes-pane.is-active .era-card, .notes-pane.is-active .wild-mvt, .notes-pane.is-active .reference-card')
         .forEach(el => el.classList.add('is-visible'));
     });
   }
@@ -885,6 +926,180 @@
     if (!trigger) return;
     e.preventDefault();
     openNotes(trigger.dataset.openNotes || 'about');
+  });
+
+  // ----- REFERENCE LIBRARY TAB ---------------------------------
+  function renderReferenceLibrary() {
+    const grid = $('#referenceGrid');
+    const deep = $('#slingerlandDeep');
+    if (deep && SLINGERLAND_DEEP.title) {
+      deep.innerHTML = `
+        <p class="slingerland-kicker">Edward Slingerland</p>
+        <h3>${escapeHtml(SLINGERLAND_DEEP.title)}</h3>
+        <ul>${(SLINGERLAND_DEEP.points || []).map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
+        <p>${escapeHtml(SLINGERLAND_DEEP.caution || '')}</p>`;
+    }
+    if (!grid || !REF_LIBRARY.length) return;
+    grid.innerHTML = REF_LIBRARY.map(item => `
+      <article class="reference-card">
+        <img src="${escapeHtml(item.cover)}" alt="${escapeHtml(item.title)} cover" loading="lazy">
+        <div class="reference-card-copy">
+          <p class="reference-kind">${escapeHtml(item.kind || 'reference')}</p>
+          <h3>${escapeHtml(item.title)}</h3>
+          <p class="reference-author">${escapeHtml(item.author)}</p>
+          <dl>
+            <dt>Why I read it</dt><dd>${escapeHtml(item.why)}</dd>
+            <dt>Gets right</dt><dd>${escapeHtml(item.right)}</dd>
+            <dt>Gets wrong</dt><dd>${escapeHtml(item.wrong)}</dd>
+          </dl>
+        </div>
+      </article>`).join('');
+  }
+  renderReferenceLibrary();
+
+  // ----- CHAPTER COMPARATIVE NOTES -----------------------------
+  const echoOverlay = document.createElement('aside');
+  echoOverlay.className = 'echo-overlay';
+  echoOverlay.id = 'echoOverlay';
+  echoOverlay.setAttribute('aria-hidden', 'true');
+  echoOverlay.innerHTML = `
+    <div class="echo-shell" role="dialog" aria-modal="true" aria-labelledby="echoTitle">
+      <button class="echo-close" type="button" aria-label="Close comparative notes">×</button>
+      <p class="echo-kicker" data-echo="kicker"></p>
+      <h2 class="echo-title" id="echoTitle"></h2>
+      <p class="echo-sub"></p>
+      <div class="echo-grid">
+        <section class="echo-card echo-card--buddhist">
+          <p class="echo-label" data-echo-label="buddhism"></p>
+          <p class="echo-copy" data-echo="buddhism"></p>
+        </section>
+        <section class="echo-card">
+          <p class="echo-label" data-echo-label="parallels"></p>
+          <ul class="echo-list" data-echo="parallels"></ul>
+        </section>
+        <section class="echo-card echo-card--science">
+          <p class="echo-label" data-echo-label="psychology"></p>
+          <p class="echo-copy" data-echo="psychology"></p>
+        </section>
+      </div>
+      <p class="echo-caveat" data-echo="caveat"></p>
+    </div>`;
+  document.body.appendChild(echoOverlay);
+  const echoClose = $('.echo-close', echoOverlay);
+
+  function comparativeNoteFor(n) {
+    const themeKey = COMP.chapters && COMP.chapters[String(n)];
+    return themeKey && COMP.themes ? COMP.themes[themeKey] : null;
+  }
+  function localize(copy, fallback='') {
+    if (typeof copy === 'string') return copy;
+    if (!copy) return fallback;
+    return copy[lang] || copy.en || fallback;
+  }
+  function echoUi(key) {
+    const ui = (COMP.ui && COMP.ui[key]) || {};
+    return localize(ui, key);
+  }
+  function closeEcho() {
+    echoOverlay.classList.remove('open');
+    echoOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    window.__daoActiveEchoChapter = null;
+  }
+  function openEcho(n) {
+    const ch = CH.find(c => c.n === n);
+    const note = comparativeNoteFor(n);
+    if (!ch || !note) return;
+    window.__daoActiveEchoChapter = n;
+    const chapterTitle = lang === 'cn'
+      ? `第 ${n} 章：${ch.cn_title || ch.en_title || '道德經'}`
+      : lang === 'th'
+        ? `บทที่ ${n}: ${ch.th_title || ch.en_title || ch.cn_title || 'เต้าเต๋อจิง'}`
+        : `Chapter ${n}: ${ch.en_title || ch.cn_title || 'Dao De Jing'}`;
+    $('.echo-title', echoOverlay).textContent = chapterTitle;
+    $('.echo-sub', echoOverlay).textContent = localize(note.title, echoUi('fallbackTitle'));
+    $('[data-echo="kicker"]', echoOverlay).innerHTML = echoUi('kicker');
+    $('[data-echo-label="buddhism"]', echoOverlay).textContent = echoUi('buddhism');
+    $('[data-echo-label="parallels"]', echoOverlay).textContent = echoUi('parallels');
+    $('[data-echo-label="psychology"]', echoOverlay).textContent = echoUi('psychology');
+    $('[data-echo="caveat"]', echoOverlay).textContent = echoUi('caveat');
+    $('[data-echo="buddhism"]', echoOverlay).textContent = localize(note.buddhism);
+    $('[data-echo="psychology"]', echoOverlay).textContent = localize(note.psychology);
+    $('[data-echo="parallels"]', echoOverlay).innerHTML = localize(note.parallels, [])
+      .map(item => `<li>${escapeHtml(item)}</li>`).join('');
+    echoOverlay.setAttribute('lang', lang === 'cn' ? 'zh' : lang);
+    echoOverlay.classList.add('open');
+    echoOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (echoClose) echoClose.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-open-echo]');
+    if (!btn) return;
+    e.preventDefault();
+    openEcho(parseInt(btn.dataset.openEcho, 10));
+  });
+  if (echoClose) echoClose.addEventListener('click', closeEcho);
+  echoOverlay.addEventListener('click', (e) => {
+    if (e.target === echoOverlay) closeEcho();
+  });
+
+  // ----- TSAI ILLUSTRATION GALLERY -----------------------------
+  const tsaiOverlay = document.createElement('aside');
+  tsaiOverlay.className = 'tsai-overlay';
+  tsaiOverlay.id = 'tsaiOverlay';
+  tsaiOverlay.setAttribute('aria-hidden', 'true');
+  tsaiOverlay.innerHTML = `
+    <div class="tsai-gallery-shell" role="dialog" aria-modal="true" aria-labelledby="tsaiGalleryTitle">
+      <button class="tsai-gallery-close" type="button" aria-label="Close Tsai illustrations">×</button>
+      <p class="tsai-gallery-kicker">漫 <em>màn</em> · C. C. Tsai</p>
+      <h2 class="tsai-gallery-title" id="tsaiGalleryTitle"></h2>
+      <p class="tsai-gallery-credit"></p>
+      <div class="tsai-gallery-notes">
+        <p class="tsai-gallery-note-th"></p>
+        <p class="tsai-gallery-note-cn"></p>
+      </div>
+      <div class="tsai-gallery-grid"></div>
+    </div>`;
+  document.body.appendChild(tsaiOverlay);
+  const tsaiGalleryClose = $('.tsai-gallery-close', tsaiOverlay);
+  function closeTsaiGallery() {
+    tsaiOverlay.classList.remove('open');
+    tsaiOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function openTsaiGallery(n) {
+    const ch = CH.find(c => c.n === n);
+    const entry = tsaiChapterFor(n);
+    if (!ch || !entry || !entry.pages) return;
+    $('.tsai-gallery-title', tsaiOverlay).textContent = localize(entry.title, `Chapter ${n}: Tsai`);
+    $('.tsai-gallery-credit', tsaiOverlay).textContent = localize(TSAI.credit, TSAI.source || 'C. C. Tsai');
+    $('.tsai-gallery-note-th', tsaiOverlay).textContent = (entry.note && entry.note.th) || (TSAI.note && TSAI.note.th) || '';
+    $('.tsai-gallery-note-cn', tsaiOverlay).textContent = (entry.note && entry.note.cn) || (TSAI.note && TSAI.note.cn) || '';
+    $('.tsai-gallery-grid', tsaiOverlay).innerHTML = entry.pages.map((src, i) => `
+      <figure class="tsai-gallery-card">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(`C. C. Tsai illustration for chapter ${n}, page ${i + 1}`)}" loading="lazy">
+        <figcaption>
+          <span>ไทย</span>
+          <p>${escapeHtml((entry.note && entry.note.th) || '')}</p>
+          <span>中文</span>
+          <p>${escapeHtml((entry.note && entry.note.cn) || '')}</p>
+        </figcaption>
+      </figure>`).join('');
+    tsaiOverlay.classList.add('open');
+    tsaiOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (tsaiGalleryClose) tsaiGalleryClose.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-open-tsai]');
+    if (!btn) return;
+    e.preventDefault();
+    openTsaiGallery(parseInt(btn.dataset.openTsai, 10));
+  });
+  if (tsaiGalleryClose) tsaiGalleryClose.addEventListener('click', closeTsaiGallery);
+  tsaiOverlay.addEventListener('click', (e) => {
+    if (e.target === tsaiOverlay) closeTsaiGallery();
   });
 
   // ----- DEEPWORK SUMMARY OPEN/CLOSE ---------------------------
@@ -1084,6 +1299,8 @@
       indexOverlay.classList.remove('open');
       indexScrim.classList.remove('show');
       closeNotes();
+      closeEcho();
+      closeTsaiGallery();
     } else if (e.key === 'e' || e.key === 'E') {
       e.preventDefault();
       if (deepworkOverlay && deepworkOverlay.classList.contains('open')) {
