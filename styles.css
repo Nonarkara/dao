@@ -214,11 +214,11 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
    ============================================================ */
 .cover {
   min-height: 100vh;
-  padding: 0 6vw 6vh;
+  padding: 52px 6vw 6vh; /* 52px = topbar height — hero image starts below the fixed bar */
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; /* contain the hero's negative-margin bleed; allow vertical growth */
 }
 .cover-hero-media {
   width: calc(100% + 12vw);
@@ -230,10 +230,10 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
 .cover-hero-media img {
   display: block;
   width: 100%;
-  height: min(72vh, 56.25vw);
-  min-height: 360px;
+  height: min(38vh, 56.25vw);
+  min-height: 240px;
   object-fit: cover;
-  object-position: center;
+  object-position: center 30%; /* show the title text in top third */
 }
 .cover-meta {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -252,20 +252,20 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   flex: 1;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: clamp(28px, 5vw, 80px);
+  gap: clamp(16px, 3vw, 48px);
   align-items: center;
-  padding: clamp(40px, 8vh, 80px) 0;
+  padding: clamp(10px, 2vh, 22px) 0;
   position: relative;
   z-index: 2;
 }
 .cover-cn-vertical {
   font-family: var(--cn-elegant);
-  font-size: clamp(72px, 14vw, 200px);
+  font-size: clamp(60px, 8vw, 120px);
   line-height: .95;
   color: var(--ink);
   writing-mode: vertical-rl;
   text-orientation: upright;
-  letter-spacing: 12px;
+  letter-spacing: 8px;
   font-weight: 400;
 }
 .cover-text { max-width: 36ch; }
@@ -279,7 +279,7 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
 }
 .cover-title {
   font-family: var(--display);
-  font-size: clamp(48px, 9vw, 140px);
+  font-size: clamp(40px, 6vw, 88px);
   line-height: .9;
   letter-spacing: -.02em;
   color: var(--ink);
@@ -289,16 +289,16 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
 .cover-sub {
   font-family: var(--reader);
   font-style: italic;
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.55;
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.5;
   color: var(--ink-soft);
-  margin: 24px 0 0;
-  max-width: 36ch;
+  margin: 12px 0 0;
+  max-width: 40ch;
 }
 .cover-sub em { color: var(--seal); font-style: italic; }
 .cover-foot {
   border-top: 1px solid var(--rule);
-  padding-top: 14px;
+  padding-top: 10px;
 }
 .cover-instructions {
   display: flex; flex-wrap: wrap; gap: 14px 28px;
@@ -316,12 +316,18 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   margin-right: 6px;
   font-weight: 500;
 }
+.cover-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
 .cover-begin-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
-  margin-top: 20px;
   padding: 0 24px;
   border: 1px solid var(--seal);
   background: var(--seal);
@@ -339,6 +345,26 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   border-color: var(--seal-deep);
   color: var(--paper);
   text-decoration: none;
+}
+.cover-about-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.cover-about-btn:hover {
+  border-color: var(--ink-soft);
+  color: var(--ink);
 }
 .cover-note-btn {
   display: inline-flex;
@@ -4052,6 +4078,92 @@ body.pinyin-off .notes-tab em { display: none; }
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
   gap: 18px;
 }
+.ideas-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 86px) 6vw;
+}
+.ideas-kicker {
+  margin: 0 0 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.ideas-title {
+  max-width: 820px;
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(34px, 5vw, 66px);
+  line-height: .95;
+  font-weight: 500;
+}
+.ideas-blurb {
+  max-width: 780px;
+  margin: 0 0 34px;
+  font-family: var(--reader);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+.idea-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  padding: 18px;
+  border: 1px solid var(--rule);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bone) 82%, white), color-mix(in srgb, var(--paper-warm) 88%, white));
+}
+.idea-index,
+.idea-source {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  line-height: 1.6;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+}
+.idea-card h3 {
+  margin: 12px 0 12px;
+  font-family: var(--display);
+  font-size: clamp(23px, 2.4vw, 32px);
+  line-height: 1.08;
+  font-weight: 500;
+  color: var(--ink);
+}
+.idea-body {
+  margin: 0 0 18px;
+  font-family: var(--reader);
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.idea-question {
+  margin: auto 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--reader);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.idea-question span:first-child {
+  display: block;
+  margin-bottom: 7px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
 .reference-card {
   display: grid;
   grid-template-columns: 118px 1fr;
@@ -4116,6 +4228,7 @@ body.pinyin-off .notes-tab em { display: none; }
   .era-card,
   .about-stanza,
   .play-card,
+  .idea-card,
   .reference-card,
   .panel-tsai .tsai-frame {
     opacity: 0;
@@ -4126,6 +4239,7 @@ body.pinyin-off .notes-tab em { display: none; }
   .era-card.is-visible,
   .about-stanza.is-visible,
   .play-card.is-visible,
+  .idea-card.is-visible,
   .reference-card.is-visible,
   .panel-tsai.is-visible .tsai-frame {
     opacity: 1;
@@ -4433,6 +4547,57 @@ body.pinyin-off .notes-tab em { display: none; }
   text-wrap: pretty;
   border-left: 4px solid var(--seal);
   padding-left: 24px;
+}
+
+/* ============================================================
+   PANEL — DEEP REFLECTION 深問
+   A compact practice block after the chapter's closing question.
+   ============================================================ */
+.panel-reflection {
+  background: color-mix(in srgb, var(--paper-warm) 78%, white);
+  padding: clamp(36px, 6vh, 72px) 6vw;
+  border-bottom: 1px solid var(--rule);
+}
+.reflection-frame {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.reflection-kicker {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--seal);
+}
+.reflection-title {
+  margin: 0 0 22px;
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.12;
+  font-weight: 500;
+  color: var(--ink);
+}
+.reflection-lists ol {
+  margin: 0;
+  padding-left: 1.35em;
+  font-family: var(--reader);
+  font-size: clamp(18px, 1.8vw, 23px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.reflection-lists li + li {
+  margin-top: 12px;
+}
+.reflection-practice {
+  margin: 24px 0 0;
+  padding: 16px 18px;
+  border-left: 4px solid var(--gold);
+  background: color-mix(in srgb, var(--bone) 72%, white);
+  font-family: var(--reader);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
 }
 .closer-q[data-lang="th"] {
   font-family: var(--th);
@@ -5803,5 +5968,5 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
   }
   /* Cover: fit without overflow on mobile */
   .cover { min-height: auto; padding-bottom: 4vh; }
-  .cover-hero-media img { height: min(46vh, 56.25vw); min-height: 220px; }
+  .cover-hero-media img { height: min(36vh, 56.25vw); min-height: 200px; }
 }

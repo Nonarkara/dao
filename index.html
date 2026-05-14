@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=33">
 </head>
 <body>
 
@@ -114,22 +114,24 @@
     </div>
   </div>
   <div class="cover-foot">
-    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-fade); margin: 0 0 12px;">
-      <span data-lang="en">Each chapter keeps a simple path:</span>
-      <span data-lang="th" style="font-family:var(--th);text-transform:none;letter-spacing:.05em;">แต่ละบทเดินตามเส้นทางเรียบง่าย:</span>
-      <span data-lang="cn" style="font-family:var(--cn-serif);text-transform:none;letter-spacing:.05em;">每章沿着一条清楚的路径：</span>
-    </p>
-    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 18px; line-height: 1.7;">
+    <p style="font-family: var(--mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.7;">
       <span style="color: var(--seal); font-weight: 600;">01</span> <span data-lang="en">Origin</span><span data-lang="th" style="font-family:var(--th);text-transform:none">ต้นฉบับ</span><span data-lang="cn" style="font-family:var(--cn-serif);text-transform:none">原文</span> · 原文 <em>yuán wén</em> &nbsp;·&nbsp;
       <span style="color: var(--seal); font-weight: 600;">02</span> <span data-lang="en">Reading</span><span data-lang="th" style="font-family:var(--th);text-transform:none">ตีความ</span><span data-lang="cn" style="font-family:var(--cn-serif);text-transform:none">解读</span> · 解讀 <em>jiě dú</em> &nbsp;·&nbsp;
       <span style="color: var(--seal); font-weight: 600;">03</span> <span data-lang="en">Note / Image</span><span data-lang="th" style="font-family:var(--th);text-transform:none">บันทึก / ภาพ</span><span data-lang="cn" style="font-family:var(--cn-serif);text-transform:none">注 / 画</span> · 注畫 <em>zhù huà</em> &nbsp;·&nbsp;
       <span style="color: var(--gold); font-weight: 600;">04</span> <span data-lang="en">Question</span><span data-lang="th" style="font-family:var(--th);text-transform:none">คำถาม</span><span data-lang="cn" style="font-family:var(--cn-serif);text-transform:none">问</span> · 問 <em>wèn</em>
     </p>
-    <a href="#ch1" class="cover-begin-btn">
-      <span data-lang="en">Begin reading →</span>
-      <span data-lang="th">เริ่มอ่าน →</span>
-      <span data-lang="cn">开始阅读 →</span>
-    </a>
+    <div class="cover-cta-row">
+      <a href="#ch1" class="cover-begin-btn">
+        <span data-lang="en">Begin reading →</span>
+        <span data-lang="th">เริ่มอ่าน →</span>
+        <span data-lang="cn">开始阅读 →</span>
+      </a>
+      <button type="button" class="cover-about-btn" data-open-notes="about">
+        <span data-lang="en">About Dr. Non</span>
+        <span data-lang="th">เกี่ยวกับอาจารย์นน</span>
+        <span data-lang="cn">关于農博士</span>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -167,15 +169,7 @@
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「信言不美，美言不信。」</p>
           <p class="dw-science" data-lang="en">Lera Boroditsky, 30+ studies: the words your language has measurably narrow what you can perceive. Lao Tzu put it first, 2,300 years earlier.</p>
           <p class="dw-science" data-lang="th">Lera Boroditsky ในกว่า 30 การศึกษา คำในภาษาของคุณทำให้สิ่งที่คุณรับรู้แคบลงอย่างวัดได้ เหล่าจื๊อพูดสิ่งนี้ก่อน 2,300 ปี</p>
-          <p class="dw-science" data-lang="cn" style="font-family:var(--cn-serif)">Lera Boroditsky，30多项研究：你语言里的词会可测地限制你能感知的范围。老子早了两千三百年说出了这件事。</p></p>
-          <p>คิดดูครับ คุณซื้อหนังสือคู่มือการใช้ชีวิตมาเล่มหนึ่ง แต่บรรทัดแรกคนเขียนบอกว่า "สิ่งที่ผมกำลังจะบอกคุณเนี่ย ถ้าคุณเข้าใจมันเป็นคำพูด แสดงว่ามันไม่ใช่ของจริงนะ"</p>
-          <p>อ้าว แล้วจะอ่านต่อยังไงล่ะทีนี้ แต่ความตลกร้ายนี้แหละคือแก่นแท้ของเรื่องทั้งหมดครับ เล่าจื๊อกำลังจะบอกเราว่า ความจริงสูงสุด หรือ "เต๋า" นั้น ยิ่งใหญ่และลึกซึ้งเกินกว่าที่ภาษามนุษย์อันแสนจะจำกัดของเราจะไปตีกรอบมันได้</p>
-          <p>การที่เราไปตั้งชื่อให้สิ่งต่างๆ คือจุดเริ่มต้นของการแบ่งแยก พอเราเรียกสิ่งนี้ว่า "สวย" อีกสิ่งจะกลายเป็น "ขี้เหร่" ทันที พอเรานิยามคำว่า "ดี" คำว่า "เลว" ก็จะโผล่ขึ้นมาเป็นเงาตามตัว โลกใบนี้ทำงานเป็นคู่ๆ เสมอ มีสั้นก็มียาว มีสูงก็มีต่ำ เหมือนเหรียญที่มีสองด้านเสมอ คุณจะเอาแต่หัวไม่เอาก้อยไม่ได้</p>
-          <p>ทีนี้ พอเราเข้าใจแล้วว่าโลกมันเต็มไปด้วยคู่ตรงข้าม สิ่งที่เล่าจื๊อแนะนำให้เราทำคืออะไร?</p>
-          <p class="dw-pull">คำตอบคือ "ไม่ต้องทำอะไร" หรือที่ในภาษาจีนเรียกว่า "อู๋เหวย" (Wu Wei)</p>
-          <p>แต่นี่ไม่ใช่ข้ออ้างให้นอนอืดอยู่บนโซฟาแล้วบอกแม่ว่า "ผมกำลังปฏิบัติธรรมอยู่" นะครับ การไม่กระทำในที่นี้ไม่ได้แปลว่าขี้เกียจ แต่มันคือการกระทำที่บริสุทธิ์และทรงพลังที่สุด</p>
-          <p>ลองนึกภาพนักกีฬาที่กำลังเข้าฝัก หรือศิลปินที่วาดรูปเพลินจนลืมเวลา ตอนนั้น "คนทำ" ได้หายไป เหลือแต่ "การกระทำ" ล้วนๆ นั่นแหละคือสภาวะที่เล่าจื๊อต้องการจะสื่อ</p>
-          <p>เขาบอกว่าจอมปราชญ์จะทำงานโดยไม่คาดหวังผลลัพธ์ ทำเสร็จแล้วก็ปล่อยวาง ลืมมันไปซะ เพราะถ้าคุณมัวแต่ยึดติดกับผลงาน คุณจะกลายเป็นนักโทษของสายตาคนอื่น การปล่อยวางนี่แหละที่จะทำให้ผลงานของคุณเป็นอมตะอย่างแท้จริง</p>
+          <p class="dw-science" data-lang="cn" style="font-family:var(--cn-serif)">Lera Boroditsky，30多项研究：你语言里的词会可测地限制你能感知的范围。老子早了两千三百年说出了这件事。</p>
         </div>
       </section>
 
@@ -197,13 +191,6 @@
           <p class="dw-science" data-lang="en">Csikszentmihalyi's flow research: the deepest selfhood arrives precisely when the self is not the focus. Amy Edmondson: the most productive teams have leaders who create conditions for others to act — not leaders whose vision is most visible.</p>
           <p class="dw-science" data-lang="th">งานวิจัย flow ของ Csikszentmihalyi ความรู้สึกตัวตนที่ลึกที่สุดมาถึงพอดีเมื่อตัวตนไม่ใช่จุดสนใจ Amy Edmondson ทีมที่มีประสิทธิผลสูงสุดมีผู้นำที่สร้างเงื่อนไขให้คนอื่นกระทำ ไม่ใช่ผู้นำที่วิสัยทัศน์มองเห็นได้ชัดที่สุด</p>
           <p class="dw-science" data-lang="cn" style="font-family:var(--cn-serif)">Csikszentmihalyi的心流研究：最深的自我感恰恰在自我不是焦点时才出现。Amy Edmondson：效率最高的团队，领导者创造条件让别人行动——而不是让自己的愿景最显眼。</p>
-          <p>ขยับมาสู่เรื่องที่มักถูกเข้าใจผิดมากที่สุดเรื่องหนึ่งในคัมภีร์นี้ นั่นคือประโยคที่ว่า "ฟ้าดินมองสรรพสิ่งเหมือนหุ่นฟาง" ฟังดูโหดร้ายใช่ไหมครับ? แต่ประเด็นไม่ได้อยู่ที่ความโหดร้าย แต่อยู่ที่ "ความไม่ลำเอียง" ต่างหาก</p>
-          <p>จักรวาลนี้ไม่ได้เกลียดคุณ และก็ไม่ได้รักคุณเป็นพิเศษ จักรวาลแค่เป็นจักรวาล จอมปราชญ์ก็เช่นกัน ท่านต้อนรับทั้งคนบาปและนักบุญ เพราะท่านมองทะลุเปลือกนอกเข้าไปถึงแก่นว่า ทุกคนล้วนมาจากแหล่งกำเนิดเดียวกัน</p>
-          <p>เล่าจื๊อพาเราไปรู้จักกับ "แม่ผู้ยิ่งใหญ่" เต๋านั้นมีความเป็นหญิงสูงมาก มันคือความว่างเปล่าที่โอบอุ้มทุกสิ่ง เหมือนมดลูกของจักรวาลที่ให้กำเนิดโลกนับล้าน</p>
-          <p>และเพราะเต๋าไม่มีความต้องการของตัวเอง มันจึงดำรงอยู่ชั่วนิรันดร์ จอมปราชญ์จึงเลียนแบบเต๋าด้วยการ "อยู่ข้างหลัง" แต่กลับกลายเป็นผู้นำที่อยู่ "ข้างหน้า" นี่คือกลยุทธ์แบบยอมแพ้เพื่อชนะ</p>
-          <p class="dw-pull">แล้วอะไรล่ะที่เป็นตัวแทนของเต๋าได้ดีที่สุดในโลกวัตถุนี้? คำตอบคือ "น้ำ"</p>
-          <p>น้ำเลี้ยงดูสรรพสิ่งโดยไม่พยายามและไม่เรียกร้องบุญคุณ มันชอบไหลลงสู่ที่ต่ำ ซึ่งเป็นที่ที่มนุษย์ส่วนใหญ่รังเกียจ แต่น้ำก็ชนะทุกสิ่ง ความนุ่มนวลของน้ำชนะความแข็งกระด้างของหินได้เสมอ</p>
-          <p>จริงๆ แล้วเราทุกคนก็คือน้ำที่มีกล้ามเนื้อ เรากำเนิดมาจากน้ำคร่ำแห่งความรัก และควรใช้ชีวิตให้ลื่นไหลเหมือนน้ำ ไม่แข็งขืน ไม่ต่อต้าน</p>
         </div>
       </section>
 
@@ -222,12 +209,6 @@
           <p class="dw-pull" data-lang="en">"Stone shatters at the storage point. Water moves around it."</p>
           <p class="dw-pull" data-lang="th">"หินแตกตรงจุดที่เก็บ น้ำเคลื่อนรอบ"</p>
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「石头在积累点碎裂，水绕行。」</p>
-          <p>เล่าจื๊อเตือนพวกบ้างานและพวกชอบสะสมว่า "เติมถ้วยให้เต็มปริ่ม น้ำก็หก" "ลับมีดให้คมกริบ เดี๋ยวก็ทื่อเร็ว" ยิ่งพยายามไขว่คว้าเงินทองและความปลอดภัย ใจคุณยิ่งไม่มีวันสงบ</p>
-          <p>คำแนะนำสั้นๆ แต่เจ็บจี๊ดคือ "ทำงานของคุณให้เสร็จ แล้วก็ถอยออกมา" แค่นั้นแหละคือหนทางสู่ความสงบ ไม่ต้องดราม่า ไม่ต้องรอเสียงปรบมือ</p>
-          <p>เล่าจื๊อชวนเรามอง "ความว่าง" ในมุมใหม่ ล้อเกวียนใช้การได้เพราะรูตรงกลาง หม้อใช้ได้เพราะช่องว่างข้างใน บ้านอยู่ได้เพราะพื้นที่ว่างภายใน</p>
-          <p class="dw-pull">เราทำงานกับสิ่งที่มีอยู่ แต่เราใช้ประโยชน์จากความไม่มี</p>
-          <p>พื้นที่ว่าง เวลาว่าง และใจที่ว่าง มีประโยชน์มหาศาล อย่าไปเติมมันจนแน่นเอี๊ยดซะหมด</p>
-          <p>และความสำเร็จก็อันตรายพอๆ กับความล้มเหลว เพราะความกลัวจะเสียความสำเร็จ หลอกหลอนเราไม่ต่างจากความกลัวจะล้มเหลว ทั้งความหวังและความกลัวเป็นปีศาจที่เกิดจากการยึดติดกับตัวตน</p>
         </div>
       </section>
 
@@ -246,11 +227,6 @@
           <p class="dw-pull" data-lang="en">"为道日损。 In the Way, daily decrease."</p>
           <p class="dw-pull" data-lang="th">"为道日损 ในทาง ลดลงทุกวัน"</p>
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「为道日损，损之又损，以至于无为。」</p>
-          <p>เล่าจื๊อถามเราว่า "คุณมีความอดทนพอที่จะรอให้โคลนของคุณตกตะกอนจนน้ำใสไหม?" ใจเราก็เหมือนแก้วน้ำขุ่น คนส่วนใหญ่มักจะเอามือลงไปคน ยิ่งทำยิ่งขุ่น</p>
-          <p class="dw-pull">วิธีเดียวที่จะทำให้น้ำใสคือไม่ต้องทำอะไรเลย</p>
-          <p>แค่นั่งเฉยๆ รอให้ตะกอนนอนก้นไปเอง นี่คือสุดยอดเทคนิคการจัดการความเครียดแบบเต๋า คือปล่อยให้การกระทำที่ถูกต้องผุดขึ้นมาเองเมื่อถึงเวลาที่เหมาะสม</p>
-          <p>ในเรื่องการบริหาร เล่าจื๊อบอกว่าผู้นำที่ดีที่สุดคือผู้นำที่คนแทบไม่รู้ว่ามีตัวตนอยู่ เมื่อภารกิจสำเร็จ ผู้คนจะอุทานว่า "เฮ้ย พวกเราทำสำเร็จด้วยตัวเราเอง!"</p>
-          <p>นี่คือการบริหารแบบไว้ใจ ถ้าคุณไม่ไว้ใจคน เขาจะกลายเป็นคนที่ไม่น่าไว้ใจ มันคือจิตวิทยาแบบกระจกสะท้อนตรงๆ</p>
         </div>
       </section>
 
@@ -269,11 +245,6 @@
           <p class="dw-pull" data-lang="en">"Soft overcomes hard. Everyone knows this. Few can live by it."</p>
           <p class="dw-pull" data-lang="th">"อ่อนชนะแข็ง ทุกคนรู้ น้อยคนทำได้"</p>
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「柔弱胜刚强，天下皆知，莫能行。」</p>
-          <p>เล่าจื๊อบอกว่า เมื่อไหร่ที่เต๋าอันยิ่งใหญ่ถูกลืม เมื่อนั้นแหละ "ความดี" และ "ความศรัทธา" ถึงจะโผล่หัวออกมา ในสังคมที่เป็นธรรมชาติจริงๆ คนเราจะทำดีต่อกันโดยไม่ต้องติดป้ายว่าเป็นความดี</p>
-          <p>พอสังคมเริ่มป่วย เราถึงต้องสร้างกฎศีลธรรมขึ้นมาควบคุม วิธีแก้ของเล่าจื๊อจึงสุดโต่งมาก: ทิ้งความศักดิ์สิทธิ์และภูมิปัญญาไปซะ แล้วคนจะมีความสุขขึ้นร้อยเท่า</p>
-          <p>เขาไม่ได้บอกให้เราเป็นคนเลว แต่บอกให้เราเลิกยึดติดกับ "เปลือก" ของความดี เลิกแสดงละครว่าเป็นคนดี แล้วกลับไปสู่ความเรียบง่ายที่แก่นแท้แทน</p>
-          <p class="dw-pull">การยอมเป็นคนโง่ในสายตาโลก คือการเป็นผู้รู้แจ้งในสายตาเต๋า</p>
-          <p>เมื่อคุณไม่มีกรอบความรู้มากั้น คุณก็พร้อมจะรับความจริงได้ทั้งหมด</p>
         </div>
       </section>
 
@@ -292,10 +263,6 @@
           <p class="dw-pull" data-lang="en">"千里之行，始于足下。A thousand-mile journey begins beneath your foot."</p>
           <p class="dw-pull" data-lang="th">"การเดินทางพันไมล์ เริ่มต้นใต้ฝ่าเท้า"</p>
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「千里之行，始于足下。」</p>
-          <p>เล่าจื๊อบอกว่า "ความหนักคือรากฐานของความเบา" และ "ความสงบคือเจ้านายของความเคลื่อนไหว" คุณต้องมีจุดศูนย์ถ่วงภายใน ไม่อย่างนั้นความเร็วภายนอกจะพัดคุณหลุดจากราก</p>
-          <p>นักเดินทางที่ดีไม่มีแผนที่แน่นอน และไม่ได้มุ่งมั่นว่าจะต้องไปถึงปลายทาง ถ้าคุณมัวแต่ก้มดูแผนที่ คุณจะพลาดดอกไม้สวยๆ ข้างทางทั้งหมด</p>
-          <p class="dw-pull">คนดีคือครูของคนเลว และคนเลวคืองานของคนดี</p>
-          <p>อย่าไปรังเกียจคนแย่ๆ ที่เข้ามาในชีวิต เพราะพวกเขาคือบททดสอบที่ทำให้ความอดทนและเมตตาของเรากลายเป็นของจริง</p>
         </div>
       </section>
 
@@ -314,14 +281,6 @@
           <p class="dw-pull" data-lang="en">"True words are not beautiful. Beautiful words are not true."</p>
           <p class="dw-pull" data-lang="th">"คำจริงไม่งาม คำงามไม่จริง"</p>
           <p class="dw-pull" data-lang="cn" style="font-family:var(--cn-serif)">「信言不美，美言不信。」</p>
-          <p>เล่าจื๊อฝากข้อความถึงพวก perfectionist และพวก savior complex ว่า "อยากจะปรับปรุงโลกเหรอ? ข้าไม่เห็นว่าจะทำได้เลย" โลกนี้ศักดิ์สิทธิ์และสมบูรณ์ในแบบของมันอยู่แล้ว ยิ่งจับยิ่งเละ ยิ่งแก้ยิ่งพัง</p>
-          <p>อาวุธคือเครื่องมือแห่งความกลัว ถ้าจำใจต้องรบแล้วชนะ ก็อย่าจัดงานฉลอง ชัยชนะจากการฆ่าฟันควรฉลองด้วยพิธีศพเท่านั้น</p>
-          <p>ถ้าอยากจะหดอะไรลง ต้องปล่อยให้มันขยายก่อน ถ้าอยากชนะของแข็ง ให้เรียนจากของอ่อน นี่คือกฎของน้ำ ลิ้นอยู่ทนกว่าฟันเพราะมันนุ่มกว่า</p>
-          <p>เล่าจื๊อแยก "ความฉลาด" ออกจาก "ปัญญา" การรู้ทันคนอื่นคือความฉลาด แต่การรู้ทันใจตัวเองคือปัญญา ถ้าคุณรวยแต่ไม่รู้จักพอ คุณก็ยังยากจนอยู่ดี</p>
-          <p>เมื่อสังคมสูญเสียเต๋า เราถึงต้องหันมาพึ่งศีลธรรมและพิธีกรรม พิธีกรรมจึงเป็นเพียงเปลือกนอกของศรัทธา และเป็นจุดเริ่มต้นของความวุ่นวาย</p>
-          <p>เล่าจื๊อด่าเศรษฐีและผู้มีอำนาจแบบไม่อ้อมค้อม: ถ้าราชสำนักสะอาดเอี่ยม แต่ไร่นารกร้างและยุ้งฉางว่างเปล่า นั่นไม่ใช่ผู้นำ นั่นคือหัวหน้าแก๊งโจร</p>
-          <p class="dw-pull">การปกครองประเทศใหญ่ ก็เหมือนทอดปลาตัวเล็ก อย่าไปแหย่มันมาก</p>
-          <p>ยิ่งมีกฎหมายมาก คนยิ่งเลว ยิ่งมีข้อห้ามมาก โจรยิ่งชุม การปกครองที่ดีที่สุดคือการปกครองแบบหลวมๆ ที่ทำให้คนสบายใจพอจะซื่อสัตย์กันเอง</p>
         </div>
       </section>
 
@@ -344,6 +303,7 @@
         <button class="notes-tab" role="tab" data-tab="about" aria-selected="false">識人 <em>shí rén</em> · About</button>
         <button class="notes-tab" role="tab" data-tab="currents" aria-selected="false">源流 <em>yuán liú</em> · Currents</button>
         <button class="notes-tab" role="tab" data-tab="wild" aria-selected="false">在野 <em>zài yě</em> · In the Wild</button>
+        <button class="notes-tab" role="tab" data-tab="ideas" aria-selected="false">思問 <em>sī wèn</em> · Ideas</button>
         <button class="notes-tab" role="tab" data-tab="library" aria-selected="false">書目 <em>shū mù</em> · Library</button>
         <button class="notes-tab" role="tab" data-tab="self" aria-selected="false">自述 <em>zì shù</em> · Story</button>
       </nav>
@@ -914,6 +874,20 @@
   </div>
 </section>
 
+<!-- ── 思問 · IDEAS — living arguments and deeper prompts ── -->
+<section class="ideas-pane notes-pane" id="ideas" data-pane="ideas">
+  <div class="ideas-inner">
+    <p class="ideas-kicker">思問 <em>sī wèn</em> · Living Ideas</p>
+    <h2 class="ideas-title" data-lang="en">The arguments underneath the reading.</h2>
+    <h2 class="ideas-title" data-lang="th">ความคิดที่อยู่ใต้การอ่านทั้งหมด</h2>
+    <h2 class="ideas-title" data-lang="cn" style="font-family:var(--cn-serif)">这次阅读底下的思想线索。</h2>
+    <p class="ideas-blurb" data-lang="en">A compact map of the blog-like reflections, Tsai cartoons, Slingerland arguments, Buddhist echoes, psychology, and life questions that keep returning across the 81 chapters.</p>
+    <p class="ideas-blurb" data-lang="th">แผนที่ย่อของบทสะท้อนในเสียงของผู้เขียน การ์ตูน蔡志忠 ข้อถกเถียงของ Slingerland เสียงสะท้อนจากพุทธ จิตวิทยา และคำถามชีวิตที่วนกลับมาตลอด 81 บท</p>
+    <p class="ideas-blurb" data-lang="cn" style="font-family:var(--cn-serif)">这里把作者式反思、蔡志忠漫画、Slingerland 的论点、佛教回声、心理学和贯穿81章的人生问题，整理成一张紧凑地图。</p>
+    <div class="ideas-grid" id="ideaThreadsGrid"></div>
+  </div>
+</section>
+
 <!-- ── 書目 · LIBRARY — reference books and reading notes ── -->
 <section class="reference-pane notes-pane" id="library" data-pane="library">
   <div class="reference-inner">
@@ -1175,10 +1149,12 @@
 <script src="character_notes_cn.js?v=1"></script>
 <script src="character_notes_th.js?v=1"></script>
 <script src="closers.js?v=1"></script>
+<script src="reflection_questions.js?v=1"></script>
 <script src="npm_art.js?v=1"></script>
 <script src="comparative_notes.js?v=2"></script>
 <script src="tsai_laozi.js?v=1"></script>
 <script src="reference_library.js?v=1"></script>
-<script src="app.js?v=30"></script>
+<script src="idea_threads.js?v=1"></script>
+<script src="app.js?v=31"></script>
 </body>
 </html>
