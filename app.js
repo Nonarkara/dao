@@ -831,10 +831,15 @@
   }
   // Caricature breaks — visual breathing room every ~20 chapters
   const CHAPTER_BREAKS = {
-    27: { src: 'public/banners/train.jpg',     alt: 'Travellers on the way — a train of readers moving through the Dao' },
-    40: { src: 'public/banners/shanghai.jpg',  alt: 'Laozi walks a modern city — reversal at the midpoint' },
-    60: { src: 'public/banners/classroom.jpg', alt: 'Reading Dao De Jing with Dr Non — the final gathering' },
-    73: { src: 'public/banners/space.jpg',     alt: 'Dr Non and Laozi reading the Dao De Jing in a space station — the Way has no gravity' },
+    8:  { src: 'public/banners/underwater.jpg',    alt: 'Laozi and readers under the ocean — be like water' },
+    17: { src: 'public/banners/buffalo.jpg',       alt: 'Water buffalo parade through the old city gate — quiet leadership' },
+    27: { src: 'public/banners/train.jpg',         alt: 'Travellers on the way — a train of readers moving through the Dao' },
+    33: { src: 'public/banners/harvard.jpg',       alt: 'Dr Non at Harvard Yard — knowing others, knowing yourself' },
+    40: { src: 'public/banners/shanghai.jpg',      alt: 'Laozi walks a modern city — reversal at the midpoint' },
+    48: { src: 'public/banners/tibet-train.jpg',   alt: 'The Qinghai-Tibet Railway — subtract until only the plateau remains' },
+    60: { src: 'public/banners/family-house.jpg',  alt: 'Dr Non with family at home — the Way begins at the front door' },
+    67: { src: 'public/banners/yaowarat.jpg',      alt: 'Yaowarat Road, Bangkok Chinatown — the three treasures walk among us' },
+    73: { src: 'public/banners/space.jpg',         alt: 'Dr Non and Laozi reading in a space station — the Way has no gravity' },
   };
   $('#chapters').innerHTML = CH.map((ch, idx) => {
     const html = chapterHTML(ch, idx);
