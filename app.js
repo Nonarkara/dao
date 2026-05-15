@@ -34,53 +34,76 @@
   // in CSS (.mood-cosmic, .mood-wabi, .mood-natural, .mood-civic, .mood-pop,
   // .mood-cryptic, .mood-physics, .mood-mirror).
   const MOOD_OVERRIDES = {
+    // ── Book of the Way (道經, ch 1–37) ────────────────────────
     1:  'cosmic',     // 體道 — the source
     2:  'cryptic',    // pairs / paradox
     4:  'ink',        // empty vessel — void, minimal
-    5:  'cosmic',     // straw dogs
-    6:  'natural',    // valley spirit
+    5:  'cosmic',     // straw dogs — heaven/earth scale
+    6:  'natural',    // valley spirit — springs, feminine
     8:  'sea',        // water — deep, cool, jade
-    9:  'wabi',       // knowing when to stop — quiet, not noisy
+    9:  'wabi',       // knowing when to stop — quiet
+    10: 'flesh',      // carrying the soul, embracing the one — body, warmth
     11: 'ink',        // use of nothing — emptiness
-    14: 'cryptic',    // can't see, hear, grasp
+    13: 'ember',      // praise and disgrace — the burning of reputation
+    14: 'cryptic',    // can't see, hear, grasp — paradox
     16: 'ember',      // returning to root — dimming down
-    20: 'wabi',       // I alone
-    21: 'cosmic',
-    22: 'natural',
+    20: 'wabi',       // I alone — solitude
+    21: 'cosmic',     // form of virtue — formless vastness
+    22: 'natural',    // bending — yielding like a branch
     23: 'weather',    // few words — gusts don't last the morning
     24: 'weather',    // tiptoe — transient
-    25: 'physics',    // dao models on what is so of itself
+    25: 'physics',    // Dao models on what is so of itself
+    26: 'stone',      // heaviness as root — gravity, weight
+    27: 'wabi',       // good work leaves no track — quiet craft
     28: 'ink',        // holding the female — uncarved block
-    29: 'weather',    // trying to run the world
+    29: 'weather',    // trying to run the world — storms
     30: 'stone',      // not using the army — weight, funeral
     31: 'stone',      // weapons — iron, grey
     33: 'physics',    // metacognition / calibration
+    34: 'natural',    // Dao flows everywhere — a river finding its way
+    35: 'cosmic',     // great image — hold it and the world comes
     36: 'ember',      // faint light — dying fire
     37: 'ink',        // doing nothing — emptiness
-    38: 'pop',        // virtue ladder decay
+    // ── Book of Virtue (德經, ch 38–81) ────────────────────────
+    38: 'pop',        // virtue ladder decay — bold editorial
     40: 'ember',      // reversal — turning point
     42: 'physics',    // 1 → 2 → 3 → ten thousand
     43: 'ink',        // softest thing — penetration, void
     44: 'flesh',      // name and body — organic
+    46: 'wabi',       // enough — contentment is still
     47: 'ink',        // not going out — interior, minimal
-    48: 'wabi',       // subtract
+    48: 'wabi',       // subtract — less and less
+    49: 'flesh',      // borrowed heart — the sage takes people's warmth
     50: 'flesh',      // coming and going — birth/death cycle
-    51: 'flesh',      // nourishing — warmth, organic
+    51: 'natural',    // nourishing — organic growth, not forced
     52: 'flesh',      // the Mother — warmth, intimacy
-    55: 'flesh',      // the Infant — warmth, not blank cream
+    53: 'stone',      // crooked path — weight of corruption
+    54: 'natural',    // cultivation — growing things
+    55: 'flesh',      // the Infant — warmth, origin of life
     56: 'ember',      // those who don't talk — obscurity
+    57: 'weather',    // not governing — let the winds blow
+    58: 'ember',      // dim government, blunt policies — fading light
+    59: 'ink',        // saving, thrift — void, minimalism
+    60: 'flesh',      // cooking small fish — intimate, organic
     61: 'sea',        // lowest place — water finds depth
-    63: 'civic',      // tackle while easy
-    64: 'civic',      // thousand-mile journey
-    67: 'wabi',       // three treasures — kindness/thrift/humility need quiet
+    62: 'ink',        // practising the Way, storehouse — emptiness
+    63: 'ember',      // tackle hard while easy — before the fire spreads
+    64: 'natural',    // thousand-mile journey begins — earth, growth
+    65: 'stone',      // simplicity of virtue — foundational weight
+    66: 'sea',        // why the sea is king — water!
+    67: 'wabi',       // three treasures — kindness/thrift/humility
     68: 'stone',      // not fighting — weight, reluctance
     69: 'stone',      // reluctant soldier — iron, grey
-    70: 'wabi',       // being misunderstood — solitude, not halftone
-    71: 'cryptic',    // knowing not-knowing
+    70: 'wabi',       // being misunderstood — solitude
+    71: 'cryptic',    // knowing not-knowing — paradox
+    72: 'weather',    // when people fear no more — atmospheric shift
     74: 'stone',      // killing — heavy, funeral
-    76: 'natural',    // soft vs hard
-    78: 'sea',        // water again — deep, cool
-    80: 'wabi',       // small country
+    75: 'flesh',      // greed, hunger — bodily need
+    76: 'natural',    // soft vs hard — living tree
+    77: 'physics',    // Way of Heaven, the bow — structural, precise
+    78: 'sea',        // water again — return to source
+    79: 'ember',      // settled grievances — old embers
+    80: 'wabi',       // small country — intimacy
     81: 'mirror',     // closing — book ends by reversing on itself
   };
   function moodClassFor(ch) {
@@ -128,10 +151,10 @@
     76: 'L',   // Soft and Hard — material depth
     3: 'S',    // Not Goading — tight, practical
     9: 'S',    // Knowing When to Stop — compact wisdom
-    10: 'S',   // Holding One — brief
+    // 10: M (default) — Carrying the Soul — measured breath
     12: 'S',   // Five Colours — vivid but tight
     13: 'S',   // Praise — sharp, short
-    15: 'S',   // Old Masters — brief lesson
+    // 15: M (default) — Old Masters — a measured list poem
     17: 'S',   // Quiet Leadership — tight
     18: 'S',   // Loss of Way — compact lament
     19: 'S',   // Dropping Categories — brief
@@ -142,38 +165,37 @@
     29: 'S',   // Running World — brief warning
     30: 'S',   // Not Using Army — funeral compact
     31: 'S',   // Weapons — sharp, brief
-    32: 'S',   // Names — tight
-    34: 'S',   // Going Both Ways — brief
-    35: 'S',   // Great Image — compact
+    // 32: M (default) — The Unnamed — cosmic at S was cramped
+    // 35: M (default) — Great Image — holds the whole world
     37: 'S',   // Doing Nothing — minimal
     39: 'S',   // One — singular, tight
-    41: 'S',   // Three Hearers — brief
+    // 41: M (default) — Three Hearers — the laughter chapter
     45: 'S',   // Looking Wrong — sharp
-    46: 'S',   // Enough — complete, tight
+    // 46: M (default) — Enough — contentment needs room
     47: 'S',   // Not Going Out — interior, compact
     49: 'S',   // Borrowed Heart — brief
     51: 'S',   // Nourishing — intimate, small
     52: 'S',   // Mother — tight warmth
-    53: 'S',   // Crooked Path — brief
+    // 53: M (default) — Crooked Path — weight of corruption
     54: 'S',   // Cultivation — compact
-    57: 'S',   // Less Government — tight
+    // 57: M (default) — Not Governing — atmosphere needs space
     58: 'S',   // Dim Government — brief
     59: 'S',   // Saving — compact
     60: 'S',   // Cooking Small Fish — intimate
     61: 'S',   // Lowest Place — tight depth
-    62: 'S',   // Storehouse — compact
+    // 62: M (default) — Storehouse of the Way — void, spacious
     63: 'S',   // Hard from Easy — brief
     65: 'S',   // Not Making Clever — tight
-    66: 'S',   // Sea Wins — compact
+    // 66: M (default) — Why the Sea Is King — depth
     68: 'S',   // Not Fighting — brief
     69: 'S',   // Reluctant Soldier — tight
     70: 'S',   // Misunderstood — compact solitude
     71: 'S',   // Knowing Not Knowing — brief
     72: 'S',   // Fear — tight
-    73: 'S',   // Net of Heaven — compact
+    // 73: M (default) — Net of Heaven — big net, wide cast
     74: 'S',   // Killing — sharp, brief
     75: 'S',   // Hungry — tight
-    77: 'S',   // Way of Heaven — compact
+    // 77: M (default) — Way of Heaven, the Bow — structural
     79: 'S',   // Settled Grievances — brief
     80: 'S',   // Small Country — intimate, tight
   };

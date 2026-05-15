@@ -6113,10 +6113,12 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
 .chapter.mood-weather .summary-frame .su-en,
 .chapter.mood-weather .summary-frame .su-th { color: rgba(180,200,230,.85) !important; border-left-color: rgba(138,170,187,.5) !important; }
 .chapter.mood-weather .summary-frame .su-cn { color: rgba(140,180,200,.85) !important; }
-/* weather origin text was also dark #2c3e50 on dark bg */
-.chapter.mood-weather .origin-cn-title { color: rgba(180,200,230,.9) !important; }
-.chapter.mood-weather .origin-en-title,
-.chapter.mood-weather .origin-th-title { color: rgba(180,200,230,.7) !important; }
+/* weather origin text: keep DARK on paper-bg panel-origin.
+   The FIP origin-cn-title override (light blue) was already
+   fixed in the PANEL-ORIGIN TITLE FIXES section below. */
+.chapter.mood-weather .panel-origin .origin-en-title,
+.chapter.mood-weather .panel-origin .origin-th-title { color: rgba(44,62,80,.75) !important; }
+.chapter.mood-weather .panel-origin .origin-meta { color: rgba(44,62,80,.5) !important; }
 
 /* mood-cryptic: remove the position:fixed scanline overlay — it creates a z-index
    stacking issue that renders above panel content on Android Chrome */
@@ -6143,6 +6145,59 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
 /* Dark-chapter mood-ember: no panel-origin bg was set — add one so
    the amber title colour stays legible */
 .chapter.mood-ember .panel-origin { background: #1a0d04 !important; }
+
+/* ============================================================
+   DARK-MOOD PANEL-LABEL CONTAINER FIX
+   panel-label uses color: var(--seal) and border: var(--rule).
+   Both are invisible on dark chapter backgrounds. The child
+   elements (.pl-num etc.) already have mood-specific overrides,
+   but the container's own color (affects the · separator) and
+   border need matching.
+   ============================================================ */
+.chapter.mood-cosmic .panel-label,
+.chapter.mood-sea .panel-label,
+.chapter.mood-stone .panel-label,
+.chapter.mood-ember .panel-label,
+.chapter.mood-mirror .panel-label {
+  color: rgba(244,235,213,.35);
+  border-bottom-color: rgba(244,235,213,.12);
+}
+
+/* ============================================================
+   MOOD-INK PANEL-ORIGIN — black bg needs light text
+   The FIP set .panel-origin { background: #000 } but the base
+   mood-ink rules all use dark text (#1a1a1a) for the white
+   chapter bg. Override everything inside the black origin.
+   ============================================================ */
+.chapter.mood-ink .panel-origin .origin-en-title,
+.chapter.mood-ink .panel-origin .origin-th-title { color: rgba(244,235,213,.7) !important; }
+.chapter.mood-ink .panel-origin .origin-meta { color: rgba(244,235,213,.4) !important; }
+.chapter.mood-ink .panel-origin .origin-gloss { color: rgba(244,235,213,.85) !important; }
+.chapter.mood-ink .panel-origin .origin-gloss .og-mark { color: rgba(244,235,213,.5) !important; }
+.chapter.mood-ink .panel-origin .origin-line { border-top-color: rgba(244,235,213,.1) !important; }
+.chapter.mood-ink .panel-origin .origin-num-roman { color: rgba(244,235,213,.5) !important; }
+.chapter.mood-ink .panel-origin .origin-cn-title-py { color: rgba(244,235,213,.5) !important; }
+.chapter.mood-ink .panel-origin .cn-stack-char .cs-c { color: rgba(244,235,213,.85) !important; }
+.chapter.mood-ink .panel-origin .cn-stack-char .cs-py { color: rgba(244,235,213,.5) !important; }
+.chapter.mood-ink .panel-origin .panel-label { color: rgba(244,235,213,.35); border-bottom-color: rgba(244,235,213,.1); }
+.chapter.mood-ink .panel-origin .panel-label .pl-num,
+.chapter.mood-ink .panel-origin .panel-label .pl-cn { color: rgba(244,235,213,.5); }
+
+/* mood-pop panel-label: paper-on-paper in reading/note panels.
+   Keep paper colour for origin panel (seal bg), use ink for others. */
+.chapter.mood-pop .panel-reading .panel-label,
+.chapter.mood-pop .panel-note .panel-label,
+.chapter.mood-pop .panel-direct .panel-label { color: var(--seal); border-bottom-color: rgba(168,51,50,.15); }
+.chapter.mood-pop .panel-reading .panel-label .pl-num,
+.chapter.mood-pop .panel-reading .panel-label .pl-cn,
+.chapter.mood-pop .panel-note .panel-label .pl-num,
+.chapter.mood-pop .panel-note .panel-label .pl-cn { color: var(--seal); }
+
+/* mood-pop origin panel: origin-cn-title-py and origin-meta
+   were seal-on-seal. Fix to paper on seal bg. */
+.chapter.mood-pop .panel-origin .origin-cn-title-py { color: rgba(244,235,213,.6) !important; }
+.chapter.mood-pop .panel-origin .origin-meta { color: rgba(244,235,213,.5) !important; }
+.chapter.mood-pop .panel-origin .origin-gloss { color: rgba(244,235,213,.85) !important; }
 
 /* ============================================================
    CHAPTER BREAKS — caricature banners between chapters
