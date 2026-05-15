@@ -834,6 +834,7 @@
     27: { src: 'public/banners/train.jpg',     alt: 'Travellers on the way — a train of readers moving through the Dao' },
     40: { src: 'public/banners/shanghai.jpg',  alt: 'Laozi walks a modern city — reversal at the midpoint' },
     60: { src: 'public/banners/classroom.jpg', alt: 'Reading Dao De Jing with Dr Non — the final gathering' },
+    73: { src: 'public/banners/space.jpg',     alt: 'Dr Non and Laozi reading the Dao De Jing in a space station — the Way has no gravity' },
   };
   $('#chapters').innerHTML = CH.map((ch, idx) => {
     const html = chapterHTML(ch, idx);
