@@ -180,8 +180,8 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   letter-spacing: .12em;
   cursor: pointer;
   padding: 0 10px;
-  height: 38px;
-  min-width: 38px;
+  height: 44px;
+  min-width: 44px;
   transition: all .2s;
   display: inline-flex;
   align-items: center;
@@ -614,8 +614,8 @@ body.lang-cn .cs-th { display: none; }
   background: color-mix(in srgb, var(--paper) 74%, transparent);
   color: var(--ink-fade);
   cursor: pointer;
-  min-height: 30px;
-  padding: 4px 9px;
+  min-height: 44px;
+  padding: 6px 9px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -655,7 +655,7 @@ body.lang-cn .cs-echo-copy [data-lang="cn"] { display: inline; }
   .chapter-strip .cs-cn { font-size: 14px; letter-spacing: 2px; }
   .chapter-strip .cs-en, .chapter-strip .cs-th { font-size: 12px; }
   .chapter-strip .cs-progress { display: none; }
-  .cs-echo-btn { padding: 4px 8px; min-width: 36px; }
+  .cs-echo-btn { padding: 6px 8px; min-width: 44px; }
   .cs-echo-copy { display: none; }
 }
 
@@ -2132,7 +2132,10 @@ body.lang-cn .checkpoint-gloss[data-lang="en"] { display: none; }
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1px;
+  min-height: 44px;
+  min-width: 44px;
 }
 .cs-cn-link:hover .cs-cn-han {
   color: var(--seal);
@@ -3867,7 +3870,7 @@ body.pinyin-off .notes-tab em { display: none; }
 @media (max-width: 600px) {
   .notes-head { padding: 18px 5vw 0; }
   .notes-tab { padding: 12px 14px; font-size: 10px; }
-  .notes-close { width: 40px; height: 40px; }
+  .notes-close { width: 44px; height: 44px; }
 }
 
 /* The Notes button in the topbar */
@@ -4854,6 +4857,7 @@ body.pinyin-off .npm-title-cn .npm-title-py { display: none; }
   color: var(--ink-soft); font-family: inherit; font-size: inherit;
   letter-spacing: inherit; text-transform: inherit;
   cursor: pointer; padding: 8px 0;
+  min-height: 44px;
   transition: color .2s;
   display: inline-flex; align-items: center; gap: 8px;
   text-align: left;
@@ -4904,7 +4908,7 @@ body.pinyin-off .npm-title-cn .npm-title-py { display: none; }
   position: absolute; top: 16px; right: 16px;
   background: transparent; border: 1px solid var(--rule);
   color: var(--ink-fade);
-  width: 38px; height: 38px;
+  width: 44px; height: 44px;
   font-size: 20px;
   cursor: pointer; line-height: 1;
 }
@@ -5138,7 +5142,7 @@ body.pinyin-off .index-list .ix-py { display: none; }
 @media (max-width: 720px) {
   body { font-size: 17px; }
   .topbar { padding: 8px 12px; }
-  .lang-toggle, .tool-btn { padding: 0 8px; height: 36px; min-width: 36px; }
+  .lang-toggle, .tool-btn { padding: 0 8px; height: 44px; min-width: 44px; }
   .cover { padding: 0 5vw 5vh; }
   .cover-hero-media {
     width: calc(100% + 10vw);

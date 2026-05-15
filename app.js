@@ -835,8 +835,8 @@
     40: { src: 'public/banners/shanghai.jpg',  alt: 'Laozi walks a modern city — reversal at the midpoint' },
     60: { src: 'public/banners/classroom.jpg', alt: 'Reading Dao De Jing with Dr Non — the final gathering' },
   };
-  $('#chapters').innerHTML = CH.map(ch => {
-    const html = chapterHTML(ch);
+  $('#chapters').innerHTML = CH.map((ch, idx) => {
+    const html = chapterHTML(ch, idx);
     const brk = CHAPTER_BREAKS[ch.n];
     return brk
       ? html + `<div class="chapter-break" aria-hidden="true"><img src="${brk.src}" alt="${brk.alt}" loading="lazy"></div>`
