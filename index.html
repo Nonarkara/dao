@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=34">
+<link rel="stylesheet" href="styles.css?v=36">
 </head>
 <body>
 
@@ -296,16 +296,16 @@
   <div class="notes-shell">
     <header class="notes-head">
       <button class="notes-close" id="notesClose" aria-label="Close notes">×</button>
-      <p class="notes-kicker">注 <em>zhù</em> · Dr Non's Notes</p>
+      <p class="notes-kicker">注 <em>zhù</em> · <span data-lang="en">Dr Non's Notes</span><span data-lang="th">บันทึกของอาจารย์นน</span><span data-lang="cn">農博士笔记</span></p>
       <h2 class="notes-title"><span data-lang="en">Optional reading. The book itself is in the chapters — these are sidebars.</span><span data-lang="th" style="font-family:var(--th)">อ่านเพิ่มเติมได้ แต่หัวใจอยู่ในบท — ส่วนนี้เป็นเพียงข้อมูลเสริม</span><span data-lang="cn" style="font-family:var(--cn-serif)">可选阅读。书本身在章节里——这些是旁白。</span></h2>
       <nav class="notes-tabs" role="tablist">
-        <button class="notes-tab is-active" role="tab" data-tab="before" aria-selected="true">楔子 <em>xiē zǐ</em> · Before</button>
-        <button class="notes-tab" role="tab" data-tab="about" aria-selected="false">識人 <em>shí rén</em> · About</button>
-        <button class="notes-tab" role="tab" data-tab="currents" aria-selected="false">源流 <em>yuán liú</em> · Currents</button>
-        <button class="notes-tab" role="tab" data-tab="wild" aria-selected="false">在野 <em>zài yě</em> · In the Wild</button>
-        <button class="notes-tab" role="tab" data-tab="ideas" aria-selected="false">思問 <em>sī wèn</em> · Ideas</button>
-        <button class="notes-tab" role="tab" data-tab="library" aria-selected="false">書目 <em>shū mù</em> · Library</button>
-        <button class="notes-tab" role="tab" data-tab="self" aria-selected="false">自述 <em>zì shù</em> · Story</button>
+        <button class="notes-tab is-active" role="tab" data-tab="before" aria-selected="true">楔子 <em>xiē zǐ</em> · <span data-lang="en">Before</span><span data-lang="th">ก่อนอ่าน</span><span data-lang="cn">开卷</span></button>
+        <button class="notes-tab" role="tab" data-tab="about" aria-selected="false">識人 <em>shí rén</em> · <span data-lang="en">About</span><span data-lang="th">ผู้เขียน</span><span data-lang="cn">识人</span></button>
+        <button class="notes-tab" role="tab" data-tab="currents" aria-selected="false">源流 <em>yuán liú</em> · <span data-lang="en">Currents</span><span data-lang="th">สายธาร</span><span data-lang="cn">源流</span></button>
+        <button class="notes-tab" role="tab" data-tab="wild" aria-selected="false">在野 <em>zài yě</em> · <span data-lang="en">In the Wild</span><span data-lang="th">เต๋ามีชีวิต</span><span data-lang="cn">在野</span></button>
+        <button class="notes-tab" role="tab" data-tab="ideas" aria-selected="false">思問 <em>sī wèn</em> · <span data-lang="en">Ideas</span><span data-lang="th">ความคิด</span><span data-lang="cn">思问</span></button>
+        <button class="notes-tab" role="tab" data-tab="library" aria-selected="false">書目 <em>shū mù</em> · <span data-lang="en">Library</span><span data-lang="th">หนังสือ</span><span data-lang="cn">书目</span></button>
+        <button class="notes-tab" role="tab" data-tab="self" aria-selected="false">自述 <em>zì shù</em> · <span data-lang="en">Story</span><span data-lang="th">เรื่องเล่า</span><span data-lang="cn">自述</span></button>
       </nav>
     </header>
     <div class="notes-body">
@@ -1154,7 +1154,8 @@
 <script src="comparative_notes.js?v=2"></script>
 <script src="tsai_laozi.js?v=1"></script>
 <script src="reference_library.js?v=1"></script>
+<script src="reference_translations.js?v=1"></script>
 <script src="idea_threads.js?v=1"></script>
-<script src="app.js?v=31"></script>
+<script src="app.js?v=33"></script>
 </body>
 </html>
