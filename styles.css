@@ -6125,3 +6125,21 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
 /* mood-mirror ch81: make su-cn use paper-white not dark seal */
 .chapter.mood-mirror .summary-frame .su-en,
 .chapter.mood-mirror .summary-frame .su-th { color: rgba(244,235,213,.75) !important; border-left-color: rgba(244,235,213,.25) !important; }
+
+/* ============================================================
+   PANEL-ORIGIN TITLE FIXES
+   The Final Impression Pass set origin-cn-title to light colours
+   for dramatic contrast in panel-summary (dark bg). But panel-origin
+   keeps background: var(--paper) — those same light colours are
+   invisible on light paper. Override per mood.
+   ============================================================ */
+
+/* Light-chapter moods: origin panel is paper bg → title must be dark */
+.chapter.mood-civic .panel-origin .origin-cn-title    { color: var(--ink) !important; }
+.chapter.mood-natural .panel-origin .origin-cn-title  { color: var(--jade) !important; }
+.chapter.mood-weather .panel-origin .origin-cn-title  { color: #2c3e50 !important; }
+.chapter.mood-flesh .panel-origin .origin-cn-title    { color: #4a2c2a !important; }
+
+/* Dark-chapter mood-ember: no panel-origin bg was set — add one so
+   the amber title colour stays legible */
+.chapter.mood-ember .panel-origin { background: #1a0d04 !important; }
