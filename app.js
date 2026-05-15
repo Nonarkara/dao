@@ -16,6 +16,10 @@
   const TSAI = window.TSAI_LAOZI || {};
   const REF_LIBRARY = window.REFERENCE_LIBRARY || [];
   const SLINGERLAND_DEEP = window.SLINGERLAND_DEEP || {};
+  const REF_I18N = window.REFERENCE_TRANSLATIONS || {};
+  const SLINGERLAND_I18N = window.SLINGERLAND_TRANSLATIONS || {};
+  const IDEA_THREADS = window.IDEA_THREADS || [];
+  const REFLECTION_QUESTIONS = window.REFLECTION_QUESTIONS || {};
   const PT = (window.PINYIN_TITLES || {});
   const TITLE_PY    = PT.titles    || {};   // { "1": "tǐ dào", ... }
   const SUMMARY_PY  = PT.summaries || {};   // { "1": "míng zhī jí fù zhī", ... }
@@ -409,6 +413,7 @@
   }
   function tsaiShortNotes(tsai, chapterTsai) {
     return {
+      en: (chapterTsai && chapterTsai.note && chapterTsai.note.en) || (TSAI.note && TSAI.note.en) || '',
       th: tsai && tsai.caption_th ? tsai.caption_th : (chapterTsai && chapterTsai.note && chapterTsai.note.th) || (TSAI.note && TSAI.note.th) || '',
       cn: tsai && tsai.caption_cn ? tsai.caption_cn : (chapterTsai && chapterTsai.note && chapterTsai.note.cn) || (TSAI.note && TSAI.note.cn) || ''
     };
@@ -416,13 +421,12 @@
   function tsaiCaptionHTML(ch, tsai, chapterTsai) {
     const cap = tsaiCaptionFor(ch, tsai);
     const notes = tsaiShortNotes(tsai, chapterTsai);
-    if (!cap && !notes.th && !notes.cn) return '';
+    if (!cap && !notes.en && !notes.th && !notes.cn) return '';
     return `<figcaption class="tsai-caption">
       ${cap ? `<p class="tsai-caption-main">${triText(cap)}</p>` : ''}
-      <span class="tsai-note-label">ไทย</span>
-      <p class="tsai-caption-note tsai-caption-note--th">${escapeHtml(notes.th)}</p>
-      <span class="tsai-note-label">中文</span>
-      <p class="tsai-caption-note tsai-caption-note--cn">${escapeHtml(notes.cn)}</p>
+      ${notes.en ? `<p class="tsai-caption-note" data-lang="en">${escapeHtml(notes.en)}</p>` : ''}
+      ${notes.th ? `<p class="tsai-caption-note tsai-caption-note--th" data-lang="th">${escapeHtml(notes.th)}</p>` : ''}
+      ${notes.cn ? `<p class="tsai-caption-note tsai-caption-note--cn" data-lang="cn">${escapeHtml(notes.cn)}</p>` : ''}
     </figcaption>`;
   }
 
@@ -458,6 +462,7 @@
         ? { src: chapterTsai.pages[0], caption: (chapterTsai.title && chapterTsai.title.en) || `Tsai visual reading for chapter ${ch.n}`, credit: TSAI.source || 'C. C. Tsai · Dao De Jing' }
         : null;
     const compare = Array.isArray(ext.compare) ? ext.compare : [];
+    const reflection = REFLECTION_QUESTIONS[ch.n] || REFLECTION_QUESTIONS[String(ch.n)];
 
     const su = SU[ch.n];
     const checkpoint = checkpointFor(ch.n);
@@ -772,6 +777,22 @@
         </section>
         ` : ''}
 
+        ${reflection ? `
+        <!-- 深問 shen wen — deeper life questions -->
+        <section class="panel panel-reflection">
+          <div class="reflection-frame">
+            <p class="reflection-kicker">深問 <em>shēn wèn</em> · ${tri('Go deeper', 'ถามให้ลึกขึ้น', '深问')}</p>
+            <h3 class="reflection-title">${triText(reflection.title || {})}</h3>
+            <div class="reflection-lists">
+              <ol data-lang="en">${((reflection.questions && reflection.questions.en) || []).map(q => `<li>${escapeHtml(q)}</li>`).join('')}</ol>
+              <ol data-lang="th">${((reflection.questions && reflection.questions.th) || []).map(q => `<li>${escapeHtml(q)}</li>`).join('')}</ol>
+              <ol data-lang="cn" style="font-family: var(--cn-serif);">${((reflection.questions && reflection.questions.cn) || []).map(q => `<li>${escapeHtml(q)}</li>`).join('')}</ol>
+            </div>
+            ${reflection.practice ? `<p class="reflection-practice">${triText(reflection.practice)}</p>` : ''}
+          </div>
+        </section>
+        ` : ''}
+
         <footer class="chapter-foot">
           <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}
             aria-label="${prev ? 'Previous chapter: ' + prev.en_title : 'Beginning of book'}">
@@ -786,7 +807,19 @@
       </article>
     `;
   }
-  $('#chapters').innerHTML = CH.map(chapterHTML).join('');
+  // Caricature breaks — visual breathing room every ~20 chapters
+  const CHAPTER_BREAKS = {
+    27: { src: 'public/banners/train.jpg',     alt: 'Travellers on the way — a train of readers moving through the Dao' },
+    40: { src: 'public/banners/shanghai.jpg',  alt: 'Laozi walks a modern city — reversal at the midpoint' },
+    60: { src: 'public/banners/classroom.jpg', alt: 'Reading Dao De Jing with Dr Non — the final gathering' },
+  };
+  $('#chapters').innerHTML = CH.map(ch => {
+    const html = chapterHTML(ch);
+    const brk = CHAPTER_BREAKS[ch.n];
+    return brk
+      ? html + `<div class="chapter-break" aria-hidden="true"><img src="${brk.src}" alt="${brk.alt}" loading="lazy"></div>`
+      : html;
+  }).join('');
 
   // ----- INDEX OVERLAY ------------------------------------------
   function indexItemHTML(ch) {
@@ -827,6 +860,7 @@
     const activeEcho = window.__daoActiveEchoChapter;
     const echoNode = document.getElementById('echoOverlay');
     if (activeEcho && echoNode && echoNode.classList.contains('open')) openEcho(activeEcho);
+    if (typeof window.__daoRefreshTsaiGallery === 'function') window.__daoRefreshTsaiGallery();
   }
   setLang(lang);
   $('#langToggle').addEventListener('click', () => {
@@ -913,7 +947,7 @@
     // Reveal all animated children immediately — IntersectionObserver does not
     // fire reliably across display:none ↔ block transitions inside an overlay.
     requestAnimationFrame(() => {
-      $$('.notes-pane.is-active .about-stanza, .notes-pane.is-active .era-card, .notes-pane.is-active .wild-mvt, .notes-pane.is-active .reference-card')
+      $$('.notes-pane.is-active .about-stanza, .notes-pane.is-active .era-card, .notes-pane.is-active .wild-mvt, .notes-pane.is-active .reference-card, .notes-pane.is-active .idea-card')
         .forEach(el => el.classList.add('is-visible'));
     });
   }
@@ -935,29 +969,52 @@
     const grid = $('#referenceGrid');
     const deep = $('#slingerlandDeep');
     if (deep && SLINGERLAND_DEEP.title) {
+      const deepTitle = SLINGERLAND_I18N.title || { en: SLINGERLAND_DEEP.title };
+      const deepPoints = SLINGERLAND_DEEP.points || [];
+      const deepPointCopies = deepPoints.map((point, i) => (SLINGERLAND_I18N.points && SLINGERLAND_I18N.points[i]) || { en: point });
+      const deepCaution = SLINGERLAND_I18N.caution || { en: SLINGERLAND_DEEP.caution || '' };
       deep.innerHTML = `
         <p class="slingerland-kicker">Edward Slingerland</p>
-        <h3>${escapeHtml(SLINGERLAND_DEEP.title)}</h3>
-        <ul>${(SLINGERLAND_DEEP.points || []).map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
-        <p>${escapeHtml(SLINGERLAND_DEEP.caution || '')}</p>`;
+        <h3>${triText(deepTitle)}</h3>
+        <ul>${deepPointCopies.map(p => `<li>${triText(p)}</li>`).join('')}</ul>
+        <p>${triText(deepCaution)}</p>`;
     }
     if (!grid || !REF_LIBRARY.length) return;
-    grid.innerHTML = REF_LIBRARY.map(item => `
-      <article class="reference-card">
+    grid.innerHTML = REF_LIBRARY.map((item, i) => {
+      const ref = REF_I18N[item.slug] || {};
+      const copy = key => ref[key] || { en: item[key] || '' };
+      return `
+      <article class="reference-card" style="--ref-hue:${(i * 31) % 360}deg">
         <img src="${escapeHtml(item.cover)}" alt="${escapeHtml(item.title)} cover" loading="lazy">
         <div class="reference-card-copy">
-          <p class="reference-kind">${escapeHtml(item.kind || 'reference')}</p>
+          <p class="reference-kind">${triText(copy('kind'))}</p>
           <h3>${escapeHtml(item.title)}</h3>
           <p class="reference-author">${escapeHtml(item.author)}</p>
           <dl>
-            <dt>Why I read it</dt><dd>${escapeHtml(item.why)}</dd>
-            <dt>Gets right</dt><dd>${escapeHtml(item.right)}</dd>
-            <dt>Gets wrong</dt><dd>${escapeHtml(item.wrong)}</dd>
+            <dt>${tri('Why I read it', 'ทำไมผมอ่าน', '为什么读')}</dt><dd>${triText(copy('why'))}</dd>
+            <dt>${tri('Gets right', 'ทำได้ดี', '说得对')}</dt><dd>${triText(copy('right'))}</dd>
+            <dt>${tri('Gets wrong', 'ข้อจำกัด', '局限')}</dt><dd>${triText(copy('wrong'))}</dd>
           </dl>
         </div>
-      </article>`).join('');
+      </article>`;
+    }).join('');
   }
   renderReferenceLibrary();
+
+  // ----- LIVING IDEAS TAB --------------------------------------
+  function renderIdeaThreads() {
+    const grid = $('#ideaThreadsGrid');
+    if (!grid || !IDEA_THREADS.length) return;
+    grid.innerHTML = IDEA_THREADS.map((item, i) => `
+      <article class="idea-card" style="--idea-i:${i}">
+        <p class="idea-index">${String(i + 1).padStart(2, '0')} · ${escapeHtml(item.chapters || '')}</p>
+        <h3>${triText(item.title || {})}</h3>
+        <p class="idea-body">${triText(item.body || {})}</p>
+        <p class="idea-question"><span>${tri('Question', 'คำถาม', '一问')}</span>${triText(item.question || {})}</p>
+        <p class="idea-source">${escapeHtml(item.source || '')}</p>
+      </article>`).join('');
+  }
+  renderIdeaThreads();
 
   // ----- CHAPTER COMPARATIVE NOTES -----------------------------
   const echoOverlay = document.createElement('aside');
@@ -1054,45 +1111,118 @@
   tsaiOverlay.innerHTML = `
     <div class="tsai-gallery-shell" role="dialog" aria-modal="true" aria-labelledby="tsaiGalleryTitle">
       <button class="tsai-gallery-close" type="button" aria-label="Close Tsai illustrations">×</button>
-      <p class="tsai-gallery-kicker">漫 <em>màn</em> · C. C. Tsai</p>
-      <h2 class="tsai-gallery-title" id="tsaiGalleryTitle"></h2>
-      <p class="tsai-gallery-credit"></p>
-      <div class="tsai-gallery-notes">
-        <p class="tsai-gallery-note-th"></p>
-        <p class="tsai-gallery-note-cn"></p>
+      <div class="tsai-gallery-head">
+        <p class="tsai-gallery-kicker">漫 <em>màn</em> · C. C. Tsai</p>
+        <h2 class="tsai-gallery-title" id="tsaiGalleryTitle"></h2>
+        <p class="tsai-gallery-credit"></p>
       </div>
-      <div class="tsai-gallery-grid"></div>
+      <div class="tsai-album" data-tsai-album>
+        <button class="tsai-album-nav tsai-album-nav--prev" type="button" aria-label="Previous Tsai page">‹</button>
+        <figure class="tsai-album-page">
+          <div class="tsai-album-image-wrap">
+            <img class="tsai-album-image" alt="" loading="eager">
+          </div>
+          <figcaption class="tsai-album-caption">
+            <span class="tsai-album-count"></span>
+            <p class="tsai-album-note" data-lang="en"></p>
+            <p class="tsai-album-note tsai-album-note--th" data-lang="th"></p>
+            <p class="tsai-album-note tsai-album-note--cn" data-lang="cn"></p>
+          </figcaption>
+        </figure>
+        <button class="tsai-album-nav tsai-album-nav--next" type="button" aria-label="Next Tsai page">›</button>
+      </div>
+      <div class="tsai-album-dots" aria-label="Tsai page picker"></div>
     </div>`;
   document.body.appendChild(tsaiOverlay);
   const tsaiGalleryClose = $('.tsai-gallery-close', tsaiOverlay);
+  const tsaiAlbum = $('[data-tsai-album]', tsaiOverlay);
+  const tsaiPrev = $('.tsai-album-nav--prev', tsaiOverlay);
+  const tsaiNext = $('.tsai-album-nav--next', tsaiOverlay);
+  const tsaiAlbumImage = $('.tsai-album-image', tsaiOverlay);
+  const tsaiAlbumCount = $('.tsai-album-count', tsaiOverlay);
+  const tsaiDots = $('.tsai-album-dots', tsaiOverlay);
+  const tsaiGalleryState = { chapter: null, entry: null, page: 0, startX: 0, startY: 0 };
+
+  function tsaiPageLabel(index, total) {
+    if (lang === 'th') return `หน้า ${index + 1} / ${total}`;
+    if (lang === 'cn') return `第 ${index + 1} / ${total} 页`;
+    return `Page ${index + 1} of ${total}`;
+  }
+  function tsaiArrowLabel(which) {
+    if (which === 'prev') return lang === 'th' ? 'หน้าก่อนหน้า' : lang === 'cn' ? '上一页' : 'Previous Tsai page';
+    return lang === 'th' ? 'หน้าถัดไป' : lang === 'cn' ? '下一页' : 'Next Tsai page';
+  }
+  function tsaiFallbackNote(chapter, entry) {
+    const title = chapter ? (chapter.en_title || `Chapter ${chapter.n}`) : 'this chapter';
+    return (entry && entry.note && entry.note.en) ||
+      (TSAI.note && TSAI.note.en) ||
+      `Read the page as a visual doorway into ${title}: first notice the action, then return to Laozi's sentence with that scene in mind.`;
+  }
+  function refreshTsaiGalleryChrome() {
+    if (!tsaiGalleryState.entry || !tsaiGalleryState.chapter) return;
+    const n = tsaiGalleryState.chapter.n;
+    const entry = tsaiGalleryState.entry;
+    $('.tsai-gallery-title', tsaiOverlay).textContent = localize(entry.title, `Chapter ${n}: Tsai`);
+    $('.tsai-gallery-credit', tsaiOverlay).textContent = localize(TSAI.credit, TSAI.source || 'C. C. Tsai');
+    if (tsaiPrev) tsaiPrev.setAttribute('aria-label', tsaiArrowLabel('prev'));
+    if (tsaiNext) tsaiNext.setAttribute('aria-label', tsaiArrowLabel('next'));
+  }
+  function renderTsaiAlbum() {
+    const entry = tsaiGalleryState.entry;
+    const ch = tsaiGalleryState.chapter;
+    if (!entry || !entry.pages || !entry.pages.length || !ch) return;
+    const total = entry.pages.length;
+    tsaiGalleryState.page = Math.max(0, Math.min(tsaiGalleryState.page, total - 1));
+    const index = tsaiGalleryState.page;
+    const src = entry.pages[index];
+    refreshTsaiGalleryChrome();
+    tsaiAlbumImage.src = src;
+    tsaiAlbumImage.alt = `C. C. Tsai illustration for chapter ${ch.n}, page ${index + 1}`;
+    tsaiAlbumCount.textContent = tsaiPageLabel(index, total);
+    $('.tsai-album-note[data-lang="en"]', tsaiOverlay).textContent = tsaiFallbackNote(ch, entry);
+    $('.tsai-album-note[data-lang="th"]', tsaiOverlay).textContent = (entry.note && entry.note.th) || (TSAI.note && TSAI.note.th) || '';
+    $('.tsai-album-note[data-lang="cn"]', tsaiOverlay).textContent = (entry.note && entry.note.cn) || (TSAI.note && TSAI.note.cn) || '';
+    if (tsaiPrev) tsaiPrev.disabled = index === 0;
+    if (tsaiNext) tsaiNext.disabled = index === total - 1;
+    if (tsaiDots) {
+      tsaiDots.innerHTML = entry.pages.map((_, i) => {
+        const active = i === index ? ' is-active' : '';
+        return `<button class="tsai-album-dot${active}" type="button" data-tsai-page="${i}" aria-label="${escapeHtml(tsaiPageLabel(i, total))}" aria-current="${i === index ? 'page' : 'false'}"></button>`;
+      }).join('');
+    }
+  }
+  function showTsaiPage(index) {
+    if (!tsaiGalleryState.entry || !tsaiGalleryState.entry.pages) return;
+    const total = tsaiGalleryState.entry.pages.length;
+    const nextIndex = Math.max(0, Math.min(index, total - 1));
+    if (nextIndex === tsaiGalleryState.page) return;
+    tsaiGalleryState.page = nextIndex;
+    renderTsaiAlbum();
+  }
   function closeTsaiGallery() {
     tsaiOverlay.classList.remove('open');
     tsaiOverlay.setAttribute('aria-hidden', 'true');
+    window.__daoActiveTsaiChapter = null;
     document.body.style.overflow = '';
   }
   function openTsaiGallery(n) {
     const ch = CH.find(c => c.n === n);
     const entry = tsaiChapterFor(n);
     if (!ch || !entry || !entry.pages) return;
-    $('.tsai-gallery-title', tsaiOverlay).textContent = localize(entry.title, `Chapter ${n}: Tsai`);
-    $('.tsai-gallery-credit', tsaiOverlay).textContent = localize(TSAI.credit, TSAI.source || 'C. C. Tsai');
-    $('.tsai-gallery-note-th', tsaiOverlay).textContent = (entry.note && entry.note.th) || (TSAI.note && TSAI.note.th) || '';
-    $('.tsai-gallery-note-cn', tsaiOverlay).textContent = (entry.note && entry.note.cn) || (TSAI.note && TSAI.note.cn) || '';
-    $('.tsai-gallery-grid', tsaiOverlay).innerHTML = entry.pages.map((src, i) => `
-      <figure class="tsai-gallery-card">
-        <img src="${escapeHtml(src)}" alt="${escapeHtml(`C. C. Tsai illustration for chapter ${n}, page ${i + 1}`)}" loading="lazy">
-        <figcaption>
-          <span>ไทย</span>
-          <p>${escapeHtml((entry.note && entry.note.th) || '')}</p>
-          <span>中文</span>
-          <p>${escapeHtml((entry.note && entry.note.cn) || '')}</p>
-        </figcaption>
-      </figure>`).join('');
+    tsaiGalleryState.chapter = ch;
+    tsaiGalleryState.entry = entry;
+    tsaiGalleryState.page = 0;
+    window.__daoActiveTsaiChapter = n;
+    renderTsaiAlbum();
     tsaiOverlay.classList.add('open');
     tsaiOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    if (tsaiGalleryClose) tsaiGalleryClose.focus({ preventScroll: true });
+    if (tsaiNext && entry.pages.length > 1) tsaiNext.focus({ preventScroll: true });
+    else if (tsaiGalleryClose) tsaiGalleryClose.focus({ preventScroll: true });
   }
+  window.__daoRefreshTsaiGallery = () => {
+    if (tsaiOverlay.classList.contains('open')) renderTsaiAlbum();
+  };
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-open-tsai]');
     if (!btn) return;
@@ -1100,6 +1230,27 @@
     openTsaiGallery(parseInt(btn.dataset.openTsai, 10));
   });
   if (tsaiGalleryClose) tsaiGalleryClose.addEventListener('click', closeTsaiGallery);
+  if (tsaiPrev) tsaiPrev.addEventListener('click', () => showTsaiPage(tsaiGalleryState.page - 1));
+  if (tsaiNext) tsaiNext.addEventListener('click', () => showTsaiPage(tsaiGalleryState.page + 1));
+  if (tsaiDots) {
+    tsaiDots.addEventListener('click', (e) => {
+      const dot = e.target.closest('[data-tsai-page]');
+      if (dot) showTsaiPage(parseInt(dot.dataset.tsaiPage, 10));
+    });
+  }
+  if (tsaiAlbum) {
+    tsaiAlbum.addEventListener('pointerdown', (e) => {
+      tsaiGalleryState.startX = e.clientX;
+      tsaiGalleryState.startY = e.clientY;
+    }, { passive: true });
+    tsaiAlbum.addEventListener('pointerup', (e) => {
+      const dx = e.clientX - tsaiGalleryState.startX;
+      const dy = e.clientY - tsaiGalleryState.startY;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        showTsaiPage(tsaiGalleryState.page + (dx > 0 ? 1 : -1));
+      }
+    }, { passive: true });
+  }
   tsaiOverlay.addEventListener('click', (e) => {
     if (e.target === tsaiOverlay) closeTsaiGallery();
   });
@@ -1265,6 +1416,24 @@
   // ----- KEYBOARD -----------------------------------------------
   document.addEventListener('keydown', (e) => {
     if (e.target.matches('input, textarea')) return;
+    const tsaiIsOpen = tsaiOverlay && tsaiOverlay.classList.contains('open');
+    if (tsaiIsOpen) {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showTsaiPage(tsaiGalleryState.page + 1);
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showTsaiPage(tsaiGalleryState.page - 1);
+        return;
+      }
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeTsaiGallery();
+        return;
+      }
+    }
     if (e.key === 'ArrowRight' || e.key === 'j') {
       e.preventDefault();
       const cur = currentChapter() || 0;
