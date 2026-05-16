@@ -6224,3 +6224,21 @@ body.lang-cn .sp-photo figcaption [data-lang="en"],body.lang-cn .sp-photo figcap
   /* Train is panoramic (≈2:1); classroom + shanghai are 16:9.
      On mobile all three are visible without clipping. */
 }
+.break-caption {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-fade);
+  padding: 12px 16px 4px;
+  margin: 0;
+  line-height: 1.6;
+}
+.break-caption[data-lang="th"] { font-family: var(--th); }
+.break-caption[data-lang="cn"] { font-family: var(--cn-serif); }
+body.lang-en .break-caption[data-lang="th"],
+body.lang-en .break-caption[data-lang="cn"] { display: none; }
+body.lang-th .break-caption[data-lang="en"],
+body.lang-th .break-caption[data-lang="cn"] { display: none; }
+body.lang-cn .break-caption[data-lang="en"],
+body.lang-cn .break-caption[data-lang="th"] { display: none; }
