@@ -522,6 +522,8 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   position: relative;
   border-top: 1px solid var(--ink);
   background: var(--paper);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
 }
 .chapter:nth-child(odd)  { background: var(--paper-soft); }
 
