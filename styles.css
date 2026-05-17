@@ -1077,6 +1077,106 @@ body.lang-cn .origin-gloss[data-lang="th"] { display: none; }
 }
 .pinyin-toggle.is-on .pt-han { color: var(--paper); }
 .pinyin-toggle.is-on .pt-roman { color: var(--paper); opacity: .85; }
+
+/* QUIET MODE TOGGLE — strip the maximalism (寂 jì = silent/still) */
+.quiet-toggle {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  padding: 0 9px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+  margin-right: 6px;
+}
+.quiet-toggle .qt-han {
+  font-family: var(--cn-elegant);
+  font-size: 14px;
+  line-height: 1;
+}
+.quiet-toggle:hover { color: var(--seal); border-color: var(--seal); }
+.quiet-toggle.is-on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.quiet-toggle.is-on .qt-han { color: var(--paper); }
+
+/* ============================================================
+   QUIET MODE — body.quiet-mode strips the maximalism.
+   Hides the visual ornamentation panels and forces the default
+   cream-ink palette regardless of chapter mood. Keeps the
+   teaching panels: Origin, Reading, Note, Closer.
+   ============================================================ */
+body.quiet-mode .chapter-break,
+body.quiet-mode .panel-tsai,
+body.quiet-mode .panel-painting,
+body.quiet-mode .panel-play,
+body.quiet-mode .panel-checkpoint,
+body.quiet-mode .panel-summary,
+body.quiet-mode .section-break:not(.section-break-major),
+body.quiet-mode .cs-tsai-btn,
+body.quiet-mode .cs-echo-btn { display: none; }
+
+/* Force every chapter back to the calm default — no mood backgrounds,
+   no neon, no newsprint columns. Override the mood-class colour and
+   background rules with the paper-ink default. */
+body.quiet-mode .chapter {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+}
+body.quiet-mode .chapter * {
+  background: transparent !important;
+  background-image: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+/* Keep the seal (cinnabar) accent for active links/buttons inside chapters.
+   The blanket "background: transparent !important" above would otherwise
+   strip the cinnabar primary buttons too. Restore them: */
+body.quiet-mode .chapter .cn-listen-btn.is-playing,
+body.quiet-mode .chapter .cn-walk-btn.is-walking,
+body.quiet-mode .chapter .closer-frame,
+body.quiet-mode .chapter .reflection-frame,
+body.quiet-mode .chapter .reading-frame { background: var(--paper) !important; }
+/* Make the chapter strip a hairline rule, not a coloured ribbon. */
+body.quiet-mode .chapter-strip { background: var(--paper) !important; border-bottom: 1px solid var(--rule); }
+
+/* Make the topbar quiet too: no animated backgrounds, plain cream. */
+body.quiet-mode .topbar { background: var(--paper) !important; }
+
+/* ============================================================
+   LIGHT CHAPTER BRIDGE — explain the absence of commentary, so
+   light chapters feel intentional rather than broken.
+   ============================================================ */
+.light-bridge {
+  max-width: 56ch;
+  margin: 40px auto 24px;
+  padding: 18px 24px;
+  border-top: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  text-align: center;
+}
+.light-bridge p {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-fade);
+  margin: 0;
+}
+body.lang-th .light-bridge p { font-family: var(--th); font-style: normal; font-size: 15px; }
+body.lang-cn .light-bridge p { font-family: var(--cn-serif); font-style: normal; font-size: 15px; letter-spacing: .02em; }
+body.lang-en .light-bridge p[data-lang="th"],
+body.lang-en .light-bridge p[data-lang="cn"] { display: none; }
+body.lang-th .light-bridge p[data-lang="en"],
+body.lang-th .light-bridge p[data-lang="cn"] { display: none; }
+body.lang-cn .light-bridge p[data-lang="en"],
+body.lang-cn .light-bridge p[data-lang="th"] { display: none; }
 @media (max-width: 600px) {
   .pinyin-toggle .pt-roman { display: none; }
   .pinyin-toggle { padding: 0 7px; }

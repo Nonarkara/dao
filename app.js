@@ -929,6 +929,15 @@
         </section>
         ` : ''}
 
+        ${weight === 'light' ? `
+        <!-- LIGHT CHAPTER BRIDGE — make the absence of commentary feel intentional, not broken -->
+        <aside class="light-bridge" aria-label="About this chapter's treatment">
+          <p data-lang="en">Some chapters work better as a snack than a tasting menu. This is one. The original text was enough for the author. We left it alone.</p>
+          <p data-lang="th" style="font-family:var(--th)">บางบทเหมาะกับการเป็นของว่างมากกว่ามื้อใหญ่ บทนี้คือหนึ่งในนั้น ผู้เขียนคิดว่าต้นฉบับพอแล้ว ผมเลยไม่แตะ</p>
+          <p data-lang="cn" style="font-family:var(--cn-serif)">有些章节做小食比做大餐好。这是其中之一。原文已经够了，作者觉得够，我们就没动它。</p>
+        </aside>
+        ` : ''}
+
         <footer class="chapter-foot">
           <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}
             aria-label="${prev ? 'Previous chapter: ' + prev.en_title : 'Beginning of book'}">
@@ -1122,6 +1131,38 @@
   setPinyin(pinyinOn);
   const pyBtn = $('#pinyinToggle');
   if (pyBtn) pyBtn.addEventListener('click', () => setPinyin(!pinyinOn));
+
+  // ----- QUIET MODE TOGGLE --------------------------------------
+  // Strips the maximalism: removes mood treatments, hides image-spotlight,
+  // Tsai, NPM art, jokes, checkpoint banners. Keeps Origin + Reading +
+  // Note + Closer. For learners who came for the text, not the show.
+  // The chapter still teaches; the page just gets out of the way.
+  const KEY_QUIET = 'dao:quiet:v1';
+  let quietOn = false;
+  try {
+    const saved = localStorage.getItem(KEY_QUIET);
+    if (saved !== null) quietOn = (saved === '1');
+  } catch(e) {}
+  function setQuiet(on) {
+    quietOn = !!on;
+    document.body.classList.toggle('quiet-mode', quietOn);
+    const btn = $('#quietToggle');
+    if (btn) {
+      btn.classList.toggle('is-on', quietOn);
+      btn.setAttribute('aria-pressed', quietOn ? 'true' : 'false');
+      btn.title = quietOn ? 'Quiet mode is on — tap to bring the maximalism back (W)' : 'Quiet mode — strip the maximalism (W)';
+    }
+    try { localStorage.setItem(KEY_QUIET, quietOn ? '1' : '0'); } catch(e) {}
+  }
+  setQuiet(quietOn);
+  const qBtn = $('#quietToggle');
+  if (qBtn) qBtn.addEventListener('click', () => setQuiet(!quietOn));
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'w' && e.key !== 'W') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    setQuiet(!quietOn);
+  });
 
   // ----- JUMPS --------------------------------------------------
   function jumpTo(n) {
@@ -1932,31 +1973,15 @@
   });
 
   // ----- DEEPWORK SUMMARY OPEN/CLOSE ---------------------------
+  // The 5-second hold-to-close was a wu-wei joke that landed as a trap.
+  // Now: tap to close, Escape to close. The label still says "leave"
+  // (not "X") to keep the ritual without the forced delay.
   const deepworkOverlay = $('#deepworkOverlay');
   const deepworkBtn = $('#deepworkBtn');
   const deepworkClose = $('#deepworkClose');
-  let deepworkHoldTimer = null;
-  let deepworkHoldStarted = 0;
-  let deepworkHoldRaf = null;
 
-  function resetDeepworkHold() {
-    if (!deepworkClose) return;
-    if (deepworkHoldTimer) {
-      clearTimeout(deepworkHoldTimer);
-      deepworkHoldTimer = null;
-    }
-    if (deepworkHoldRaf) {
-      cancelAnimationFrame(deepworkHoldRaf);
-      deepworkHoldRaf = null;
-    }
-    deepworkClose.classList.remove('is-holding');
-    deepworkClose.style.setProperty('--hold-pct', '0%');
-    const hint = $('.deepwork-close-hint', deepworkClose);
-    if (hint) hint.textContent = 'hold to leave';
-  }
   function closeDeepwork() {
     if (!deepworkOverlay) return;
-    resetDeepworkHold();
     deepworkOverlay.classList.remove('open');
     deepworkOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -1970,37 +1995,19 @@
     deepworkOverlay.setAttribute('aria-hidden', 'false');
     deepworkOverlay.scrollTop = 0;
     document.body.style.overflow = 'hidden';
-    resetDeepworkHold();
-  }
-  function tickDeepworkHold() {
-    if (!deepworkClose || !deepworkHoldStarted) return;
-    const elapsed = Date.now() - deepworkHoldStarted;
-    const pct = Math.min(100, (elapsed / 5000) * 100);
-    deepworkClose.style.setProperty('--hold-pct', pct + '%');
-    const hint = $('.deepwork-close-hint', deepworkClose);
-    if (hint) hint.textContent = elapsed >= 5000 ? 'leaving…' : `keep holding ${Math.max(1, Math.ceil((5000 - elapsed) / 1000))}s`;
-    if (elapsed < 5000) deepworkHoldRaf = requestAnimationFrame(tickDeepworkHold);
-  }
-  function startDeepworkHold(e) {
-    if (!deepworkClose) return;
-    e.preventDefault();
-    resetDeepworkHold();
-    deepworkHoldStarted = Date.now();
-    deepworkClose.classList.add('is-holding');
-    deepworkHoldTimer = setTimeout(closeDeepwork, 5000);
-    deepworkHoldRaf = requestAnimationFrame(tickDeepworkHold);
-  }
-  function stopDeepworkHold() {
-    deepworkHoldStarted = 0;
-    resetDeepworkHold();
   }
   if (deepworkBtn) deepworkBtn.addEventListener('click', openDeepwork);
   if (deepworkClose) {
-    deepworkClose.addEventListener('pointerdown', startDeepworkHold);
-    deepworkClose.addEventListener('pointerup', stopDeepworkHold);
-    deepworkClose.addEventListener('pointerleave', stopDeepworkHold);
-    deepworkClose.addEventListener('pointercancel', stopDeepworkHold);
+    deepworkClose.addEventListener('click', closeDeepwork);
+    // Update the hint text once so the UI doesn't promise a hold gesture
+    const hint = $('.deepwork-close-hint', deepworkClose);
+    if (hint) hint.textContent = 'leave';
   }
+  // Escape key always closes the deepwork overlay if it's open
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (deepworkOverlay && deepworkOverlay.classList.contains('open')) closeDeepwork();
+  });
 
   // ----- INDEX OVERLAY OPEN/CLOSE -------------------------------
   const indexOverlay = $('#indexOverlay');
