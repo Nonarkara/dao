@@ -1,0 +1,21 @@
+name = "dao-checkin"
+main = "index.js"
+compatibility_date = "2026-05-01"
+
+# Anonymous reflection journal for dao.nonarkara.org readers.
+# Accepts POST /submit with {question_id, question_text, answer_text, lang, anon_uuid}.
+# Stores to D1; serves a tiny dashboard at GET /themes (basic auth).
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dao-checkin"
+database_id = "98858f39-7b49-40a4-8b43-0920b918df4b"
+
+# CORS allowed origin set as a regular var so it's easy to update.
+[vars]
+ALLOWED_ORIGIN = "https://dao.nonarkara.org"
+
+# Custom domain — production endpoint
+[[routes]]
+pattern = "checkin.nonarkara.org"
+custom_domain = true

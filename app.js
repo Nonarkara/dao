@@ -967,6 +967,7 @@
     const echoNode = document.getElementById('echoOverlay');
     if (activeEcho && echoNode && echoNode.classList.contains('open')) openEcho(activeEcho);
     if (typeof window.__daoRefreshTsaiGallery === 'function') window.__daoRefreshTsaiGallery();
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: L } }));
   }
   setLang(lang);
   $('#langToggle').addEventListener('click', () => {
@@ -1192,6 +1193,329 @@
       const target = document.getElementById('chars-howread');
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 50);
+  });
+
+  // ----- DAILY CHECK-IN OVERLAY (問 wèn) -----------------------------
+  // A reflective notebook. One question per day, drawn from CHECKIN_QUESTIONS
+  // (~30 prompts in rotation). User answers via text or voice (Web Speech API).
+  // Entries persist in localStorage. If the user opts in, an anonymized copy
+  // is POSTed to https://checkin.nonarkara.org/submit (a small Cloudflare
+  // Worker backed by D1). No PII is ever sent — see worker source.
+  const checkinOverlay = $('#checkinOverlay');
+  const checkinScrim   = $('#checkinScrim');
+  const checkinBtn     = $('#checkinBtn');
+  const checkinClose   = $('#checkinClose');
+  const checkinAnswer  = $('#checkinAnswer');
+  const checkinMic     = $('#checkinMic');
+  const checkinSave    = $('#checkinSave');
+  const checkinShare   = $('#checkinShare');
+  const checkinCounter = $('#checkinCounter');
+  const checkinExport  = $('#checkinExport');
+  const CHECKIN_ENDPOINT = 'https://checkin.nonarkara.org/submit';
+  const CHECKIN_LS_ENTRIES = 'dao:checkin:entries';
+  const CHECKIN_LS_UUID    = 'dao:checkin:anon-uuid';
+  const CHECKIN_LS_SHARE   = 'dao:checkin:share-default';
+
+  // Stable anonymous UUID for this browser. Generated once, never sent
+  // raw — the Worker stores only a salted SHA-256 hash. Wipe by clearing
+  // localStorage.
+  function getAnonUuid() {
+    try {
+      let u = localStorage.getItem(CHECKIN_LS_UUID);
+      if (!u) {
+        const rand = (crypto && crypto.randomUUID) ? crypto.randomUUID() :
+          ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, c => {
+            const r = Math.random() * 16 | 0;
+            return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+          });
+        u = rand;
+        localStorage.setItem(CHECKIN_LS_UUID, u);
+      }
+      return u;
+    } catch (e) { return 'no-storage-' + Date.now(); }
+  }
+
+  // Day-of-year → question index. Same prompt repeats every 30 days.
+  function questionForToday() {
+    const Q = window.CHECKIN_QUESTIONS || [];
+    if (!Q.length) return null;
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    return Q[dayOfYear % Q.length];
+  }
+
+  function localizedThemeName(themeKey) {
+    const T = window.CHECKIN_THEMES || {};
+    const t = T[themeKey];
+    if (!t) return themeKey;
+    const lang = (document.body.classList.contains('lang-th') ? 'th'
+      : document.body.classList.contains('lang-cn') ? 'cn' : 'en');
+    return t[lang] || t.en;
+  }
+
+  function formatLongDate() {
+    const lang = (document.body.classList.contains('lang-th') ? 'th-TH'
+      : document.body.classList.contains('lang-cn') ? 'zh-CN' : 'en-US');
+    try {
+      return new Date().toLocaleDateString(lang, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (e) { return new Date().toDateString(); }
+  }
+
+  function renderTodayQuestion() {
+    const q = questionForToday();
+    if (!q) return;
+    const dateEl = $('#checkinDate');
+    const themeEl = $('#checkinTheme');
+    const qEl = $('#checkinQuestion');
+    const nudgeEl = $('#checkinNudge');
+    const lang = document.body.classList.contains('lang-th') ? 'th'
+      : document.body.classList.contains('lang-cn') ? 'cn' : 'en';
+    if (dateEl) dateEl.textContent = formatLongDate();
+    if (themeEl) themeEl.textContent = localizedThemeName(q.theme);
+    if (qEl) qEl.textContent = q['q_' + lang] || q.q_en;
+    if (nudgeEl) {
+      const nudge = q['nudge_' + lang] || q.nudge_en || '';
+      nudgeEl.textContent = nudge;
+      nudgeEl.style.display = nudge ? 'block' : 'none';
+    }
+    // Placeholder text on the textarea, also localised
+    if (checkinAnswer) {
+      checkinAnswer.placeholder = (
+        lang === 'th' ? 'พิมพ์หรือกดไมค์เพื่อพูด...' :
+        lang === 'cn' ? '可以打字，也可以点麦克风说...' :
+                        'Type or tap the mic to speak...'
+      );
+    }
+    // Stash the question id on the textarea so save handlers can read it
+    if (checkinAnswer) checkinAnswer.dataset.questionId = q.id;
+  }
+
+  function getStoredEntries() {
+    try {
+      const raw = localStorage.getItem(CHECKIN_LS_ENTRIES);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+
+  function saveEntryLocal(entry) {
+    try {
+      const all = getStoredEntries();
+      all.unshift(entry);
+      // Cap at 365 entries to avoid runaway localStorage
+      const capped = all.slice(0, 365);
+      localStorage.setItem(CHECKIN_LS_ENTRIES, JSON.stringify(capped));
+    } catch (e) { /* quota or no-storage; ignore */ }
+  }
+
+  function renderHistory() {
+    const host = $('#checkinEntries');
+    if (!host) return;
+    const all = getStoredEntries();
+    if (!all.length) {
+      host.innerHTML = `<p class="ce-empty"><span data-lang="en">No entries yet. Start with today.</span><span data-lang="th" style="font-family:var(--th)">ยังไม่มีบันทึก เริ่มจากวันนี้</span><span data-lang="cn" style="font-family:var(--cn-serif)">还没有内容。从今天开始。</span></p>`;
+      return;
+    }
+    host.innerHTML = all.map(e => {
+      const d = new Date(e.created_at);
+      const iso = d.toISOString().slice(0, 10);
+      const time = d.toTimeString().slice(0, 5);
+      const langClass = 'ce-lang-' + (e.lang || 'en');
+      return `<article class="ce-entry ${langClass}">
+        <header class="ce-head">
+          <span class="ce-date">${iso} · <em>${time}</em></span>
+          <span class="ce-q">${escapeHtml(e.question_text || '')}</span>
+          ${e.shared ? '<span class="ce-shared" title="Anonymously shared">⌁</span>' : ''}
+        </header>
+        <p class="ce-body">${escapeHtml(e.answer_text || '')}</p>
+      </article>`;
+    }).join('');
+  }
+
+  function updateCounter() {
+    const txt = (checkinAnswer && checkinAnswer.value) || '';
+    if (!checkinCounter) return;
+    // Count words: CJK = char count, others = whitespace split
+    const cjk = (txt.match(/[一-鿿]/g) || []).length;
+    const latin = txt.replace(/[一-鿿]+/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+    checkinCounter.textContent = String(cjk + latin);
+  }
+
+  // --- Web Speech API (speech-to-text) ---
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition = null;
+  let recognising = false;
+  function ensureRecognition() {
+    if (!SR) return null;
+    if (recognition) return recognition;
+    recognition = new SR();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    let finalTranscript = '';
+    recognition.onresult = (event) => {
+      let interim = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const r = event.results[i];
+        if (r.isFinal) finalTranscript += r[0].transcript;
+        else interim += r[0].transcript;
+      }
+      // Append final to the textarea; show interim as a small preview after
+      if (checkinAnswer && finalTranscript) {
+        const sep = checkinAnswer.value && !checkinAnswer.value.endsWith(' ') ? ' ' : '';
+        checkinAnswer.value = checkinAnswer.value + sep + finalTranscript;
+        finalTranscript = '';
+        updateCounter();
+      }
+    };
+    recognition.onerror = () => stopRecognition();
+    recognition.onend = () => stopRecognition();
+    return recognition;
+  }
+  function startRecognition() {
+    const r = ensureRecognition();
+    if (!r) {
+      alert('Speech recognition is not supported in this browser. Try Chrome or Safari.');
+      return;
+    }
+    const lang = document.body.classList.contains('lang-th') ? 'th-TH'
+      : document.body.classList.contains('lang-cn') ? 'zh-CN' : 'en-US';
+    r.lang = lang;
+    try { r.start(); recognising = true; checkinMic.classList.add('is-recording'); }
+    catch (e) { /* already started; ignore */ }
+  }
+  function stopRecognition() {
+    if (recognition && recognising) {
+      try { recognition.stop(); } catch (e) {}
+    }
+    recognising = false;
+    if (checkinMic) checkinMic.classList.remove('is-recording');
+  }
+  function toggleRecognition() {
+    if (recognising) stopRecognition();
+    else startRecognition();
+  }
+
+  async function handleSubmit() {
+    const text = (checkinAnswer && checkinAnswer.value || '').trim();
+    if (!text) return;
+    const q = questionForToday();
+    if (!q) return;
+    const lang = document.body.classList.contains('lang-th') ? 'th'
+      : document.body.classList.contains('lang-cn') ? 'cn' : 'en';
+    const question_text = q['q_' + lang] || q.q_en;
+    const wantShare = !!(checkinShare && checkinShare.checked);
+    const entry = {
+      created_at: Date.now(),
+      lang,
+      question_id: q.id,
+      question_text,
+      answer_text: text,
+      shared: wantShare,
+    };
+
+    saveEntryLocal(entry);
+
+    // Remember last share preference so user doesn't re-tick every time
+    try { localStorage.setItem(CHECKIN_LS_SHARE, wantShare ? '1' : '0'); } catch (e) {}
+
+    if (wantShare) {
+      // Fire-and-forget; don't block the save UI on network
+      fetch(CHECKIN_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question_id: q.id,
+          question_text,
+          answer_text: text,
+          lang,
+          anon_uuid: getAnonUuid(),
+        }),
+      }).catch(() => { /* offline or worker down — no-op */ });
+    }
+
+    // Visual save acknowledgement
+    if (checkinSave) {
+      const orig = checkinSave.innerHTML;
+      checkinSave.innerHTML = `<span data-lang="en">Saved ✓</span><span data-lang="th" style="font-family:var(--th)">บันทึกแล้ว ✓</span><span data-lang="cn" style="font-family:var(--cn-serif)">已保存 ✓</span>`;
+      checkinSave.classList.add('is-saved');
+      setTimeout(() => {
+        checkinSave.innerHTML = orig;
+        checkinSave.classList.remove('is-saved');
+      }, 1600);
+    }
+    checkinAnswer.value = '';
+    updateCounter();
+    renderHistory();
+  }
+
+  function handleExport() {
+    const all = getStoredEntries();
+    if (!all.length) { alert('No entries yet.'); return; }
+    const lines = ['# Dao De Jing · Daily Check-In · Export', '', `Generated ${new Date().toISOString()}`, ''];
+    for (const e of all) {
+      const d = new Date(e.created_at);
+      lines.push('## ' + d.toISOString().slice(0, 16).replace('T', ' ') + ' · ' + (e.lang || 'en'));
+      lines.push('');
+      lines.push('**' + (e.question_text || '') + '**');
+      lines.push('');
+      lines.push(e.answer_text || '');
+      lines.push('');
+      lines.push('---');
+      lines.push('');
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dao-checkin-' + new Date().toISOString().slice(0, 10) + '.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function openCheckin() {
+    if (!checkinOverlay) return;
+    renderTodayQuestion();
+    renderHistory();
+    // Restore last share preference
+    try {
+      const last = localStorage.getItem(CHECKIN_LS_SHARE);
+      if (checkinShare) checkinShare.checked = (last === '1');
+    } catch (e) {}
+    checkinOverlay.classList.add('open');
+    checkinOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { if (checkinAnswer) checkinAnswer.focus(); }, 100);
+  }
+  function closeCheckin() {
+    stopRecognition();
+    if (!checkinOverlay) return;
+    checkinOverlay.classList.remove('open');
+    checkinOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  if (checkinBtn)    checkinBtn.addEventListener('click', openCheckin);
+  if (checkinClose)  checkinClose.addEventListener('click', closeCheckin);
+  if (checkinScrim)  checkinScrim.addEventListener('click', closeCheckin);
+  if (checkinAnswer) checkinAnswer.addEventListener('input', updateCounter);
+  if (checkinMic)    checkinMic.addEventListener('click', toggleRecognition);
+  if (checkinSave)   checkinSave.addEventListener('click', handleSubmit);
+  if (checkinExport) checkinExport.addEventListener('click', handleExport);
+
+  // Re-render the question when language toggles while overlay is open
+  document.addEventListener('langchange', renderTodayQuestion);
+
+  // Keyboard shortcut: Q opens / closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'q' && e.key !== 'Q') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    if (checkinOverlay && checkinOverlay.classList.contains('open')) closeCheckin();
+    else openCheckin();
   });
 
   // ----- REFERENCE LIBRARY TAB ---------------------------------

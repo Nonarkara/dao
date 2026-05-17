@@ -59,7 +59,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=43">
+<link rel="stylesheet" href="styles.css?v=44">
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "0da324da0e204440a172088c0fafc92c"}' ></script>
 </head>
 <body>
 
@@ -87,6 +88,9 @@
     </button>
     <button class="tool-btn chars-btn" id="charsBtn" title="The 828 characters (Z)" aria-label="Open character index">
       <span class="cb-han">字</span>
+    </button>
+    <button class="tool-btn checkin-btn" id="checkinBtn" title="Today's reflection (Q)" aria-label="Open daily check-in">
+      <span class="ci-han">問</span>
     </button>
     <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
       <span class="lang-pill" data-lang-code="en">EN</span>
@@ -1243,6 +1247,82 @@
 </aside>
 <div class="chars-scrim" id="charsScrim"></div>
 
+<!-- ── DAILY CHECK-IN OVERLAY · 問 — a reflective notebook with voice input ── -->
+<aside class="checkin-overlay" id="checkinOverlay" aria-hidden="true">
+  <div class="checkin-shell">
+    <header class="checkin-head">
+      <button class="checkin-close" id="checkinClose" aria-label="Close">×</button>
+      <p class="checkin-kicker">問 <em>wèn</em> · <span data-lang="en">Today's reflection</span><span data-lang="th" style="font-family:var(--th)">การทบทวนวันนี้</span><span data-lang="cn" style="font-family:var(--cn-serif)">今日自省</span></p>
+      <p class="checkin-date" id="checkinDate"></p>
+      <h2 class="checkin-theme" id="checkinTheme"></h2>
+      <p class="checkin-question" id="checkinQuestion"></p>
+      <p class="checkin-nudge" id="checkinNudge"></p>
+    </header>
+
+    <div class="checkin-body">
+      <div class="checkin-compose">
+        <textarea id="checkinAnswer"
+                  rows="6"
+                  placeholder=""
+                  spellcheck="true"
+                  aria-label="Your reflection"></textarea>
+        <div class="checkin-tools">
+          <button class="checkin-mic" id="checkinMic" type="button" aria-label="Dictate by voice">
+            <span class="mic-dot" aria-hidden="true"></span>
+            <span class="mic-label" data-lang="en">Dictate</span><span class="mic-label" data-lang="th" style="font-family:var(--th)">พูดบันทึก</span><span class="mic-label" data-lang="cn" style="font-family:var(--cn-serif)">语音</span>
+          </button>
+          <span class="checkin-counter" id="checkinCounter">0</span>
+          <button class="checkin-save" id="checkinSave" type="button">
+            <span data-lang="en">Save</span><span data-lang="th" style="font-family:var(--th)">บันทึก</span><span data-lang="cn" style="font-family:var(--cn-serif)">保存</span>
+          </button>
+        </div>
+        <label class="checkin-share" for="checkinShare">
+          <input type="checkbox" id="checkinShare">
+          <span class="share-text">
+            <span data-lang="en">Also share anonymously with Dr Non — to help him understand what people are thinking about. No name, no email, nothing identifying.</span>
+            <span data-lang="th" style="font-family:var(--th)">แชร์แบบไม่เปิดเผยตัวให้อาจารย์นนด้วย — เพื่อให้เขาเข้าใจว่าคนกำลังคิดอะไร ไม่มีชื่อ ไม่มีอีเมล ไม่มีอะไรระบุตัวตน</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">同时匿名分享给農博士——帮助他理解大家在想什么。不留名字，不留邮箱，不留任何身份信息。</span>
+          </span>
+        </label>
+      </div>
+
+      <section class="checkin-history" id="checkinHistory">
+        <header class="ch-hist-head">
+          <h3 class="ch-hist-title">
+            <span data-lang="en">Your private notebook</span>
+            <span data-lang="th" style="font-family:var(--th)">สมุดส่วนตัวของคุณ</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">你的私人笔记</span>
+          </h3>
+          <button class="ch-hist-export" id="checkinExport" type="button" aria-label="Download all entries">
+            <span data-lang="en">Export</span><span data-lang="th" style="font-family:var(--th)">ดาวน์โหลด</span><span data-lang="cn" style="font-family:var(--cn-serif)">导出</span>
+          </button>
+        </header>
+        <p class="ch-hist-note">
+          <span data-lang="en">Stored only in your browser. Clear browser data and you lose them. Export to keep.</span>
+          <span data-lang="th" style="font-family:var(--th)">เก็บไว้แค่ในเบราว์เซอร์ของคุณ ล้างข้อมูลเบราว์เซอร์แล้วจะหายไป ดาวน์โหลดเก็บไว้</span>
+          <span data-lang="cn" style="font-family:var(--cn-serif)">仅保存在你的浏览器里。清空浏览器数据就没了。要长期保留请导出。</span>
+        </p>
+        <div class="checkin-entries" id="checkinEntries"></div>
+      </section>
+
+      <section class="checkin-about">
+        <h3 class="ch-about-title">
+          <span data-lang="en">About this practice</span>
+          <span data-lang="th" style="font-family:var(--th)">เกี่ยวกับการฝึกนี้</span>
+          <span data-lang="cn" style="font-family:var(--cn-serif)">关于这个练习</span>
+        </h3>
+        <p data-lang="en">The shape of this notebook — one question a day, returning every month — borrows from Ryan Holiday and Stephen Hanselman's <em>The Daily Stoic</em> (Penguin, 2016), a year-long Stoic reading that paired ancient quotes with brief modern commentary. The 30 prompts here are written in Dr Non's voice, but the rhythm is theirs. Marcus Aurelius wrote his <em>Meditations</em> for himself, never expecting them to be read; he was checking in. So was Seneca in his letters, Epictetus in the lectures his student Arrian transcribed. The Dao De Jing was written for the same reason. This page sits in that tradition.</p>
+        <p data-lang="en">Your entries live on your device. If you tick the share box, an anonymous copy goes to Dr Non's small database — no name, no email, no IP — so he can see what people are sitting with. He may quote a representative line in a future essay, with everything stripped that could identify anyone.</p>
+        <p data-lang="th" style="font-family:var(--th)">รูปแบบของสมุดเล่มนี้ — คำถามวันละข้อ วนกลับมาทุกเดือน — ยืมมาจาก <em>The Daily Stoic</em> (Penguin, 2016) ของ Ryan Holiday และ Stephen Hanselman หนังสือสโตอิกที่อ่านวันละหน้าตลอดปี โดยจับคู่คำพูดโบราณกับคำอธิบายสั้น ๆ คำถาม 30 ข้อในนี้เขียนด้วยน้ำเสียงของผม แต่จังหวะเป็นของพวกเขา Marcus Aurelius เขียน <em>Meditations</em> ให้ตัวเอง ไม่เคยคิดว่ามันจะถูกอ่าน เขากำลังเช็คอินกับตัวเอง Seneca เขียนจดหมายก็เพราะเหตุผลเดียวกัน Epictetus ก็เช่นกัน เต๋าเต๋อจิงก็เกิดจากเหตุผลเดียวกัน หน้านี้นั่งอยู่ในประเพณีนั้น</p>
+        <p data-lang="th" style="font-family:var(--th)">บันทึกของคุณอยู่บนเครื่องของคุณ ถ้าคุณติ๊กช่องแชร์ สำเนาแบบไม่ระบุตัวจะส่งไปยังฐานข้อมูลเล็ก ๆ ของผม — ไม่มีชื่อ ไม่มีอีเมล ไม่มี IP — เพื่อให้ผมได้เห็นว่าผู้คนกำลังนั่งกับเรื่องอะไรอยู่ ผมอาจจะอ้างประโยคที่เป็นตัวแทนในบทความสักวัน โดยลบทุกอย่างที่จะระบุตัวใครได้</p>
+        <p data-lang="cn" style="font-family:var(--cn-serif)">这个笔记本的形状——一天一问，每月一轮——借自瑞安·霍利迪（Ryan Holiday）与斯蒂芬·汉塞尔曼（Stephen Hanselman）的《The Daily Stoic》（Penguin, 2016）。那是一本一年读完的斯多葛入门书，把古人原话和简短的现代评注配对。这里的三十个题目是用我自己的话写的，但节奏是他们的。马可·奥勒留写《沉思录》本来是写给自己看的，从没想过会被读到，他不过是在自省。塞涅卡的信、爱比克泰德的讲课（由学生阿里安记录），都是为了同一件事。《道德经》也是。这一页坐在那条传统里。</p>
+        <p data-lang="cn" style="font-family:var(--cn-serif)">你的内容只在你的设备上。如果你勾选了分享框，一份匿名副本会发送到我的小型数据库——没有名字、没有邮箱、没有 IP——让我能看到大家正在跟哪些问题坐在一起。我或许会在某篇文章里引一句有代表性的话，把任何可能识别身份的痕迹都去掉。</p>
+      </section>
+    </div>
+  </div>
+</aside>
+<div class="checkin-scrim" id="checkinScrim"></div>
+
 <!-- ── CHAPTERS (rendered by JS) ── -->
 <main class="chapters" id="chapters"></main>
 
@@ -1293,7 +1373,7 @@
 </aside>
 
 <script src="chapters.js?v=2"></script>
-<script src="extended.js?v=29"></script>
+<script src="extended.js?v=30"></script>
 <script src="pinyin.js?v=2"></script>
 <script src="pinyin_titles.js?v=1"></script>
 <script src="summaries.js?v=1"></script>
@@ -1310,6 +1390,7 @@
 <script src="reference_translations.js?v=1"></script>
 <script src="idea_threads.js?v=1"></script>
 <script src="dao_characters.js?v=1"></script>
-<script src="app.js?v=38"></script>
+<script src="checkin_questions.js?v=1"></script>
+<script src="app.js?v=39"></script>
 </body>
 </html>

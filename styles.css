@@ -4285,6 +4285,370 @@ body.lang-cn .chrh-body ol { font-family: var(--cn-serif); font-size: 17px; line
 }
 
 /* ============================================================
+   DAILY CHECK-IN · 問 wèn — reflective notebook with voice input
+   Modeled on the chars-overlay shell; its own content layout.
+   ============================================================ */
+.checkin-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 0 9px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  cursor: pointer;
+  margin-right: 6px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.checkin-btn .ci-han {
+  font-family: var(--cn-elegant);
+  font-size: 14px;
+  line-height: 1;
+}
+.checkin-btn:hover { color: var(--seal); border-color: var(--seal); }
+@media (max-width: 600px) {
+  .checkin-btn { padding: 0 7px; }
+}
+
+.checkin-overlay {
+  position: fixed; inset: 0;
+  z-index: 1000;
+  background: var(--paper);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.checkin-overlay.open { opacity: 1; pointer-events: auto; }
+.checkin-scrim {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.30);
+  z-index: 999;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.checkin-overlay.open ~ .checkin-scrim { opacity: 1; pointer-events: auto; }
+
+.checkin-shell { max-width: 760px; margin: 0 auto; padding: 32px 6vw 80px; }
+.checkin-head { position: relative; padding-bottom: 32px; border-bottom: 1px solid var(--rule); margin-bottom: 36px; }
+.checkin-close {
+  position: absolute; top: 0; right: 0;
+  width: 44px; height: 44px;
+  background: transparent; border: 1px solid var(--rule);
+  font-size: 22px; line-height: 1; color: var(--ink-soft);
+  cursor: pointer; transition: color .2s, border-color .2s;
+}
+.checkin-close:hover { color: var(--seal); border-color: var(--seal); }
+.checkin-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
+}
+.checkin-kicker em { font-style: italic; color: var(--seal); }
+.checkin-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  color: var(--ink-fade);
+  margin: 0 0 18px;
+}
+body.lang-th .checkin-date { font-family: var(--th); letter-spacing: 0; font-size: 13px; }
+body.lang-cn .checkin-date { font-family: var(--cn-serif); letter-spacing: 0; font-size: 13px; }
+.checkin-theme {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--seal);
+  margin: 0 0 10px;
+  font-weight: 500;
+}
+.checkin-question {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.32;
+  letter-spacing: .005em;
+  margin: 0 0 14px;
+  color: var(--ink);
+  max-width: 36ch;
+}
+body.lang-th .checkin-question { font-family: var(--th); line-height: 1.5; }
+body.lang-cn .checkin-question { font-family: var(--cn-serif); line-height: 1.4; letter-spacing: .02em; }
+.checkin-nudge {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 56ch;
+}
+body.lang-th .checkin-nudge { font-family: var(--th); font-style: normal; font-size: 15px; }
+body.lang-cn .checkin-nudge { font-family: var(--cn-serif); font-style: normal; font-size: 15px; }
+
+.checkin-compose { margin-bottom: 48px; }
+#checkinAnswer {
+  width: 100%;
+  min-height: 160px;
+  padding: 18px 18px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+}
+body.lang-th #checkinAnswer { font-family: var(--th); font-size: 17px; line-height: 1.75; }
+body.lang-cn #checkinAnswer { font-family: var(--cn-serif); font-size: 17px; line-height: 1.85; letter-spacing: .02em; }
+#checkinAnswer:focus { border-color: var(--seal); }
+#checkinAnswer::placeholder { color: var(--ink-fade); font-style: italic; }
+
+.checkin-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+.checkin-mic {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  min-height: 44px;
+}
+.checkin-mic .mic-dot {
+  width: 8px; height: 8px;
+  background: var(--ink-fade);
+  display: inline-block;
+  transition: background .2s;
+}
+.checkin-mic:hover { border-color: var(--seal); color: var(--seal); }
+.checkin-mic:hover .mic-dot { background: var(--seal); }
+.checkin-mic.is-recording {
+  background: var(--seal);
+  color: var(--paper);
+  border-color: var(--seal);
+}
+.checkin-mic.is-recording .mic-dot {
+  background: var(--paper);
+  animation: ci-pulse 1s infinite;
+}
+@keyframes ci-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+body.lang-th .checkin-mic .mic-label,
+body.lang-cn .checkin-mic .mic-label { text-transform: none; letter-spacing: 0; font-size: 13px; }
+
+.checkin-counter {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--ink-fade);
+  flex: 1;
+  text-align: right;
+}
+.checkin-counter::after { content: " words"; }
+body.lang-th .checkin-counter::after { content: " คำ"; }
+body.lang-cn .checkin-counter::after { content: " 字"; }
+
+.checkin-save {
+  padding: 10px 22px;
+  background: var(--seal);
+  border: 1px solid var(--seal);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  min-height: 44px;
+}
+.checkin-save:hover { filter: brightness(1.1); }
+.checkin-save.is-saved { background: var(--ink); border-color: var(--ink); }
+body.lang-th .checkin-save,
+body.lang-cn .checkin-save { text-transform: none; letter-spacing: 0; font-size: 13px; }
+
+.checkin-share {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px dashed var(--rule);
+  cursor: pointer;
+}
+.checkin-share input[type="checkbox"] {
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: var(--seal);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.share-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  letter-spacing: .03em;
+}
+body.lang-th .share-text { font-family: var(--th); font-size: 13px; letter-spacing: 0; line-height: 1.7; }
+body.lang-cn .share-text { font-family: var(--cn-serif); font-size: 13px; letter-spacing: 0; line-height: 1.7; }
+
+.checkin-history { margin: 48px 0; }
+.ch-hist-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.ch-hist-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 500;
+}
+body.lang-th .ch-hist-title,
+body.lang-cn .ch-hist-title { text-transform: none; letter-spacing: 0; font-size: 14px; font-family: var(--th); }
+body.lang-cn .ch-hist-title { font-family: var(--cn-serif); }
+.ch-hist-export {
+  padding: 8px 14px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .2s;
+}
+.ch-hist-export:hover { border-color: var(--seal); color: var(--seal); }
+.ch-hist-note {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-fade);
+  line-height: 1.6;
+  letter-spacing: .04em;
+  margin: 0 0 18px;
+}
+body.lang-th .ch-hist-note { font-family: var(--th); font-size: 13px; letter-spacing: 0; }
+body.lang-cn .ch-hist-note { font-family: var(--cn-serif); font-size: 13px; letter-spacing: 0; }
+
+.checkin-entries { display: flex; flex-direction: column; gap: 18px; }
+.ce-entry {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.08));
+}
+.ce-entry:last-child { border-bottom: 0; }
+.ce-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.ce-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--ink-fade);
+}
+.ce-date em { color: var(--seal); font-style: italic; }
+.ce-q {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  flex: 1;
+}
+body.lang-th .ce-q { font-family: var(--th); font-style: normal; font-size: 14px; }
+body.lang-cn .ce-q { font-family: var(--cn-serif); font-style: normal; font-size: 14px; }
+.ce-shared {
+  font-size: 12px;
+  color: var(--seal);
+  letter-spacing: .15em;
+}
+.ce-body {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+  white-space: pre-wrap;
+}
+.ce-lang-th .ce-body { font-family: var(--th); font-size: 16px; line-height: 1.78; }
+.ce-lang-cn .ce-body { font-family: var(--cn-serif); font-size: 16px; line-height: 1.85; letter-spacing: .02em; }
+.ce-empty {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-fade);
+  letter-spacing: .05em;
+  font-style: italic;
+}
+body.lang-th .ce-empty { font-family: var(--th); font-size: 14px; letter-spacing: 0; font-style: normal; }
+body.lang-cn .ce-empty { font-family: var(--cn-serif); font-size: 14px; letter-spacing: 0; font-style: normal; }
+
+.checkin-about {
+  margin-top: 48px;
+  padding-top: 30px;
+  border-top: 1px solid var(--rule);
+}
+.ch-about-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 18px;
+  font-weight: 500;
+}
+body.lang-th .ch-about-title,
+body.lang-cn .ch-about-title { text-transform: none; letter-spacing: 0; font-size: 14px; font-family: var(--th); }
+body.lang-cn .ch-about-title { font-family: var(--cn-serif); }
+.checkin-about p {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 64ch;
+  margin: 0 0 14px;
+}
+.checkin-about p em { color: var(--seal); font-style: italic; }
+body.lang-th .checkin-about p { font-family: var(--th); font-size: 16px; line-height: 1.78; }
+body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; line-height: 1.85; letter-spacing: .02em; }
+
+@media (max-width: 600px) {
+  .checkin-shell { padding: 20px 18px 60px; }
+  .checkin-question { font-size: 22px; }
+  .checkin-tools { gap: 8px; }
+  .checkin-counter { width: 100%; text-align: left; order: 3; flex-basis: 100%; }
+}
+
+/* ============================================================
    IN THE WILD · 在野 — eight movements of living Daoism
    ============================================================ */
 .wild {
