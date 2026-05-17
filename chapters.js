@@ -51,7 +51,7 @@ window.CHAPTERS = [
   en_title:"On the Bellows",
   en:"Heaven and Earth are not kind.\nThey treat everything like straw dogs at a ceremony — used, then thrown out.\nThe wise person is no different.\n\nBetween Heaven and Earth — it works like a bellows, doesn't it?\nEmpty but never collapsing.\nThe more it moves, the more it gives.\n\nToo many words exhaust you.\nBetter to keep to the center.",
   th_title:"ว่าด้วยที่สูบลม",
-  th:"ฟ้าดินไม่เมตตา\nทำต่อทุกสิ่งเหมือนสุนัขฟางในพิธี ใช้แล้วทิ้ง\nคนฉลาดก็เช่นกัน ทำต่อประชาชนแบบเดียวกัน\n\nระหว่างฟ้าและดิน เหมือนที่สูบลมไหม?\nว่างแต่ไม่ยุบ\nยิ่งสูบ ยิ่งออก\n\nคำพูดมาก ทำให้หมดแรง\nสู้รักษากลางไม่ได้",
+  th:"ฟ้าดินไม่เมตตา\nทำต่อทุกสิ่งเหมือนสุนัขฟางในพิธี ใช้แล้วทิ้ง\nคนฉลาดก็เช่นกัน ทำต่อประชาชนเช่นกัน\n\nระหว่างฟ้าและดิน เหมือนที่สูบลมไหม?\nว่างแต่ไม่ยุบ\nยิ่งสูบ ยิ่งออก\n\nคำพูดมาก ทำให้หมดแรง\nสู้รักษากลางไม่ได้",
   note:"This is the chapter the Western reader trips on. \"Heaven and Earth are not kind\" sounds cruel. It isn't. It is reporting. The seasons do not care that you needed one more week of summer. The cancer does not negotiate. The ninth-floor balcony does not warn you. The wise person does not pretend the universe is rooting for them. They get on with their work. This is the correct reading of the Stoics, by the way, and the correct reading of any decent ancestor." },
 
 { n:6, mood:"water", art:"mi-fu",
@@ -60,7 +60,7 @@ window.CHAPTERS = [
   en_title:"On the Valley",
   en:"The valley spirit does not die.\nWe call her the dark mother.\nHer gate is the root of Heaven and Earth.\nFaint, almost there.\nUse her — she does not run out.",
   th_title:"ว่าด้วยหุบเขา",
-  th:"จิตวิญญาณแห่งหุบเขาไม่ตาย\nเราเรียกเธอว่ามารดามืด\nประตูของเธอคือรากของฟ้าและดิน\nบางเบา ราวกับมีอยู่\nใช้เธอเถิด เธอไม่หมด",
+  th:"จิตวิญญาณแห่งหุบเขาไม่ตาย\nผมเรียกเธอว่ามารดามืด\nประตูของเธอคือรากของฟ้าและดิน\nบางเบา ราวกับมีอยู่\nใช้เธอ เธอไม่หมด",
   note:"The Dao De Jing has been called a feminist text. Not because of slogans. Because it keeps preferring receptive, low, soft, persistent things. The valley over the mountain. The water over the rock. The mother over the warrior. It is one of the few ancient books that built a politics out of attention rather than out of force." },
 
 { n:7, mood:"paradox", art:"liang-kai",
@@ -177,7 +177,7 @@ window.CHAPTERS = [
   en_title:"On Dropping the Categories",
   en:"Drop the saint and the savant — the people gain a hundredfold.\nDrop kindness and justice — the people return to taking care of each other.\nDrop cleverness and profit — there will be no thieves.\n\nWords on a wall are not enough.\nGive people something to hold onto:\nSee the plain. Hold the uncarved.\nWant less. Need less.",
   th_title:"ว่าด้วยการละทิ้งหมวดหมู่",
-  th:"ทิ้งนักบุญและคนเก่ง ประชาชนได้ประโยชน์ร้อยเท่า\nทิ้งเมตตาและความยุติธรรม ประชาชนกลับมาดูแลกัน\nทิ้งความฉลาดและกำไร ก็ไม่มีโจร\n\nคำบนผนังไม่พอ\nให้สิ่งที่ยึดได้\nเห็นความเรียบ กอดไม้ที่ยังไม่ถาก\nอยากให้น้อย ต้องการให้น้อย",
+  th:"ทิ้งนักบุญและคนเก่ง ประชาชนได้ประโยชน์ร้อยเท่า\nทิ้งเมตตาและความยุติธรรม ประชาชนกลับมาดูแลกัน\nทิ้งความฉลาดและกำไร ก็ไม่มีโจร\n\nคำบนผนังไม่พอ\nให้สิ่งที่ยึดได้\nเห็นความเรียบ กอดไม้ที่ยังไม่ถาก\nอยากน้อย ต้องการน้อย",
   note:"This pairs with chapter 18. Once you've stopped trusting the slogans, what do you do? You give people the ordinary alternative. Hold the uncarved block — meaning the version of yourself before you got opinions. Want less. Need less. This is not asceticism. It is the engineer's principle: subtract until what's left is clearly working." },
 
 { n:20, mood:"witty", art:"liang-kai",
@@ -213,7 +213,7 @@ window.CHAPTERS = [
   en_title:"On Few Words",
   en:"Few words — the way nature does it.\n\nA gust does not last the morning.\nA cloudburst does not last the day.\nWho does these things? Heaven and Earth.\nIf even Heaven and Earth cannot keep up the noise, why would you?\n\nWhoever follows the Way is at one with the Way.\nWhoever follows virtue is at one with virtue.\nWhoever follows loss is at one with loss.\n\nThe Way is happy to be joined.\nVirtue is happy to be joined.\nLoss is happy to be joined.\n\nWhen trust is insufficient, there is distrust.",
   th_title:"ว่าด้วยคำน้อย",
-  th:"พูดน้อย ดั่งธรรมชาติทำ\n\nลมแรง ไม่อยู่ทั้งเช้า\nฝนกระหน่ำ ไม่อยู่ทั้งวัน\nใครทำสิ่งเหล่านี้ ฟ้าและดิน\nฟ้าและดินยังคงเสียงดังไม่ได้ เราจะคงทำไม\n\nใครตามทาง อยู่กับทาง\nใครตามคุณธรรม อยู่กับคุณธรรม\nใครตามการสูญเสีย อยู่กับการสูญเสีย\n\nทางยินดีรับ\nคุณธรรมยินดีรับ\nการสูญเสียยินดีรับ\n\nความไว้ใจน้อย ความไม่ไว้ใจก็เยอะ",
+  th:"พูดน้อย ดั่งธรรมชาติทำ\n\nลมแรง ไม่อยู่ทั้งเช้า\nฝนกระหน่ำ ไม่อยู่ทั้งวัน\nใครทำสิ่งเหล่านี้ ฟ้าและดิน\nฟ้าและดินยังทำเสียงดังไม่ไหว ผมจะทำไปทำไม\n\nใครตามทาง อยู่กับทาง\nใครตามคุณธรรม อยู่กับคุณธรรม\nใครตามการสูญเสีย อยู่กับการสูญเสีย\n\nทางยินดีรับ\nคุณธรรมยินดีรับ\nการสูญเสียยินดีรับ\n\nไว้วางใจน้อย ไม่ไว้วางใจก็มาก",
   note:"The natural argument for not lecturing. The wind cannot keep up the lecture for more than an hour. Why would you? In presentations I now keep a stopwatch on the table. Forty minutes is the most I will speak before the wind dies." },
 
 { n:24, mood:"witty", art:"sesshu",
@@ -222,7 +222,7 @@ window.CHAPTERS = [
   en_title:"On the Tiptoe",
   en:"Stand on tiptoe — you can't stay up.\nTake oversize strides — you can't keep going.\n\nShow off, and you're not seen.\nInsist you're right, and you're not heard.\nBoast, and you fail.\nPreen, and you don't last.\n\nFrom the Way's view, all this is leftovers.\nThings find it ugly.\nWho holds the Way will not stand here.",
   th_title:"ว่าด้วยปลายเท้า",
-  th:"ยืนปลายเท้า อยู่ไม่ได้\nก้าวยาวเกิน เดินต่อไม่ได้\n\nอวด ไม่ถูกเห็น\nยืนยันว่าถูก ไม่ถูกฟัง\nโอ้อวด ล้มเหลว\nหยิ่ง ไม่ยืนยาว\n\nในสายตาของทาง ทั้งหมดนี้คือเศษอาหารและก้อนเนื้อเกิน\nสิ่งทั้งหลายเห็นว่าน่าเกลียด\nผู้ถือทาง ไม่ยืนตรงนี้",
+  th:"ยืนปลายเท้า อยู่ไม่ได้\nก้าวยาวเกิน เดินต่อไม่ได้\n\nอวด ไม่ถูกเห็น\nยืนยันว่าถูก ไม่ถูกฟัง\nโอ้อวด ล้มเหลว\nหยิ่ง ไม่ยืนยาว\n\nในสายตาของทาง ทั้งหมดนี้คือเศษอาหารกับส่วนเกิน\nสิ่งทั้งหลายเห็นว่าน่าเกลียด\nผู้ถือทาง ไม่อยู่ตรงนี้",
   note:"You cannot give a TED talk on tiptoe. Many people try. The ones who succeed are the ones who stop trying. The chapter is shorthand for: stop performing the version of yourself you think the room wants. The room actually wants you. The room is, oddly, smarter than you give it credit for." },
 
 { n:25, mood:"origin", art:"fan-kuan",
@@ -240,7 +240,7 @@ window.CHAPTERS = [
   en_title:"On Heaviness",
   en:"Heavy is the root of light.\nStill is the master of restless.\n\nSo the wise person does not, all day, lose the cart that carries their gear.\nThough there are bright views and parties — they sit apart, calm.\n\nWhy would a leader of ten thousand chariots make himself light to his country?\nLight, you lose your root.\nRestless, you lose your master.",
   th_title:"ว่าด้วยความหนัก",
-  th:"หนักคือรากของเบา\nนิ่งคือนายของเร่งร้อน\n\nคนฉลาด ทั้งวัน ไม่ทิ้งเกวียนสัมภาระของตน\nแม้มีงานเลี้ยงและทิวทัศน์งาม — เขานั่งห่าง สงบ\n\nทำไมผู้นำของหมื่นรถม้า จะทำตัวเบาให้กับประเทศของตน\nเบา เสียราก\nเร่ง เสียนาย",
+  th:"หนักคือรากของเบา\nนิ่งคือนายของเร่งร้อน\n\nคนฉลาด ทั้งวัน ไม่ทิ้งเกวียนสัมภาระของตน\nแม้มีงานเลี้ยงและทิวทัศน์งาม — เขานั่งห่าง สงบ\n\nทำไมผู้นำหมื่นรถม้า จะทำตัวเบากับประเทศตน\nเบา เสียราก\nเร่ง เสียนาย",
   note:"This is the chapter to read before any major decision. There is a part of you that is the gear in the cart. There is a part of you that is the brightness in the window. The gear keeps you alive. The brightness sells you on lies. The wise person travels with the gear and looks at the window. They do not climb out the window." },
 
 { n:27, mood:"practical", art:"shen-zhou",
@@ -249,7 +249,7 @@ window.CHAPTERS = [
   en_title:"On Good Work",
   en:"Good walking leaves no track.\nGood speech leaves no flaw.\nGood counting needs no abacus.\nGood closing needs no bolt — yet cannot be opened.\nGood knots tie without rope — and you can't undo them.\n\nSo the wise person is always good at saving people, and so wastes none.\nAlways good at saving things, and so wastes nothing.\nWe call this hidden clarity.\n\nThe good person teaches the not-yet-good.\nThe not-yet-good is the good person's raw material.\nIf you don't honor the teacher, or care about the material —\nyou are clever and lost.\nThis is the central trick.",
   th_title:"ว่าด้วยฝีมือดี",
-  th:"เดินดี ไม่ทิ้งรอย\nพูดดี ไม่มีข้อบกพร่อง\nนับดี ไม่ต้องใช้ลูกคิด\nปิดดี ไม่ต้องใช้คาน แต่เปิดไม่ได้\nปมดี ผูกโดยไม่ต้องเชือก แก้ไม่ได้\n\nคนฉลาด เก่งช่วยคน ไม่ทิ้งใคร\nเก่งช่วยสิ่งของ ไม่ทิ้งอะไร\nเราเรียกสิ่งนี้ว่าความใสซ่อนเร้น\n\nคนดีคืออาจารย์ของคนที่ยังไม่ดี\nคนที่ยังไม่ดีคือวัตถุดิบของคนดี\nถ้าไม่นับถืออาจารย์ ไม่รักวัตถุดิบ —\nก็ฉลาดและหลง\nนี่คือเคล็ดลับสำคัญ",
+  th:"เดินดี ไม่ทิ้งรอย\nพูดดี ไม่มีข้อบกพร่อง\nนับดี ไม่ต้องใช้ลูกคิด\nปิดดี ไม่ต้องใช้คาน แต่เปิดไม่ได้\nปมดี ผูกโดยไม่ต้องเชือก แก้ไม่ได้\n\nคนฉลาด เก่งช่วยคน ไม่ทิ้งใคร\nเก่งช่วยสิ่งของ ไม่ทิ้งอะไร\nผมเรียกสิ่งนี้ว่าความใสซ่อนเร้น\n\nคนดีคืออาจารย์ของคนที่ยังไม่ดี\nคนที่ยังไม่ดีคือวัตถุดิบของคนดี\nถ้าไม่นับถืออาจารย์ ไม่รักวัตถุดิบ —\nก็ฉลาดแต่หลง\nนี่คือเคล็ดลับสำคัญ",
   note:"The Phuket smart-bus prototype I wrote in forty-five minutes did not have a manual. It did not need one. The good build leaves no track in the docs because the build itself is the doc. This is also why the best teachers I had at MIT never seemed to be teaching — and the worst ones were always teaching, very loudly, and you remembered nothing." },
 
 { n:28, mood:"silence", art:"mi-fu",
@@ -267,7 +267,7 @@ window.CHAPTERS = [
   en_title:"On Trying to Run the World",
   en:"Want to take the world and shape it? I've seen — it cannot be done.\nThe world is a sacred vessel.\nYou can't make it. You can't grip it.\nMake — you spoil it.\nGrip — you lose it.\n\nSo: things go ahead or follow.\nThings warm or cool.\nThings get strong or fail.\nThings load up or fall apart.\n\nThe wise person drops what's extreme.\nDrops what's lavish.\nDrops what's grand.",
   th_title:"ว่าด้วยพยายามจัดโลก",
-  th:"อยากจัดโลก ผมเห็นแล้ว ทำไม่ได้\nโลกเป็นภาชนะศักดิ์สิทธิ์\nสร้างไม่ได้ จับไม่ได้\nสร้าง พัง\nจับ หาย\n\nสิ่งทั้งหลาย บางทีนำ บางทีตาม\nบางทีร้อน บางทีเย็น\nบางทีแข็ง บางทีล้ม\nบางทีโหลด บางทีพัง\n\nคนฉลาดทิ้งสิ่งสุดโต่ง\nทิ้งสิ่งฟุ่มเฟือย\nทิ้งสิ่งโอ่อ่า",
+  th:"อยากจัดโลก ผมเห็นแล้ว ทำไม่ได้\nโลกเป็นภาชนะศักดิ์สิทธิ์\nสร้างไม่ได้ จับไม่ได้\nสร้าง พัง\nจับ หาย\n\nสิ่งทั้งหลาย บางทีนำ บางทีตาม\nบางทีร้อน บางทีเย็น\nบางทีแข็ง บางทีล้ม\nบางทีตั้ง บางทีทลาย\n\nคนฉลาดทิ้งสิ่งสุดโต่ง\nทิ้งสิ่งฟุ่มเฟือย\nทิ้งสิ่งโอ่อ่า",
   note:"Drop the extreme, the lavish, the grand. The three things every important project tries to do, and the three things that kill it. Most failed smart-city plans had all three baked in by the second meeting. The plans that worked were ordinary. They handled drainage. They handled rubbish. They handled the bus. They were not on the cover of any magazine. They are still running." },
 
 { n:30, mood:"practical", art:"xia-gui",
@@ -285,7 +285,7 @@ window.CHAPTERS = [
   en_title:"On Weapons",
   en:"Fine weapons are unlucky tools.\nThings find them ugly.\nThe one who holds the Way will not stay near them.\n\nIn ordinary life, the gentleman honors the left.\nIn war, the gentleman honors the right.\nWeapons are unlucky tools — not the gentleman's tools.\nUse them only when there is no choice. Calm and cool — that's the highest form.\n\nWin without finding it beautiful. If you find it beautiful, you delight in killing.\nDelight in killing, and you cannot win the world.\n\nGood occasions favor the left. Bad ones favor the right.\nThe deputy general stands on the left. The chief general stands on the right.\nThey are following funeral protocol.\nWhen many have been killed, weep with grief.\nA victorious battle is conducted as a funeral.",
   th_title:"ว่าด้วยอาวุธ",
-  th:"อาวุธสวยคือเครื่องมือไม่เป็นมงคล\nสิ่งทั้งหลายเห็นว่าน่าเกลียด\nผู้ถือทางจะไม่อยู่ใกล้\n\nในชีวิตปกติ สุภาพชนยกย่องข้างซ้าย\nในศึก ยกย่องข้างขวา\nอาวุธคือเครื่องมือไม่เป็นมงคล ไม่ใช่ของสุภาพชน\nใช้เมื่อไม่มีทางเลือกเท่านั้น สงบและเย็น คือสูงสุด\n\nชนะโดยไม่เห็นว่างาม ถ้าเห็นว่างาม คือชอบฆ่า\nชอบฆ่า ชนะโลกไม่ได้\n\nงานดีถือซ้าย งานร้ายถือขวา\nรองนายพลยืนซ้าย ยืนขวาคือผู้บัญชาการสูงสุด\nนั่นคือพิธีศพ\nคนตายมาก ร้องไห้ด้วยความเศร้า\nศึกชนะ ทำเหมือนงานศพ",
+  th:"อาวุธสวยคือเครื่องมือไม่เป็นมงคล\nสิ่งทั้งหลายเห็นว่าน่าเกลียด\nผู้ถือทางจะไม่อยู่ใกล้\n\nในชีวิตปกติ สุภาพชนยกย่องข้างซ้าย\nในศึก ยกย่องข้างขวา\nอาวุธคือเครื่องมือไม่เป็นมงคล ไม่ใช่ของสุภาพชน\nใช้เมื่อไม่มีทางเลือกเท่านั้น สงบและเย็น คือสูงสุด\n\nชนะโดยไม่เห็นว่างาม ถ้าเห็นว่างาม คือชอบฆ่า\nชอบฆ่า ชนะโลกไม่ได้\n\nงานดีถือซ้าย งานร้ายถือขวา\nรองนายพลยืนซ้าย นายพลใหญ่ยืนขวา\nนั่นคือพิธีศพ\nคนตายมาก ร้องไห้ด้วยความเศร้า\nศึกชนะ ทำเหมือนงานศพ",
   note:"This is the chapter Western readers don't expect. A victory is conducted as a funeral. You won, yes — but a thousand mothers lost a son. The book refuses the parade. Stoic-Buddhist tradition does the same: the victor does not celebrate. The victor mourns the necessary harm. We have lost this discipline almost entirely in modern public life." },
 
 { n:32, mood:"origin", art:"fan-kuan",
@@ -312,7 +312,7 @@ window.CHAPTERS = [
   en_title:"On Going Both Ways",
   en:"The great Way flows everywhere — it can go left, it can go right.\nThe ten thousand things rely on it to live, and it doesn't refuse.\nIt finishes the work — doesn't claim a name.\nIt clothes and feeds the ten thousand things — doesn't act as their boss.\n\nAlways without wanting — call it small.\nThe ten thousand things return to it — and it does not act as their boss.\nCall it great.\n\nBecause it never tries to be great, it ends up great.",
   th_title:"ว่าด้วยไปได้ทั้งสองทาง",
-  th:"ทางใหญ่ไหลทุกที่ ไปซ้ายก็ได้ ขวาก็ได้\nหมื่นสิ่งพึ่งมันเพื่อมีชีวิต มันไม่ปฏิเสธ\nงานเสร็จ ไม่อ้างชื่อ\nคลุมและเลี้ยงหมื่นสิ่ง ไม่เป็นนาย\n\nไม่อยาก เรียกว่าเล็ก\nหมื่นสิ่งคืนมา ไม่เป็นนาย\nเรียกว่าใหญ่\n\nเพราะไม่พยายามใหญ่ จึงกลายเป็นใหญ่",
+  th:"ทางใหญ่ไหลทุกที่ ไปซ้ายก็ได้ ขวาก็ได้\nหมื่นสิ่งพึ่งมันเพื่อมีชีวิต มันไม่ปฏิเสธ\nงานเสร็จ ไม่อ้างชื่อ\nคลุมและเลี้ยงหมื่นสิ่ง ไม่เป็นนาย\n\nไม่อยาก เรียกว่าเล็ก\nหมื่นสิ่งคืนมา ไม่เป็นนาย\nเรียกว่าใหญ่\n\nเพราะไม่พยายามใหญ่ ก็เลยกลายเป็นใหญ่",
   note:"The Way is small. The Way is great. Both are true. The reason is that the Way doesn't compete for either label. It is great because nothing claims it. It is small because nothing fears it. The same is true of any decent infrastructure. The drainage system is small until October, when it is great." },
 
 { n:35, mood:"silence", art:"ma-yuan",
@@ -330,7 +330,7 @@ window.CHAPTERS = [
   en_title:"On Faint Light",
   en:"Want to shrink something — first let it stretch.\nWant to weaken it — first let it grow strong.\nWant to abolish it — first let it flourish.\nWant to take from it — first give to it.\nWe call this faint light.\n\nSoft and weak win against hard and strong.\nA fish should not leave the deep.\nA country's sharp tools should not be shown to the people.",
   th_title:"ว่าด้วยแสงราง",
-  th:"อยากย่อสิ่งหนึ่ง ปล่อยให้ยืดก่อน\nอยากให้อ่อน ปล่อยให้แข็งก่อน\nอยากยกเลิก ปล่อยให้รุ่งก่อน\nอยากเอา ให้ก่อน\nเราเรียกว่าแสงราง\n\nอ่อนและน้อย ชนะแข็งและมาก\nปลาไม่ควรออกจากที่ลึก\nเครื่องมือคมของประเทศ ไม่ควรแสดงให้ประชาชน",
+  th:"อยากย่อสิ่งหนึ่ง ปล่อยให้ยืดก่อน\nอยากให้อ่อน ปล่อยให้แข็งก่อน\nอยากยกเลิก ปล่อยให้รุ่งก่อน\nอยากเอา ให้ก่อน\nผมเรียกว่าแสงราง\n\nอ่อนและน้อย ชนะแข็งและมาก\nปลาไม่ควรออกจากที่ลึก\nเครื่องมือคมของประเทศ ไม่ควรแสดงให้ประชาชน",
   note:"This is the chapter Sun Tzu reads twice. It is also the chapter every successful negotiator has accidentally absorbed. You don't break a thing by attacking it. You break it by feeding it past its sustainable size. The internet has done this to many institutions in our lifetime, without any human enemy in particular." },
 
 { n:37, mood:"silence", art:"sesshu",
@@ -339,7 +339,7 @@ window.CHAPTERS = [
   en_title:"On Doing Nothing",
   en:"The Way does nothing — and there is nothing left undone.\nIf rulers could hold it, the ten thousand things would change themselves.\nIf, as they change, desires arise — I would calm them with the nameless uncarved.\nThe nameless uncarved has no wanting.\nNo wanting — and stillness.\nAnd the world settles itself.",
   th_title:"ว่าด้วยไม่ทำ",
-  th:"ทางไม่ทำ และไม่มีอะไรเหลือ\nถ้าผู้ปกครองรักษามันได้ หมื่นสิ่งจะเปลี่ยนเอง\nถ้าเมื่อเปลี่ยน ความอยากเกิด — ผมจะสงบมันด้วยไม้ไร้ชื่อที่ยังไม่ถาก\nไม้ไร้ชื่อไม่อยาก\nไม่อยาก แล้วนิ่ง\nและโลกจะจัดเอง",
+  th:"ทางไม่ทำ และไม่มีอะไรเหลือ\nถ้าผู้ปกครองรักษามันได้ หมื่นสิ่งจะเปลี่ยนเอง\nถ้าเมื่อเปลี่ยน ความอยากเกิด — ผมจะสงบมันด้วยไม้ไร้ชื่อที่ยังไม่ถาก\nไม้ไร้ชื่อนั้นไม่อยาก\nไม่อยาก แล้วนิ่ง\nและโลกจะจัดเอง",
   note:"This is the last chapter of the Dao Jing — the first half of the book. It closes on the same note it opened on. The Way doesn't do, and yet everything gets done. Half the book is over and we are no closer to a definition. That is correct. Definitions would have collapsed it. Read on." },
 
 /* ─────────────────── 德經 · DE JING (38–81) ─────────────────── */
@@ -350,7 +350,7 @@ window.CHAPTERS = [
   en_title:"On the Decline of Virtue",
   en:"The truly virtuous don't think of virtue — that's why they have it.\nThe ones below them keep checking they are virtuous — that's why they don't.\n\nThe truly virtuous do nothing — and do not act for results.\nThe ones below them do things — and act for results.\n\nThe truly kind do things — without acting for results.\nThe truly just do things — and act for results.\nThe truly proper do things — and when nobody responds, roll up their sleeves and force.\n\nLose the Way, virtue arrives.\nLose virtue, kindness arrives.\nLose kindness, justice arrives.\nLose justice, manners arrive.\nManners are loyalty's leftovers, the start of trouble.\nForeknowledge is the Way's flower, the start of foolishness.\n\nSo the great person stays in the thick, not the thin.\nIn the fruit, not the flower.\nKeep this. Drop that.",
   th_title:"ว่าด้วยการเสื่อมของคุณธรรม",
-  th:"คนมีคุณธรรมจริง ไม่นึกถึงคุณธรรม จึงมี\nคนรองลงมา ต้องคอยเช็คว่าตัวเองมี จึงไม่มี\n\nคุณธรรมสูงสุด ไม่ทำ และไม่ทำเพื่อผล\nคุณธรรมที่ต่ำกว่า ทำ และทำเพื่อผล\n\nเมตตาสูงสุด ทำ โดยไม่หวังผล\nความยุติธรรมสูงสุด ทำ และหวังผล\nมารยาทสูงสุด ทำ และเมื่อไม่มีใครตอบ ก็เอื้อมแขนบังคับ\n\nเสียทาง คุณธรรมมา\nเสียคุณธรรม เมตตามา\nเสียเมตตา ความยุติธรรมมา\nเสียความยุติธรรม มารยาทมา\nมารยาทคือเศษของความซื่อสัตย์ จุดเริ่มต้นของปัญหา\nการคาดการณ์คือดอกของทาง จุดเริ่มต้นของความโง่\n\nคนใหญ่ก็อยู่ในส่วนหนา ไม่ใช่บาง\nในผล ไม่ใช่ดอก\nเก็บอันนี้ ทิ้งอันนั้น",
+  th:"คนมีคุณธรรมจริง ไม่นึกถึงคุณธรรม ก็เลยมี\nคนรองลงมา ต้องคอยเช็คว่าตัวเองมี ก็เลยไม่มี\n\nคุณธรรมสูงสุด ไม่ทำ และไม่ทำเพื่อผล\nคุณธรรมที่ต่ำกว่า ทำ และทำเพื่อผล\n\nเมตตาสูงสุด ทำ โดยไม่หวังผล\nความยุติธรรมสูงสุด ทำ และหวังผล\nมารยาทสูงสุด ทำ และเมื่อไม่มีใครตอบ ก็เอื้อมแขนบังคับ\n\nเสียทาง คุณธรรมมา\nเสียคุณธรรม เมตตามา\nเสียเมตตา ความยุติธรรมมา\nเสียความยุติธรรม มารยาทมา\nมารยาทคือเศษของความซื่อสัตย์ จุดเริ่มต้นของปัญหา\nการคาดการณ์คือดอกของทาง จุดเริ่มต้นของความโง่\n\nคนใหญ่ก็อยู่ในส่วนหนา ไม่ใช่บาง\nในผล ไม่ใช่ดอก\nเก็บอันนี้ ทิ้งอันนั้น",
   note:"The opening chapter of the second half is the longest in the book and the bitterest. Notice the ladder of decline: Way → virtue → kindness → justice → manners. We are now somewhere on the manners rung. We have ethics committees. We have brand guidelines. We have HR training. We have manners. We do not have, on the whole, virtue. Lao Tzu saw this coming." },
 
 { n:39, mood:"origin", art:"fan-kuan",
@@ -368,7 +368,7 @@ window.CHAPTERS = [
   en_title:"On Reversal",
   en:"Reversal is how the Way moves.\nWeakness is how the Way works.\n\nEverything in the world is born from being.\nBeing is born from not-being.",
   th_title:"ว่าด้วยการกลับคืน",
-  th:"การกลับคืน คือวิธีที่ทางเคลื่อน\nความอ่อนแอ คือวิธีที่ทางทำงาน\n\nทุกสิ่งในโลก เกิดจากการมี\nการมี เกิดจากการไม่มี",
+  th:"การกลับคืน คือวิธีที่ทางเคลื่อน\nความอ่อน คือวิธีที่ทางทำงาน\n\nทุกสิ่งในโลก เกิดจากการมี\nการมี เกิดจากการไม่มี",
   note:"Four lines. The shortest chapter. Possibly the most important. The Way moves by going back. Things at the top come down. Things at the bottom rise. Plans, careers, empires. Plan for the reversal. It is coming. It always comes. It is, in fact, how things work." },
 
 { n:41, mood:"witty", art:"hokusai-fuji",
@@ -431,7 +431,7 @@ window.CHAPTERS = [
   en_title:"On Not Going Out",
   en:"You can know the world without leaving your door.\nYou can see the way of heaven without looking out the window.\nThe further you go, the less you know.\n\nSo the wise person knows without traveling.\nNames without seeing.\nFinishes without doing.",
   th_title:"ว่าด้วยไม่ออกจากบ้าน",
-  th:"รู้โลกได้โดยไม่ออกประตู\nเห็นทางของฟ้าโดยไม่มองหน้าต่าง\nไปไกลขึ้น รู้น้อยลง\n\nคนฉลาดจึงรู้โดยไม่เดินทาง\nตั้งชื่อโดยไม่เห็น\nทำเสร็จโดยไม่ทำ",
+  th:"รู้โลกได้โดยไม่ออกประตู\nเห็นทางของฟ้าโดยไม่มองหน้าต่าง\nไปไกลขึ้น รู้น้อยลง\n\nคนฉลาดรู้โดยไม่เดินทาง\nตั้งชื่อโดยไม่เห็น\nทำเสร็จโดยไม่ทำ",
   note:"This chapter has been used to defend insularity. That misreads it. The point is not that travel is bad — the point is that travel is mostly indistinguishable from staying home, in terms of what it teaches you. Almost everything I learned about Shanghai I learned by sitting in one alley for six months. The far-traveler and the still-watcher arrive at similar truths." },
 
 { n:48, mood:"witty", art:"sesshu",
@@ -449,7 +449,7 @@ window.CHAPTERS = [
   en_title:"On Borrowed Heart",
   en:"The wise person has no fixed heart.\nThey use the heart of the people.\n\nThe good — I am good to them.\nThe not-good — I am also good to them.\nThe virtue: goodness.\n\nThe trustworthy — I trust them.\nThe untrustworthy — I also trust them.\nThe virtue: trust.\n\nIn the world, the wise person draws back, draws back —\nand makes the world's heart their own muddle.\nThe people watch and listen.\nThe wise person treats them all like children.",
   th_title:"ว่าด้วยใจยืม",
-  th:"คนฉลาดไม่มีใจตายตัว\nใช้ใจของประชาชนเป็นใจ\n\nคนดี ผมดีกับเขา\nคนไม่ดี ผมก็ดีกับเขา\nคุณธรรม: ความดี\n\nคนน่าเชื่อ ผมเชื่อเขา\nคนไม่น่าเชื่อ ผมก็เชื่อเขา\nคุณธรรม: ความเชื่อ\n\nในโลก คนฉลาดถอย ถอย\nและทำใจของโลกให้เป็นความยุ่งของตน\nประชาชนคอยฟัง คอยมอง\nคนฉลาดทำต่อทุกคนเหมือนเด็ก",
+  th:"คนฉลาดไม่มีใจตายตัว\nใช้ใจของประชาชนเป็นใจ\n\nคนดี ผมดีกับเขา\nคนไม่ดี ผมก็ดีกับเขา\nคุณธรรม: ความดี\n\nคนน่าเชื่อ ผมเชื่อเขา\nคนไม่น่าเชื่อ ผมก็เชื่อเขา\nคุณธรรม: ความเชื่อ\n\nในโลก คนฉลาดถอย ถอย\nและทำใจของโลกให้เป็นความวุ่นวายของตน\nประชาชนคอยฟัง คอยมอง\nคนฉลาดทำต่อทุกคนเหมือนเด็ก",
   note:"To be good to good people is easy. To be good to bad people is the chapter. The Christians made this argument late in their first century. The Daoists made it five hundred years before. The argument is the same: if you only treat trustworthy people with trust, you have made trust a transaction. Trust is, by definition, given to people who haven't proved they deserve it." },
 
 { n:50, mood:"silence", art:"hokusai-fuji",
@@ -458,7 +458,7 @@ window.CHAPTERS = [
   en_title:"On Coming and Going",
   en:"Out into life. In into death.\n\nThree in ten will live well.\nThree in ten will die well.\nThree in ten will live actively and bring themselves to death.\nWhy? Because they cling so hard to living.\n\nI've heard: those who know how to live\nwalk on land and don't meet wild ox or tiger.\nIn battle, no armor, no weapon hits them.\nThe ox finds no place for its horn.\nThe tiger finds no place for its claw.\nThe blade finds no place for its edge.\nWhy?\nBecause there is, in them, no place for death.",
   th_title:"ว่าด้วยมาและไป",
-  th:"ออกสู่ชีวิต เข้าสู่ความตาย\n\nสามในสิบ จะอยู่ดี\nสามในสิบ จะตายดี\nสามในสิบ ใช้ชีวิตหนักและพาตัวเองไปตาย\nเพราะอะไร เพราะยึดชีวิตแน่นเกิน\n\nผมได้ยินมา ผู้รู้จักใช้ชีวิต\nเดินบนบกไม่เจอวัวป่าหรือเสือ\nในศึก ไม่มีเกราะ ไม่มีอาวุธโดน\nวัวป่าหาที่ลงเขาไม่ได้\nเสือหาที่ลงเล็บไม่ได้\nใบมีดหาที่ลงคมไม่ได้\nเพราะอะไร\nเพราะในตัวเขา ไม่มีที่สำหรับความตาย",
+  th:"ออกสู่ชีวิต เข้าสู่ความตาย\n\nสามในสิบ จะอยู่ดี\nสามในสิบ จะตายดี\nสามในสิบ ใช้ชีวิตหนักและพาตัวเองไปตาย\nเพราะอะไร เพราะยึดชีวิตแน่นเกิน\n\nผมได้ยินมา ผู้รู้จักใช้ชีวิต\nเดินบนบกไม่เจอวัวป่าหรือเสือ\nในศึก ไม่มีเกราะ ไม่มีอาวุธถูกตัว\nวัวป่าหาที่ลงเขาไม่ได้\nเสือหาที่ลงเล็บไม่ได้\nใบมีดหาที่ลงคมไม่ได้\nเพราะอะไร\nเพราะในตัวเขา ไม่มีที่สำหรับความตาย",
   note:"The chapter is about a posture, not a fate. The person who survives the wild animal is not the person who fought it best. They are the person who never gave the animal a target. Most of us, by midlife, have grown a target between our shoulder blades. The work is to let the target shrink." },
 
 { n:51, mood:"silence", art:"mi-fu",
@@ -476,7 +476,7 @@ window.CHAPTERS = [
   en_title:"On the Mother",
   en:"The world has a beginning. We call it the mother of the world.\nKnow the mother — know the child.\nKnow the child — return to the mother.\nYou'll be safe to the end.\n\nClose the mouth.\nShut the door.\nAnd you'll never tire.\n\nOpen the mouth.\nMeddle in affairs.\nAnd you're never saved.\n\nSeeing the small — clarity.\nKeeping the soft — strength.\n\nUse the brightness.\nReturn to the clarity.\nLeave no trouble for yourself.\nThis is called practicing the constant.",
   th_title:"ว่าด้วยมารดา",
-  th:"โลกมีจุดเริ่มต้น เราเรียกว่ามารดาของโลก\nรู้มารดา รู้ลูก\nรู้ลูก กลับสู่มารดา\nจะปลอดภัยจนจบ\n\nปิดปาก\nปิดประตู\nจะไม่เหนื่อย\n\nเปิดปาก\nสอดมือยุ่งกับเรื่องต่าง ๆ\nจะไม่มีวันรอด\n\nเห็นเล็ก ใส\nรักษาอ่อน แข็งแรง\n\nใช้แสงสว่าง\nกลับสู่ความใส\nอย่าทิ้งปัญหาให้ตัวเอง\nเรียกว่าฝึกความคงที่",
+  th:"โลกมีจุดเริ่มต้น ผมเรียกว่ามารดาของโลก\nรู้มารดา รู้ลูก\nรู้ลูก กลับสู่มารดา\nจะปลอดภัยจนจบ\n\nปิดปาก\nปิดประตู\nจะไม่เหนื่อย\n\nเปิดปาก\nสอดมือยุ่งกับเรื่องต่าง ๆ\nจะไม่มีวันรอด\n\nเห็นเล็ก ใส\nรักษาอ่อน แข็งแรง\n\nใช้แสงสว่าง\nกลับสู่ความใส\nอย่าทิ้งปัญหาให้ตัวเอง\nเรียกว่าฝึกความคงที่",
   note:"\"Close the mouth. Shut the door.\" Two of the cleanest instructions in the book. The mouth is most of the trouble. The door is the rest. The chapter is not asking you to be silent and antisocial. It is asking you to notice that the mouth opening and the door opening are the moments where most of the day's energy leaks out." },
 
 { n:53, mood:"witty", art:"liang-kai",
@@ -494,7 +494,7 @@ window.CHAPTERS = [
   en_title:"On Cultivation",
   en:"What's well planted is not pulled up.\nWhat's well held does not slip.\nThe descendants will keep the rite going.\n\nCultivate it in yourself — the virtue is real.\nIn your family — the virtue overflows.\nIn your village — the virtue lasts.\nIn your country — the virtue is plenty.\nIn the world — the virtue is everywhere.\n\nSo: see the body through the body. The family through the family. The village through the village. The country through the country. The world through the world.\nHow do I know the world is like this? By this.",
   th_title:"ว่าด้วยการบ่มเพาะ",
-  th:"สิ่งที่ปลูกดี ถอนไม่ขึ้น\nสิ่งที่กอดดี หลุดไม่ได้\nลูกหลานสืบพิธีไม่ขาด\n\nบ่มในตน คุณธรรมจริง\nในครอบครัว คุณธรรมล้น\nในหมู่บ้าน คุณธรรมคงอยู่\nในประเทศ คุณธรรมมาก\nในโลก คุณธรรมทั่ว\n\nดังนั้น เห็นกายผ่านกาย ครอบครัวผ่านครอบครัว หมู่บ้านผ่านหมู่บ้าน ประเทศผ่านประเทศ โลกผ่านโลก\nผมรู้ได้อย่างไรว่าโลกเป็นเช่นนี้ ก็จากตรงนี้",
+  th:"สิ่งที่ปลูกดี ถอนไม่ขึ้น\nสิ่งที่กอดดี หลุดไม่ได้\nลูกหลานสืบพิธีไม่ขาด\n\nบ่มในตน คุณธรรมจริง\nในครอบครัว คุณธรรมล้น\nในหมู่บ้าน คุณธรรมคงอยู่\nในประเทศ คุณธรรมมาก\nในโลก คุณธรรมทั่ว\n\nก็เลย เห็นกายผ่านกาย ครอบครัวผ่านครอบครัว หมู่บ้านผ่านหมู่บ้าน ประเทศผ่านประเทศ โลกผ่านโลก\nผมรู้ได้อย่างไรว่าโลกเป็นเช่นนี้ ก็จากตรงนี้",
   note:"The chapter contains the Confucian ladder — body, family, village, country, world — but the punchline is anti-Confucian. You don't see the world through the body. You see the world through the world. Don't read the country off your own life. Read the country off the country. The fastest mistake of any leader is generalising from their own household." },
 
 { n:55, mood:"silence", art:"fan-kuan",
@@ -512,7 +512,7 @@ window.CHAPTERS = [
   en_title:"On the Ones Who Don't Talk",
   en:"Those who know don't talk.\nThose who talk don't know.\n\nClose the mouth.\nShut the door.\nBlunt the sharp.\nUntangle the knots.\nSoften the glare.\nSettle into the dust.\nWe call this dark sameness.\n\nYou can't get close to them.\nYou can't keep them at a distance.\nYou can't help them.\nYou can't hurt them.\nYou can't make them noble.\nYou can't make them base.\n\nThat is why they are valued by the world.",
   th_title:"ว่าด้วยผู้ไม่พูด",
-  th:"ผู้รู้ไม่พูด\nผู้พูดไม่รู้\n\nปิดปาก\nปิดประตู\nทำคมให้ทื่อ\nคลายปม\nลดแสงให้นวล\nลงเป็นหนึ่งกับฝุ่น\nเรียกว่าความเหมือนมืด\n\nเข้าใกล้ไม่ได้\nห่างไม่ได้\nช่วยไม่ได้\nทำร้ายไม่ได้\nทำให้สูงไม่ได้\nทำให้ต่ำไม่ได้\n\nนั่นคือเหตุที่โลกเห็นค่า",
+  th:"ผู้รู้ไม่พูด\nผู้พูดไม่รู้\n\nปิดปาก\nปิดประตู\nทำคมให้ทื่อ\nคลายปม\nลดแสงให้นวล\nลงเอยเป็นหนึ่งกับฝุ่น\nเรียกว่าความหนึ่งเดียวมืด\n\nเข้าใกล้ไม่ได้\nห่างไม่ได้\nช่วยไม่ได้\nทำร้ายไม่ได้\nทำให้สูงไม่ได้\nทำให้ต่ำไม่ได้\n\nนั่นคือเหตุที่โลกเห็นค่า",
   note:"\"Those who know don't talk\" — the most quoted line in the book, and the most ironically used. Almost everyone who quotes it is talking. The full chapter clarifies: the wise person can't be moved closer, can't be pushed further, can't be bribed, can't be threatened. They are dust-colored. They are unmarketable. They are, for that exact reason, priceless." },
 
 { n:57, mood:"practical", art:"ma-yuan",
@@ -521,7 +521,7 @@ window.CHAPTERS = [
   en_title:"On Less Government",
   en:"Govern with normalcy.\nWage war with surprise.\nWin the world by leaving it alone.\n\nHow do I know? Like this:\nMore taboos — more poverty.\nMore weapons — more chaos.\nMore craft — more strange goods.\nMore laws — more thieves.\n\nSo the wise person says:\nI do nothing — and the people change themselves.\nI keep still — and the people put themselves right.\nI mind my business — and the people get rich on their own.\nI want nothing — and the people return to the uncarved.",
   th_title:"ว่าด้วยรัฐน้อย",
-  th:"ปกครองด้วยความปกติ\nทำสงครามด้วยกล\nชนะโลกโดยปล่อย\n\nผมรู้ได้อย่างไร อย่างนี้\nกฎห้ามมาก ประชาชนยิ่งจน\nอาวุธมาก ประเทศวุ่น\nฝีมือมาก ของแปลกมาก\nกฎหมายมาก โจรมาก\n\nคนฉลาดจึงว่า\nผมไม่ทำ ประชาชนเปลี่ยนเอง\nผมนิ่ง ประชาชนถูกต้องเอง\nผมไม่ยุ่ง ประชาชนรวยเอง\nผมไม่อยาก ประชาชนกลับสู่ไม้ที่ยังไม่ถาก",
+  th:"ปกครองด้วยความปกติ\nทำสงครามด้วยกล\nชนะโลกโดยปล่อย\n\nผมรู้ได้อย่างไร อย่างนี้\nกฎห้ามมาก ประชาชนยิ่งจน\nอาวุธมาก ประเทศวุ่น\nฝีมือมาก ของแปลกมาก\nกฎหมายมาก โจรมาก\n\nคนฉลาดก็ว่า\nผมไม่ทำ ประชาชนเปลี่ยนเอง\nผมนิ่ง ประชาชนถูกต้องเอง\nผมไม่ยุ่ง ประชาชนรวยเอง\nผมไม่อยาก ประชาชนกลับสู่ไม้ที่ยังไม่ถาก",
   note:"The most reform-minded chapter, written by a person from a country with too many regulations. Two and a half millennia later, every government still trying to govern by adding rules continues to discover, slowly, that this chapter was right. We pass a law because we cannot pass an attitude. The attitude is the only thing that ever worked." },
 
 { n:58, mood:"paradox", art:"hokusai-fuji",
@@ -530,7 +530,7 @@ window.CHAPTERS = [
   en_title:"On the Dim Government",
   en:"When government is dim, the people are simple.\nWhen government is sharp, the people are split.\n\nMisfortune leans on fortune.\nFortune hides under misfortune.\nWho knows the limits? There is no fixed standard.\n\nWhat's right turns strange.\nWhat's good turns weird.\nWe've been confused for a long time.\n\nSo the wise person is square but doesn't cut.\nSharp but doesn't pierce.\nStraight but doesn't go too far.\nBright but doesn't dazzle.",
   th_title:"ว่าด้วยรัฐบาลมัว",
-  th:"รัฐบาลมัว ประชาชนเรียบ\nรัฐบาลคม ประชาชนแตก\n\nโชคร้ายพิงโชคดี\nโชคดีซ่อนใต้โชคร้าย\nใครรู้ขีด ไม่มีมาตรฐานตายตัว\n\nสิ่งที่ถูกกลายเป็นแปลก\nสิ่งที่ดีกลายเป็นพิลึก\nเรางงมานาน\n\nคนฉลาดจึงเป็นเหลี่ยม แต่ไม่บาด\nคม แต่ไม่ทิ่ม\nตรง แต่ไม่เลย\nสว่าง แต่ไม่แยง",
+  th:"รัฐบาลมัว ประชาชนเรียบ\nรัฐบาลคม ประชาชนแตก\n\nโชคร้ายพิงโชคดี\nโชคดีซ่อนใต้โชคร้าย\nใครรู้ขีด ไม่มีมาตรฐานตายตัว\n\nสิ่งที่ถูกกลายเป็นแปลก\nสิ่งที่ดีกลายเป็นพิลึก\nผมงงมานาน\n\nคนฉลาดก็เป็นเหลี่ยม แต่ไม่บาด\nคม แต่ไม่ทิ่ม\nตรง แต่ไม่เลย\nสว่าง แต่ไม่แยง",
   note:"\"Misfortune leans on fortune.\" Five words, a whole worldview. The book has been telling you this since chapter two but now it has the framing right. Every win has a debt buried in it. Every loss has an opening. The trick is not to predict the conversion. The trick is to expect it." },
 
 { n:59, mood:"practical", art:"guo-xi",
@@ -548,7 +548,7 @@ window.CHAPTERS = [
   en_title:"On Cooking a Small Fish",
   en:"Run a big country the way you cook a small fish.\n\nApproach the world with the Way, and even the ghosts lose their bite.\nNot that the ghosts lose their bite —\ntheir bite stops finding the people.\nNot that the bite stops finding the people —\nthe wise person also doesn't bite.\nNeither side bites the other.\nSo virtue flows back to both.",
   th_title:"ว่าด้วยทำปลาตัวเล็ก",
-  th:"ปกครองประเทศใหญ่ เหมือนทำปลาตัวเล็ก\n\nเข้าหาโลกด้วยทาง แม้ผีก็เสียเขี้ยว\nไม่ใช่ผีเสียเขี้ยว\nเขี้ยวของผีไม่หาคนเจอ\nไม่ใช่เขี้ยวไม่หาคนเจอ\nคนฉลาดก็ไม่กัดเช่นกัน\nไม่มีฝ่ายกัดอีกฝ่าย\nคุณธรรมก็กลับสู่ทั้งสอง",
+  th:"ปกครองประเทศใหญ่ เหมือนทำปลาตัวเล็ก\n\nเข้าหาโลกด้วยทาง แม้ผีก็เสียเขี้ยว\nไม่ใช่ผีเสียเขี้ยว\nเขี้ยวผีไม่โดนคน\nไม่ใช่เขี้ยวไม่โดนคน\nคนฉลาดก็ไม่กัดเช่นกัน\nไม่มีฝ่ายกัดอีกฝ่าย\nคุณธรรมก็กลับสู่ทั้งสอง",
   note:"How do you cook a small fish? Slowly. With as little stirring as possible. The skin tears if you flip it more than once. The country tears if you reform it more than once a decade. This is one of the chapters that has, in fact, been used by Chinese leaders for two thousand years to justify slow government. They cite it correctly." },
 
 { n:61, mood:"practical", art:"shen-zhou",
@@ -557,7 +557,7 @@ window.CHAPTERS = [
   en_title:"On the Lowest Place",
   en:"A great country lies low — the meeting place of the world, the female of the world.\nThe female always wins the male by being still.\nStill — and so, low.\n\nThe great country lowers itself before the small country, and gets the small country.\nThe small country lowers itself before the great country, and gets the great country.\nLowering wins both ways.\n\nThe great country wants only to gather and keep people.\nThe small country wants only to be of service.\nBoth get what they want.\nThe greater should be lower.",
   th_title:"ว่าด้วยที่ต่ำที่สุด",
-  th:"ประเทศใหญ่อยู่ต่ำ จุดพบของโลก เพศหญิงของโลก\nผู้หญิงชนะผู้ชายด้วยความนิ่ง\nนิ่ง จึงต่ำ\n\nประเทศใหญ่ต่ำลงให้ประเทศเล็ก ได้ประเทศเล็ก\nประเทศเล็กต่ำลงให้ประเทศใหญ่ ได้ประเทศใหญ่\nต่ำชนะทั้งสองทาง\n\nประเทศใหญ่อยากเก็บคน\nประเทศเล็กอยากเป็นประโยชน์\nทั้งสองได้ที่อยาก\nผู้ใหญ่ควรเป็นผู้ต่ำ",
+  th:"ประเทศใหญ่อยู่ต่ำ จุดพบของโลก เพศหญิงของโลก\nผู้หญิงชนะผู้ชายด้วยความนิ่ง\nนิ่ง ก็ต่ำ\n\nประเทศใหญ่ต่ำลงให้ประเทศเล็ก ได้ประเทศเล็ก\nประเทศเล็กต่ำลงให้ประเทศใหญ่ ได้ประเทศใหญ่\nต่ำชนะทั้งสองทาง\n\nประเทศใหญ่อยากเก็บคน\nประเทศเล็กอยากเป็นประโยชน์\nทั้งสองได้ที่อยาก\nผู้ใหญ่ควรเป็นผู้ต่ำ",
   note:"Diplomacy in fifty words. Notice that smallness is not weakness here. Smallness is a stance — it lets you fit through doors that the great country cannot. The book keeps insisting that the lower position is the more powerful one in the long run. Anyone who has worked in a hierarchy and watched the deputy outlast the principal knows this is empirically true." },
 
 { n:62, mood:"practical", art:"ni-zan",
@@ -566,7 +566,7 @@ window.CHAPTERS = [
   en_title:"On the Storehouse",
   en:"The Way is the storehouse of the ten thousand things.\nA treasure to good people.\nA refuge to people who are not.\n\nFine words buy esteem.\nGood deeds raise a person above others.\nWhat about the people who are not good — should we throw them out?\n\nWhen they enthrone the Son of Heaven, when they install the three dukes,\nthough they parade jade rings and four-horse chariots,\nnone of it matches sitting still and offering this Way.\n\nWhy did the ancients value this Way?\nDidn't they say: ask, and you find. Sin, and you are forgiven.\nSo the world values it.",
   th_title:"ว่าด้วยที่เก็บของ",
-  th:"ทางคือที่เก็บของหมื่นสิ่ง\nของล้ำค่าของคนดี\nที่หลบของคนไม่ดี\n\nคำงามซื้อความยกย่อง\nการกระทำดีทำให้คนสูงขึ้น\nคนไม่ดี เราจะทิ้งทำไม\n\nเมื่อสถาปนาบุตรของฟ้า ตั้งสามท่าน\nแม้มีหยกขนาน นำม้าสี่\nก็ไม่เท่านั่งและถวายทางนี้\n\nทำไมโบราณเห็นค่าทางนี้\nไม่ได้พูดหรือว่า ขอแล้วได้ มีบาปแล้วยกโทษ\nโลกจึงเห็นค่า",
+  th:"ทางคือที่เก็บของหมื่นสิ่ง\nของล้ำค่าของคนดี\nที่หลบของคนไม่ดี\n\nคำงามซื้อความยกย่อง\nการกระทำดีทำให้คนสูงขึ้น\nคนไม่ดี ผมจะทิ้งทำไม\n\nเมื่อสถาปนาบุตรของฟ้า ตั้งสามท่าน\nแม้มีหยกขนาน นำม้าสี่\nก็ไม่เท่านั่งและถวายทางนี้\n\nทำไมโบราณเห็นค่าทางนี้\nไม่ได้พูดหรือว่า ขอแล้วได้ มีบาปแล้วยกโทษ\nโลกก็เลยเห็นค่า",
   note:"\"What about the people who are not good — should we throw them out?\" The book answers with a clean no. The Way has room for them. Most people I meet have written off some category of human, formally or informally. The Stoics tried to write back. The Buddhists tried. The Christians tried. The book is doing the same work, with fewer hymns." },
 
 { n:63, mood:"practical", art:"liang-kai",
@@ -575,7 +575,7 @@ window.CHAPTERS = [
   en_title:"On Hard Things from Easy Starts",
   en:"Do without doing.\nWork without working.\nTaste the tasteless.\n\nWhether it is big or small, much or little — repay grievances with virtue.\n\nPlan the hard while it's still easy.\nDo the great while it's still small.\nThe world's hard things start out easy.\nThe world's great things start out small.\n\nSo the wise person never tries to be great — and so becomes great.\n\nWhoever promises lightly is rarely trusted.\nWhoever finds everything easy will find everything hard.\nSo the wise person treats everything as hard — and ends up with nothing hard.",
   th_title:"ว่าด้วยสิ่งยากเริ่มจากง่าย",
-  th:"ทำโดยไม่ทำ\nทำงานโดยไม่ทำ\nชิมของจืด\n\nไม่ว่าใหญ่หรือเล็ก มากหรือน้อย ตอบความแค้นด้วยคุณธรรม\n\nวางแผนสิ่งยาก ขณะที่ยังง่าย\nทำสิ่งใหญ่ ขณะที่ยังเล็ก\nสิ่งยากของโลก เริ่มต้นง่าย\nสิ่งใหญ่ของโลก เริ่มต้นเล็ก\n\nคนฉลาดไม่พยายามใหญ่ จึงเป็นใหญ่\n\nผู้สัญญาเบา ๆ ไว้ใจน้อย\nผู้เห็นว่าง่าย ๆ จะเจอยาก\nคนฉลาดถือว่าทุกอย่างยาก จึงไม่มีอะไรยาก",
+  th:"ทำโดยไม่ทำ\nทำงานโดยไม่ทำ\nชิมของจืด\n\nไม่ว่าใหญ่หรือเล็ก มากหรือน้อย ตอบความแค้นด้วยคุณธรรม\n\nวางแผนสิ่งยาก ขณะที่ยังง่าย\nทำสิ่งใหญ่ ขณะที่ยังเล็ก\nสิ่งยากของโลก เริ่มต้นง่าย\nสิ่งใหญ่ของโลก เริ่มต้นเล็ก\n\nคนฉลาดไม่พยายามใหญ่ ก็เลยเป็นใหญ่\n\nผู้สัญญาเบา ๆ ไว้ใจน้อย\nผู้เห็นว่าง่าย ๆ จะเจอยาก\nคนฉลาดถือว่าทุกอย่างยาก ก็เลยไม่มีอะไรยาก",
   note:"\"Plan the hard while it's still easy.\" Six words, the only project management advice I have ever needed. Every project I've ever shipped late was because I treated the hard parts as easy in the first month. Every project I've ever shipped well was because I sat with the hard parts when they were still small enough to fit on a single page." },
 
 { n:64, mood:"practical", art:"fan-kuan",
@@ -584,7 +584,7 @@ window.CHAPTERS = [
   en_title:"On Beginnings",
   en:"What's still — easy to hold.\nWhat hasn't appeared — easy to plan for.\nWhat's brittle — easy to break.\nWhat's small — easy to scatter.\n\nDeal with it before it exists.\nFix it before it goes wrong.\n\nA tree you can't get your arms around grew from a sprout.\nA nine-story tower started with a basket of dirt.\nA thousand-mile journey starts under your feet.\n\nWhoever forces it ruins it.\nWhoever grips it loses it.\nSo the wise person doesn't force, doesn't ruin.\nDoesn't grip, doesn't lose.\n\nPeople fail right at the end.\nIf you finish as carefully as you started, no project ever fails.\n\nSo the wise person wants what others don't want.\nDoesn't value rare goods.\nLearns what others don't learn.\nReturns to what most people skip over.\nThey help the ten thousand things follow their own course — and don't dare interfere.",
   th_title:"ว่าด้วยจุดเริ่มต้น",
-  th:"ที่นิ่ง ถือง่าย\nที่ยังไม่ปรากฏ วางแผนง่าย\nที่เปราะ ฉีกง่าย\nที่เล็ก กระจายง่าย\n\nจัดก่อนมันมี\nแก้ก่อนมันผิด\n\nต้นไม้ที่กอดไม่รอบ เกิดจากหน่อ\nหอเก้าชั้น เริ่มจากตะกร้าดิน\nเดินทางพันลี้ เริ่มที่ใต้เท้า\n\nฝืน พัง\nกำ เสีย\nคนฉลาดไม่ฝืน ไม่พัง\nไม่กำ ไม่เสีย\n\nคนล้มเหลวตรงปลาย\nถ้าจบอย่างระวังเหมือนตอนเริ่ม ไม่มีโครงการล้มเหลว\n\nคนฉลาดอยากในสิ่งที่คนอื่นไม่อยาก\nไม่เห็นค่าของหายาก\nเรียนสิ่งที่คนอื่นไม่เรียน\nกลับสู่สิ่งที่คนส่วนใหญ่ข้าม\nช่วยหมื่นสิ่งให้ตามวิถีของตัว และไม่กล้าก้าวก่าย",
+  th:"ที่นิ่ง ถือง่าย\nที่ยังไม่ปรากฏ วางแผนง่าย\nที่เปราะ ฉีกง่าย\nที่เล็ก กระจายง่าย\n\nจัดก่อนมันมี\nแก้ก่อนมันผิด\n\nต้นไม้ที่กอดไม่รอบ เกิดจากหน่อ\nหอเก้าชั้น เริ่มจากตะกร้าดิน\nเดินทางพันลี้ เริ่มที่ใต้เท้า\n\nฝืน พัง\nกำ เสีย\nคนฉลาดไม่ฝืน ไม่พัง\nไม่กำ ไม่เสีย\n\nคนล้มเหลวตรงปลาย\nถ้าจบอย่างระวังเหมือนตอนเริ่ม ไม่มีโครงการล้มเหลว\n\nคนฉลาดอยากสิ่งที่คนอื่นไม่อยาก\nไม่เห็นค่าของหายาก\nเรียนสิ่งที่คนอื่นไม่เรียน\nกลับสู่สิ่งที่คนส่วนใหญ่ข้าม\nช่วยหมื่นสิ่งให้ตามวิถีของมัน และไม่กล้าก้าวก่าย",
   note:"This is the chapter every project manager should have tattooed somewhere. \"People fail right at the end.\" The launch is the most dangerous moment. The wedding. The book deal. The product release. The chapter is the only good explanation I have read for why so many things fall apart in the last six per cent." },
 
 { n:65, mood:"practical", art:"ma-yuan",
@@ -593,7 +593,7 @@ window.CHAPTERS = [
   en_title:"On Not Making People Clever",
   en:"The old masters of the Way did not make the people clever.\nThey kept them simple.\nThe people are hard to govern when they have a lot of cleverness.\nSo: govern with cleverness, you are the country's thief.\nGovern without it, you are the country's blessing.\nKnow these two and you have the standard.\nKnow the standard always — we call this dark virtue.\nDark virtue is deep, and far, and goes against things —\nand then arrives at the great accord.",
   th_title:"ว่าด้วยไม่ทำให้คนฉลาด",
-  th:"อาจารย์เก่าของทางไม่ทำให้ประชาชนฉลาด\nรักษาให้เรียบ\nประชาชนปกครองยาก เมื่อมีความฉลาดมาก\nปกครองด้วยความฉลาด เราคือโจรของประเทศ\nไม่ปกครองด้วยความฉลาด เราคือพรของประเทศ\nรู้สองสิ่งนี้ เรามีมาตรฐาน\nรู้มาตรฐานเสมอ เรียกว่าคุณธรรมมืด\nคุณธรรมมืดลึกและไกล และสวนทางกับสิ่ง\nแล้วถึงความประสานใหญ่",
+  th:"อาจารย์เก่าของทางไม่ทำให้ประชาชนฉลาด\nรักษาให้เรียบ\nประชาชนปกครองยาก เมื่อมีความฉลาดมาก\nปกครองด้วยความฉลาด ก็เป็นโจรของประเทศ\nไม่ปกครองด้วยความฉลาด ก็เป็นพรของประเทศ\nรู้สองสิ่งนี้ ก็มีมาตรฐาน\nรู้มาตรฐานเสมอ เรียกว่าคุณธรรมมืด\nคุณธรรมมืดลึกและไกล และสวนทางกับสิ่งทั้งหลาย\nแล้วถึงความประสานใหญ่",
   note:"This chapter, like chapter 3, gets the book accused of being authoritarian. The accusation is partly fair — the chapter is reactionary about education. But the real argument is that government-by-cleverness is a cleverness arms race, in which the government is always one step behind because it has fewer hours in the day than the average citizen. Better to drop the race." },
 
 { n:66, mood:"practical", art:"hokusai-fuji",
@@ -602,7 +602,7 @@ window.CHAPTERS = [
   en_title:"On Why the Sea Wins",
   en:"The reason rivers and seas are kings of a hundred valleys —\nthey know how to keep low. So they are kings.\n\nIf you want to be above people, your words must put you below them.\nIf you want to lead people, your body must follow them.\n\nSo the wise person is above and the people don't feel the weight.\nIs in front and the people aren't bruised.\nThe world cheerfully pushes them up — and never gets tired of it.\nBecause they don't compete.\nAnd because they don't compete, no one can compete with them.",
   th_title:"ว่าด้วยทำไมทะเลชนะ",
-  th:"เหตุที่แม่น้ำและทะเลเป็นกษัตริย์ของร้อยหุบเขา\nเพราะรู้จักอยู่ต่ำ จึงเป็นกษัตริย์\n\nถ้าอยากอยู่เหนือคน คำพูดต้องอยู่ใต้\nถ้าอยากนำคน กายต้องอยู่หลัง\n\nคนฉลาดอยู่เหนือ ประชาชนไม่รู้สึกหนัก\nอยู่หน้า ประชาชนไม่ช้ำ\nโลกยินดีดันขึ้น ไม่เบื่อ\nเพราะเขาไม่แข่ง\nเพราะไม่แข่ง ไม่มีใครแข่งด้วยได้",
+  th:"เหตุที่แม่น้ำและทะเลเป็นกษัตริย์ของร้อยหุบเขา\nเพราะรู้จักอยู่ต่ำ ก็เลยเป็นกษัตริย์\n\nถ้าอยากอยู่เหนือคน คำพูดต้องอยู่ใต้\nถ้าอยากนำคน กายต้องอยู่หลัง\n\nคนฉลาดอยู่เหนือ ประชาชนไม่รู้สึกหนัก\nอยู่หน้า ประชาชนไม่ช้ำ\nโลกยินดีดันขึ้น ไม่เบื่อ\nเพราะเขาไม่แข่ง\nเพราะไม่แข่ง ไม่มีใครแข่งด้วยได้",
   note:"The sea is the lowest thing on the planet — that is why it has all the water. The chapter is one of the cleanest pieces of leadership advice in any tradition: position yourself below the people you mean to lead. The result is not weakness. The result is that gravity does the recruiting for you." },
 
 { n:67, mood:"witty", art:"wang-hui",
@@ -611,7 +611,7 @@ window.CHAPTERS = [
   en_title:"On Three Treasures",
   en:"Everyone says my Way is great — but it doesn't look great.\nIt's because it's great that it doesn't look great.\nIf it had looked great, it would have been small a long time ago.\n\nI have three treasures. I hold them and keep them.\nFirst: kindness.\nSecond: thrift.\nThird: not daring to be ahead of the world.\n\nKind, so I can be brave.\nThrifty, so I can be generous.\nNot ahead, so I can finish my work.\n\nLet go of kindness for bravery.\nLet go of thrift for generosity.\nLet go of being last for being first.\nYou die.\n\nKindness wins battles.\nKindness defends a wall.\nWhen heaven means to save someone, it gives them kindness as a guard.",
   th_title:"ว่าด้วยสามของล้ำค่า",
-  th:"ทุกคนพูดว่าทางของผมใหญ่ แต่ดูไม่ใหญ่\nเพราะใหญ่จึงดูไม่ใหญ่\nถ้าดูใหญ่ คงเล็กไปนานแล้ว\n\nผมมีของล้ำค่าสามอย่าง ถือไว้และรักษาไว้\nหนึ่ง เมตตา\nสอง ประหยัด\nสาม ไม่กล้านำหน้าโลก\n\nเมตตา จึงกล้าได้\nประหยัด จึงกว้างขวาง\nไม่นำหน้า จึงเสร็จงานเป็นผู้นำ\n\nทิ้งเมตตาเพื่อความกล้า\nทิ้งประหยัดเพื่อความกว้างขวาง\nทิ้งหลังเพื่อหน้า\nตาย\n\nเมตตาชนะศึก\nเมตตารักษากำแพง\nเมื่อฟ้าจะช่วยใคร ให้เมตตาเป็นยาม",
+  th:"ทุกคนพูดว่าทางของผมใหญ่ แต่ดูไม่ใหญ่\nเพราะใหญ่ ก็เลยดูไม่ใหญ่\nถ้าดูใหญ่ คงเล็กไปนานแล้ว\n\nผมมีของล้ำค่าสามอย่าง ถือไว้และรักษาไว้\nหนึ่ง เมตตา\nสอง ประหยัด\nสาม ไม่กล้านำหน้าโลก\n\nเมตตา ก็เลยกล้าได้\nประหยัด ก็เลยกว้างขวาง\nไม่นำหน้า ก็เลยเสร็จงานเป็นผู้นำ\n\nทิ้งเมตตาเพื่อความกล้า\nทิ้งประหยัดเพื่อความกว้างขวาง\nทิ้งหลังเพื่อหน้า\nตาย\n\nเมตตาชนะศึก\nเมตตารักษากำแพง\nเมื่อฟ้าจะช่วยใคร ให้เมตตาเป็นยาม",
   note:"The three treasures. Memorize them. Live by them.\n\nKindness — so you can be brave. Brave without kindness is just cruelty in armor.\nThrift — so you can be generous. Generous without thrift is bankrupt by Tuesday.\nNot daring to lead — so you can finish your work. The leaders who pushed to the front first are buried in nameless graves." },
 
 { n:68, mood:"practical", art:"sesshu",
@@ -620,7 +620,7 @@ window.CHAPTERS = [
   en_title:"On Not Fighting",
   en:"A good warrior is not warlike.\nA good fighter doesn't get angry.\nA good winner doesn't engage.\nA good employer of people puts themselves below them.\nWe call this the virtue of not competing.\nWe call this the power of using people.\nWe call this: aligning with heaven, the oldest extreme.",
   th_title:"ว่าด้วยไม่สู้",
-  th:"นักรบดี ไม่ชอบรบ\nนักสู้ดี ไม่โกรธ\nผู้ชนะดี ไม่ปะทะ\nผู้ใช้คนดี อยู่ใต้พวกเขา\nเรียกว่าคุณธรรมของไม่แข่ง\nเรียกว่าพลังของการใช้คน\nเรียกว่าจับคู่กับขอบฟ้าโบราณ",
+  th:"นักรบดี ไม่ชอบรบ\nนักสู้ดี ไม่โกรธ\nผู้ชนะดี ไม่ปะทะ\nผู้ใช้คนดี อยู่ใต้พวกเขา\nเรียกว่าคุณธรรมของไม่แข่ง\nเรียกว่าพลังของการใช้คน\nเรียกว่าสอดคล้องกับฟ้าโบราณ",
   note:"Six lines, one of the densest pieces of advice in the book. The good warrior is not warlike. Most violent men I have known were not warriors. The good winner doesn't engage. Most won battles were forfeits. The good employer of people stands below them. Most managers I have respected were paid less, in attention, than the people they managed." },
 
 { n:69, mood:"practical", art:"liang-kai",
@@ -638,7 +638,7 @@ window.CHAPTERS = [
   en_title:"On Being Misunderstood",
   en:"My words are easy to understand. Easy to do.\nNobody in the world can understand them. Nobody can practice them.\n\nMy words have a source. My deeds have a master.\nBecause they don't know — that's why they don't know me.\n\nThe ones who know me are few.\nThe ones who follow me are precious.\n\nSo the wise person wears a coarse robe — and carries jade in their chest.",
   th_title:"ว่าด้วยถูกเข้าใจผิด",
-  th:"คำของผมเข้าใจง่าย ทำตามง่าย\nไม่มีใครในโลกเข้าใจได้ ไม่มีใครทำตามได้\n\nคำของผมมีต้น การกระทำของผมมีนาย\nเพราะไม่รู้ จึงไม่รู้จักผม\n\nผู้รู้จักผมน้อย ผู้ตามผมล้ำค่า\n\nคนฉลาดสวมเสื้อหยาบ และอุ้มหยกในอก",
+  th:"คำของผมเข้าใจง่าย ทำตามง่าย\nไม่มีใครในโลกเข้าใจได้ ไม่มีใครทำตามได้\n\nคำของผมมีต้น การกระทำของผมมีนาย\nเพราะไม่รู้ ก็เลยไม่รู้จักผม\n\nผู้รู้จักผมน้อย ผู้ตามผมล้ำค่า\n\nคนฉลาดสวมเสื้อหยาบ และอุ้มหยกในอก",
   note:"This is the chapter Lao Tzu wrote on a bad day. The book has been telling you obvious, simple things for sixty-nine chapters and almost nobody has understood. He sounds, here, briefly disappointed. The disappointment is real and it is also the proof. The book is correct. The proof is that it is mostly ignored." },
 
 { n:71, mood:"witty", art:"shen-zhou",
@@ -647,7 +647,7 @@ window.CHAPTERS = [
   en_title:"On Knowing You Don't Know",
   en:"To know you don't know — best.\nTo not know, and think you know — disease.\n\nThe one who treats this disease as a disease is free of it.\nThe wise person has no disease — because they treat the disease as the disease.\nAnd so they are free of it.",
   th_title:"ว่าด้วยรู้ว่าไม่รู้",
-  th:"รู้ว่าไม่รู้ ดีที่สุด\nไม่รู้ และคิดว่ารู้ คือโรค\n\nผู้ที่รับโรคนี้เหมือนโรค ก็พ้น\nคนฉลาดไม่มีโรค เพราะรับโรคเหมือนโรค\nจึงพ้น",
+  th:"รู้ว่าไม่รู้ ดีที่สุด\nไม่รู้ และคิดว่ารู้ คือโรค\n\nผู้ที่รับโรคนี้เหมือนโรค ก็พ้น\nคนฉลาดไม่มีโรค เพราะรับโรคเหมือนโรค\nก็เลยพ้น",
   note:"The Socratic chapter — written eight hundred years before Socrates. The disease is not ignorance. The disease is the comfortable mistaking of ignorance for knowledge. Most of the harm I have seen done in committees comes from people who have not done the reading and don't know they haven't." },
 
 { n:72, mood:"practical", art:"ma-yuan",
@@ -683,7 +683,7 @@ window.CHAPTERS = [
   en_title:"On Why People Are Hungry",
   en:"The people are hungry because their rulers eat the taxes.\nThat's why they're hungry.\nThe people are hard to rule because their rulers do too much.\nThat's why they're hard to rule.\nThe people are reckless with death because their rulers are too eager to live.\nThat's why they take death lightly.\n\nOnly those who do not treat living as a project understand life better than those who treasure it.",
   th_title:"ว่าด้วยเหตุที่คนหิว",
-  th:"ประชาชนหิว เพราะผู้ปกครองกินภาษี\nจึงหิว\nประชาชนปกครองยาก เพราะผู้ปกครองทำมาก\nจึงปกครองยาก\nประชาชนเสี่ยงตาย เพราะผู้ปกครองอยากอยู่หนา\nจึงเอาความตายอย่างเบา\n\nเฉพาะผู้ที่ไม่ทำให้การมีชีวิตเป็นโครงการ ที่เข้าใจชีวิตดีกว่าผู้ที่ทะนุถนอมมัน",
+  th:"ประชาชนหิว เพราะผู้ปกครองกินภาษี\nก็เลยหิว\nประชาชนปกครองยาก เพราะผู้ปกครองทำมาก\nก็เลยปกครองยาก\nประชาชนเสี่ยงตาย เพราะผู้ปกครองอยากอยู่หนา\nก็เลยเอาความตายอย่างเบา\n\nเฉพาะผู้ที่ไม่ทำให้การมีชีวิตเป็นโครงการ ที่เข้าใจชีวิตดีกว่าผู้ที่ทะนุถนอมมัน",
   note:"\"The people are reckless with death because their rulers are too eager to live.\" The chapter is one of the strangest pieces of social commentary in any book. The hunger of the country is a function of the appetite of the court. The recklessness of the country is a function of the desperation of the court. There is, somewhere, a reverse leadership textbook in this paragraph." },
 
 { n:76, mood:"silence", art:"mi-fu",
@@ -710,7 +710,7 @@ window.CHAPTERS = [
   en_title:"On Water Again",
   en:"Nothing in the world is softer or weaker than water.\nBut for attacking the firm and strong, nothing beats it.\nNothing replaces it.\n\nThe weak beats the strong. The soft beats the hard.\nEveryone knows this. Nobody can do it.\n\nSo the wise person says:\n\"To take on the country's filth — that's what makes you the country's master.\nTo take on the country's bad luck — that's what makes you the world's king.\"\nThe right words sound like their opposite.",
   th_title:"ว่าด้วยน้ำอีกครั้ง",
-  th:"ไม่มีสิ่งใดในโลกอ่อนกว่าน้ำ\nแต่สำหรับการโจมตีสิ่งแข็ง ไม่มีอะไรดีกว่า\nไม่มีอะไรแทนได้\n\nอ่อนชนะแข็ง อ่อนนุ่มชนะกระด้าง\nทุกคนรู้ ไม่มีใครทำได้\n\nคนฉลาดจึงพูดว่า\n\"รับความสกปรกของประเทศ คือเจ้าของประเทศ\nรับความซวยของประเทศ คือกษัตริย์ของโลก\"\nคำที่ถูก ฟังเหมือนตรงข้าม",
+  th:"ไม่มีสิ่งใดในโลกอ่อนกว่าน้ำ\nแต่สำหรับการโจมตีสิ่งแข็ง ไม่มีอะไรดีกว่า\nไม่มีอะไรแทนได้\n\nอ่อนชนะแข็ง อ่อนนุ่มชนะกระด้าง\nทุกคนรู้ ไม่มีใครทำได้\n\nคนฉลาดก็พูดว่า\n\"รับความสกปรกของประเทศ คือเจ้าของประเทศ\nรับความซวยของประเทศ คือกษัตริย์ของโลก\"\nคำที่ถูก ฟังเหมือนตรงข้าม",
   note:"The chapter that returns to water — the central image of the book — and gives it a political twist. The leader is the one who absorbs what nobody wants to absorb. The country's filth, the country's bad luck, the country's accidents. The leader is, in the end, a sponge. We have somehow ended up with leaders who are mostly transmitters. The book has been arguing against this for two and a half millennia." },
 
 { n:79, mood:"practical", art:"shen-zhou",
@@ -719,7 +719,7 @@ window.CHAPTERS = [
   en_title:"On Settled Grievances",
   en:"Settle a great grievance, and there's always some grievance left over.\nHow can that be a good outcome?\n\nSo the wise person holds the left half of the contract, and doesn't press the other side.\nThose with virtue hold the contract.\nThose without virtue collect the tax.\n\nThe Way of heaven plays no favorites.\nIt always sides with the good.",
   th_title:"ว่าด้วยข้อพิพาทที่ยุติแล้ว",
-  th:"ยุติข้อพิพาทใหญ่ ยังมีข้อพิพาทเหลือเสมอ\nนั่นจะเป็นผลลัพธ์ที่ดีได้อย่างไร\n\nคนฉลาดจึงถือสัญญาด้านซ้าย และไม่กดดันอีกฝ่าย\nผู้มีคุณธรรมถือสัญญา\nผู้ไม่มีคุณธรรมเก็บภาษี\n\nวิถีของฟ้าไม่ลำเอียง\nอยู่ข้างคนดีเสมอ",
+  th:"ยุติข้อพิพาทใหญ่ ยังมีข้อพิพาทเหลือเสมอ\nนั่นจะเป็นผลดีได้อย่างไร\n\nคนฉลาดก็ถือสัญญาด้านซ้าย และไม่กดดันอีกฝ่าย\nผู้มีคุณธรรมถือสัญญา\nผู้ไม่มีคุณธรรมเก็บภาษี\n\nวิถีของฟ้าไม่ลำเอียง\nอยู่ข้างคนดีเสมอ",
   note:"\"Settle a great grievance, and there's always some grievance left over.\" The most realistic statement about reconciliation in any tradition. Truth and reconciliation commissions, peace treaties, divorces — all of them produce a tail of grievance that lasts decades. The chapter is asking whether the original grievance might have been better avoided. Not always. Sometimes. More often than we admit." },
 
 { n:80, mood:"silence", art:"ni-zan",
