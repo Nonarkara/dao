@@ -795,6 +795,48 @@ body.lang-cn .origin-th-title { display: none; }
 .cn-listen-btn.is-playing { background: var(--seal); color: var(--paper); border-color: var(--seal); }
 .cn-listen-btn.is-playing em { color: var(--paper); }
 
+.cn-listen-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+.cn-listen-row .cn-listen-btn { margin-top: 0; }
+.cn-walk-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  min-height: 44px;
+}
+.cn-walk-btn em {
+  font-style: italic;
+  font-size: .85em;
+  color: var(--seal);
+  text-transform: lowercase;
+  letter-spacing: .1em;
+}
+.cn-walk-btn:hover { border-color: var(--seal); color: var(--seal); background: rgba(168,51,50,.05); }
+.cn-walk-btn.is-walking { background: var(--seal); color: var(--paper); border-color: var(--seal); }
+.cn-walk-btn.is-walking em { color: var(--paper); }
+
+/* Per-character click feedback when TTS is speaking that character. */
+.cn-stack-char { cursor: pointer; transition: background .15s ease, color .15s ease; padding: 2px 1px; border-radius: 0; }
+.cn-stack-char:hover { background: rgba(168,51,50,.06); }
+.cn-stack-char:hover .cs-c { color: var(--seal); }
+.cn-stack-char.is-speaking { background: var(--seal); }
+.cn-stack-char.is-speaking .cs-c,
+.cn-stack-char.is-speaking .cs-py { color: var(--paper); }
+
 /* ============================================================
    COMPARE PANEL — 比較 bǐ jiào — translations side by side
    ============================================================ */
@@ -2390,6 +2432,44 @@ body.lang-cn .note-body[data-lang="cn"] strong {
   font-weight: 600;
 }
 
+/* Intentional "coming soon" placeholder for unfinished readings.
+   Designed to look deliberate, not broken — hairline frame, mono number,
+   short line of body text. Replaces the old fallback-tag-+-english-leak. */
+.reading-pending {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 44px 24px 48px;
+  border-top: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  text-align: center;
+  margin: 8px 0;
+}
+.reading-pending .rp-mark {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--ink-fade, rgba(0,0,0,.30));
+}
+.reading-pending .rp-mark::before { content: "CH "; }
+.reading-pending .rp-line {
+  font-family: var(--cn-serif);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+body.lang-th .reading-pending .rp-line { font-family: var(--th); letter-spacing: 0; }
+.reading-pending .rp-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: var(--ink-fade, rgba(0,0,0,.32));
+  max-width: 36ch;
+  line-height: 1.7;
+}
+body.lang-th .reading-pending .rp-sub { font-family: var(--th); font-size: 13px; letter-spacing: 0; }
+
 .reading-sources {
   margin-top: 32px;
   padding-top: 18px;
@@ -3906,6 +3986,302 @@ body.pinyin-off .notes-tab em { display: none; }
 @media (max-width: 600px) {
   .notes-btn .nb-en { display: none; }
   .notes-btn { padding: 0 7px; }
+}
+
+/* The Characters button in the topbar (字) */
+.chars-btn {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 0 9px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  cursor: pointer;
+  margin-right: 6px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.chars-btn .cb-han {
+  font-family: var(--cn-elegant);
+  font-size: 14px;
+  line-height: 1;
+}
+.chars-btn:hover { color: var(--seal); border-color: var(--seal); }
+@media (max-width: 600px) {
+  .chars-btn { padding: 0 7px; }
+}
+
+/* ============================================================
+   CHARACTERS OVERLAY · 字 zì — the 828 unique characters
+   Modeled on the notes overlay structure, but its own layout.
+   ============================================================ */
+.chars-overlay {
+  position: fixed; inset: 0;
+  z-index: 1000;
+  background: var(--paper);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.chars-overlay.open { opacity: 1; pointer-events: auto; }
+.chars-scrim {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.30);
+  z-index: 999;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.chars-overlay.open ~ .chars-scrim { opacity: 1; pointer-events: auto; }
+
+.chars-shell { max-width: 1280px; margin: 0 auto; padding: 32px 6vw 80px; }
+.chars-head { position: relative; padding-bottom: 32px; border-bottom: 1px solid var(--rule); margin-bottom: 32px; }
+.chars-close {
+  position: absolute; top: 0; right: 0;
+  width: 44px; height: 44px;
+  background: transparent; border: 1px solid var(--rule);
+  font-size: 22px; line-height: 1; color: var(--ink-soft);
+  cursor: pointer; transition: color .2s, border-color .2s;
+}
+.chars-close:hover { color: var(--seal); border-color: var(--seal); }
+.chars-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.chars-kicker em { font-style: italic; color: var(--seal); }
+.chars-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.35;
+  letter-spacing: .005em;
+  margin: 0 0 24px;
+  max-width: 64ch;
+  color: var(--ink);
+}
+.chars-title em { font-style: italic; color: var(--seal); }
+.chars-controls { display: flex; flex-direction: column; gap: 14px; }
+.chars-search {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .04em;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+  min-height: 44px;
+}
+.chars-search::placeholder { color: var(--ink-fade); letter-spacing: .08em; }
+.chars-search:focus { border-color: var(--seal); }
+.chars-sort { display: flex; flex-wrap: wrap; gap: 8px; }
+.chars-sort-btn {
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .2s;
+  min-height: 44px;
+}
+.chars-sort-btn:hover { border-color: var(--seal); color: var(--seal); }
+.chars-sort-btn.is-active { background: var(--seal); color: var(--paper); border-color: var(--seal); }
+.chars-howread {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 78ch;
+  margin: 12px 0 0;
+}
+body.lang-th .chars-howread { font-family: var(--th); font-size: 14px; letter-spacing: 0; }
+body.lang-cn .chars-howread { font-family: var(--cn-serif); font-size: 13px; letter-spacing: 0; }
+.chars-howread-link { color: var(--seal); text-decoration: underline; text-underline-offset: 3px; }
+.chars-howread-link:hover { text-decoration: none; }
+
+.chars-counter {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  color: var(--ink-fade);
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.chars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  border-left: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+}
+.ch-cell {
+  padding: 20px 18px 16px;
+  border-right: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.10));
+  position: relative;
+  background: var(--paper);
+  transition: background .15s ease;
+}
+.ch-cell:hover { background: rgba(168,51,50,.03); }
+.ch-mark {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: var(--ink-fade, rgba(0,0,0,.30));
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.ch-mark .ch-rank { color: var(--ink-fade); }
+.ch-mark .ch-firstchap { color: var(--seal); text-decoration: none; }
+.ch-mark .ch-firstchap:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ch-glyph {
+  font-family: var(--cn-serif);
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ink);
+  cursor: pointer;
+  margin: 4px 0 10px;
+  user-select: none;
+  display: flex; align-items: baseline; gap: 10px;
+}
+.ch-glyph:hover { color: var(--seal); }
+.ch-glyph .ch-simp {
+  font-family: var(--cn-serif);
+  font-size: 22px;
+  color: var(--ink-fade);
+  border: 1px solid var(--rule);
+  padding: 2px 6px;
+  align-self: flex-end;
+}
+.ch-py {
+  font-family: var(--mono);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--seal);
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+.ch-g {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin: 0 0 4px;
+  font-style: italic;
+}
+.ch-b {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-fade);
+  line-height: 1.6;
+  letter-spacing: .02em;
+  margin: 6px 0 0;
+}
+.ch-m {
+  font-family: var(--body);
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 6px 0 0;
+}
+.ch-stats {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule-soft, rgba(0,0,0,.08));
+}
+.ch-freq {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--ink-fade);
+}
+.ch-speak {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .2s;
+}
+.ch-speak em { color: var(--seal); font-style: italic; text-transform: lowercase; }
+.ch-speak:hover { border-color: var(--seal); color: var(--seal); }
+
+/* "How to read" primer section */
+.chars-howread-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--rule);
+}
+.chrh-head { margin-bottom: 28px; }
+.chrh-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--seal);
+  display: block;
+  margin-bottom: 12px;
+}
+.chrh-title {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(24px, 3.4vw, 36px);
+  line-height: 1.25;
+  letter-spacing: .005em;
+  margin: 0;
+  color: var(--ink);
+}
+.chrh-body p {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 68ch;
+  margin: 0 0 18px;
+}
+.chrh-body p em { color: var(--seal); font-style: italic; }
+.chrh-body ol {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 68ch;
+  padding-left: 22px;
+  margin: 0 0 24px;
+}
+.chrh-body ol li { margin-bottom: 10px; }
+.chrh-body ol li strong { color: var(--ink); font-weight: 500; }
+body.lang-th .chrh-body p,
+body.lang-th .chrh-body ol { font-family: var(--th); font-size: 17px; line-height: 1.78; }
+body.lang-cn .chrh-body p,
+body.lang-cn .chrh-body ol { font-family: var(--cn-serif); font-size: 17px; line-height: 1.85; letter-spacing: .02em; }
+
+/* Mobile: smaller grid cells */
+@media (max-width: 600px) {
+  .chars-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .ch-glyph { font-size: 44px; }
+  .chars-shell { padding: 20px 18px 60px; }
 }
 
 /* ============================================================

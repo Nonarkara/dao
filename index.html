@@ -59,7 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Noto+Serif+SC:wght@200..900&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=JetBrains+Mono:ital,wght@0,300..700;1,300..700&family=IBM+Plex+Mono:wght@300..600&family=IBM+Plex+Sans+Thai:wght@200..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=42">
+<link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body>
 
@@ -84,6 +84,9 @@
     </button>
     <button class="tool-btn notes-btn" id="notesBtn" title="Dr Non's notes (N)" aria-label="Open notes">
       <span class="nb-han">注</span>
+    </button>
+    <button class="tool-btn chars-btn" id="charsBtn" title="The 828 characters (Z)" aria-label="Open character index">
+      <span class="cb-han">字</span>
     </button>
     <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
       <span class="lang-pill" data-lang-code="en">EN</span>
@@ -1144,6 +1147,102 @@
 </aside>
 <div class="notes-scrim" id="notesScrim"></div>
 
+<!-- ── CHARACTERS OVERLAY · 字 — the 828 unique characters of the Dao De Jing ── -->
+<aside class="chars-overlay" id="charsOverlay" aria-hidden="true">
+  <div class="chars-shell">
+    <header class="chars-head">
+      <button class="chars-close" id="charsClose" aria-label="Close">×</button>
+      <p class="chars-kicker">字 <em>zì</em> · <span data-lang="en">Every character in the Dao De Jing</span><span data-lang="th" style="font-family:var(--th)">ตัวอักษรทั้งหมดในเต้าเต๋อจิง</span><span data-lang="cn" style="font-family:var(--cn-serif)">道德经里的每一个字</span></p>
+      <h2 class="chars-title">
+        <span data-lang="en">828 characters. <em>Most appear more than once.</em> Learn them, and you can read the book.</span>
+        <span data-lang="th" style="font-family:var(--th)">828 ตัวอักษร <em>ส่วนใหญ่ปรากฏซ้ำ</em> เรียนรู้พวกมัน แล้วคุณก็อ่านหนังสือเล่มนี้ได้</span>
+        <span data-lang="cn" style="font-family:var(--cn-serif)">828 个字。<em>大多重复出现。</em>学会它们，整本书就读得下来。</span>
+      </h2>
+      <div class="chars-controls">
+        <input type="search" class="chars-search" id="charsSearch" placeholder="搜 · Search character or pinyin · ค้นหา" autocomplete="off" spellcheck="false">
+        <div class="chars-sort" role="tablist">
+          <button class="chars-sort-btn is-active" data-sort="first" role="tab">
+            <span data-lang="en">First appearance</span>
+            <span data-lang="th" style="font-family:var(--th)">ลำดับปรากฏ</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">出场顺序</span>
+          </button>
+          <button class="chars-sort-btn" data-sort="freq" role="tab">
+            <span data-lang="en">Most frequent</span>
+            <span data-lang="th" style="font-family:var(--th)">ความถี่</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">出现最多</span>
+          </button>
+          <button class="chars-sort-btn" data-sort="stroke" role="tab">
+            <span data-lang="en">Pinyin A→Z</span>
+            <span data-lang="th" style="font-family:var(--th)">พินอิน A→Z</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">拼音排序</span>
+          </button>
+        </div>
+        <p class="chars-howread">
+          <span data-lang="en">→ <a href="#chars-howread" class="chars-howread-link">How to read pre-Han Chinese</a>: in classical Chinese, each character is a small puzzle — a unit of meaning that opens into several. You don't translate. You decode. Read this 90-second primer first.</span>
+          <span data-lang="th" style="font-family:var(--th)">→ <a href="#chars-howread" class="chars-howread-link">วิธีอ่านภาษาจีนก่อนยุคซ่ง</a>: ในภาษาจีนคลาสสิก ตัวอักษรแต่ละตัวคือปริศนาเล็ก ๆ — หน่วยความหมายที่เปิดออกเป็นหลายอย่าง คุณไม่ได้แปล คุณถอดรหัส อ่านคู่มือ 90 วินาทีนี้ก่อน</span>
+          <span data-lang="cn" style="font-family:var(--cn-serif)">→ <a href="#chars-howread" class="chars-howread-link">如何阅读先秦汉语</a>：在古汉语里，每一个字都是一道小谜——一颗意义的种子，能开成好几种。你不是翻译，你是解码。先读这份九十秒的入门。</span>
+        </p>
+      </div>
+    </header>
+    <div class="chars-body">
+      <p class="chars-counter" id="charsCounter"></p>
+      <div class="chars-grid" id="charsGrid"></div>
+
+      <!-- HOW TO READ PRE-HAN CHINESE (the small explainer Dr Non asked for) -->
+      <section class="chars-howread-section" id="chars-howread">
+        <header class="chrh-head">
+          <span class="chrh-kicker" data-lang="en">A 90-second primer</span>
+          <span class="chrh-kicker" data-lang="th" style="font-family:var(--th)">คู่มือ 90 วินาที</span>
+          <span class="chrh-kicker" data-lang="cn" style="font-family:var(--cn-serif)">九十秒入门</span>
+          <h3 class="chrh-title">
+            <span data-lang="en">How to read pre-Han Chinese</span>
+            <span data-lang="th" style="font-family:var(--th)">วิธีอ่านภาษาจีนก่อนยุคซ่ง</span>
+            <span data-lang="cn" style="font-family:var(--cn-serif)">如何阅读先秦汉语</span>
+          </h3>
+        </header>
+        <div class="chrh-body">
+          <p data-lang="en">Modern Mandarin is a translation language: a word means one thing, you translate it, you move on. Classical Chinese — the language Laozi wrote in — is not like that. Every character is a small object you turn in your hand. It has a shape. It has a sound. It has several meanings, usually related but sometimes only by metaphor. You don't translate it. You <em>decode</em> it.</p>
+          <p data-lang="en">Take 道 (dào). Modern Mandarin: "way," "path," "road." Pre-Han: yes, but also "to speak," "to express," and a noun for the principle that runs through everything. The first sentence of this book — 道可道，非常道 — uses the same character three times, and each time it means something slightly different. Translators have spent two thousand years pretending the three meanings can be flattened into one. They cannot. The shape of the character is doing the work.</p>
+          <p data-lang="en">When you read the Dao De Jing, do this:</p>
+          <ol data-lang="en">
+            <li><strong>Read aloud first.</strong> The rhythm of classical Chinese is part of the meaning. Hit the Listen button. Or hit the per-character walker (字). Hear the tones.</li>
+            <li><strong>Don't reach for the translation immediately.</strong> Look at the characters. Notice the ones that repeat. The character 道 appears in 37 of 81 chapters. That is not coincidence; that is the book's structure.</li>
+            <li><strong>Open the character.</strong> Click on it in the chapter. See its pinyin. See its component parts. Hold the parts in your head while you read the next sentence.</li>
+            <li><strong>Allow ambiguity.</strong> If a sentence seems to mean two things at once, it probably does. The author is not confused; you are. Sit with it.</li>
+            <li><strong>Go scavenger-hunting.</strong> When you encounter a character you've met before, ask: <em>what did it mean last time, and what does it want to mean now?</em> The book teaches itself through repetition.</li>
+          </ol>
+          <p data-lang="en">This is why we built this tab. The 828 characters are the building blocks. The chapters are the assemblies. Once you know the blocks, the assemblies feel less foreign.</p>
+
+          <p data-lang="th" style="font-family:var(--th)">ภาษาจีนกลางสมัยใหม่เป็นภาษาแห่งการแปล: คำหนึ่งคำมีความหมายหนึ่ง คุณแปล แล้วเดินต่อ ภาษาจีนคลาสสิก — ภาษาที่เหล่าจื๊อใช้ — ไม่ใช่แบบนั้น ตัวอักษรแต่ละตัวเป็นวัตถุเล็ก ๆ ที่คุณหมุนดูในมือ มันมีรูปร่าง มีเสียง มีความหมายหลายอย่าง — ปกติเกี่ยวข้องกัน แต่บางครั้งเชื่อมโยงด้วยอุปมาเท่านั้น คุณไม่ได้แปลมัน คุณ <em>ถอดรหัส</em> มัน</p>
+          <p data-lang="th" style="font-family:var(--th)">ลองคำว่า 道 (dào) จีนสมัยใหม่: 'ทาง' 'เส้นทาง' 'ถนน' ก่อนยุคซ่ง: ใช่ทั้งหมดนั้น และยังมี 'การพูด' 'การแสดงออก' และเป็นนามที่หมายถึงหลักที่ทอผ่านทุกสิ่ง ประโยคแรกของหนังสือ — 道可道，非常道 — ใช้ตัวเดียวกันสามครั้ง และทุกครั้งความหมายต่างกันเล็กน้อย ผู้แปลใช้เวลาสองพันปีแกล้งบดความหมายทั้งสามให้กลายเป็นหนึ่ง มันบดไม่ลง รูปร่างของตัวอักษรกำลังทำงานอยู่</p>
+          <p data-lang="th" style="font-family:var(--th)">เวลาคุณอ่านเต้าเต๋อจิง ให้ทำแบบนี้:</p>
+          <ol data-lang="th" style="font-family:var(--th)">
+            <li><strong>อ่านออกเสียงก่อน</strong> จังหวะของจีนคลาสสิกเป็นส่วนหนึ่งของความหมาย กดปุ่ม Listen หรือกดปุ่ม 字 อ่านทีละตัว ฟังเสียงวรรณยุกต์</li>
+            <li><strong>อย่าหันไปหาคำแปลทันที</strong> ดูตัวอักษร สังเกตตัวที่ซ้ำ ตัว 道 ปรากฏใน 37 จาก 81 บท นั่นไม่ใช่เรื่องบังเอิญ — นั่นคือโครงสร้างของหนังสือ</li>
+            <li><strong>เปิดตัวอักษรออก</strong> คลิกที่ตัวอักษรในบท ดูพินอินของมัน ดูองค์ประกอบของมัน เก็บองค์ประกอบไว้ในใจขณะอ่านประโยคถัดไป</li>
+            <li><strong>ยอมรับความกำกวม</strong> ถ้าประโยคหนึ่งดูเหมือนหมายสองอย่างพร้อมกัน มันอาจจะเป็นอย่างนั้นจริง ๆ ผู้เขียนไม่ได้สับสน คุณต่างหากที่สับสน นั่งกับมัน</li>
+            <li><strong>ออกล่าสมบัติ</strong> เมื่อคุณเจอตัวอักษรที่เคยเจอ ลองถามตัวเอง: <em>ครั้งที่แล้วมันแปลว่าอะไร และคราวนี้มันอยากแปลว่าอะไร?</em> หนังสือเล่มนี้สอนตัวเองผ่านการซ้ำ</li>
+          </ol>
+          <p data-lang="th" style="font-family:var(--th)">นี่คือเหตุผลที่ผมสร้างแท็บนี้ ตัวอักษรทั้ง 828 ตัวคือก้อนอิฐ บททั้ง 81 บทคือสิ่งก่อ ถ้าคุณรู้จักก้อนอิฐ สิ่งก่อจะไม่ดูแปลกอีกต่อไป</p>
+
+          <p data-lang="cn" style="font-family:var(--cn-serif)">现代汉语是一种翻译性的语言：一个词一个意思，你翻译完就走。古汉语——老子写《道德经》用的那种汉语——不是这样。每一个字都是一个你拿在手里慢慢转的小物件。它有形，有音，有好几个意思——通常相关，有时只靠隐喻相连。你不是在翻译，你是在 <em>解码</em>。</p>
+          <p data-lang="cn" style="font-family:var(--cn-serif)">拿 道 (dào) 来说。现代汉语：道路、路径、马路。先秦汉语：是这些，但还有"说"、"表达"，以及指称那条贯穿万物的根本之理。本书第一句——道可道，非常道——同一个字出现了三次，三次的意思都略有不同。两千年来译者一直假装这三层意思可以压成一层。压不动。字形本身就在工作。</p>
+          <p data-lang="cn" style="font-family:var(--cn-serif)">读《道德经》的时候，请这样做：</p>
+          <ol data-lang="cn" style="font-family:var(--cn-serif)">
+            <li><strong>先朗读。</strong>古汉语的节奏是意思的一部分。点 Listen 按钮，或者点逐字朗读（字）。听四声。</li>
+            <li><strong>不要立刻去看翻译。</strong>看字。注意哪些字反复出现。"道"出现在 81 章中的 37 章。这不是巧合，这是全书的结构。</li>
+            <li><strong>把字打开。</strong>在章节里点击它。看它的拼音。看它的部件。带着这些部件继续读下一句。</li>
+            <li><strong>允许多义。</strong>如果一句话似乎同时指两件事，那它大概就是。作者没有糊涂，是你糊涂了。坐下来陪着它。</li>
+            <li><strong>玩寻宝游戏。</strong>遇到一个曾见过的字，问自己：<em>上次它什么意思，这次它想是什么意思？</em>这本书通过重复来教自己。</li>
+          </ol>
+          <p data-lang="cn" style="font-family:var(--cn-serif)">这就是我做这个标签页的原因。828 个字是砖。81 章是楼。砖认得了，楼就不那么陌生了。</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</aside>
+<div class="chars-scrim" id="charsScrim"></div>
+
 <!-- ── CHAPTERS (rendered by JS) ── -->
 <main class="chapters" id="chapters"></main>
 
@@ -1194,7 +1293,7 @@
 </aside>
 
 <script src="chapters.js?v=2"></script>
-<script src="extended.js?v=27"></script>
+<script src="extended.js?v=28"></script>
 <script src="pinyin.js?v=2"></script>
 <script src="pinyin_titles.js?v=1"></script>
 <script src="summaries.js?v=1"></script>
@@ -1210,6 +1309,7 @@
 <script src="reference_library.js?v=1"></script>
 <script src="reference_translations.js?v=1"></script>
 <script src="idea_threads.js?v=1"></script>
-<script src="app.js?v=37"></script>
+<script src="dao_characters.js?v=1"></script>
+<script src="app.js?v=38"></script>
 </body>
 </html>

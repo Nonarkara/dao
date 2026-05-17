@@ -231,6 +231,8 @@
     const copy = {
       listen: ['Listen', 'ฟังภาษาจีน', '听中文'],
       pause: ['Pause', 'พักเสียง', '暂停'],
+      walk: ['Read each character', 'อ่านทีละตัว', '逐字朗读'],
+      stop: ['Stop', 'หยุด', '停止'],
       watch: ['Watch strokes', 'ดูเส้นเขียน', '看笔顺'],
       playing: ['Drawing...', 'กำลังเขียน...', '正在写...'],
       try: ['Try writing', 'ลองเขียน', '试写'],
@@ -558,11 +560,16 @@
               Wang Bi 王弼 (wáng bì) recension · ${ch.n <= 37 ? '道經 dào jīng · the Way half' : '德經 dé jīng · the Virtue half'} · ${ch.n}/81
             </p>
             <audio id="cn-audio-${ch.n}" preload="none" src="audio/ch${String(ch.n).padStart(2,'0')}-cn.mp3"></audio>
-            <button class="cn-listen-btn" aria-label="Listen to the Chinese" data-ch="${ch.n}">
-              ▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}
-            </button>
+            <div class="cn-listen-row">
+              <button class="cn-listen-btn" aria-label="Listen to the Chinese" data-ch="${ch.n}">
+                ▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}
+              </button>
+              <button class="cn-walk-btn" aria-label="Read each character one by one" data-ch="${ch.n}">
+                ▶ &nbsp;字 <em>zì</em> &nbsp;·&nbsp; ${uiButton('walk')}
+              </button>
+            </div>
           </header>
-          <div class="origin-stack">
+          <div class="origin-stack" id="cn-stack-${ch.n}">
             ${renderOriginLines(ch, ext)}
           </div>
         </section>
@@ -668,8 +675,8 @@
             </aside>
             <div>
               <div class="reading-body" data-lang="en" lang="en">${escapeHtml(reading_en)}</div>
-              <div class="reading-body${reading_cn_is_fallback ? ' is-fallback' : ''}" data-lang="cn" lang="zh" style="font-family: var(--cn-serif);">${reading_cn_is_fallback ? '<span class="lang-fallback-tag" style="font-family:var(--mono)">中文 · 深度解讀 · 即將推出</span>' : ''}${escapeHtml(reading_cn || reading_en)}</div>
-              <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? '<span class="lang-fallback-tag">ไทย · บทอ่านลึก · กำลังเขียน</span>' : ''}${escapeHtml(reading_th || (ch.th || ''))}</div>
+              <div class="reading-body${reading_cn_is_fallback ? ' is-fallback' : ''}" data-lang="cn" lang="zh">${reading_cn_is_fallback ? `<div class="reading-pending"><span class="rp-mark">${ch.n}</span><span class="rp-line">本章中文深度解读，作者正在打磨</span><span class="rp-sub">先以英文或泰文阅读，待中文版上线</span></div>` : escapeHtml(reading_cn)}</div>
+              <div class="reading-body${reading_th_is_fallback ? ' is-fallback' : ''}" data-lang="th" lang="th" style="${!reading_th && ch.th ? 'white-space:pre-line' : ''}">${reading_th_is_fallback ? `<div class="reading-pending"><span class="rp-mark">${ch.n}</span><span class="rp-line">บทอ่านลึกภาษาไทย ผมกำลังเขียน</span><span class="rp-sub">อ่านภาษาอังกฤษหรือจีนไปก่อน ฉบับไทยจะมาถึง</span></div>` : escapeHtml(reading_th || (ch.th || ''))}</div>
               ${sources.length ? `
                 <div class="reading-sources">
                   <span class="rs-label">${tri('Sources', 'แหล่งอ้างอิง', '来源')}</span>
@@ -1052,6 +1059,7 @@
   }
   if (notesBtn)   notesBtn.addEventListener('click', () => openNotes());
   if (notesClose) notesClose.addEventListener('click', closeNotes);
+  if (notesScrim) notesScrim.addEventListener('click', closeNotes);
   $$('.notes-tab').forEach(btn => {
     btn.addEventListener('click', () => setNotesTab(btn.dataset.tab));
   });
@@ -1061,6 +1069,129 @@
     if (!trigger) return;
     e.preventDefault();
     openNotes(trigger.dataset.openNotes || 'about');
+  });
+
+  // ----- CHARACTERS OVERLAY (字 zì) ------------------------------
+  // The 828 unique characters of the Wang Bi text, in order of first appearance.
+  const charsOverlay = $('#charsOverlay');
+  const charsScrim   = $('#charsScrim');
+  const charsBtn     = $('#charsBtn');
+  const charsClose   = $('#charsClose');
+  const charsGrid    = $('#charsGrid');
+  const charsSearch  = $('#charsSearch');
+  const charsCounter = $('#charsCounter');
+
+  function openChars() {
+    if (!charsOverlay) return;
+    if (!charsGrid.dataset.rendered) {
+      renderCharsGrid('first', '');
+      charsGrid.dataset.rendered = '1';
+    }
+    charsOverlay.classList.add('open');
+    charsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeChars() {
+    if (!charsOverlay) return;
+    charsOverlay.classList.remove('open');
+    charsOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function renderCharsGrid(sortMode, query) {
+    if (!charsGrid) return;
+    const all = (window.DAO_CHARACTERS || []);
+    let items = all.slice();
+    if (sortMode === 'freq') items.sort((a, b) => b.f - a.f || a.n - b.n);
+    else if (sortMode === 'stroke') items.sort((a, b) => (a.p || 'zzz').localeCompare(b.p || 'zzz'));
+    // 'first' = original order (already in first-appearance order)
+    const q = (query || '').trim().toLowerCase();
+    if (q) {
+      items = items.filter(e =>
+        e.c === q ||
+        (e.s && e.s === q) ||
+        (e.p && e.p.toLowerCase().includes(q)) ||
+        (e.g && e.g.toLowerCase().includes(q))
+      );
+    }
+    charsCounter.textContent = `${items.length} / ${all.length}`;
+    const html = items.map((e, i) => {
+      const idx = i + 1;
+      const simplifiedLine = e.s ? `<span class="ch-simp" title="Simplified form" lang="zh">${e.s}</span>` : '';
+      const glossEn = e.g ? `<p class="ch-g" data-lang="en">${escapeHtml(e.g)}</p>` : '';
+      const glossTh = e.g_th ? `<p class="ch-g" data-lang="th" style="font-family:var(--th)">${escapeHtml(e.g_th)}</p>` : '';
+      const breakdown = e.b ? `<p class="ch-b">${escapeHtml(e.b)}</p>` : '';
+      const mnemonic = e.m ? `<p class="ch-m">${escapeHtml(e.m)}</p>` : '';
+      return `
+        <article class="ch-cell" data-char="${escapeHtml(e.c)}" data-py="${escapeHtml(e.p || '')}">
+          <div class="ch-mark"><span class="ch-rank">${idx.toString().padStart(3, '0')}</span><a class="ch-firstchap" href="#ch${e.n}" aria-label="Go to chapter ${e.n}">CH ${e.n}</a></div>
+          <div class="ch-glyph" lang="zh">${e.c}${simplifiedLine}</div>
+          <div class="ch-py">${escapeHtml(e.p || '—')}</div>
+          ${glossEn}${glossTh}${breakdown}${mnemonic}
+          <div class="ch-stats">
+            <span class="ch-freq" title="Times the character appears in the book">×${e.f}</span>
+            <button class="ch-speak" aria-label="Pronounce ${escapeHtml(e.c)}">▶ <em>tīng</em></button>
+          </div>
+        </article>
+      `;
+    }).join('');
+    charsGrid.innerHTML = html;
+  }
+
+  if (charsBtn)   charsBtn.addEventListener('click', openChars);
+  if (charsClose) charsClose.addEventListener('click', closeChars);
+  if (charsScrim) charsScrim.addEventListener('click', closeChars);
+  if (charsSearch) {
+    let searchTimer = null;
+    charsSearch.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      const activeSortBtn = $$('.chars-sort-btn.is-active')[0];
+      const mode = (activeSortBtn && activeSortBtn.dataset.sort) || 'first';
+      searchTimer = setTimeout(() => renderCharsGrid(mode, charsSearch.value), 100);
+    });
+  }
+  $$('.chars-sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.chars-sort-btn').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderCharsGrid(btn.dataset.sort, (charsSearch && charsSearch.value) || '');
+    });
+  });
+  // Per-cell speak button
+  document.addEventListener('click', (e) => {
+    const speakBtn = e.target.closest('.ch-speak');
+    if (!speakBtn) return;
+    const cell = speakBtn.closest('.ch-cell');
+    const c = cell && cell.dataset.char;
+    if (c) speakChinese(c, { rate: 0.7 });
+  });
+  // Clicking the glyph itself also speaks it
+  document.addEventListener('click', (e) => {
+    const glyph = e.target.closest('.ch-glyph');
+    if (!glyph) return;
+    if (e.target.closest('.ch-speak')) return;
+    const cell = glyph.closest('.ch-cell');
+    const c = cell && cell.dataset.char;
+    if (c) speakChinese(c, { rate: 0.7 });
+  });
+  // Keyboard shortcut: Z opens / closes
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'z' && e.key !== 'Z') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    if (charsOverlay && charsOverlay.classList.contains('open')) closeChars();
+    else openChars();
+  });
+  // Allow href="#chars-howread" to open the overlay + scroll to that section
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href="#chars-howread"]');
+    if (!a) return;
+    e.preventDefault();
+    openChars();
+    setTimeout(() => {
+      const target = document.getElementById('chars-howread');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   });
 
   // ----- REFERENCE LIBRARY TAB ---------------------------------
@@ -1685,6 +1816,91 @@
       btn.classList.remove('is-playing');
       btn.innerHTML = `▶ &nbsp;聽 <em>tīng</em> &nbsp;·&nbsp; ${uiButton('listen')}`;
     }
+  });
+
+  // ----- PER-CHARACTER PRONUNCIATION (Web Speech API) ---------------
+  // Click any Chinese character in the chapter Chinese text → speak it.
+  // Falls back silently on browsers that don't support speechSynthesis.
+  const speechAvailable = (typeof window !== 'undefined') && ('speechSynthesis' in window);
+  let zhVoice = null;
+  if (speechAvailable) {
+    const pickVoice = () => {
+      const voices = window.speechSynthesis.getVoices();
+      // Prefer a native zh-CN voice; fall back to any zh-*.
+      zhVoice = voices.find(v => /^zh-CN/i.test(v.lang))
+             || voices.find(v => /^zh/i.test(v.lang))
+             || null;
+    };
+    pickVoice();
+    window.speechSynthesis.addEventListener?.('voiceschanged', pickVoice);
+  }
+  function speakChinese(text, opts = {}) {
+    if (!speechAvailable || !text) return;
+    try {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'zh-CN';
+      if (zhVoice) u.voice = zhVoice;
+      u.rate = opts.rate ?? 0.75;
+      u.pitch = opts.pitch ?? 1.0;
+      if (opts.onend) u.onend = opts.onend;
+      if (opts.onstart) u.onstart = opts.onstart;
+      window.speechSynthesis.speak(u);
+    } catch (err) { /* silent */ }
+  }
+  // Single-character click → speak it. Delegated for performance.
+  document.addEventListener('click', (e) => {
+    const charEl = e.target.closest('.cn-stack-char');
+    if (!charEl) return;
+    if (e.target.closest('.cn-listen-btn')) return; // don't intercept chapter listen
+    const ch = charEl.querySelector('.cs-c')?.textContent?.trim();
+    if (!ch) return;
+    // Visual feedback — pulse
+    charEl.classList.add('is-speaking');
+    speakChinese(ch, {
+      rate: 0.7,
+      onend: () => charEl.classList.remove('is-speaking')
+    });
+  });
+  // Sequential "read every character" walker — triggered from the new button.
+  let walkAbort = null;
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cn-walk-btn');
+    if (!btn) return;
+    const chN = btn.dataset.ch;
+    const section = document.querySelector(`#cn-stack-${chN}`) || btn.closest('section');
+    if (!section) return;
+    const chars = [...section.querySelectorAll('.cn-stack-char')];
+    if (!chars.length) return;
+    if (btn.classList.contains('is-walking')) {
+      // Stop
+      walkAbort = true;
+      window.speechSynthesis.cancel();
+      chars.forEach(c => c.classList.remove('is-speaking'));
+      btn.classList.remove('is-walking');
+      btn.innerHTML = `▶ &nbsp;字 <em>zì</em> &nbsp;·&nbsp; ${uiButton('walk')}`;
+      return;
+    }
+    walkAbort = false;
+    btn.classList.add('is-walking');
+    btn.innerHTML = `▐▐ &nbsp;字 <em>zì</em> &nbsp;·&nbsp; ${uiButton('stop')}`;
+    let i = 0;
+    const next = () => {
+      if (walkAbort || i >= chars.length) {
+        chars.forEach(c => c.classList.remove('is-speaking'));
+        btn.classList.remove('is-walking');
+        btn.innerHTML = `▶ &nbsp;字 <em>zì</em> &nbsp;·&nbsp; ${uiButton('walk')}`;
+        return;
+      }
+      const el = chars[i++];
+      const c = el.querySelector('.cs-c')?.textContent?.trim();
+      chars.forEach(x => x.classList.remove('is-speaking'));
+      el.classList.add('is-speaking');
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!c) { setTimeout(next, 180); return; }
+      speakChinese(c, { rate: 0.6, onend: () => setTimeout(next, 260) });
+    };
+    next();
   });
 
   // ----- SCROLL-REVEAL ANIMATIONS -------------------------------
