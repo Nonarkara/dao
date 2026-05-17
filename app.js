@@ -266,6 +266,61 @@
     return LEARNER_CHECKPOINTS.find(cp => n === cp.until) || null;
   }
 
+  // ============================================================
+  // CHAPTER WEIGHT — vary the rhythm.
+  // 'standard' (default): all sections render if data exists.
+  // 'light': cryptic short chapters — only Origin + Reading. Skip character study,
+  //   Tsai panel, Note, Play, Closer, Reflection. The cryptic chapters of the DDJ
+  //   work better as snacks than tasting menus. Reader breath.
+  // 'wordless': radical — render the chapter character HUGE with a single line.
+  //   No reading, no commentary. Earned by CH 40 (the shortest in the book).
+  // ============================================================
+  const CHAPTER_WEIGHT = {
+    // Short cryptic chapters — let them breathe
+    6: 'light', 16: 'light', 22: 'light', 24: 'light', 43: 'light',
+    44: 'light', 47: 'light', 56: 'light', 67: 'light', 78: 'light',
+    // CH 40 — the shortest chapter in the book (4 lines): wordless treatment
+    40: 'wordless',
+  };
+  function weightOf(n) { return CHAPTER_WEIGHT[n] || 'standard'; }
+
+  // ============================================================
+  // SECTION BREAKS — thematic transitions between groups of chapters.
+  // Rendered AFTER the chapter whose number is the key.
+  // 37→38 is the only true textual division (道經 ends, 德經 begins).
+  // The rest are reader-experience pauses Dr Non designed.
+  // ============================================================
+  const SECTION_BREAKS = {
+    10: { mark: '水', kicker: { en: 'Pause 1', th: 'พัก 1', cn: '驻足 一' },
+          en: 'Ten chapters in. The book has stopped trying to define the Way and has started showing you water.',
+          th: 'สิบบทผ่านไป หนังสือเลิกพยายามนิยามเต๋าแล้ว มันเริ่มชี้ให้ดูน้ำ',
+          cn: '十章过去了。书已经不再去定义"道"，开始让你看水。' },
+    20: { mark: '獨', kicker: { en: 'Pause 2', th: 'พัก 2', cn: '驻足 二' },
+          en: 'You have just read the loneliest chapter. The narrator is out of step with everyone at the banquet. Sit with that for a moment.',
+          th: 'คุณเพิ่งอ่านบทที่เหงาที่สุดของหนังสือ ผู้เล่าไม่เข้ากับใครในงานเลี้ยง นั่งกับความรู้สึกนั้นสักครู่',
+          cn: '你刚读完全书最孤独的一章。讲述者在宴席上与所有人格格不入。陪那种感觉坐一会儿。' },
+    30: { mark: '不爭', kicker: { en: 'Pause 3', th: 'พัก 3', cn: '驻足 三' },
+          en: 'Three chapters about not using force have just passed under you. The book is not pacifist. It is realist about what force costs.',
+          th: 'สามบทที่ว่าด้วยการไม่ใช้กำลังเพิ่งผ่านคุณไป หนังสือเล่มนี้ไม่ใช่หนังสือสันติวิธี มันเป็นหนังสือที่มองความจริงว่ากำลังเสียอะไร',
+          cn: '三章关于"不动武"刚刚翻过去。这本书不是和平主义，它是现实主义——它看清动武付出什么代价。' },
+    37: { mark: '德', kicker: { en: 'Half Book', th: 'ครึ่งทาง', cn: '过半 · 德经开始' },
+          en: 'You have finished 道經 — the half about the Way itself. The next 44 chapters are 德經 — the half about how the Way moves through people. Same book, second movement.',
+          th: 'คุณอ่านจบ 道經 — ครึ่งที่ว่าด้วยตัวเต๋าเอง 44 บทถัดไปคือ 德經 — ครึ่งที่ว่าด้วยเต๋าเคลื่อนผ่านผู้คนอย่างไร หนังสือเล่มเดียวกัน ท่อนที่สอง',
+          cn: '《道经》三十七章读完了——讲"道"本身。接下来四十四章是《德经》——讲道如何穿过人活动。同一本书，第二乐章。' },
+    50: { mark: '生死', kicker: { en: 'Pause 4', th: 'พัก 4', cn: '驻足 四' },
+          en: 'Halfway through. The book just walked you past death and back. Drink water.',
+          th: 'เดินมาครึ่งทาง หนังสือเพิ่งพาคุณเดินผ่านความตายและกลับมา ดื่มน้ำสักแก้ว',
+          cn: '走到一半了。书刚带你走过死亡又走回来。喝口水。' },
+    65: { mark: '愚', kicker: { en: 'Pause 5', th: 'พัก 5', cn: '驻足 五' },
+          en: 'The chapters around here praise foolishness — not stupidity, but the willingness to look stupid. Foolishness in this book is a sophisticated calibration. Try it for ten minutes after you close the tab.',
+          th: 'บทแถวนี้ยกย่องความโง่ — ไม่ใช่ความโง่เง่า แต่คือความเต็มใจที่จะดูโง่ ความโง่ในหนังสือเล่มนี้คือการตั้งค่าเครื่องอย่างประณีต ลองสิบนาทีหลังปิดแท็บนี้',
+          cn: '这一带的章节赞美"愚"——不是真笨，是甘愿显得笨。这本书里的"愚"是一种精细的校准。关掉标签页后试十分钟。' },
+    80: { mark: '小國', kicker: { en: 'Last Pause', th: 'พักสุดท้าย', cn: '末驻足' },
+          en: 'One chapter left. The book is about to end on a sentence about trust, not about cosmology. Notice the choice.',
+          th: 'เหลืออีกบทเดียว หนังสือกำลังจะจบด้วยประโยคเกี่ยวกับความไว้วางใจ ไม่ใช่จักรวาลวิทยา สังเกตการเลือกนั้น',
+          cn: '只剩一章。这本书的最后一句不是讲宇宙，是讲信任。留意这个选择。' },
+  };
+
   function toRoman(n) {
     const map = [['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]];
     let out = ''; for (const [g,v] of map) { while (n >= v) { out += g; n -= v; } }
@@ -455,10 +510,62 @@
   }
 
   // ----- RENDER CHAPTERS ----------------------------------------
+  // Wordless chapter renderer — the shortest chapter in the book (CH 40, 4 lines)
+  // gets a radically different treatment: just the original characters, vertical,
+  // huge, with the title character standing alone. No reading. No commentary.
+  // The reader stops here and breathes. Some chapters teach by withholding.
+  function wordlessChapterHTML(ch, idx, prev, next) {
+    const tpy = titlePy(ch.n);
+    const lines = (ch.cn || '').split('\n').filter(Boolean);
+    return `
+      <article class="chapter chapter-wordless" id="ch${ch.n}" data-n="${ch.n}">
+        <div class="chapter-strip">
+          <span class="cs-num">${toRoman(ch.n)} · 第 ${ch.n} 章 · <em class="cs-num-py">dì ${ch.n} zhāng</em></span>
+          <span class="cs-cn"><span class="cs-cn-han">${escapeHtml(ch.cn_title || '')}</span></span>
+          <span class="cs-en">${escapeHtml(ch.en_title || '')}</span>
+          <span class="cs-th">${escapeHtml(ch.th_title || '')}</span>
+          <span class="cs-progress">${ch.n} / 81</span>
+        </div>
+        <section class="panel panel-wordless">
+          <div class="wordless-frame">
+            <p class="wordless-kicker">
+              <span data-lang="en">No commentary. No reading. Sit with the four lines.</span>
+              <span data-lang="th" style="font-family:var(--th)">ไม่มีอรรถาธิบาย ไม่มีบทอ่าน นั่งกับสี่บรรทัด</span>
+              <span data-lang="cn" style="font-family:var(--cn-serif)">没有解读，没有注。和这四行坐在一起。</span>
+            </p>
+            <div class="wordless-cn">
+              ${lines.map(l => `<p>${escapeHtml(l)}</p>`).join('')}
+            </div>
+            ${tpy ? `<p class="wordless-py">${escapeHtml(tpy)}</p>` : ''}
+            <p class="wordless-title-en">${escapeHtml(ch.en_title || '')}</p>
+            <p class="wordless-title-th" style="font-family:var(--th)">${escapeHtml(ch.th_title || '')}</p>
+            <p class="wordless-coda">
+              <span data-lang="en">This is the shortest chapter in the book. The author thought that was enough.</span>
+              <span data-lang="th" style="font-family:var(--th)">นี่คือบทที่สั้นที่สุดในหนังสือ ผู้เขียนคิดว่าแค่นี้พอ</span>
+              <span data-lang="cn" style="font-family:var(--cn-serif)">这是全书最短的一章。作者认为这就够了。</span>
+            </p>
+          </div>
+        </section>
+        <footer class="chapter-foot">
+          <button data-jump="${prev ? prev.n : ''}" ${prev ? '' : 'disabled'}>
+            ${prev ? '← ' + toRoman(prev.n) + ' · ' + (prev.cn_title||'') : '— beginning —'}
+          </button>
+          <span class="ch-marker">第 ${ch.n} 章 / 81</span>
+          <button data-jump="${next ? next.n : ''}" ${next ? '' : 'disabled'}>
+            ${next ? toRoman(next.n) + ' · ' + (next.cn_title||'') + ' →' : '— end —'}
+          </button>
+        </footer>
+      </article>
+    `;
+  }
+
   function chapterHTML(ch, idx) {
     const ext = EX[ch.n] || {};
     const prev = idx > 0 ? CH[idx-1] : null;
     const next = idx < CH.length-1 ? CH[idx+1] : null;
+    const weight = weightOf(ch.n);
+    // Wordless chapters get their own renderer — radical visual treatment.
+    if (weight === 'wordless') return wordlessChapterHTML(ch, idx, prev, next);
 
     const direct_en = ext.direct || '';
     const direct_th = ext.direct_th || '';
@@ -574,7 +681,7 @@
           </div>
         </section>
 
-        ${CHARS[ch.n] ? (() => {
+        ${(weight !== 'light') && CHARS[ch.n] ? (() => {
           const c = CHARS[ch.n];
           const cnNotes = CHARACTER_NOTES_CN[ch.n] || {};
           const thNotes = CHARACTER_NOTES_TH[ch.n] || {};
@@ -742,7 +849,7 @@
           `;
         })() : ''}
 
-        ${(note_en || note_th || note_cn) ? `
+        ${(weight !== 'light') && (note_en || note_th || note_cn) ? `
         <!-- 03 NOTE -->
         <section class="panel panel-note">
           ${panelLabel('03', 'Note', 'บันทึก', '注', '注', 'zhù')}
@@ -794,7 +901,7 @@
         </section>
         ` : ''}
 
-        ${CLOSERS[ch.n] ? `
+        ${(weight !== 'light') && CLOSERS[ch.n] ? `
         <!-- 問 wèn — closing question -->
         <section class="panel panel-closer">
           <div class="closer-frame">
@@ -806,7 +913,7 @@
         </section>
         ` : ''}
 
-        ${reflection ? `
+        ${(weight !== 'light') && reflection ? `
         <!-- 深問 shen wen — deeper life questions -->
         <section class="panel panel-reflection">
           <div class="reflection-frame">
@@ -922,9 +1029,24 @@
   $('#chapters').innerHTML = CH.map((ch, idx) => {
     const html = chapterHTML(ch, idx);
     const brk = CHAPTER_BREAKS[ch.n];
-    return brk
-      ? html + `<div class="chapter-break"><img src="${brk.src}" alt="${brk.alt}" loading="lazy"><p class="break-caption" data-lang="en">${brk.en}</p><p class="break-caption" data-lang="th">${brk.th}</p><p class="break-caption" data-lang="cn">${brk.cn}</p></div>`
-      : html;
+    const sect = SECTION_BREAKS[ch.n];
+    const isMajor = (ch.n === 37); // 道經 → 德經 the only true textual division
+    const sectionHTML = sect ? `
+      <section class="section-break${isMajor ? ' section-break-major' : ''}" aria-label="${escapeHtml(sect.kicker.en)}">
+        <div class="sb-frame">
+          <p class="sb-kicker">
+            <span data-lang="en">${escapeHtml(sect.kicker.en)}</span><span data-lang="th" style="font-family:var(--th)">${escapeHtml(sect.kicker.th)}</span><span data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(sect.kicker.cn)}</span>
+          </p>
+          <div class="sb-mark" aria-hidden="true">${escapeHtml(sect.mark)}</div>
+          <p class="sb-line" data-lang="en">${escapeHtml(sect.en)}</p>
+          <p class="sb-line" data-lang="th" style="font-family:var(--th)">${escapeHtml(sect.th)}</p>
+          <p class="sb-line" data-lang="cn" style="font-family:var(--cn-serif)">${escapeHtml(sect.cn)}</p>
+        </div>
+      </section>` : '';
+    const breakHTML = brk
+      ? `<div class="chapter-break"><img src="${brk.src}" alt="${brk.alt}" loading="lazy"><p class="break-caption" data-lang="en">${brk.en}</p><p class="break-caption" data-lang="th">${brk.th}</p><p class="break-caption" data-lang="cn">${brk.cn}</p></div>`
+      : '';
+    return html + sectionHTML + breakHTML;
   }).join('');
 
   // ----- INDEX OVERLAY ------------------------------------------

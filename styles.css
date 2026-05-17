@@ -6982,3 +6982,166 @@ body.lang-th .break-caption[data-lang="en"],
 body.lang-th .break-caption[data-lang="cn"] { display: none; }
 body.lang-cn .break-caption[data-lang="en"],
 body.lang-cn .break-caption[data-lang="th"] { display: none; }
+
+/* ============================================================
+   SECTION BREAK — thematic pauses between groups of chapters.
+   Rendered after CH 10, 20, 30, 37, 50, 65, 80.
+   The 37→38 break is "major" because it's the only true textual
+   division in the book (道經 ends, 德經 begins).
+   ============================================================ */
+.section-break {
+  width: 100%;
+  padding: clamp(80px, 12vh, 140px) 6vw;
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}
+.section-break-major {
+  background: var(--paper-warm, var(--paper));
+  padding-top: clamp(120px, 18vh, 200px);
+  padding-bottom: clamp(120px, 18vh, 200px);
+  min-height: 70vh;
+}
+.sb-frame {
+  max-width: 56ch;
+  margin: 0 auto;
+}
+.sb-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  margin: 0 0 36px;
+}
+body.lang-th .sb-kicker,
+body.lang-cn .sb-kicker { text-transform: none; letter-spacing: 0.05em; font-size: 12px; }
+body.lang-th .sb-kicker { font-family: var(--th); }
+body.lang-cn .sb-kicker { font-family: var(--cn-serif); }
+.sb-mark {
+  font-family: var(--cn-serif);
+  font-size: clamp(80px, 14vw, 160px);
+  line-height: 1;
+  color: var(--ink);
+  margin: 0 0 36px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.section-break-major .sb-mark {
+  color: var(--seal, #a83332);
+  font-size: clamp(120px, 22vw, 240px);
+}
+.sb-line {
+  font-family: var(--body);
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0 auto;
+  max-width: 52ch;
+}
+body.lang-th .sb-line { font-family: var(--th); font-size: clamp(16px, 1.7vw, 19px); line-height: 1.78; }
+body.lang-cn .sb-line { font-family: var(--cn-serif); font-size: clamp(16px, 1.7vw, 19px); line-height: 1.8; letter-spacing: 0.02em; }
+body.lang-en .sb-line[data-lang="th"],
+body.lang-en .sb-line[data-lang="cn"] { display: none; }
+body.lang-th .sb-line[data-lang="en"],
+body.lang-th .sb-line[data-lang="cn"] { display: none; }
+body.lang-cn .sb-line[data-lang="en"],
+body.lang-cn .sb-line[data-lang="th"] { display: none; }
+
+/* ============================================================
+   WORDLESS CHAPTER — radical visual treatment for CH 40.
+   The shortest chapter in the book gets a page of breath.
+   ============================================================ */
+.chapter-wordless {
+  background: var(--paper);
+  min-height: 95vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.chapter-wordless .chapter-strip {
+  border-bottom: 1px solid var(--rule);
+}
+.panel-wordless {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(60px, 10vh, 120px) 6vw;
+}
+.wordless-frame {
+  max-width: 36rem;
+  text-align: center;
+}
+.wordless-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-fade);
+  margin: 0 0 64px;
+}
+body.lang-th .wordless-kicker { font-family: var(--th); text-transform: none; letter-spacing: 0.05em; font-size: 13px; }
+body.lang-cn .wordless-kicker { font-family: var(--cn-serif); text-transform: none; letter-spacing: 0.05em; font-size: 13px; }
+body.lang-en .wordless-kicker [data-lang="th"],
+body.lang-en .wordless-kicker [data-lang="cn"] { display: none; }
+body.lang-th .wordless-kicker [data-lang="en"],
+body.lang-th .wordless-kicker [data-lang="cn"] { display: none; }
+body.lang-cn .wordless-kicker [data-lang="en"],
+body.lang-cn .wordless-kicker [data-lang="th"] { display: none; }
+
+.wordless-cn {
+  font-family: var(--cn-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.7;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  margin: 0 0 36px;
+}
+.wordless-cn p { margin: 0 0 8px; }
+.wordless-py {
+  font-family: var(--mono);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--seal);
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+}
+.wordless-title-en {
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+.wordless-title-th {
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin: 0 0 64px;
+}
+.wordless-coda {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink-fade);
+  line-height: 1.7;
+  margin: 0;
+}
+body.lang-th .wordless-coda { font-family: var(--th); letter-spacing: 0; font-size: 13px; }
+body.lang-cn .wordless-coda { font-family: var(--cn-serif); letter-spacing: 0; font-size: 13px; }
+body.lang-en .wordless-coda [data-lang="th"],
+body.lang-en .wordless-coda [data-lang="cn"] { display: none; }
+body.lang-th .wordless-coda [data-lang="en"],
+body.lang-th .wordless-coda [data-lang="cn"] { display: none; }
+body.lang-cn .wordless-coda [data-lang="en"],
+body.lang-cn .wordless-coda [data-lang="th"] { display: none; }
+body.lang-en .wordless-title-th { display: none; }
+body.lang-th .wordless-title-en { display: none; }
+body.lang-cn .wordless-title-en,
+body.lang-cn .wordless-title-th { display: none; }
