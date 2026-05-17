@@ -124,7 +124,7 @@ window.CHARACTERS = {
         mnemonic:"A heart 心 walking 彳 straight 直. 德 is virtue you can walk in — not virtue you talk about.",
         mnemonic_th:"หัวใจ 心 ที่เดิน 彳 ตรง 直 ไป 德 คือคุณธรรมที่เดินได้จริง ไม่ใช่คุณธรรมที่พูดเฉย ๆ",
         chapter_pivot:"Chapter 21: 孔德之容，惟道是從 — 'the substance of 德 follows only the way.' Slingerland: charisma you cannot fake.",
-        chapter_pivot_th:"บทที่ 21: เนื้อแท้ของ 德 ตามทางเท่านั้น Slingerland เรียกมันว่า 'เสน่ห์ที่ปลอมไม่ได้'" },
+        chapter_pivot_th:"บทที่ 21: เนื้อแท้ของ 德 ตามทางอย่างเดียว Slingerland เรียกมันว่า 'เสน่ห์ที่ปลอมไม่ได้'" },
   22: { char:"曲", py:"qū",    meaning:"bend · crooked · tune",
         breakdown:"a pictograph of a bent ruler or a bent fish-trap",
         mnemonic:"A character that itself bends. Look at it: it isn't straight.",

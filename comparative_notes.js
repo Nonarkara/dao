@@ -14,7 +14,7 @@ window.COMPARATIVE_NOTES = {
     fallbackTitle: { en: 'Comparative note', th: 'บันทึกเปรียบเทียบ', cn: '比较札记' },
     caveat: {
       en: 'These are resonances, not claims that the traditions are identical. The value is in the shared human pattern.',
-      th: 'นี่คือความสอดคล้อง ไม่ใช่การอ้างว่าทุกศาสนาเหมือนกัน คุณค่าคือแบบแผนมนุษย์ที่มองเห็นร่วมกัน',
+      th: 'นี่คือความสอดคล้อง ไม่ใช่การอ้างว่าทุกศาสนาเหมือนกัน คุณค่าอยู่ที่แบบแผนที่มนุษย์มองเห็นร่วมกัน',
       cn: '这些是相应之处，并不是说各传统完全相同。价值在于它们共同照见人的模式。'
     }
   },
@@ -135,7 +135,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Good listening increases trust, improves diagnosis, and prevents solving the wrong problem confidently.",
-        th:"การฟังที่ดีเพิ่มความไว้ใจ ทำให้วินิจฉัยปัญหาดีขึ้น และกันไม่ให้เราแก้ปัญหาผิดอย่างมั่นใจ",
+        th:"การฟังที่ดีเพิ่มความไว้ใจ ทำให้วินิจฉัยปัญหาดีขึ้น และช่วยไม่ให้เราแก้ผิดอย่างมั่นใจ",
         cn:"好的倾听能增加信任、改善判断，并避免自信地解决错误的问题。"
       }
     },
@@ -148,7 +148,7 @@ window.COMPARATIVE_NOTES = {
       },
       parallels: {
         en:["Karma yoga teaches action without attachment to fruits.","Christian humility serves without turning service into self-display."],
-        th:["กรรมโยคะสอนให้ลงมือโดยไม่ยึดผล","ความถ่อมตนแบบคริสต์รับใช้โดยไม่เปลี่ยนการรับใช้เป็นเวทีของตัวเอง"],
+        th:["กรรมโยคะสอนให้ลงมือโดยไม่ยึดผล","ความถ่อมตนแบบคริสต์รับใช้โดยไม่เปลี่ยนการรับใช้ให้กลายเป็นเวทีตนเอง"],
         cn:["业瑜伽教人行动而不执著果报。","基督教谦卑强调服务，但不把服务变成自我展示。"]
       },
       psychology: {
@@ -207,7 +207,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Breath, posture, and interoception give the nervous system concrete handles for calming and focus.",
-        th:"ลมหายใจ ท่าทาง และการรับรู้ภายในกายเป็นด้ามจับจริงให้ระบบประสาทสงบและจดจ่อ",
+        th:"ลมหายใจ ท่าทาง และการรับรู้ภายในกายเป็นเครื่องมือจริงให้ระบบประสาทสงบและจดจ่อ",
         cn:"呼吸、姿势与内感受，为神经系统提供安定与专注的具体抓手。"
       }
     },
@@ -292,7 +292,7 @@ window.COMPARATIVE_NOTES = {
       },
       parallels: {
         en:["The Gita praises disciplined action without desperation.","Agrarian wisdom trusts seasons more than impatience."],
-        th:["คีตายกย่องการกระทำมีวินัยที่ไม่สิ้นหวัง","ภูมิปัญญาเกษตรเชื่อฤดูกาลมากกว่าความใจร้อน"],
+        th:["คีตายกย่องการกระทำมีวินัยอย่างไม่สิ้นหวัง","ภูมิปัญญาเกษตรเชื่อฤดูกาลมากกว่าความใจร้อน"],
         cn:["《薄伽梵歌》赞赏有纪律而不焦躁的行动。","农耕智慧信任季节胜过急躁。"]
       },
       psychology: {
@@ -351,7 +351,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Systems thinking prevents narrow fixes and makes interventions smaller and wiser.",
-        th:"การคิดเชิงระบบกันการแก้ปัญหาแคบ ๆ และทำให้การแทรกแซงเล็กลงแต่ฉลาดขึ้น",
+        th:"การคิดเชิงระบบกันไม่ให้แก้ปัญหาแบบแคบ ๆ และทำให้การแทรกแซงเล็กลงแต่ฉลาดขึ้น",
         cn:"系统思维能避免狭窄修补，使介入更小也更明智。"
       }
     },
@@ -405,7 +405,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Psychological flexibility predicts well-being. Rigidity feels strong first, but flexibility survives change.",
-        th:"ความยืดหยุ่นทางจิตทำนายสุขภาวะ ความแข็งดูเหมือนแข็งแรงตอนแรก แต่ความยืดหยุ่นอยู่รอดเมื่อโลกเปลี่ยน",
+        th:"ความยืดหยุ่นทางจิตเป็นตัวชี้วัดสุขภาวะ ความแข็งดูเหมือนแข็งแรงตอนแรก แต่ความยืดหยุ่นอยู่รอดเมื่อโลกเปลี่ยน",
         cn:"心理灵活性预示幸福。僵硬一开始像强大，但柔韧才能穿过变化。"
       }
     },
@@ -441,7 +441,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Mortality awareness can reduce trivial striving and increase gratitude when held wisely.",
-        th:"การระลึกถึงความตายอย่างฉลาดช่วยลดการไขว่คว้าเล็กน้อยและเพิ่มความกตัญญู",
+        th:"การระลึกถึงความตายอย่างฉลาดช่วยลดการไขว่คว้าเรื่องเล็ก ๆ และเพิ่มความกตัญญู",
         cn:"若能智慧地承载死亡意识，它能减少琐碎追逐，并增加感恩。"
       }
     },
@@ -467,7 +467,7 @@ window.COMPARATIVE_NOTES = {
       title: { en:"Enough is a form of wealth", th:"พอคือความมั่งคั่งแบบหนึ่ง", cn:"知足也是财富" },
       buddhism: {
         en:"Santutthi, contentment, is praised because endless wanting keeps suffering alive.",
-        th:"สันตุฏฐีหรือความสันโดษได้รับการยกย่อง เพราะความอยากไม่จบทำให้ทุกข์ยังมีชีวิต",
+        th:"สันตุฏฐีหรือความสันโดษได้รับการยกย่อง เพราะความอยากไม่จบทำให้ทุกข์ยังดำรงอยู่",
         cn:"少欲知足受佛教赞叹，因为无尽欲望会让苦持续。"
       },
       parallels: {
@@ -503,7 +503,7 @@ window.COMPARATIVE_NOTES = {
       title: { en:"Do not keep grievance as a home", th:"อย่าให้ความคับแค้นกลายเป็นบ้าน", cn:"不要把怨恨当作家" },
       buddhism: {
         en:"Resentment is like a coal held in the hand. Forgiveness refuses to let harm keep reproducing inside you.",
-        th:"ความแค้นเหมือนถ่านร้อนในมือ การให้อภัยคือการไม่ยอมให้ความเสียหายผลิตซ้ำในใจ",
+        th:"ความแค้นเหมือนถ่านร้อนในมือ การให้อภัยคือการไม่ยอมให้ความเสียหายทำซ้ำในใจ",
         cn:"怨恨像握在手里的热炭。宽恕不是否认伤害，而是不让伤害在心里继续繁殖。"
       },
       parallels: {
@@ -531,7 +531,7 @@ window.COMPARATIVE_NOTES = {
       },
       psychology: {
         en:"Clear speech reduces cognitive load and mistrust. People repair faster when truth is simple enough to act on.",
-        th:"คำพูดชัดลดภาระทางความคิดและความไม่ไว้ใจ คนและทีมซ่อมแซมได้เร็วขึ้นเมื่อความจริงเรียบพอให้ลงมือ",
+        th:"คำพูดชัดลดภาระทางความคิดและความไม่ไว้ใจ คนและทีมซ่อมแซมได้เร็วขึ้นเมื่อความจริงเรียบง่ายพอให้ลงมือได้",
         cn:"清楚的话能减少认知负荷与不信任。当真相简单到可以行动，人和团队修复得更快。"
       }
     }

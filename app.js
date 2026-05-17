@@ -244,7 +244,7 @@
   const LEARNER_CHECKPOINTS = [
     { until: 5, en: 'Language creates the first split.', th: 'ภาษาเริ่มต้นการแบ่งโลกเป็นคู่ตรงข้าม', cn: '语言先把世界切成对立面' },
     { until: 10, en: 'Water wins by going low.', th: 'น้ำชนะเพราะยอมลงต่ำ', cn: '水因居下而得胜' },
-    { until: 15, en: 'Emptiness is part of the use.', th: 'ความว่างเปล่าคือส่วนหนึ่งของการใช้งาน', cn: '空处本身就是用途' },
+    { until: 15, en: 'Emptiness is part of the use.', th: 'ความว่างคือส่วนหนึ่งของการใช้งาน', cn: '空处本身就是用途' },
     { until: 20, en: 'Do less. Let the mud settle.', th: 'ทำให้น้อยลง แล้วรอให้โคลนตกตะกอน', cn: '少做一点，让泥自己沉下去' },
     { until: 25, en: 'Sacred foolishness can see more.', th: 'ความโง่ศักดิ์สิทธิ์มองเห็นได้มากกว่า', cn: '有时“愚”比聪明看得更远' },
     { until: 30, en: 'Tiptoe living collapses.', th: 'ชีวิตแบบเขย่งปลายเท้าอยู่ได้ไม่นาน', cn: '踮脚的人生站不久' },
@@ -663,7 +663,7 @@
               <p data-lang="th">บทนี้ในชีวิตจริง</p>
               <p data-lang="cn">把这一章放回生活里</p>
               <p data-lang="en">One idea, one example, no fog.</p>
-              <p data-lang="th">หนึ่งความคิด หนึ่งตัวอย่าง ไม่พร่าเลือน</p>
+              <p data-lang="th">หนึ่งความคิด หนึ่งตัวอย่าง ไม่คลุมเครือ</p>
               <p data-lang="cn">一个意思，一个例子，不绕雾。</p>
             </aside>
             <div>
