@@ -144,6 +144,11 @@ a:hover { color: var(--jade); border-bottom-color: var(--jade); }
   padding-right: 18px;
 }
 @media (max-width: 480px) { .topbar-name { display: none; } }
+@media (max-width: 400px) {
+  .topbar-dao { font-size: 40px; padding: 0 8px 0 10px; }
+  .lang-toggle, .tool-btn { padding: 0 6px; min-width: 36px; font-size: 10px; }
+  .tool-btn { padding: 0 5px; }
+}
 
 .topbar-tools {
   display: flex;
@@ -649,15 +654,24 @@ body.lang-th .cs-echo-copy [data-lang="th"],
 body.lang-cn .cs-echo-copy [data-lang="cn"] { display: inline; }
 @media (max-width: 720px) {
   .chapter-strip {
-    grid-template-columns: auto 1fr auto;
-    gap: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px 8px;
     padding: 10px 5vw;
     font-size: 9px;
   }
-  .chapter-strip .cs-cn { font-size: 14px; letter-spacing: 2px; }
-  .chapter-strip .cs-en, .chapter-strip .cs-th { font-size: 12px; }
+  .chapter-strip .cs-num { flex: 0 0 auto; }
+  .chapter-strip .cs-num-py { display: none; }
+  .chapter-strip .cs-cn { flex: 0 1 auto; text-align: center; }
+  .chapter-strip .cs-cn-py { display: none; }
+  .chapter-strip .cs-en,
+  .chapter-strip .cs-th { display: none; } /* title repeats in origin panel below */
+  .chapter-strip .cs-echo-btn,
+  .chapter-strip .cs-tsai-btn { flex: 0 0 auto; }
   .chapter-strip .cs-progress { display: none; }
-  .cs-echo-btn { padding: 6px 8px; min-width: 44px; }
+  .cs-echo-btn { padding: 6px 8px; min-width: 40px; }
   .cs-echo-copy { display: none; }
 }
 
@@ -667,6 +681,10 @@ body.lang-cn .cs-echo-copy [data-lang="cn"] { display: inline; }
   position: relative;
   scroll-snap-align: start;
   border-bottom: 1px solid var(--rule-faint);
+}
+@media (max-width: 600px) {
+  .panel { padding: clamp(28px, 5vh, 56px) 5vw; }
+  .panel-summary { padding: clamp(28px, 5vh, 56px) 5vw clamp(24px, 4vh, 48px); }
 }
 .panel-label {
   font-family: var(--mono);
@@ -1124,30 +1142,78 @@ body.quiet-mode .cs-echo-btn { display: none; }
 
 /* Force every chapter back to the calm default — no mood backgrounds,
    no neon, no newsprint columns. Override the mood-class colour and
-   background rules with the paper-ink default. */
-body.quiet-mode .chapter {
+   background rules with the paper-ink default.
+   Using `html body` prefix to beat chapter-specific mood overrides
+   (e.g. .chapter[data-n="1"] .panel-summary) that also use !important. */
+html body.quiet-mode .chapter {
   background: var(--paper) !important;
   color: var(--ink) !important;
 }
-body.quiet-mode .chapter * {
+html body.quiet-mode .chapter .panel,
+html body.quiet-mode .chapter .panel-summary,
+html body.quiet-mode .chapter .panel-origin,
+html body.quiet-mode .chapter .panel-reading,
+html body.quiet-mode .chapter .panel-note,
+html body.quiet-mode .chapter .panel-character,
+html body.quiet-mode .chapter .panel-closer,
+html body.quiet-mode .chapter .panel-reflection,
+html body.quiet-mode .chapter .panel-direct,
+html body.quiet-mode .chapter .panel-npm,
+html body.quiet-mode .chapter .panel-tsai,
+html body.quiet-mode .chapter .panel-compare,
+html body.quiet-mode .chapter .panel-image,
+html body.quiet-mode .chapter .panel-checkpoint,
+html body.quiet-mode .chapter .panel-play,
+html body.quiet-mode .chapter .chapter-foot,
+html body.quiet-mode .chapter .chapter-break,
+html body.quiet-mode .chapter .section-break {
   background: transparent !important;
   background-image: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+/* Catch-all for anything else inside a quiet-mode chapter */
+html body.quiet-mode .chapter * {
   text-shadow: none !important;
   filter: none !important;
 }
 /* Keep the seal (cinnabar) accent for active links/buttons inside chapters.
    The blanket "background: transparent !important" above would otherwise
    strip the cinnabar primary buttons too. Restore them: */
-body.quiet-mode .chapter .cn-listen-btn.is-playing,
-body.quiet-mode .chapter .cn-walk-btn.is-walking,
-body.quiet-mode .chapter .closer-frame,
-body.quiet-mode .chapter .reflection-frame,
-body.quiet-mode .chapter .reading-frame { background: var(--paper) !important; }
+html body.quiet-mode .chapter .cn-listen-btn.is-playing,
+html body.quiet-mode .chapter .cn-walk-btn.is-walking,
+html body.quiet-mode .chapter .closer-frame,
+html body.quiet-mode .chapter .reflection-frame,
+html body.quiet-mode .chapter .reading-frame { background: var(--paper) !important; }
+
+/* Override mood-specific text colours so light text doesn't disappear
+   on the cream quiet-mode background. Specificity (0,3,1) beats mood
+   rules like .chapter.mood-cosmic .summary-frame .su-en (0,3,0). */
+html body.quiet-mode .chapter .summary-frame .su-en,
+html body.quiet-mode .chapter .summary-frame .su-th,
+html body.quiet-mode .chapter .origin-cn-title,
+html body.quiet-mode .chapter .origin-en-title,
+html body.quiet-mode .chapter .origin-th-title,
+html body.quiet-mode .chapter .origin-meta,
+html body.quiet-mode .chapter .origin-gloss,
+html body.quiet-mode .chapter .reading-body,
+html body.quiet-mode .chapter .note-body,
+html body.quiet-mode .chapter .closer-q,
+html body.quiet-mode .chapter .reflection-title,
+html body.quiet-mode .chapter .reflection-lists,
+html body.quiet-mode .chapter .cd-breakdown,
+html body.quiet-mode .chapter .cd-mnemonic,
+html body.quiet-mode .chapter .cd-pivot,
+html body.quiet-mode .chapter .char-meaning { color: var(--ink-soft) !important; }
+html body.quiet-mode .chapter .summary-frame .su-cn,
+html body.quiet-mode .chapter .origin-cn-title { color: var(--ink) !important; }
+html body.quiet-mode .chapter .panel-label,
+html body.quiet-mode .chapter .panel-label em { color: var(--seal) !important; }
 /* Make the chapter strip a hairline rule, not a coloured ribbon. */
-body.quiet-mode .chapter-strip { background: var(--paper) !important; border-bottom: 1px solid var(--rule); }
+html body.quiet-mode .chapter-strip { background: var(--paper) !important; border-bottom: 1px solid var(--rule); }
 
 /* Make the topbar quiet too: no animated backgrounds, plain cream. */
-body.quiet-mode .topbar { background: var(--paper) !important; }
+html body.quiet-mode .topbar { background: var(--paper) !important; }
 
 /* ============================================================
    LIGHT CHAPTER BRIDGE — explain the absence of commentary, so
@@ -2120,7 +2186,7 @@ body.lang-cn .checkpoint-gloss[data-lang="en"] { display: none; }
 .chapter.scale-XL .origin-cn-title { letter-spacing: 28px; font-size: clamp(56px, 8vw, 120px); }
 .chapter.scale-XL .origin-num-roman { font-size: clamp(14px, 1.4vw, 18px); letter-spacing: .3em; }
 .chapter.scale-XL .panel-image { min-height: 80vh; }
-.chapter.scale-XL .panel-reading { padding-top: clamp(100px, 16vh, 200px); padding-bottom: clamp(100px, 16vh, 200px); }
+.chapter.scale-XL .panel-reading { padding-top: clamp(80px, 12vh, 140px); padding-bottom: clamp(80px, 12vh, 140px); }
 .chapter.scale-XL .panel-note { padding-top: clamp(80px, 12vh, 140px); padding-bottom: clamp(80px, 12vh, 140px); }
 
 /* ============================================================
@@ -2500,7 +2566,7 @@ body.lang-cn .direct-text[data-lang="cn"] em {
   font-size: clamp(18px, 1.5vw, 21px);
   line-height: 1.7;
   color: var(--ink-soft);
-  max-width: 56ch;
+  max-width: 60ch;
   white-space: pre-line;
   text-wrap: pretty;
 }
@@ -2778,7 +2844,7 @@ body.lang-cn .note-body[data-lang="en"],
 body.lang-cn .note-body[data-lang="th"] { display: none; }
 .note-body {
   font-family: var(--reader);
-  font-size: clamp(17px, 1.4vw, 20px);
+  font-size: clamp(18px, 1.5vw, 21px);
   line-height: 1.7;
   color: var(--ink-soft);
   font-style: italic;
@@ -5562,7 +5628,10 @@ body.lang-th .closer-q[data-lang="cn"] { display: none; }
 body.lang-cn .closer-q[data-lang="en"],
 body.lang-cn .closer-q[data-lang="th"] { display: none; }
 @media (max-width: 600px) {
-  .closer-q { font-size: 20px; padding-left: 18px; }
+  /* Remove padding-left here — closer-q gets horizontal rhythm from its
+     parent container (.closer-frame) padding; adding extra left-indent
+     only on mobile created an alignment jump at the 600px breakpoint. */
+  .closer-q { font-size: 20px; }
 }
 
 /* ============================================================
