@@ -768,7 +768,7 @@
 
         ${reading_en ? `
         <!-- 02 READING -->
-        <section class="panel panel-reading">
+        <section class="panel panel-reading" data-cn-glyph="${escapeHtml(ch.cn_title || '')}">
           ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}
           <div class="reading-frame">
             <aside class="reading-aside">
@@ -795,7 +795,7 @@
         </section>
         ` : `
         <!-- 02 READING (existing translation as reading) -->
-        <section class="panel panel-reading">
+        <section class="panel panel-reading" data-cn-glyph="${escapeHtml(ch.cn_title || '')}">
           ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}
           <div class="reading-frame">
             <aside class="reading-aside">

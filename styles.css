@@ -994,6 +994,24 @@ body.lang-cn .origin-th-title { display: none; }
   line-height: 1;
 }
 
+/* ── DROP-CAP INITIAL ───────────────────────────────────────────
+   The very first Chinese character of every chapter's Wang Bi text
+   renders 3× larger, in cinnabar, as an illuminated manuscript
+   initial. It marks the threshold — the moment you enter the text.
+   Only the first character of the first line of the origin stack.
+   Quiet-mode preserved: the colour distinction matters more there.
+────────────────────────────────────────────────────────────────── */
+.origin-stack .origin-line:first-child
+  .origin-chars:first-child
+  .cn-stack-char:first-child
+  .cs-c {
+  font-size: clamp(52px, 7.5vw, 88px);
+  color: var(--seal, #a83332);
+  line-height: 0.85;
+  align-self: flex-end;
+  margin-right: 4px;
+}
+
 /* Punctuation flows with chars — no pinyin, sits at char baseline */
 .cn-stack-punct {
   font-family: var(--cn-serif);
@@ -2532,7 +2550,34 @@ body.lang-cn .direct-text[data-lang="cn"] em {
 /* Panel 03 — READING (the substantive one) */
 .panel-reading {
   background: var(--paper);
+  /* ── GLYPH WATERMARK ── ─────────────────────────────────────
+     Each reading panel carries its chapter's Chinese title as a
+     large faded glyph positioned top-right. It anchors the eye
+     without competing with the text. Pure CSS — no images needed.
+     opacity .028 = ink at 3% presence, invisible to the rushing
+     reader, visible to the one who pauses.
+  ──────────────────────────────────────────────────────────── */
+  position: relative;
+  overflow: hidden;
 }
+.panel-reading[data-cn-glyph]::before {
+  content: attr(data-cn-glyph);
+  position: absolute;
+  right: -0.05em;
+  top: -0.08em;
+  font-family: var(--cn-serif);
+  font-size: min(38vw, 400px);
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 0;
+  font-weight: 400;
+  white-space: nowrap;
+  user-select: none;
+}
+/* Keep watermark ink-dark in quiet mode — it's structural, not mood */
+body.quiet-mode .panel-reading[data-cn-glyph]::before { opacity: 0.028; }
 .reading-frame {
   max-width: 1180px;
   margin: 0 auto;
@@ -7174,14 +7219,32 @@ body.lang-cn .break-caption[data-lang="th"] { display: none; }
   min-height: 50vh;
 }
 .section-break-major {
+  /* The only true textual boundary in the DDJ: 道經 ends, 德經 begins.
+     Full-viewport height, cinnabar seal character. You know you've
+     crossed from one half of the book to the other. */
   background: var(--paper-warm, var(--paper));
-  padding-top: clamp(120px, 18vh, 200px);
-  padding-bottom: clamp(120px, 18vh, 200px);
-  min-height: 70vh;
+  padding-top: clamp(120px, 20vh, 240px);
+  padding-bottom: clamp(120px, 20vh, 240px);
+  min-height: 90vh;
+  position: relative;
 }
+/* Hairline top and bottom rules for the major break — spine marks */
+.section-break-major::before,
+.section-break-major::after {
+  content: '';
+  position: absolute;
+  left: 6vw; right: 6vw;
+  height: 1px;
+  background: var(--seal, #a83332);
+  opacity: 0.35;
+}
+.section-break-major::before { top: clamp(28px, 5vh, 60px); }
+.section-break-major::after  { bottom: clamp(28px, 5vh, 60px); }
 .sb-frame {
   max-width: 56ch;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 .sb-kicker {
   font-family: var(--mono);
@@ -7189,7 +7252,7 @@ body.lang-cn .break-caption[data-lang="th"] { display: none; }
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--ink-fade);
-  margin: 0 0 36px;
+  margin: 0 0 48px;
 }
 body.lang-th .sb-kicker,
 body.lang-cn .sb-kicker { text-transform: none; letter-spacing: 0.05em; font-size: 12px; }
@@ -7197,16 +7260,21 @@ body.lang-th .sb-kicker { font-family: var(--th); }
 body.lang-cn .sb-kicker { font-family: var(--cn-serif); }
 .sb-mark {
   font-family: var(--cn-serif);
-  font-size: clamp(80px, 14vw, 160px);
+  /* Standard breaks: mark is bold presence, not full statement */
+  font-size: clamp(100px, 18vw, 220px);
   line-height: 1;
   color: var(--ink);
-  margin: 0 0 36px;
+  margin: 0 0 48px;
   letter-spacing: 0;
   font-weight: 400;
 }
 .section-break-major .sb-mark {
+  /* The 德 — dominant, cinnabar, book-spine scale */
   color: var(--seal, #a83332);
-  font-size: clamp(120px, 22vw, 240px);
+  font-size: clamp(160px, 32vw, 420px);
+  margin: 0 0 56px;
+  /* Very subtle shadow so it reads on paper-warm background */
+  text-shadow: 0 1px 0 rgba(168,51,50,.12);
 }
 .sb-line {
   font-family: var(--body);
