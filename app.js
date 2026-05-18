@@ -766,11 +766,28 @@
         </section>
         ` : ''}
 
-        ${reading_en ? `
+        ${reading_en ? (() => {
+          // Extract pull quote: second paragraph's first sentence.
+          // Gives every chapter a distinct typographic anchor and breaks
+          // the text wall without touching the stored reading content.
+          const paras = reading_en.split('\n').filter(p => p.trim());
+          let pullText = '';
+          if (paras.length >= 2) {
+            const srcPara = paras[Math.floor(paras.length / 2)]; // middle para
+            const match = srcPara.match(/^(.{30,220}?)[.!?](?:\s|$)/);
+            pullText = match ? match[0].trim() : srcPara.slice(0, 200).trim();
+            if (pullText.length < 30 || pullText.length > 300) pullText = '';
+          }
+          // Alternate the reading-frame layout per chapter:
+          //   n % 4 === 0 → aside sits above the text (full-width strip)
+          //   default     → aside on the left (existing layout)
+          const frameClass = (ch.n % 4 === 0) ? 'reading-frame reading-frame--top-aside' : 'reading-frame';
+        return `
         <!-- 02 READING -->
         <section class="panel panel-reading" data-cn-glyph="${escapeHtml(ch.cn_title || '')}">
           ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}
-          <div class="reading-frame">
+          ${pullText ? `<div class="reading-pull" aria-hidden="true"><p class="rp-sentence" data-lang="en">${escapeHtml(pullText)}</p></div>` : ''}
+          <div class="${frameClass}">
             <aside class="reading-aside">
               <p class="ra-q">${escapeHtml(ch.en || '').split('\n')[0]}</p>
               <p data-lang="en">The chapter, made practical.</p>
@@ -793,7 +810,8 @@
             </div>
           </div>
         </section>
-        ` : `
+        `;
+        })() : `
         <!-- 02 READING (existing translation as reading) -->
         <section class="panel panel-reading" data-cn-glyph="${escapeHtml(ch.cn_title || '')}">
           ${panelLabel('02', 'Reading', 'ตีความ', '解读', '解讀', 'jiě dú')}

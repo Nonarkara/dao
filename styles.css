@@ -2578,6 +2578,72 @@ body.lang-cn .direct-text[data-lang="cn"] em {
 }
 /* Keep watermark ink-dark in quiet mode — it's structural, not mood */
 body.quiet-mode .panel-reading[data-cn-glyph]::before { opacity: 0.028; }
+
+/* ── PULL QUOTE ─────────────────────────────────────────────────
+   Extracted algorithmically from the middle paragraph of each
+   reading. Breaks the text wall. The sentence sits between the
+   panel label and the reading frame — a typographic threshold.
+   Position: relative + z-index so it sits above the glyph watermark.
+────────────────────────────────────────────────────────────────── */
+.reading-pull {
+  max-width: 860px;
+  margin: 0 auto 8px;
+  padding: 28px 6vw 24px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.08));
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.reading-pull .rp-sentence {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin: 0 auto;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+/* Quiet mode: hide pull quote (reduces visual density on request) */
+body.quiet-mode .reading-pull { display: none; }
+
+/* ── ALTERNATE ASIDE LAYOUT (every 4th chapter) ─────────────────
+   Instead of aside-left + body-right, the aside spans full width
+   above the reading body as a horizontal strip. Creates structural
+   variety every 4 chapters without touching content.
+────────────────────────────────────────────────────────────────── */
+.reading-frame--top-aside {
+  grid-template-columns: 1fr !important;
+}
+.reading-frame--top-aside .reading-aside {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--rule-soft, rgba(0,0,0,.08));
+  padding-bottom: 24px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.reading-frame--top-aside .reading-aside .ra-q {
+  width: 100%;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(15px, 1.8vw, 20px);
+  color: var(--ink-soft);
+  font-family: var(--body);
+  margin: 0 0 12px;
+  font-weight: 300;
+}
+.reading-frame--top-aside .reading-aside p[data-lang] {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
 .reading-frame {
   max-width: 1180px;
   margin: 0 auto;
