@@ -5277,8 +5277,9 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
   transition: opacity .25s ease;
 }
 .tsai-gallery-shell {
-  width: min(1040px, calc(100% - 32px));
-  min-height: min(820px, calc(100dvh - 56px));
+  /* Shell tightly wraps the content; no fixed min-height so the popup
+     is the same shape as the cropped cartoon frame, not a tall empty box. */
+  width: min(860px, calc(100% - 32px));
   margin: 28px auto;
   background: var(--paper);
   border: 1px solid var(--rule);
@@ -5346,28 +5347,31 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
   gap: 14px;
 }
 .tsai-album-image-wrap {
+  /* No fixed height — the wrapper adapts to the image's natural proportions.
+     Checkerboard background removed; image sits cleanly on paper.
+     Works for both landscape spreads and tall portrait pages. */
   min-height: 0;
-  height: min(62dvh, 660px);
   border: 1px solid var(--rule);
-  background:
-    linear-gradient(45deg, rgba(121, 92, 56, .06) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(121, 92, 56, .06) 25%, transparent 25%),
-    var(--bone);
-  background-size: 20px 20px;
+  background: var(--paper);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(10px, 2vw, 18px);
+  overflow: hidden;
 }
 .tsai-album-image {
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  /* Natural dimensions with caps. The popup is now the same shape as
+     the comic frame, not a large empty box the image floats in.
+     - max-width/height: cap to viewport; never overflow
+     - width/height: auto: the browser preserves the aspect ratio
+     - box-shadow: subtle lift off the paper */
   display: block;
+  max-width: 100%;
+  max-height: min(68dvh, 720px);
+  width: auto;
+  height: auto;
+  margin: 0 auto;
   background: var(--paper);
-  box-shadow: 0 14px 34px rgba(34, 26, 16, .14);
+  box-shadow: 0 8px 24px rgba(34, 26, 16, .12);
 }
 .tsai-album-caption {
   min-height: 94px;
@@ -5432,8 +5436,9 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
 }
 @media (max-width: 720px) {
   .tsai-gallery-shell {
+    /* On mobile the shell adapts to content like on desktop.
+       No fixed min-height; the image frame dictates the popup shape. */
     width: min(100% - 12px, 1040px);
-    min-height: calc(100dvh - 12px);
     margin: 6px auto;
     padding: 16px;
   }
