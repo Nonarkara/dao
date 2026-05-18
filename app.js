@@ -1893,6 +1893,17 @@
     const index = tsaiGalleryState.page;
     const src = entry.pages[index];
     refreshTsaiGalleryChrome();
+    // After image loads, shrink the shell to match the rendered image width
+    // so the popup IS the shape of the cartoon frame, not a wider landscape box.
+    const shell = tsaiOverlay.querySelector('.tsai-gallery-shell');
+    tsaiAlbumImage.onload = () => {
+      if (!shell || !tsaiAlbumImage.clientWidth) return;
+      // shell target = image rendered width + two 48px arrow columns + two gaps (14px each) + 2× padding
+      const padding = parseFloat(getComputedStyle(shell).paddingLeft) || 24;
+      const target = tsaiAlbumImage.clientWidth + 96 + 28 + padding * 2;
+      const maxW = Math.min(900, window.innerWidth - 32);
+      shell.style.width = Math.min(target, maxW) + 'px';
+    };
     tsaiAlbumImage.src = src;
     tsaiAlbumImage.alt = `C. C. Tsai illustration for chapter ${ch.n}, page ${index + 1}`;
     tsaiAlbumCount.textContent = tsaiPageLabel(index, total);

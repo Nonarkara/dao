@@ -5277,13 +5277,16 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
   transition: opacity .25s ease;
 }
 .tsai-gallery-shell {
-  /* Shell tightly wraps the content; no fixed min-height so the popup
-     is the same shape as the cropped cartoon frame, not a tall empty box. */
-  width: min(860px, calc(100% - 32px));
+  /* Width is set dynamically by JS after image renders, so the shell
+     is exactly as wide as the comic image + arrows + padding.
+     CSS sets a sensible starting max so there's no jump on first open. */
+  width: min(740px, calc(100% - 32px));
+  max-width: min(900px, calc(100% - 32px));
+  min-width: min(340px, calc(100% - 32px));
   margin: 28px auto;
   background: var(--paper);
   border: 1px solid var(--rule);
-  padding: clamp(18px, 3vw, 34px);
+  padding: clamp(12px, 2vw, 24px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -5359,17 +5362,13 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
   overflow: hidden;
 }
 .tsai-album-image {
-  /* Natural dimensions with caps. The popup is now the same shape as
-     the comic frame, not a large empty box the image floats in.
-     - max-width/height: cap to viewport; never overflow
-     - width/height: auto: the browser preserves the aspect ratio
-     - box-shadow: subtle lift off the paper */
+  /* Height-driven sizing: fix the height to the viewport fraction so the
+     image doesn't overflow the screen; width follows the aspect ratio.
+     The shell's fit-content width then wraps exactly around this image. */
   display: block;
-  max-width: 100%;
-  max-height: min(68dvh, 720px);
+  height: min(68dvh, 720px);
   width: auto;
-  height: auto;
-  margin: 0 auto;
+  max-width: calc(100vw - 140px); /* prevent runaway landscape images */
   background: var(--paper);
   box-shadow: 0 8px 24px rgba(34, 26, 16, .12);
 }
@@ -5436,11 +5435,10 @@ body.lang-cn .checkin-about p { font-family: var(--cn-serif); font-size: 16px; l
 }
 @media (max-width: 720px) {
   .tsai-gallery-shell {
-    /* On mobile the shell adapts to content like on desktop.
-       No fixed min-height; the image frame dictates the popup shape. */
-    width: min(100% - 12px, 1040px);
+    width: min(calc(100% - 12px), fit-content);
+    max-width: calc(100% - 12px);
     margin: 6px auto;
-    padding: 16px;
+    padding: 12px;
   }
   .tsai-gallery-close {
     top: 10px;
